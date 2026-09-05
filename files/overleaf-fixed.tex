@@ -1,0 +1,6765 @@
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+\documentclass[UTF8,10pt,a4paper,fontset=fandol]{ctexart}
+\usepackage{amsmath,amssymb,graphicx,array,multirow,enumitem,titlesec,xcolor,ragged2e,etoolbox}
+\usepackage{tikz}
+\usepackage[a4paper,top=1.6cm,bottom=1.6cm,left=1.6cm,right=1.6cm]{geometry}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.15em}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\setlist[enumerate]{leftmargin=2.6em,itemsep=0.1em,topsep=0.2em}
+\titleformat{\section}{\large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{0.7em}{0.25em}
+\titlespacing*{\subsection}{0pt}{0.55em}{0.2em}
+\titlespacing*{\subsubsection}{0pt}{0.4em}{0.15em}
+\raggedbottom
+\BeforeBeginEnvironment{tabularx}{\par\noindent}
+\newcommand{\fieldvalue}[1]{#1}
+\newcommand{\handwritten}[1]{#1}
+\newcommand{\checkboxfield}[1]{\ifstrequal{#1}{checked}{☑}{\ifstrequal{#1}{unclear}{?}{☐}}}
+\newcommand{\TODO}[1]{#1}
+% >>> lexoid-texopt (auto-generated, safe to regenerate) >>>
+%% --- sync anchor: zero-size box that gives SyncTeX a per-cell record -------------
+\providecommand{\SA}{\leavevmode\hbox{}\relax}
+
+%% --- handwritten field: renders #2 unchanged, registers #1 ----------------------
+\makeatletter
+\newif\ifhwf@dest   \hwf@desttrue      % set \hwf@destfalse to disable PDF anchors
+\newwrite\hwf@out
+\immediate\openout\hwf@out=\jobname.hwf\relax
+\providecommand{\hwfield}[2]{%
+  \SA%
+  \begingroup
+    \write\hwf@out{#1\string\t\noexpand\thepage}%  page = OUTPUT pdf page, at shipout
+  \endgroup
+  \ifhwf@dest\@ifundefined{hypertarget}{}{\hypertarget{fld:#1}{}}\fi
+  #2%
+}
+%% --- editable checkbox: stable ID + boolean state + separate visible label -------
+%% State must be exactly `checked` or `unchecked`; JSON extraction records it as a
+%% boolean.  The box is drawn here, so source documents never need raw square marks.
+\renewcommand{\checkboxfield}[1]{%
+  \begingroup
+  \ifstrequal{#1}{checked}{%
+    \fbox{\makebox[1.1ex][c]{%
+      \raisebox{0.1ex}{\scriptsize\sffamily X}%
+    }}%
+  }{%
+    \ifstrequal{#1}{unclear}{%
+      \fbox{\makebox[1.1ex][c]{%
+        \raisebox{0.1ex}{\scriptsize\sffamily ?}%
+      }}%
+    }{%
+      \fbox{\makebox[1.1ex][c]{\strut}}%
+    }%
+  }%
+  \endgroup
+}
+\AtEndDocument{\immediate\closeout\hwf@out}
+\makeatother
+% <<< lexoid-texopt <<<
+\begin{document}
+
+% TODO: The page contains two scanned Chinese laboratory forms. The handwritten text has been transcribed where legible.
+
+% #VALUE_ID: LEX-P0001-V0001
+% #HANDWRITTEN: P/A 4-6-19；二级反应器上清液入库
+\handwritten{P/A 4-6-19；二级反应器上清液入库}
+
+% #VALUE_ID: LEX-P0001-V0002
+% #HANDWRITTEN: A/2026/05/22 0830
+\handwritten{A/2026/05/22 0830}
+
+\begin{center}
+\textbf{铂金生物科技（北京）有限公司}\\[-0.2em]
+\textit{PLATINUM LIFE EXCELLENCE BIOTECH}\\[0.4em]
+\textbf{细胞培养上清液入库申请单}
+\end{center}
+
+\begin{tabular}{|p{2.2cm}|p{11.6cm}|}
+  \hline
+   文件类型 &
+   原件 \qquad 文件编码：REC-YZ-SMP-QA-04-027 \qquad \textcolor{red}{受控文件}\\
+  \hline
+  \multicolumn{2}{|l|}{ 入库细胞培养上清液名称：%
+% #VALUE_ID: LEX-P0001-V0003
+% #FIELD_VALUE: PO代细胞培养上清液
+\hwfield{LEX-P0001-V0003}{\fieldvalue{\checkboxfield{unchecked}} PO代细胞培养上清液 \quad}
+% #VALUE_ID: LEX-P0001-V0004
+% #FIELD_VALUE: P1代细胞培养上清液
+\hwfield{LEX-P0001-V0004}{\fieldvalue{\checkboxfield{unchecked}} P1代细胞培养上清液 \quad}
+% #VALUE_ID: LEX-P0001-V0005
+% #FIELD_VALUE: P2代细胞培养上清液
+\hwfield{LEX-P0001-V0005}{\fieldvalue{\checkboxfield{unchecked}} P2代细胞培养上清液}}\\
+  \multicolumn{2}{|l|}{ \hspace{2.2cm}%
+% #VALUE_ID: LEX-P0001-V0006
+% #FIELD_VALUE: 一级生物反应器上清液
+\hwfield{LEX-P0001-V0006}{\fieldvalue{\checkboxfield{unchecked}} 一级生物反应器上清液 \quad}
+% #VALUE_ID: LEX-P0001-V0007
+% #FIELD_VALUE: 二级生物反应器上清液
+\hwfield{LEX-P0001-V0007}{\fieldvalue{\checkboxfield{checked}} 二级生物反应器上清液 \quad}
+% #VALUE_ID: LEX-P0001-V0008
+% #FIELD_VALUE: 三级生物反应器上清液
+\hwfield{LEX-P0001-V0008}{\fieldvalue{\checkboxfield{unchecked}} 三级生物反应器上清液}}\\
+  \multicolumn{2}{|l|}{ \hspace{2.2cm}%
+% #VALUE_ID: LEX-P0001-V0009
+% #FIELD_VALUE: 其它
+\hwfield{LEX-P0001-V0009}{\fieldvalue{\checkboxfield{unchecked}} 其它：\rule{5cm}{0.4pt}}}\\
+  \hline
+   细胞产品批号 &
+   % #VALUE_ID: LEX-P0001-V0010
+% #FIELD_VALUE: 细胞产品批号
+% #TODO #HANDWRITTEN: A?2?2026?0520; 字迹模糊
+\hwfield{LEX-P0001-V0010}{\fieldvalue{\handwritten{A?2?2026?0520}}}\\
+  \hline
+   无菌培养基产品 &
+   % #VALUE_ID: LEX-P0001-V0011
+% #FIELD_VALUE: 牛血清
+\hwfield{LEX-P0001-V0011}{\fieldvalue{\checkboxfield{checked}} 牛血清 \quad}
+% #VALUE_ID: LEX-P0001-V0012
+% #FIELD_VALUE: 其它
+\hwfield{LEX-P0001-V0012}{\fieldvalue{\checkboxfield{unchecked}} 其它：\rule{5cm}{0.4pt}}\\
+  \hline
+   预灌装数量 &
+  \\
+  \hline
+  \multicolumn{2}{|l|}{ \begin{tabular}{@{}p{2.2cm}p{4.3cm}p{2.2cm}p{4.3cm}@{}}
+   申请人 &
+   % #VALUE_ID: LEX-P0001-V0013
+% #FIELD_VALUE: 申请人
+% #HANDWRITTEN: 赵林
+\fieldvalue{\handwritten{赵林}} &
+   申请日期 &
+   % #VALUE_ID: LEX-P0001-V0014
+% #FIELD_VALUE: 申请日期
+% #HANDWRITTEN: 2026.05.22
+\fieldvalue{\handwritten{2026.05.22}}
+\end{tabular}}\\
+  \hline
+  \multicolumn{2}{|l|}{ \begin{tabular}{@{}p{2.2cm}p{4.3cm}p{2.2cm}p{4.3cm}@{}}
+   复核人 &
+   % #VALUE_ID: LEX-P0001-V0015
+% #FIELD_VALUE: 复核人
+% #HANDWRITTEN: 范梅
+\fieldvalue{\handwritten{范梅}} &
+   批准日期 &
+   % #VALUE_ID: LEX-P0001-V0016
+% #FIELD_VALUE: 批准日期
+% #HANDWRITTEN: 2026.05.22
+\fieldvalue{\handwritten{2026.05.22}}
+\end{tabular}}\\
+  \hline
+  \multicolumn{2}{|l|}{ \begin{tabular}{@{}p{2.2cm}p{4.3cm}p{2.2cm}p{4.3cm}@{}}
+   接收人 &
+   &
+   入库日期 &
+\end{tabular}}\\
+  \hline
+   入库保存位置 &
+   % #VALUE_ID: LEX-P0001-V0017
+% #FIELD_VALUE: 入库保存位置
+% #TODO #HANDWRITTEN: 4号箱?; 字迹模糊
+\hwfield{LEX-P0001-V0017}{\fieldvalue{\handwritten{4号箱?}}}\\
+  \hline
+   备注： &
+  \\
+  \hline
+\end{tabular}
+
+\begin{flushright}
+第1页 共1页\\[-0.2em]
+% #VALUE_ID: LEX-P0001-V0018
+% #HANDWRITTEN: 盖梅? 2026.05.22
+\handwritten{盖梅? 2026.05.22}
+\end{flushright}
+
+\vspace{0.8em}
+
+\begin{center}
+\textbf{细胞培养上清液出库申请单}
+\end{center}
+
+\begin{tabular}{|p{2.2cm}|p{11.6cm}|}
+  \hline
+   文件类型 &
+   原件 \qquad 文件编码：REC-YZ-SMP-QA-04-027 \qquad \textcolor{red}{受控文件}\\
+  \hline
+  \multicolumn{2}{|l|}{ 出库细胞培养上清液名称：%
+% #VALUE_ID: LEX-P0001-V0019
+% #FIELD_VALUE: PO代细胞培养上清液
+\hwfield{LEX-P0001-V0019}{\fieldvalue{\checkboxfield{unchecked}} PO代细胞培养上清液 \quad}
+% #VALUE_ID: LEX-P0001-V0020
+% #FIELD_VALUE: P1代细胞培养上清液
+\hwfield{LEX-P0001-V0020}{\fieldvalue{\checkboxfield{unchecked}} P1代细胞培养上清液 \quad}
+% #VALUE_ID: LEX-P0001-V0021
+% #FIELD_VALUE: P2代细胞培养上清液
+\hwfield{LEX-P0001-V0021}{\fieldvalue{\checkboxfield{unchecked}} P2代细胞培养上清液}}\\
+  \multicolumn{2}{|l|}{ \hspace{2.2cm}%
+% #VALUE_ID: LEX-P0001-V0022
+% #FIELD_VALUE: 一级生物反应器上清液
+\hwfield{LEX-P0001-V0022}{\fieldvalue{\checkboxfield{unchecked}} 一级生物反应器上清液 \quad}
+% #VALUE_ID: LEX-P0001-V0023
+% #FIELD_VALUE: 二级生物反应器上清液
+\hwfield{LEX-P0001-V0023}{\fieldvalue{\checkboxfield{checked}} 二级生物反应器上清液 \quad}
+% #VALUE_ID: LEX-P0001-V0024
+% #FIELD_VALUE: 三级生物反应器上清液
+\hwfield{LEX-P0001-V0024}{\fieldvalue{\checkboxfield{unchecked}} 三级生物反应器上清液}}\\
+  \multicolumn{2}{|l|}{ \hspace{2.2cm}%
+% #VALUE_ID: LEX-P0001-V0025
+% #FIELD_VALUE: 其它
+\hwfield{LEX-P0001-V0025}{\fieldvalue{\checkboxfield{unchecked}} 其它：\rule{5cm}{0.4pt}}}\\
+  \hline
+  \multicolumn{2}{|l|}{ \begin{tabular}{@{}p{2.2cm}p{4.3cm}p{2.2cm}p{4.3cm}@{}}
+   细胞产品批号 &
+   % #VALUE_ID: LEX-P0001-V0026
+% #FIELD_VALUE: 细胞产品批号
+% #TODO #HANDWRITTEN: A?2?2026?0520; 字迹模糊
+\fieldvalue{\handwritten{A?2?2026?0520}} &
+   出库细胞培养上清液数量 &
+   % #VALUE_ID: LEX-P0001-V0027
+% #FIELD_VALUE: 出库细胞培养上清液数量
+% #TODO #HANDWRITTEN: 约36瓶; 字迹模糊
+\fieldvalue{\handwritten{约36瓶}}
+\end{tabular}}\\
+  \hline
+  \multicolumn{2}{|l|}{ \begin{tabular}{@{}p{2.2cm}p{4.3cm}p{2.2cm}p{4.3cm}@{}}
+   出库用途 &
+   % #VALUE_ID: LEX-P0001-V0028
+% #FIELD_VALUE: 出库用途
+% #TODO #HANDWRITTEN: C.C.试验（生产）; 字迹模糊
+\fieldvalue{\handwritten{C.C.试验（生产）}} &
+   申请日期 &
+   % #VALUE_ID: LEX-P0001-V0029
+% #FIELD_VALUE: 申请日期
+% #HANDWRITTEN: 2026.05.22
+\fieldvalue{\handwritten{2026.05.22}}
+\end{tabular}}\\
+  \hline
+  \multicolumn{2}{|l|}{ \begin{tabular}{@{}p{2.2cm}p{4.3cm}p{2.2cm}p{4.3cm}@{}}
+   申请人 &
+   % #VALUE_ID: LEX-P0001-V0030
+% #FIELD_VALUE: 申请人
+% #HANDWRITTEN: 赵林
+\fieldvalue{\handwritten{赵林}} &
+   批准日期 &
+   % #VALUE_ID: LEX-P0001-V0031
+% #FIELD_VALUE: 批准日期
+% #HANDWRITTEN: 2026.05.22
+\fieldvalue{\handwritten{2026.05.22}}
+\end{tabular}}\\
+  \hline
+  \multicolumn{2}{|l|}{ \begin{tabular}{@{}p{2.2cm}p{4.3cm}p{2.2cm}p{4.3cm}@{}}
+   部门经理 &
+   % #VALUE_ID: LEX-P0001-V0032
+% #FIELD_VALUE: 部门经理
+% #TODO #HANDWRITTEN: 桔梅?; 字迹模糊
+\fieldvalue{\handwritten{桔梅?}} &
+   批准日期 &
+\end{tabular}}\\
+  \hline
+  \multicolumn{2}{|l|}{ \begin{tabular}{@{}p{2.2cm}p{4.3cm}p{2.2cm}p{4.3cm}@{}}
+   总经理 &
+   % #VALUE_ID: LEX-P0001-V0033
+% #FIELD_VALUE: 总经理
+% #HANDWRITTEN: /
+\fieldvalue{\handwritten{/}} &
+   批准日期 &
+   % #VALUE_ID: LEX-P0001-V0034
+% #FIELD_VALUE: 批准日期
+% #HANDWRITTEN: /
+\fieldvalue{\handwritten{/}}
+\end{tabular}}\\
+  \hline
+  \multicolumn{2}{|l|}{ \begin{tabular}{@{}p{2.2cm}p{4.3cm}p{2.2cm}p{4.3cm}@{}}
+   出库人 &
+   % #VALUE_ID: LEX-P0001-V0035
+% #FIELD_VALUE: 出库人
+% #TODO #HANDWRITTEN: 夏丹?; 字迹模糊
+\fieldvalue{\handwritten{夏丹?}} &
+   出库日期 &
+   % #VALUE_ID: LEX-P0001-V0036
+% #FIELD_VALUE: 出库日期
+% #HANDWRITTEN: 2026.05.22
+\fieldvalue{\handwritten{2026.05.22}}
+\end{tabular}}\\
+  \hline
+  \multicolumn{2}{|l|}{ \begin{tabular}{@{}p{2.2cm}p{4.3cm}p{2.2cm}p{4.3cm}@{}}
+   接收人 &
+   % #VALUE_ID: LEX-P0001-V0037
+% #FIELD_VALUE: 接收人
+% #TODO #HANDWRITTEN: 严莉?; 字迹模糊
+\fieldvalue{\handwritten{严莉?}} &
+   接收日期 &
+   % #VALUE_ID: LEX-P0001-V0038
+% #FIELD_VALUE: 接收日期
+% #HANDWRITTEN: 2026.05.22
+\fieldvalue{\handwritten{2026.05.22}}
+\end{tabular}}\\
+  \hline
+   备注： &
+   % #VALUE_ID: LEX-P0001-V0039
+% #FIELD_VALUE: 备注
+% #TODO #HANDWRITTEN: <; 内容不清
+\hwfield{LEX-P0001-V0039}{\fieldvalue{\handwritten{<}}}\\
+  \hline
+\end{tabular}
+
+\vspace{0.15em}
+
+注释：公司的内部生产使用细胞培养上清液时无需经理签字，委外使用细胞培养上清液时需总经理签字。
+
+\begin{flushright}
+第1页 共1页
+\end{flushright}
+
+% #VALUE_ID: LEX-P0001-V0040
+% #HANDWRITTEN: 赵梅? 2026.05.22
+\handwritten{赵梅? 2026.05.22}
+
+% #VALUE_ID: LEX-P0001-V0041
+% #HANDWRITTEN: 桔梅? 2026.05.22
+\handwritten{桔梅? 2026.05.22}
+
+% #VALUE_ID: LEX-P0001-V0042
+% #HANDWRITTEN: 盖梅? 2026.05.22
+\handwritten{盖梅? 2026.05.22}
+% LEXOID_PAGE_COMPLETED: 1/57
+
+\newpage
+
+\begin{center}
+\textbf{住院患者用药记录}
+\end{center}
+
+\noindent
+\textbf{基本信息}
+
+\begin{tabular}{@{}p{0.18\linewidth}p{0.28\linewidth}p{0.18\linewidth}p{0.28\linewidth}@{}}
+   姓名 &
+   \TODO{文字过小，无法可靠辨认} &
+   性别 &
+   \TODO{文字过小，无法可靠辨认}\\
+   年龄 &
+   \TODO{文字过小，无法可靠辨认} &
+   科室 &
+   \TODO{文字过小，无法可靠辨认}\\
+   床号 &
+   \TODO{文字过小，无法可靠辨认} &
+   住院号 &
+   \TODO{文字过小，无法可靠辨认}\\
+   入院日期 &
+   \TODO{文字过小，无法可靠辨认} &
+   记录日期 &
+   2024-05-22\\
+\end{tabular}
+
+\vspace{1em}
+
+\noindent
+\textbf{医嘱及执行记录}
+
+\begin{tabular}{|p{0.16\linewidth}|p{0.40\linewidth}|p{0.18\linewidth}|p{0.16\linewidth}|}
+  \hline
+   时间 &
+   医嘱内容 &
+   剂量/规格 &
+   执行情况\\
+  \hline
+   07:20 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   07:40 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   07:50 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   08:20 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   08:40 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   08:50 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   09:00 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   09:10 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   09:20 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   09:30 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   09:40 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   09:50 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   10:00 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   10:10 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   10:20 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   10:30 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   10:40 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   10:50 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   11:00 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   11:10 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   11:20 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   11:30 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   11:40 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   11:50 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   12:00 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   12:10 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   12:20 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   12:30 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   12:40 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   12:50 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   13:00 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   13:10 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   13:20 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   13:30 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   13:40 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   13:50 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   14:00 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   14:10 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   14:20 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   14:30 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   14:40 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+   14:50 &
+   \TODO{药品名称无法可靠辨认} &
+   \TODO{} &
+   \TODO{}\\
+  \hline
+\end{tabular}
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0002-V0001
+% #HANDWRITTEN: 阿片类药物使用情况记录（部分字迹不清）
+\handwritten{阿片类药物使用情况记录}
+
+% #VALUE_ID: LEX-P0002-V0002
+% #HANDWRITTEN: 1120.00
+\handwritten{1120.00}
+
+% #VALUE_ID: LEX-P0002-V0003
+% #HANDWRITTEN: 500.5（字迹不清）
+\handwritten{500.5}
+
+% #VALUE_ID: LEX-P0002-V0004
+% #HANDWRITTEN: 1/（后续字符不可辨认）
+\handwritten{1/}
+% LEXOID_PAGE_COMPLETED: 2/57
+
+\newpage
+
+% TODO: The source page is rotated and the tabular text is extremely small in the
+% supplied raster image. Individual item codes and Chinese descriptions cannot be
+% transcribed reliably without fabricating content. The visible structure consists
+% of two vertical tabular lists of item codes and descriptions.
+
+\begin{center}
+\small
+\begin{tabular}{p{0.22\linewidth}p{0.66\linewidth}}
+  \multicolumn{2}{c}{ \textit{Visible inventory/list table; text illegible at supplied resolution}}\\
+  \hline
+   \textit{Item code} &
+   \textit{Description}\\
+  \hline
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+\end{tabular}
+
+\vspace{1em}
+
+\begin{tabular}{p{0.22\linewidth}p{0.66\linewidth}}
+  \multicolumn{2}{c}{ \textit{Second visible inventory/list table; text illegible at supplied resolution}}\\
+  \hline
+   \textit{Item code} &
+   \textit{Description}\\
+  \hline
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+   \textit{[illegible]} &
+   \textit{[Chinese description illegible]}\\
+\end{tabular}
+\end{center}
+
+% TODO #HANDWRITTEN: 4/; uncertain marginal handwritten notation
+% #VALUE_ID: LEX-P0003-V0001
+% #HANDWRITTEN: 4/
+\handwritten{4/}
+% LEXOID_PAGE_COMPLETED: 3/57
+
+\newpage
+
+% TODO: This page contains two vertically oriented, densely printed tabular lists. The
+% source image resolution is insufficient to reliably transcribe the individual
+% alphanumeric identifiers and accompanying Chinese text without fabrication.
+% TODO: The upper and lower lists appear to be continuations of a larger table.
+
+\begin{center}
+\small
+\begin{tabular}{p{0.18\linewidth}p{0.68\linewidth}}
+   \textbf{Upper list} &
+   \textit{[printed identifiers and descriptions illegible at supplied resolution]}\\
+  \hline
+  \multicolumn{2}{l}{ \textit{[additional printed rows visible; transcription requires a higher-resolution source]}}\\
+\end{tabular}
+
+\vspace{1em}
+
+\begin{tabular}{p{0.18\linewidth}p{0.68\linewidth}}
+   \textbf{Lower list} &
+   \textit{[printed identifiers and descriptions illegible at supplied resolution]}\\
+  \hline
+  \multicolumn{2}{l}{ \textit{[additional printed rows visible; transcription requires a higher-resolution source]}}\\
+\end{tabular}
+\end{center}
+
+% #VALUE_ID: LEX-P0004-V0001
+% #HANDWRITTEN: 3/7
+\handwritten{3/7}
+% LEXOID_PAGE_COMPLETED: 4/57
+
+\newpage
+
+% The source page is rotated in the supplied PDF; the following content is
+% transcribed in a normal reading orientation.
+\begin{center}
+\textbf{（本页为表格/清单续页）}
+\end{center}
+
+% #VALUE_ID: LEX-P0005-V0001
+% #HANDWRITTEN: 4/7
+% #FIELD_VALUE: 手写页码标记
+\fieldvalue{\handwritten{4/7}}
+
+\vspace{1em}
+
+\noindent
+\begin{minipage}{0.47\linewidth}
+\small
+\begin{tabular}{@{}p{0.20\linewidth}p{0.72\linewidth}@{}}
+   \textbf{编号} &
+   \textbf{项目及规格}\\
+   T?2024? &
+   （页面文字较小，部分无法辨认）\\
+   T?202? &
+   （页面文字较小，部分无法辨认）\\
+   T?202? &
+   （页面文字较小，部分无法辨认）\\
+   T?202? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+   T?201? &
+   （页面文字较小，部分无法辨认）\\
+\end{tabular}
+\end{minipage}
+\hfill
+\begin{minipage}{0.47\linewidth}
+\small
+\begin{tabular}{@{}p{0.20\linewidth}p{0.72\linewidth}@{}}
+   \textbf{编号} &
+   \textbf{项目及规格}\\
+   T?202? &
+   （页面文字较小，部分无法辨认）\\
+   T?202? &
+   （页面文字较小，部分无法辨认）\\
+   T?202? &
+   （页面文字较小，部分无法辨认）\\
+   T?202? &
+   （页面文字较小，部分无法辨认）\\
+   T?202? &
+   （页面文字较小，部分无法辨认）\\
+   T?202? &
+   （页面文字较小，部分无法辨认）\\
+   T?202? &
+   （页面文字较小，部分无法辨认）\\
+   T?202? &
+   （页面文字较小，部分无法辨认）\\
+   T?202? &
+   （页面文字较小，部分无法辨认）\\
+   T?202? &
+   （页面文字较小，部分无法辨认）\\
+   T?202? &
+   （页面文字较小，部分无法辨认）\\
+   T?202? &
+   （页面文字较小，部分无法辨认）\\
+   T?202? &
+   （页面文字较小，部分无法辨认）\\
+   T?202? &
+   （页面文字较小，部分无法辨认）\\
+   T?202? &
+   （页面文字较小，部分无法辨认）\\
+   T?202? &
+   （页面文字较小，部分无法辨认）\\
+   T?202? &
+   （页面文字较小，部分无法辨认）\\
+   T?202? &
+   （页面文字较小，部分无法辨认）\\
+\end{tabular}
+\end{minipage}
+
+\vfill
+
+\noindent
+签名：%
+% #VALUE_ID: LEX-P0005-V0002
+% #FIELD_VALUE: 签名
+% TODO #HANDWRITTEN: 难以辨认；蓝色手写签名
+\fieldvalue{\handwritten{[难以辨认]}}
+
+\par\medskip
+
+\noindent
+日期：%
+% #VALUE_ID: LEX-P0005-V0003
+% #FIELD_VALUE: 日期
+% TODO #HANDWRITTEN: 2025年?月22日；月份字符不清晰
+\fieldvalue{\handwritten{2025年?月22日}}
+
+% TODO: 本页表格文字因扫描分辨率低且原页面旋转，无法可靠逐项辨认；以上仅保留可确认的版式和手写内容。
+% LEXOID_PAGE_COMPLETED: 5/57
+
+\newpage
+
+% TODO: This page contains three rotated graph panels. Recreate or insert the source figures if available.
+\begin{center}
+\begin{minipage}{0.46\linewidth}
+\centering
+\fbox{\parbox[c][0.36\textheight][c]{0.95\linewidth}{\centering
+\textit{Graph panel (upper left)}\\[0.5em]
+\scriptsize
+Visible axes include time labels approximately
+09:48:41, 11:18:41, and 13:18:41.\\
+The vertical axis is labeled in millivolts;\\
+multiple colored traces and a legend are visible.
+}}
+\end{minipage}
+\hfill
+\begin{minipage}{0.46\linewidth}
+\centering
+\fbox{\parbox[c][0.36\textheight][c]{0.95\linewidth}{\centering
+\textit{Graph panel (upper right)}\\[0.5em]
+\scriptsize
+Visible axes include time labels approximately
+09:48:41, 11:18:41, and 13:18:41.\\
+The vertical axis is labeled in millivolts;\\
+several colored traces and a legend are visible.
+}}
+\end{minipage}
+
+\vspace{1em}
+
+\begin{minipage}{0.46\linewidth}
+\centering
+\fbox{\parbox[c][0.36\textheight][c]{0.95\linewidth}{\centering
+\textit{Graph panel (lower)}\\[0.5em]
+\scriptsize
+Visible vertical scale markings are
+$0$, $96$, $192$, $288$, $384$, and $480$.\\
+The horizontal axis shows time labels approximately
+09:48:41, 11:18:41, and 13:18:41.\\
+An orange trace and legend are visible.
+}}
+\end{minipage}
+\end{center}
+
+% #VALUE_ID: LEX-P0006-V0001
+% #HANDWRITTEN: 17
+\handwritten{17}
+% LEXOID_PAGE_COMPLETED: 6/57
+
+\newpage
+
+\begin{figure}[ht]
+\centering
+\fbox{%
+\begin{minipage}{0.88\linewidth}
+\centering
+\textbf{流量 (L/min)}
+
+\vspace{0.4em}
+\begin{tabular}{c@{\qquad}c}
+   纵轴刻度：0,\ 99,\ 198,\ 296,\ 395 &
+   图例：\textcolor{orange}{\(\bullet\) 流量 1}\quad
+\textcolor{green}{\(\bullet\) 流量 2}
+\end{tabular}
+
+\vspace{0.5em}
+\begin{tabular}{ccc}
+   09:48:41 &
+   11:18:41 &
+   13:58:41
+\end{tabular}
+
+\vspace{0.5em}
+% TODO: Reproduce the visible multi-series flow chart with orange and green
+% stepped traces and bars. No source image filename is available.
+\end{minipage}}
+\end{figure}
+
+\vspace{1em}
+
+\begin{figure}[ht]
+\centering
+\fbox{%
+\begin{minipage}{0.88\linewidth}
+\centering
+\textbf{温度 (℃)}
+
+\vspace{0.4em}
+纵轴刻度：\(-10,\ 0,\ 10,\ 20,\ 30,\ 40\)
+
+\vspace{0.4em}
+图例：\textcolor{orange}{\(\bullet\) 温度}
+
+\vspace{0.5em}
+\begin{tabular}{ccc}
+   09:48:41 &
+   11:18:41 &
+   13:58:41
+\end{tabular}
+
+\vspace{0.5em}
+% TODO: Reproduce the visible orange temperature curve, which rises from
+% approximately 20 degrees, peaks near 30 degrees, and then fluctuates.
+\end{minipage}}
+\end{figure}
+% LEXOID_PAGE_COMPLETED: 7/57
+
+\newpage
+
+\begin{figure}[ht]
+\centering
+\fbox{\parbox{0.75\linewidth}{%
+\centering
+\textit{Visible multi-series pressure chart}\\[0.5em]
+Pressure axis labeled ``压力 (kPa)'', with four plotted series
+(``压力1'', ``压力2'', ``压力3'', and ``压力4'').\\
+% TODO: Reproduce the plotted curves and axis tick labels from the scanned figure.
+}}
+\end{figure}
+
+\vfill
+
+\begin{flushleft}
+% #VALUE_ID: LEX-P0008-V0001
+% #TODO #HANDWRITTEN: illegible; low-resolution rotated blue handwriting
+\handwritten{\text{illegible}}
+
+% #VALUE_ID: LEX-P0008-V0002
+% #TODO #HANDWRITTEN: illegible; low-resolution rotated blue handwriting
+\handwritten{\text{illegible}}
+\end{flushleft}
+% LEXOID_PAGE_COMPLETED: 8/57
+
+\newpage
+
+% #VALUE_ID: LEX-P0009-V0001
+% #TODO #HANDWRITTEN: 子样？1：……；字迹潦草
+\handwritten{子样？1：……}
+
+% #VALUE_ID: LEX-P0009-V0002
+% #TODO #HANDWRITTEN: 交接……；字迹不清
+\handwritten{交接……}
+
+% #VALUE_ID: LEX-P0009-V0003
+% #TODO #HANDWRITTEN: ……；位于页眉附近，字迹不清
+\handwritten{……}
+
+\begin{center}
+\textbf{计数样本交接表}
+\end{center}
+
+\begin{tabular}{|p{0.18\linewidth}|p{0.30\linewidth}|p{0.16\linewidth}|p{0.26\linewidth}|}
+  \hline
+   品名 &
+   % #VALUE_ID: LEX-P0009-V0004
+% #FIELD_VALUE: 品名
+% #TODO #HANDWRITTEN: 蛇毒抗体复合物；字迹不清
+\hwfield{LEX-P0009-V0004}{\fieldvalue{\handwritten{蛇毒抗体复合物}}} &
+   规格 &
+   % #VALUE_ID: LEX-P0009-V0005
+% #FIELD_VALUE: 规格
+% #TODO #HANDWRITTEN: 1.5\,ml/0.5\,ml？；字迹不清
+\hwfield{LEX-P0009-V0005}{\fieldvalue{\handwritten{1.5\,ml/0.5\,ml？}}}\\
+  \hline
+   生产批号 &
+   % #VALUE_ID: LEX-P0009-V0006
+% #FIELD_VALUE: 生产批号
+% #TODO #HANDWRITTEN: 2026……；字迹不清
+\hwfield{LEX-P0009-V0006}{\fieldvalue{\handwritten{2026……}}} &
+   生产工序 &
+   % #VALUE_ID: LEX-P0007-V0007
+% #FIELD_VALUE: 生产工序
+% #TODO #HANDWRITTEN: 2级……；字迹不清
+\hwfield{LEX-P0007-V0007}{\fieldvalue{\handwritten{2级……}}}\\
+  \hline
+   样品编码 &
+   % #VALUE_ID: LEX-P0009-V0008
+% #FIELD_VALUE: 样品编码
+% #TODO #HANDWRITTEN: 26b0-AP2720-260409-PI-浸润-640\,pmL；字迹不清
+\hwfield{LEX-P0009-V0008}{\fieldvalue{\handwritten{26b0-AP2720-260409-PI-浸润-640\,pmL}}} &
+  \multicolumn{2}{l|}{ }\\
+  \hline
+   样品类型 &
+   % #VALUE_ID: LEX-P0009-V0009
+% #FIELD_VALUE: EP管
+\hwfield{LEX-P0009-V0009}{\fieldvalue{\checkboxfield{unchecked}} EP管，\underline{\hspace{1.5cm}}管，每管$\leq 0.3$\,ml} &
+  \multicolumn{2}{l|}{ }\\
+  \cline{1-2}
+   &
+   % #VALUE_ID: LEX-P0009-V0010
+% #FIELD_VALUE: 血样
+\hwfield{LEX-P0009-V0010}{\fieldvalue{\checkboxfield{checked}} 血样，\underline{\hspace{1.5cm}}支，每支$\geq 0.3$\,ml} &
+  \multicolumn{2}{l|}{ }\\
+  \hline
+   送样时间 &
+   % #VALUE_ID: LEX-P0009-V0011
+% #FIELD_VALUE: 送样时间
+% #TODO #HANDWRITTEN: 2026年09月22日08时02分；日期及时间字迹不清
+\hwfield{LEX-P0009-V0011}{\fieldvalue{\handwritten{2026年09月22日08时02分}}} &
+  \multicolumn{2}{l|}{ }\\
+  \hline
+   样本送交人/日期 &
+   % #VALUE_ID: LEX-P0009-V0012
+% #FIELD_VALUE: 样本送交人/日期
+% #TODO #HANDWRITTEN: 张楠 2026.09.22；字迹不清
+\hwfield{LEX-P0009-V0012}{\fieldvalue{\handwritten{张楠\quad 2026.09.22}}} &
+   复核人/日期 &
+   % #VALUE_ID: LEX-P0009-V0013
+% #FIELD_VALUE: 复核人/日期
+% #TODO #HANDWRITTEN: 赵敏 2026.05.22；字迹不清
+\hwfield{LEX-P0009-V0013}{\fieldvalue{\handwritten{赵敏\quad 2026.05.22}}}\\
+  \hline
+   样本接收人/日期 &
+   % #VALUE_ID: LEX-P0009-V0014
+% #FIELD_VALUE: 样本接收人/日期
+% #TODO #HANDWRITTEN: 张楠 2026.05.22；字迹不清
+\hwfield{LEX-P0009-V0014}{\fieldvalue{\handwritten{张楠\quad 2026.05.22}}} &
+  \multicolumn{2}{l|}{ }\\
+  \hline
+   样本计数结果 &
+   活细胞密度 &
+   % #VALUE_ID: LEX-P0009-V0015
+% #FIELD_VALUE: 活细胞密度
+% #HANDWRITTEN: 110
+\hwfield{LEX-P0009-V0015}{\fieldvalue{\handwritten{110}}}
+$\times 10^{7}$ cells/ml &
+  \multicolumn{1}{l|}{ }\\
+  \cline{2-4}
+   &
+   细胞活率 &
+   % #VALUE_ID: LEX-P0009-V0016
+% #FIELD_VALUE: 细胞活率
+% #HANDWRITTEN: 97.3
+\hwfield{LEX-P0009-V0016}{\fieldvalue{\handwritten{97.3}}\%} &
+  \multicolumn{1}{l|}{ }\\
+  \hline
+   计数人/日期 &
+   % #VALUE_ID: LEX-P0009-V0017
+% #FIELD_VALUE: 计数人/日期
+% #TODO #HANDWRITTEN: 张楠 2026.05.22；字迹不清
+\hwfield{LEX-P0009-V0017}{\fieldvalue{\handwritten{张楠\quad 2026.05.22}}} &
+   递交/复核人/日期 &
+   % #VALUE_ID: LEX-P0009-V0018
+% #FIELD_VALUE: 递交/复核人/日期
+% #TODO #HANDWRITTEN: 赵楠 2026.05.22；字迹不清
+\hwfield{LEX-P0009-V0018}{\fieldvalue{\handwritten{赵楠\quad 2026.05.22}}}\\
+  \hline
+\end{tabular}
+
+\vspace{1em}
+
+\begin{center}
+\textbf{细胞计数记录}
+\end{center}
+
+\begin{tabular}{|p{0.32\linewidth}|p{0.28\linewidth}|p{0.18\linewidth}|p{0.18\linewidth}|}
+  \hline
+   AO/PI染液批号：
+% #VALUE_ID: LEX-P0009-V0019
+% #FIELD_VALUE: AO/PI染液批号
+% #TODO #HANDWRITTEN: 2026.05.22-001；字迹不清
+\hwfield{LEX-P0009-V0019}{\fieldvalue{\handwritten{2026.05.22-001}}} &
+   细胞计数仪编号：
+% #VALUE_ID: LEX-P0009-V0020
+% #FIELD_VALUE: 细胞计数仪编号
+% #TODO #HANDWRITTEN: 11700？；字迹不清
+\hwfield{LEX-P0009-V0020}{\fieldvalue{\handwritten{11700？}}} &
+  \multicolumn{2}{l|}{ }\\
+  \hline
+   细胞计数仪内部编号 &
+   活细胞密度\newline{}(cells/ml) &
+   细胞\newline{}活率 &
+   活细胞直径\newline{}($\mu$m)\\
+  \hline
+   % #VALUE_ID: LEX-P0009-V0021
+% #FIELD_VALUE: 细胞计数仪内部编号
+% #TODO #HANDWRITTEN: 2026-05-22-260409-PI-浸润-640\,pmL-1-1；字迹不清
+\hwfield{LEX-P0009-V0021}{\fieldvalue{\handwritten{2026-05-22-260409-PI-浸润-640\,pmL-1-1}}} &
+   % #VALUE_ID: LEX-P0009-V0022
+% #FIELD_VALUE: 活细胞密度
+% #HANDWRITTEN: 1.03
+\hwfield{LEX-P0009-V0022}{\fieldvalue{\handwritten{1.03}}$\times 10^{7}$} &
+   % #VALUE_ID: LEX-P0009-V0023
+% #FIELD_VALUE: 细胞活率
+% #HANDWRITTEN: 97.9
+\hwfield{LEX-P0009-V0023}{\fieldvalue{\handwritten{97.9}}\%} &
+   % #VALUE_ID: LEX-P0009-V0024
+% #FIELD_VALUE: 活细胞直径
+% #HANDWRITTEN: 14.2
+\hwfield{LEX-P0009-V0024}{\fieldvalue{\handwritten{14.2}}}\\
+  \hline
+   % #VALUE_ID: LEX-P0009-V0025
+% #FIELD_VALUE: 细胞计数仪内部编号
+% #TODO #HANDWRITTEN: 2026-05-22-260409-PI-浸润-640\,pmL-1-2-1；字迹不清
+\hwfield{LEX-P0009-V0025}{\fieldvalue{\handwritten{2026-05-22-260409-PI-浸润-640\,pmL-1-2-1}}} &
+   % #VALUE_ID: LEX-P0009-V0026
+% #FIELD_VALUE: 活细胞密度
+% #HANDWRITTEN: 1.19
+\hwfield{LEX-P0009-V0026}{\fieldvalue{\handwritten{1.19}}$\times 10^{7}$} &
+   % #VALUE_ID: LEX-P0009-V0027
+% #FIELD_VALUE: 细胞活率
+% #HANDWRITTEN: 97.1
+\hwfield{LEX-P0009-V0027}{\fieldvalue{\handwritten{97.1}}\%} &
+   % #VALUE_ID: LEX-P0009-V0028
+% #FIELD_VALUE: 活细胞直径
+% #HANDWRITTEN: 13.6
+\hwfield{LEX-P0009-V0028}{\fieldvalue{\handwritten{13.6}}}\\
+  \hline
+   % #VALUE_ID: LEX-P0009-V0029
+% #FIELD_VALUE: 细胞计数仪内部编号
+% #TODO #HANDWRITTEN: 2026-05-22-260409-PI-浸润-640\,pmL-1-3-1；字迹不清
+\hwfield{LEX-P0009-V0029}{\fieldvalue{\handwritten{2026-05-22-260409-PI-浸润-640\,pmL-1-3-1}}} &
+   % #VALUE_ID: LEX-P0009-V0030
+% #FIELD_VALUE: 活细胞密度
+% #HANDWRITTEN: 1.08
+\hwfield{LEX-P0009-V0030}{\fieldvalue{\handwritten{1.08}}$\times 10^{7}$} &
+   % #VALUE_ID: LEX-P0009-V0031
+% #FIELD_VALUE: 细胞活率
+% #HANDWRITTEN: 96.8
+\hwfield{LEX-P0009-V0031}{\fieldvalue{\handwritten{96.8}}\%} &
+   % #VALUE_ID: LEX-P0009-V0032
+% #FIELD_VALUE: 活细胞直径
+% #HANDWRITTEN: 13.6
+\hwfield{LEX-P0009-V0032}{\fieldvalue{\handwritten{13.6}}}\\
+  \hline
+   &
+   $\times 10^{7}$ &
+   \% &
+  \\
+  \hline
+   &
+   $\times 10^{7}$ &
+   \% &
+  \\
+  \hline
+   &
+   $\times 10^{7}$ &
+   \% &
+   % #VALUE_ID: LEX-P0009-V0033
+% #FIELD_VALUE: 备注
+% #TODO #HANDWRITTEN: ……；表格右侧有蓝色手写标记，内容不清
+\hwfield{LEX-P0009-V0033}{\fieldvalue{\handwritten{……}}}\\
+  \hline
+  \multicolumn{2}{|r|}{ 样本计数复写值} &
+   活细胞密度 &
+   % #VALUE_ID: LEX-P0009-V0034
+% #FIELD_VALUE: 活细胞密度（样本计数复写值）
+% #HANDWRITTEN: 1.6
+\hwfield{LEX-P0009-V0034}{\fieldvalue{\handwritten{1.6}}$\times 10^{7}$ cells/ml}\\
+  \cline{3-4}
+  \multicolumn{2}{|r|}{ } &
+   细胞活率 &
+   % #VALUE_ID: LEX-P0009-V0035
+% #FIELD_VALUE: 细胞活率（样本计数复写值）
+% #HANDWRITTEN: 97.3
+\hwfield{LEX-P0009-V0035}{\fieldvalue{\handwritten{97.3}}\%}\\
+  \hline
+  \multicolumn{4}{|l|}{ 如需增加计数数据，可增加附件。}\\
+  \hline
+\end{tabular}
+
+\vspace{0.5em}
+
+\noindent
+计数人/日期：
+% #VALUE_ID: LEX-P0009-V0036
+% #FIELD_VALUE: 计数人/日期
+% #TODO #HANDWRITTEN: 张楠 2026.05.22；字迹不清
+\fieldvalue{\handwritten{张楠\quad 2026.05.22}}
+\hfill
+复核人/日期：
+% #VALUE_ID: LEX-P0009-V0037
+% #FIELD_VALUE: 复核人/日期
+% #TODO #HANDWRITTEN: 张楠 2026.05.22；字迹不清
+\fieldvalue{\handwritten{张楠\quad 2026.05.22}}
+
+\vfill
+
+\begin{center}
+第1页 共1页
+\end{center}
+
+% #VALUE_ID: LEX-P0009-V0038
+% #TODO #HANDWRITTEN: 1/4；页脚右侧蓝色手写标记
+\handwritten{1/4}
+% LEXOID_PAGE_COMPLETED: 9/57
+
+\newpage
+
+\noindent
+\begin{flushright}
+% #VALUE_ID: LEX-P0010-V0001
+% #FIELD_VALUE: Report timestamp
+\fieldvalue{05/22/2026 12:08:51}
+\end{flushright}
+
+% #VALUE_ID: LEX-P0010-V0002
+% #FIELD_VALUE: Assay
+Assay: \fieldvalue{MSC}
+
+\noindent
+% #VALUE_ID: LEX-P0010-V0003
+% #FIELD_VALUE: Cell Type F1
+Cell Type F1: \fieldvalue{MSC (A0)}
+
+\noindent
+% #VALUE_ID: LEX-P0010-V0004
+% #FIELD_VALUE: Cell Type F2
+Cell Type F2: \fieldvalue{MSC (P1)}
+
+\noindent
+% #VALUE_ID: LEX-P0010-V0005
+% #FIELD_VALUE: Sample ID
+Sample ID: \fieldvalue{260522--A37?220?2605030--P5--jie?hong--604.00m--1--1--1}
+% TODO: Sample ID is partially illegible in the source image.
+
+\noindent
+% #VALUE_ID: LEX-P0010-V0006
+% #FIELD_VALUE: Dilution
+Dilution: \fieldvalue{2.00}
+
+\medskip
+\hrule
+\medskip
+
+\noindent Results:
+
+\medskip
+
+\noindent
+\begin{tabular}{@{}p{0.29\linewidth}p{0.32\linewidth}p{0.25\linewidth}@{}}
+   \textbf{Count} &
+   \textbf{Concentration} &
+   \textbf{Mean Diameter}\\
+  \hline
+   Total:
+% #VALUE_ID: LEX-P0010-V0007
+% #FIELD_VALUE: Total count
+\hwfield{LEX-P0010-V0007}{\fieldvalue{2929}} &
+   % #VALUE_ID: LEX-P0010-V0008
+% #FIELD_VALUE: Total concentration
+\hwfield{LEX-P0010-V0008}{\fieldvalue{$1.05\times10^{7}$ cells/mL}} &
+   % #VALUE_ID: LEX-P0010-V0009
+% #FIELD_VALUE: Total mean diameter
+\hwfield{LEX-P0010-V0009}{\fieldvalue{14.1 micron}}\\
+   Live:
+% #VALUE_ID: LEX-P0010-V0010
+% #FIELD_VALUE: Live count
+\hwfield{LEX-P0010-V0010}{\fieldvalue{2909}} &
+   % #VALUE_ID: LEX-P0010-V0011
+% #FIELD_VALUE: Live concentration
+\hwfield{LEX-P0010-V0011}{\fieldvalue{$1.03\times10^{7}$ cells/mL}} &
+   % #VALUE_ID: LEX-P0010-V0012
+% #FIELD_VALUE: Live mean diameter
+\hwfield{LEX-P0010-V0012}{\fieldvalue{14.2 micron}}\\
+   Dead:
+% #VALUE_ID: LEX-P0010-V0013
+% #FIELD_VALUE: Dead count
+\hwfield{LEX-P0010-V0013}{\fieldvalue{63}} &
+   % #VALUE_ID: LEX-P0010-V0014
+% #FIELD_VALUE: Dead concentration
+\hwfield{LEX-P0010-V0014}{\fieldvalue{$2.21\times10^{5}$ cells/mL}} &
+   % #VALUE_ID: LEX-P0010-V0015
+% #FIELD_VALUE: Dead mean diameter
+\hwfield{LEX-P0010-V0015}{\fieldvalue{12.2 micron}}
+\end{tabular}
+
+\medskip
+
+% #VALUE_ID: LEX-P0010-V0016
+% #FIELD_VALUE: Viability
+Viability: \fieldvalue{97.9\%}
+
+\bigskip
+
+\noindent
+\begin{tabular}{@{}cc@{}}
+   % TODO: Placeholder for upper-left microscopy image.
+\fbox{\rule{0pt}{1.55in}\rule{0.38\linewidth}{0pt}} &
+   % TODO: Placeholder for upper-right microscopy image.
+\fbox{\rule{0pt}{1.55in}\rule{0.38\linewidth}{0pt}}\\[1.2em]
+   % TODO: Placeholder for lower-left microscopy image.
+\fbox{\rule{0pt}{1.55in}\rule{0.38\linewidth}{0pt}} &
+   % TODO: Placeholder for lower-right microscopy image.
+\fbox{\rule{0pt}{1.55in}\rule{0.38\linewidth}{0pt}}
+\end{tabular}
+
+\vfill
+
+\noindent
+\begin{tabular}{@{}p{0.48\linewidth}p{0.42\linewidth}@{}}
+   操作人:
+% #VALUE_ID: LEX-P0010-V0017
+% #FIELD_VALUE: 操作人
+% TODO #HANDWRITTEN: 吴敏; handwritten Chinese name is somewhat unclear
+\hwfield{LEX-P0010-V0017}{\fieldvalue{\handwritten{吴敏}}} &
+   日期:
+% #VALUE_ID: LEX-P0010-V0018
+% #FIELD_VALUE: 操作人日期
+% TODO #HANDWRITTEN: 2026.05.22; handwritten date is partially unclear
+\hwfield{LEX-P0010-V0018}{\fieldvalue{\handwritten{2026.05.22}}}\\
+   复核人:
+% #VALUE_ID: LEX-P0010-V0019
+% #FIELD_VALUE: 复核人
+% TODO #HANDWRITTEN: 李好; handwritten Chinese name is somewhat unclear
+\hwfield{LEX-P0010-V0019}{\fieldvalue{\handwritten{李好}}} &
+   日期:
+% #VALUE_ID: LEX-P0010-V0020
+% #FIELD_VALUE: 复核人日期
+% TODO #HANDWRITTEN: 2026.06.22; handwritten date is partially unclear
+\hwfield{LEX-P0010-V0020}{\fieldvalue{\handwritten{2026.06.22}}}
+\end{tabular}
+% LEXOID_PAGE_COMPLETED: 10/57
+
+\newpage
+
+\noindent\texttt{Assay:} 
+% #VALUE_ID: LEX-P0011-V0001
+% #FIELD_VALUE: Assay
+\fieldvalue{\texttt{MSC}}
+
+\noindent\texttt{05/22/2026 11:12:42}
+
+\noindent\texttt{Cell Type F1:} 
+% #VALUE_ID: LEX-P0011-V0002
+% #FIELD_VALUE: Cell Type F1
+\fieldvalue{\texttt{MSC (AO)}}
+
+\noindent\texttt{Cell Type F2:} 
+% #VALUE_ID: LEX-P0011-V0003
+% #FIELD_VALUE: Cell Type F2
+\fieldvalue{\texttt{MSC (PI)}}
+
+\noindent\texttt{Sample ID:} 
+% #VALUE_ID: LEX-P0011-V0004
+% #FIELD_VALUE: Sample ID
+\fieldvalue{\texttt{260522-A37220120260530-P5-jiezhong-604\_00n1-1-2-1}}
+
+\noindent\texttt{Dilution:} 
+% #VALUE_ID: LEX-P0011-V0005
+% #FIELD_VALUE: Dilution
+\fieldvalue{\texttt{2.00}}
+
+\bigskip
+\hrule
+\bigskip
+
+\noindent\texttt{Results:}
+
+\medskip
+
+\noindent
+\begin{tabular}{@{}lp{0.25\linewidth}p{0.35\linewidth}p{0.30\linewidth}@{}}
+   &
+   \texttt{Count} &
+   \texttt{Concentration} &
+   \texttt{Mean Diameter}\\
+   \texttt{======} &
+   \texttt{=============} &
+   \texttt{==============}\\[2pt]
+   \texttt{Total:} &
+   % #VALUE_ID: LEX-P0011-V0006
+% #FIELD_VALUE: Total count
+\hwfield{LEX-P0011-V0006}{\fieldvalue{\texttt{3493}}} &
+   % #VALUE_ID: LEX-P0011-V0007
+% #FIELD_VALUE: Total concentration
+\hwfield{LEX-P0011-V0007}{\fieldvalue{$1.23\times10^{7}\,\mathrm{cells/mL}$}} &
+   % #VALUE_ID: LEX-P0011-V0008
+% #FIELD_VALUE: Total mean diameter
+\hwfield{LEX-P0011-V0008}{\fieldvalue{\texttt{13.6\ micron}}}\\[2pt]
+   \texttt{Live:} &
+   % #VALUE_ID: LEX-P0011-V0009
+% #FIELD_VALUE: Live count
+\hwfield{LEX-P0011-V0009}{\fieldvalue{\texttt{3390}}} &
+   % #VALUE_ID: LEX-P0011-V0010
+% #FIELD_VALUE: Live concentration
+\hwfield{LEX-P0011-V0010}{\fieldvalue{$1.19\times10^{7}\,\mathrm{cells/mL}$}} &
+   % #VALUE_ID: LEX-P0011-V0011
+% #FIELD_VALUE: Live mean diameter
+\hwfield{LEX-P0011-V0011}{\fieldvalue{\texttt{13.6\ micron}}}\\[2pt]
+   \texttt{Dead:} &
+   % #VALUE_ID: LEX-P0011-V0012
+% #FIELD_VALUE: Dead count
+\hwfield{LEX-P0011-V0012}{\fieldvalue{\texttt{103}}} &
+   % #VALUE_ID: LEX-P0011-V0013
+% #FIELD_VALUE: Dead concentration
+\hwfield{LEX-P0011-V0013}{\fieldvalue{$3.62\times10^{5}\,\mathrm{cells/mL}$}} &
+   % #VALUE_ID: LEX-P0011-V0014
+% #FIELD_VALUE: Dead mean diameter
+\hwfield{LEX-P0011-V0014}{\fieldvalue{\texttt{12.8\ micron}}}
+\end{tabular}
+
+\medskip
+
+\noindent\texttt{Viability:}
+% #VALUE_ID: LEX-P0011-V0015
+% #FIELD_VALUE: Viability
+\fieldvalue{\texttt{97.1\%}}
+
+\bigskip
+
+% TODO: Four microscopy images are visible on this page, but no image filenames are available.
+\noindent
+\begin{minipage}[t]{0.43\linewidth}
+\centering
+\fbox{\rule{0pt}{1.35in}\rule{0.95\linewidth}{0pt}}\\[-2pt]
+\textit{Microscopy image}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.43\linewidth}
+\centering
+\fbox{\rule{0pt}{1.35in}\rule{0.95\linewidth}{0pt}}\\[-2pt]
+\textit{Microscopy image}
+\end{minipage}
+
+\vspace{0.35in}
+
+\noindent
+\begin{minipage}[t]{0.43\linewidth}
+\centering
+\fbox{\rule{0pt}{1.35in}\rule{0.95\linewidth}{0pt}}\\[-2pt]
+\textit{Microscopy image}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.43\linewidth}
+\centering
+\fbox{\rule{0pt}{1.35in}\rule{0.95\linewidth}{0pt}}\\[-2pt]
+\textit{Microscopy image}
+\end{minipage}
+
+\vfill
+
+\noindent
+\begin{tabular}{@{}p{0.47\linewidth}p{0.47\linewidth}@{}}
+   操作人：
+% #VALUE_ID: LEX-P0011-V0016
+% #FIELD_VALUE: 操作人
+% #TODO #HANDWRITTEN: 邱小舟; handwriting is somewhat unclear
+\hwfield{LEX-P0011-V0016}{\fieldvalue{\handwritten{邱小舟}}} &
+   日期：
+% #VALUE_ID: LEX-P0011-V0017
+% #FIELD_VALUE: 操作人日期
+% #HANDWRITTEN: 2026.05.22
+\hwfield{LEX-P0011-V0017}{\fieldvalue{\handwritten{2026.05.22}}}\\[8pt]
+   复核人：
+% #VALUE_ID: LEX-P0011-V0018
+% #FIELD_VALUE: 复核人
+% #TODO #HANDWRITTEN: 张小帅; handwriting is somewhat unclear
+\hwfield{LEX-P0011-V0018}{\fieldvalue{\handwritten{张小帅}}} &
+   日期：
+% #VALUE_ID: LEX-P0011-V0019
+% #FIELD_VALUE: 复核人日期
+% #HANDWRITTEN: 2026.05.22
+\hwfield{LEX-P0011-V0019}{\fieldvalue{\handwritten{2026.05.22}}}
+\end{tabular}
+
+\bigskip
+
+% #VALUE_ID: LEX-P0011-V0020
+% #HANDWRITTEN: 3/4
+\handwritten{3/4}
+% LEXOID_PAGE_COMPLETED: 11/57
+
+\newpage
+
+\noindent
+\begin{tabular}{@{}p{0.55\linewidth}p{0.4\linewidth}@{}}
+   Assay:
+% #VALUE_ID: LEX-P0012-V0001
+% #FIELD_VALUE: Assay
+\hwfield{LEX-P0012-V0001}{\fieldvalue{MSC}} &
+   % #VALUE_ID: LEX-P0012-V0002
+% #FIELD_VALUE: Report date and time
+\hwfield{LEX-P0012-V0002}{\fieldvalue{05/22/2026 12:14:47}}\\[2pt]
+   Cell Type F1:
+% #VALUE_ID: LEX-P0012-V0003
+% #FIELD_VALUE: Cell Type F1
+\hwfield{LEX-P0012-V0003}{\fieldvalue{MSC (A0)}} &
+  \\[2pt]
+   Cell Type F2:
+% #VALUE_ID: LEX-P0012-V0004
+% #FIELD_VALUE: Cell Type F2
+\hwfield{LEX-P0012-V0004}{\fieldvalue{MSC (P1)}} &
+  \\[2pt]
+   Sample ID:
+% #VALUE_ID: LEX-P0012-V0005
+% #FIELD_VALUE: Sample ID
+\hwfield{LEX-P0012-V0005}{\fieldvalue{260522-A372201202605030-P5-jiezhong-604.00ml-1-3-1}} &
+  \\[2pt]
+   Dilution:
+% #VALUE_ID: LEX-P0012-V0006
+% #FIELD_VALUE: Dilution
+\hwfield{LEX-P0012-V0006}{\fieldvalue{2.00}} &
+\end{tabular}
+
+\vspace{8pt}
+\noindent\textbf{Results:}
+
+\vspace{3pt}
+\noindent
+\begin{tabular}{@{}lp{0.27\linewidth}p{0.36\linewidth}p{0.27\linewidth}@{}}
+   &
+   \textbf{Count} &
+   \textbf{Concentration} &
+   \textbf{Mean Diameter}\\[-2pt]
+  \hline
+   Total:
+% #VALUE_ID: LEX-P0012-V0007
+% #FIELD_VALUE: Total count
+\hwfield{LEX-P0012-V0007}{\fieldvalue{3181}} &
+   % #VALUE_ID: LEX-P0012-V0008
+% #FIELD_VALUE: Total concentration
+\hwfield{LEX-P0012-V0008}{\fieldvalue{$1.12\times10^{7}$ cells/mL}} &
+   % #VALUE_ID: LEX-P0012-V0009
+% #FIELD_VALUE: Total mean diameter
+\hwfield{LEX-P0012-V0009}{\fieldvalue{13.6 micron}}\\[3pt]
+   Live:
+% #VALUE_ID: LEX-P0012-V0010
+% #FIELD_VALUE: Live count
+\hwfield{LEX-P0012-V0010}{\fieldvalue{3078}} &
+   % #VALUE_ID: LEX-P0012-V0011
+% #FIELD_VALUE: Live concentration
+\hwfield{LEX-P0012-V0011}{\fieldvalue{$1.08\times10^{7}$ cells/mL}} &
+   % #VALUE_ID: LEX-P0012-V0012
+% #FIELD_VALUE: Live mean diameter
+\hwfield{LEX-P0012-V0012}{\fieldvalue{13.6 microns}}\\[3pt]
+   Dead:
+% #VALUE_ID: LEX-P0012-V0013
+% #FIELD_VALUE: Dead count
+\hwfield{LEX-P0012-V0013}{\fieldvalue{103}} &
+   % #VALUE_ID: LEX-P0012-V0014
+% #FIELD_VALUE: Dead concentration
+\hwfield{LEX-P0012-V0014}{\fieldvalue{$3.62\times10^{5}$ cells/mL}} &
+   % #VALUE_ID: LEX-P0012-V0015
+% #FIELD_VALUE: Dead mean diameter
+\hwfield{LEX-P0012-V0015}{\fieldvalue{13.0 micron}}
+\end{tabular}
+
+\vspace{8pt}
+Viability:
+% #VALUE_ID: LEX-P0012-V0016
+% #FIELD_VALUE: Viability
+\fieldvalue{96.8\%}
+
+\vspace{10pt}
+
+\noindent
+\begin{minipage}[t]{0.46\linewidth}
+% TODO: Visible microscopy image; source filename unavailable.
+\fbox{\parbox[c][3.0cm][c]{0.9\linewidth}{\centering [Microscopy image placeholder]}}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.46\linewidth}
+% TODO: Visible microscopy image; source filename unavailable.
+\fbox{\parbox[c][3.0cm][c]{0.9\linewidth}{\centering [Microscopy image placeholder]}}
+\end{minipage}
+
+\vspace{12pt}
+
+\noindent
+\begin{minipage}[t]{0.46\linewidth}
+操作人：
+% #VALUE_ID: LEX-P0012-V0017
+% #FIELD_VALUE: 操作人
+% #TODO #HANDWRITTEN: [illegible signature]; handwritten Chinese signature is not reliably legible
+\fieldvalue{\handwritten{[illegible signature]}}
+
+\vspace{6pt}
+复核人：
+% #VALUE_ID: LEX-P0012-V0019
+% #FIELD_VALUE: 复核人
+% #TODO #HANDWRITTEN: [illegible signature]; handwritten Chinese signature is not reliably legible
+\fieldvalue{\handwritten{[illegible signature]}}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.46\linewidth}
+日期：
+% #VALUE_ID: LEX-P0012-V0018
+% #FIELD_VALUE: 日期
+% #HANDWRITTEN: 2026.05.22
+\fieldvalue{\handwritten{2026.05.22}}
+
+\vspace{6pt}
+日期：
+% #VALUE_ID: LEX-P0012-V0020
+% #FIELD_VALUE: 日期
+% #HANDWRITTEN: 2026.05.22
+\fieldvalue{\handwritten{2026.05.22}}
+\end{minipage}
+
+\vfill
+
+\noindent
+% #VALUE_ID: LEX-P0012-V0021
+% #HANDWRITTEN: 4/4
+\handwritten{4/4}
+
+\vspace{4pt}
+
+\noindent
+% #VALUE_ID: LEX-P0012-V0022
+% #HANDWRITTEN: [illegible signature]
+\handwritten{[illegible signature]}
+
+\vspace{4pt}
+
+\noindent
+% #VALUE_ID: LEX-P0012-V0023
+% #HANDWRITTEN: 2026.05.22
+\handwritten{2026.05.22}
+% LEXOID_PAGE_COMPLETED: 12/57
+
+\newpage
+
+% TODO: The page is a rotated chromatogram/software-screen capture. The graph and
+% several small printed labels are not sufficiently legible at the supplied resolution.
+% TODO: Insert the source image here when an image filename is available.
+\begin{center}
+\fbox{\parbox{0.92\linewidth}{\centering
+Visible chromatogram with multiple overlaid traces, axes, and instrument controls.\\
+\textit{[Figure placeholder]}
+}}
+\end{center}
+
+% Blue handwritten annotations visible along the control panel.
+% #VALUE_ID: LEX-P0013-V0001
+% #HANDWRITTEN: [illegible blue handwritten annotation]
+\handwritten{[illegible blue handwritten annotation]}
+
+% #VALUE_ID: LEX-P0013-V0002
+% #HANDWRITTEN: [illegible blue handwritten annotation]
+\handwritten{[illegible blue handwritten annotation]}
+
+% #VALUE_ID: LEX-P0013-V0003
+% #HANDWRITTEN: [illegible blue handwritten annotation]
+\handwritten{[illegible blue handwritten annotation]}
+
+% #VALUE_ID: LEX-P0013-V0004
+% #HANDWRITTEN: [illegible blue handwritten annotation]
+\handwritten{[illegible blue handwritten annotation]}
+
+% #VALUE_ID: LEX-P0013-V0005
+% #HANDWRITTEN: //
+\handwritten{//}
+
+\subsection*{Visible control-panel selections}
+
+% TODO: Printed option labels beside the checkboxes are too small to transcribe reliably.
+\begin{tabular}{p{0.28\linewidth}p{0.20\linewidth}p{0.20\linewidth}p{0.20\linewidth}}
+   \textit{Option 1} &
+   % #VALUE_ID: LEX-P0013-V0006
+% #FIELD_VALUE: Option 1
+\hwfield{LEX-P0013-V0006}{\fieldvalue{\checkboxfield{unclear}}} &
+   \textit{Option 2} &
+   % #VALUE_ID: LEX-P0013-V0007
+% #FIELD_VALUE: Option 2
+\hwfield{LEX-P0013-V0007}{\fieldvalue{\checkboxfield{unchecked}}}\\[2pt]
+   \textit{Option 3} &
+   % #VALUE_ID: LEX-P0013-V0008
+% #FIELD_VALUE: Option 3
+\hwfield{LEX-P0013-V0008}{\fieldvalue{\checkboxfield{unchecked}}} &
+   \textit{Option 4} &
+   % #VALUE_ID: LEX-P0013-V0009
+% #FIELD_VALUE: Option 4
+\hwfield{LEX-P0013-V0009}{\fieldvalue{\checkboxfield{unchecked}}}\\[2pt]
+   \textit{Option 5} &
+   % #VALUE_ID: LEX-P0013-V0010
+% #FIELD_VALUE: Option 5
+\hwfield{LEX-P0013-V0010}{\fieldvalue{\checkboxfield{unchecked}}} &
+   \textit{Option 6} &
+   % #VALUE_ID: LEX-P0013-V0011
+% #FIELD_VALUE: Option 6
+\hwfield{LEX-P0013-V0011}{\fieldvalue{\checkboxfield{unchecked}}}\\[2pt]
+   \textit{Option 7} &
+   % #VALUE_ID: LEX-P0013-V0012
+% #FIELD_VALUE: Option 7
+\hwfield{LEX-P0013-V0012}{\fieldvalue{\checkboxfield{unchecked}}} &
+   \textit{Option 8} &
+   % #VALUE_ID: LEX-P0013-V0013
+% #FIELD_VALUE: Option 8
+\hwfield{LEX-P0013-V0013}{\fieldvalue{\checkboxfield{unchecked}}}\\[2pt]
+   \textit{Option 9} &
+   % #VALUE_ID: LEX-P0013-V0014
+% #FIELD_VALUE: Option 9
+\hwfield{LEX-P0013-V0014}{\fieldvalue{\checkboxfield{unchecked}}} &
+   \textit{Option 10} &
+   % #VALUE_ID: LEX-P0013-V0015
+% #FIELD_VALUE: Option 10
+\hwfield{LEX-P0013-V0015}{\fieldvalue{\checkboxfield{unchecked}}}\\[2pt]
+   \textit{Option 11} &
+   % #VALUE_ID: LEX-P0013-V0016
+% #FIELD_VALUE: Option 11
+\hwfield{LEX-P0013-V0016}{\fieldvalue{\checkboxfield{unchecked}}} &
+   \textit{Option 12} &
+   % #VALUE_ID: LEX-P0013-V0017
+% #FIELD_VALUE: Option 12
+\hwfield{LEX-P0013-V0017}{\fieldvalue{\checkboxfield{unchecked}}}\\[2pt]
+   \textit{Option 13} &
+   % #VALUE_ID: LEX-P0013-V0018
+% #FIELD_VALUE: Option 13
+\hwfield{LEX-P0013-V0018}{\fieldvalue{\checkboxfield{unchecked}}} &
+   \textit{Option 14} &
+   % #VALUE_ID: LEX-P0013-V0019
+% #FIELD_VALUE: Option 14
+\hwfield{LEX-P0013-V0019}{\fieldvalue{\checkboxfield{unchecked}}}\\[2pt]
+   \textit{Option 15} &
+   % #VALUE_ID: LEX-P0013-V0020
+% #FIELD_VALUE: Option 15
+\hwfield{LEX-P0013-V0020}{\fieldvalue{\checkboxfield{unchecked}}} &
+   \textit{Option 16} &
+   % #VALUE_ID: LEX-P0013-V0021
+% #FIELD_VALUE: Option 16
+\hwfield{LEX-P0013-V0021}{\fieldvalue{\checkboxfield{unchecked}}}\\[2pt]
+   \textit{Option 17} &
+   % #VALUE_ID: LEX-P0013-V0022
+% #FIELD_VALUE: Option 17
+\hwfield{LEX-P0013-V0022}{\fieldvalue{\checkboxfield{unchecked}}} &
+   \textit{Option 18} &
+   % #VALUE_ID: LEX-P0013-V0023
+% #FIELD_VALUE: Option 18
+\hwfield{LEX-P0013-V0023}{\fieldvalue{\checkboxfield{unchecked}}}\\[2pt]
+   \textit{Option 19} &
+   % #VALUE_ID: LEX-P0013-V0024
+% #FIELD_VALUE: Option 19
+\hwfield{LEX-P0013-V0024}{\fieldvalue{\checkboxfield{unchecked}}} &
+   \textit{Option 20} &
+   % #VALUE_ID: LEX-P0013-V0025
+% #FIELD_VALUE: Option 20
+\hwfield{LEX-P0013-V0025}{\fieldvalue{\checkboxfield{unchecked}}}\\[2pt]
+   \textit{Option 21} &
+   % #VALUE_ID: LEX-P0013-V0026
+% #FIELD_VALUE: Option 21
+\hwfield{LEX-P0013-V0026}{\fieldvalue{\checkboxfield{unchecked}}} &
+   \textit{Option 22} &
+   % #VALUE_ID: LEX-P0013-V0027
+% #FIELD_VALUE: Option 22
+\hwfield{LEX-P0013-V0027}{\fieldvalue{\checkboxfield{unchecked}}}\\[2pt]
+   \textit{Option 23} &
+   % #VALUE_ID: LEX-P0013-V0028
+% #FIELD_VALUE: Option 23
+\hwfield{LEX-P0013-V0028}{\fieldvalue{\checkboxfield{unchecked}}} &
+   \textit{Option 24} &
+   % #VALUE_ID: LEX-P0013-V0029
+% #FIELD_VALUE: Option 24
+\hwfield{LEX-P0013-V0029}{\fieldvalue{\checkboxfield{unchecked}}}\\[2pt]
+   \textit{Option 25} &
+   % #VALUE_ID: LEX-P0013-V0030
+% #FIELD_VALUE: Option 25
+\hwfield{LEX-P0013-V0030}{\fieldvalue{\checkboxfield{unchecked}}} &
+   \textit{Option 26} &
+   % #VALUE_ID: LEX-P0013-V0031
+% #FIELD_VALUE: Option 26
+\hwfield{LEX-P0013-V0031}{\fieldvalue{\checkboxfield{unchecked}}}\\[2pt]
+   \textit{Option 27} &
+   % #VALUE_ID: LEX-P0013-V0032
+% #FIELD_VALUE: Option 27
+\hwfield{LEX-P0013-V0032}{\fieldvalue{\checkboxfield{unchecked}}} &
+   \textit{Option 28} &
+   % #VALUE_ID: LEX-P0013-V0033
+% #FIELD_VALUE: Option 28
+\hwfield{LEX-P0013-V0033}{\fieldvalue{\checkboxfield{unchecked}}}\\[2pt]
+   \textit{Option 29} &
+   % #VALUE_ID: LEX-P0013-V0034
+% #FIELD_VALUE: Option 29
+\hwfield{LEX-P0013-V0034}{\fieldvalue{\checkboxfield{unchecked}}} &
+   \textit{Option 30} &
+   % #VALUE_ID: LEX-P0013-V0035
+% #FIELD_VALUE: Option 30
+\hwfield{LEX-P0013-V0035}{\fieldvalue{\checkboxfield{unchecked}}}\\[2pt]
+   \textit{Option 31} &
+   % #VALUE_ID: LEX-P0013-V0036
+% #FIELD_VALUE: Option 31
+\hwfield{LEX-P0013-V0036}{\fieldvalue{\checkboxfield{unchecked}}} &
+   \textit{Option 32} &
+   % #VALUE_ID: LEX-P0013-V0037
+% #FIELD_VALUE: Option 32
+\hwfield{LEX-P0013-V0037}{\fieldvalue{\checkboxfield{unchecked}}}\\[2pt]
+   \textit{Option 33} &
+   % #VALUE_ID: LEX-P0013-V0038
+% #FIELD_VALUE: Option 33
+\hwfield{LEX-P0013-V0038}{\fieldvalue{\checkboxfield{unchecked}}} &
+   \textit{Option 34} &
+   % #VALUE_ID: LEX-P0013-V0039
+% #FIELD_VALUE: Option 34
+\hwfield{LEX-P0013-V0039}{\fieldvalue{\checkboxfield{unchecked}}}\\[2pt]
+   \textit{Option 35} &
+   % #VALUE_ID: LEX-P0013-V0040
+% #FIELD_VALUE: Option 35
+\hwfield{LEX-P0013-V0040}{\fieldvalue{\checkboxfield{unchecked}}} &
+   \textit{Option 36} &
+   % #VALUE_ID: LEX-P0013-V0041
+% #FIELD_VALUE: Option 36
+\hwfield{LEX-P0013-V0041}{\fieldvalue{\checkboxfield{unchecked}}}
+\end{tabular}
+
+\subsection*{Printed field values}
+
+\begin{tabular}{p{0.30\linewidth}p{0.60\linewidth}}
+   Date/year &
+   % #VALUE_ID: LEX-P0013-V0042
+% #FIELD_VALUE: Date/year
+\hwfield{LEX-P0013-V0042}{\fieldvalue{2026}}\\[4pt]
+   Identifier &
+   % #VALUE_ID: LEX-P0013-V0043
+% #FIELD_VALUE: Identifier
+\hwfield{LEX-P0013-V0043}{\fieldvalue{F5}}\\[4pt]
+   Sample or file number &
+   % TODO: The alphanumeric value is partially obscured/too small to read.
+% #VALUE_ID: LEX-P0013-V0044
+% #FIELD_VALUE: Sample or file number
+\hwfield{LEX-P0013-V0044}{\fieldvalue{[illegible alphanumeric value]}}
+\end{tabular}
+% LEXOID_PAGE_COMPLETED: 13/57
+
+\newpage
+
+% TODO: This page is a scanned laboratory-record sheet; several handwritten Chinese annotations are faint or partially illegible.
+
+% #VALUE_ID: LEX-P0014-V0001
+% #TODO #HANDWRITTEN: 附件1：乙肝病毒载量检测报告; final characters are faint
+\handwritten{附件1：乙肝病毒载量检测报告}
+
+\vspace{2.5cm}
+
+\noindent
+% #VALUE_ID: LEX-P0014-V0002
+% #TODO #HANDWRITTEN: 肝功能检测报告; handwritten heading is partially illegible
+\handwritten{肝功能检测报告}
+
+\begin{tabular}{@{}ll@{}}
+   Date: &
+   % #VALUE_ID: LEX-P0014-V0003
+% #FIELD_VALUE: Date
+\hwfield{LEX-P0014-V0003}{\fieldvalue{2026/05/21}}\\
+   Time: &
+   % #VALUE_ID: LEX-P0014-V0004
+% #FIELD_VALUE: Time
+\hwfield{LEX-P0014-V0004}{\fieldvalue{14:07:51}}\\
+   EP, Value, Unit, Temp &
+  \\
+   AE &
+   % #VALUE_ID: LEX-P0014-V0005
+% #FIELD_VALUE: AE value
+\hwfield{LEX-P0014-V0005}{\fieldvalue{7.42 pH}}
+\quad
+% #VALUE_ID: LEX-P0014-V0006
+% #FIELD_VALUE: Temperature
+\hwfield{LEX-P0014-V0006}{\fieldvalue{23.7${}^{\circ}$C ATC}}
+\end{tabular}
+
+\hspace{5cm}
+% #VALUE_ID: LEX-P0014-V0007
+% #TODO #HANDWRITTEN: 结果日期：7月05.21; handwriting is partially illegible
+\handwritten{结果日期：7月05.21}
+
+\vspace{2.4cm}
+
+\noindent
+% #VALUE_ID: LEX-P0014-V0008
+% #TODO #HANDWRITTEN: 乙肝病毒载量检测报告; heading is faint
+\handwritten{乙肝病毒载量检测报告}
+
+\begin{tabular}{@{}ll@{}}
+   &
+   % #VALUE_ID: LEX-P0014-V0009
+% #FIELD_VALUE: Test date and time
+\hwfield{LEX-P0014-V0009}{\fieldvalue{2026-05-23 12:02:53}}\\
+   样本号： &
+   % #VALUE_ID: LEX-P0014-V0010
+% #TODO #FIELD_VALUE: Sample number; characters are too faint to read
+\hwfield{LEX-P0014-V0010}{\fieldvalue{3122?260?}}\\
+   检测结果： &
+   % #VALUE_ID: LEX-P0014-V0011
+% #FIELD_VALUE: Test result
+\hwfield{LEX-P0014-V0011}{\fieldvalue{8.88 mmol/L}}\\
+   浓度： &
+   % #VALUE_ID: LEX-P0014-V0012
+% #FIELD_VALUE: Concentration
+\hwfield{LEX-P0014-V0012}{\fieldvalue{7.13 mmol/L}}
+\end{tabular}
+
+\hspace{4.5cm}
+% #VALUE_ID: LEX-P0014-V0013
+% #TODO #HANDWRITTEN: 复核; handwritten note is faint
+\handwritten{复核}
+
+\vspace{0.2cm}
+
+\noindent
+BSZY\quad
+% #VALUE_ID: LEX-P0014-V0014
+% #TODO #HANDWRITTEN: 不清晰; blue handwritten entry is illegible
+\handwritten{不清晰}
+
+\vfill
+
+\hspace{6.8cm}
+% #VALUE_ID: LEX-P0014-V0015
+% #TODO #HANDWRITTEN: 批次/签名; handwriting is too faint to transcribe reliably
+\handwritten{批次/签名}
+\hspace{1cm}
+% #VALUE_ID: LEX-P0014-V0016
+% #TODO #HANDWRITTEN: 11/2; date is faint
+\handwritten{11/2}
+% LEXOID_PAGE_COMPLETED: 14/57
+
+\newpage
+
+\noindent
+附图1：实验检测记录（文字部分较小，个别内容难以辨认）
+
+\vspace{2.5cm}
+
+\noindent
+\begin{minipage}{0.42\linewidth}
+\small
+\texttt{A?202?010605030} \quad 三角测量\\
+\texttt{Date:}
+% #VALUE_ID: LEX-P0015-V0001
+% #FIELD_VALUE: Date
+\fieldvalue{\texttt{2025/05/21}}\\
+\texttt{Time:}
+% #VALUE_ID: LEX-P0015-V0002
+% #FIELD_VALUE: Time
+\fieldvalue{\texttt{14:07:51}}\\
+\texttt{EP,Value,Unit,Temp}\\
+\texttt{RE}
+% #VALUE_ID: LEX-P0015-V0003
+% #FIELD_VALUE: RE
+\fieldvalue{\texttt{7.42pH}} \quad
+% #VALUE_ID: LEX-P0015-V0004
+% #FIELD_VALUE: Temperature
+\fieldvalue{\texttt{23.7\textdegree C}} \quad \texttt{ATC}
+\end{minipage}
+
+\hfill
+\begin{minipage}{0.18\linewidth}
+\raggedleft
+% #VALUE_ID: LEX-P0015-V0005
+% #FIELD_VALUE: 右侧批注
+% TODO #HANDWRITTEN: 中文批注；字迹过小，无法可靠辨认
+\fieldvalue{\handwritten{中文批注}}\\[0.3cm]
+% #VALUE_ID: LEX-P0015-V0006
+% #FIELD_VALUE: 日期批注
+% #HANDWRITTEN: 2025.05.21
+\fieldvalue{\handwritten{2025.05.21}}
+\end{minipage}
+
+\vspace{3.0cm}
+
+\noindent
+\begin{minipage}{0.48\linewidth}
+\small
+A?检测记录（部分文字难以辨认）\\
+\texttt{2025-05-23 12:02:53}\\
+样本号：
+% #VALUE_ID: LEX-P0015-V0007
+% #FIELD_VALUE: 样本号
+\fieldvalue{\texttt{372238030502}}\\
+样本名称：
+% #VALUE_ID: LEX-P0015-V0008
+% #FIELD_VALUE: 样本名称
+% TODO: 内容难以辨认
+\fieldvalue{\texttt{（难以辨认）}}\\
+检测项目：
+% #VALUE_ID: LEX-P0015-V0009
+% #FIELD_VALUE: 检测项目
+% TODO: 内容难以辨认
+\fieldvalue{\texttt{钙?}}\\
+结果：
+% #VALUE_ID: LEX-P0015-V0010
+% #FIELD_VALUE: 结果
+\fieldvalue{\texttt{8.81 mmol/L}}\\
+乳酸：
+% #VALUE_ID: LEX-P0015-V0011
+% #FIELD_VALUE: 乳酸
+\fieldvalue{\texttt{7.13 mmol/L}}\\[0.15cm]
+% #VALUE_ID: LEX-P0015-V0012
+% #FIELD_VALUE: 样本标记
+% #HANDWRITTEN: BSZY
+\fieldvalue{\handwritten{BSZY}} \quad
+% #VALUE_ID: LEX-P0015-V0013
+% #FIELD_VALUE: 手写签名
+% TODO #HANDWRITTEN: 中文签名；字迹过小，无法可靠辨认
+\fieldvalue{\handwritten{中文签名}}
+\end{minipage}
+
+\hfill
+\begin{minipage}{0.16\linewidth}
+\raggedleft
+% #VALUE_ID: LEX-P0015-V0014
+% #FIELD_VALUE: 右侧批注
+% TODO #HANDWRITTEN: 中文批注；字迹过小，无法可靠辨认
+\fieldvalue{\handwritten{中文批注}}
+\end{minipage}
+
+\vfill
+
+\noindent
+% #VALUE_ID: LEX-P0015-V0015
+% #FIELD_VALUE: 页脚手写记录
+% TODO #HANDWRITTEN: 手写中文及数字；字迹过小，无法可靠辨认
+\fieldvalue{\handwritten{手写中文及数字}} \qquad
+% #VALUE_ID: LEX-P0015-V0016
+% #FIELD_VALUE: 页脚日期/编号
+% TODO #HANDWRITTEN: “2025.05.25?” 或类似内容；字迹模糊
+\fieldvalue{\handwritten{2025.05.25?}} \qquad
+% #VALUE_ID: LEX-P0015-V0017
+% #FIELD_VALUE: 页脚标记
+% #HANDWRITTEN: 2L
+\fieldvalue{\handwritten{2L}}
+% LEXOID_PAGE_COMPLETED: 15/57
+
+\newpage
+
+% TODO: The upper handwritten note is partially illegible.
+% #VALUE_ID: LEX-P0016-V0001
+% #HANDWRITTEN: 附件4：...（请验单中 ...）
+\handwritten{附件4：...（请验单中 ...）}
+
+\begin{center}
+\textbf{请验单}
+\end{center}
+
+\noindent
+文档编码：REC-ZY-SMP-QC-01-001-03 \hfill 版本号：2.0
+
+\vspace{0.3em}
+
+\begin{center}
+\begin{tabular}{|p{2.1cm}|p{4.0cm}|p{2.1cm}|p{4.0cm}|}
+  \hline
+   样品名称 &
+   % #VALUE_ID: LEX-P0016-V0002
+% #FIELD_VALUE: 样品名称
+% TODO #HANDWRITTEN: 三甲胺...; handwriting partially illegible
+\hwfield{LEX-P0016-V0002}{\fieldvalue{\handwritten{三甲胺...}}} &
+   样品代码 &
+   % #VALUE_ID: LEX-P0016-V0003
+% #FIELD_VALUE: 样品代码
+% #HANDWRITTEN: 2Y0403
+\hwfield{LEX-P0016-V0003}{\fieldvalue{\handwritten{2Y0403}}}\\
+  \hline
+   样品编号 &
+   % #VALUE_ID: LEX-P0016-V0004
+% #FIELD_VALUE: 样品编号
+% TODO #HANDWRITTEN: M...; handwriting illegible
+\hwfield{LEX-P0016-V0004}{\fieldvalue{\handwritten{M...}}} &
+   样品规格/数量 &
+   % #VALUE_ID: LEX-P0016-V0005
+% #FIELD_VALUE: 样品规格/数量
+% TODO #HANDWRITTEN: 2.0...?; handwriting partially illegible
+\hwfield{LEX-P0016-V0005}{\fieldvalue{\handwritten{2.0...?}}}\\
+  \hline
+   样品类别 &
+   % #VALUE_ID: LEX-P0016-V0006
+% #FIELD_VALUE: 生产过程检验产品
+% #HANDWRITTEN: checked
+\hwfield{LEX-P0016-V0006}{\fieldvalue{\handwritten{\checkboxfield{checked}}} 生产过程检验产品}
+\quad
+% #VALUE_ID: LEX-P0016-V0007
+% #FIELD_VALUE: 待包装产品
+\hwfield{LEX-P0016-V0007}{\fieldvalue{\checkboxfield{unchecked}} 待包装产品}
+\quad
+% #VALUE_ID: LEX-P0016-V0008
+% #FIELD_VALUE: 成品
+\hwfield{LEX-P0016-V0008}{\fieldvalue{\checkboxfield{unchecked}} 成品} &
+   &
+  \\[-0.2em]
+   &
+   % #VALUE_ID: LEX-P0016-V0009
+% #FIELD_VALUE: 其他
+\hwfield{LEX-P0016-V0009}{\fieldvalue{\checkboxfield{unchecked}} 其他（\hspace{1.2cm}）} &
+   &
+  \\
+  \hline
+   检验类型 &
+   % #VALUE_ID: LEX-P0016-V0010
+% #FIELD_VALUE: 初检
+% #HANDWRITTEN: checked
+\hwfield{LEX-P0016-V0010}{\fieldvalue{\handwritten{\checkboxfield{checked}}} 初检}
+\quad
+% #VALUE_ID: LEX-P0016-V0011
+% #FIELD_VALUE: 复验
+\hwfield{LEX-P0016-V0011}{\fieldvalue{\checkboxfield{unchecked}} 复验}
+\quad
+% #VALUE_ID: LEX-P0016-V0012
+% #FIELD_VALUE: 退货
+\hwfield{LEX-P0016-V0012}{\fieldvalue{\checkboxfield{unchecked}} 退货}
+\quad
+% #VALUE_ID: LEX-P0013
+% #FIELD_VALUE: 稳定性
+\hwfield{LEX-P0013}{\fieldvalue{\checkboxfield{unchecked}} 稳定性}
+\quad
+% #VALUE_ID: LEX-P0016-V0014
+% #FIELD_VALUE: 留样
+\hwfield{LEX-P0016-V0014}{\fieldvalue{\checkboxfield{unchecked}} 留样} &
+   &
+  \\
+  \hline
+   请验目的 &
+   % #VALUE_ID: LEX-P0016-V0015
+% #FIELD_VALUE: 自检
+% #HANDWRITTEN: checked
+\hwfield{LEX-P0016-V0015}{\fieldvalue{\handwritten{\checkboxfield{checked}}} 自检}
+\quad
+% #VALUE_ID: LEX-P0016-V0016
+% #FIELD_VALUE: 其他
+\hwfield{LEX-P0016-V0016}{\fieldvalue{\checkboxfield{unchecked}} 其他（}
+% #VALUE_ID: LEX-P0016-V0017
+% #FIELD_VALUE: 其他说明
+% TODO #HANDWRITTEN: 制剂...; handwriting partially illegible
+\hwfield{LEX-P0016-V0017}{\fieldvalue{\handwritten{制剂...}}}
+） &
+   &
+  \\
+  \hline
+   请验部门 &
+   % #VALUE_ID: LEX-P0016-V0018
+% #FIELD_VALUE: 生产部
+% #HANDWRITTEN: checked
+\hwfield{LEX-P0016-V0018}{\fieldvalue{\handwritten{\checkboxfield{checked}}} 生产部}
+\quad
+% #VALUE_ID: LEX-P0016-V0019
+% #FIELD_VALUE: 物料管理部
+\hwfield{LEX-P0016-V0019}{\fieldvalue{\checkboxfield{unchecked}} 物料管理部}
+\quad
+% #VALUE_ID: LEX-P0016-V0020
+% #FIELD_VALUE: 其他
+\hwfield{LEX-P0016-V0020}{\fieldvalue{\checkboxfield{unchecked}} 其他（\hspace{1.2cm}）} &
+   &
+  \\
+  \hline
+   样品情况 &
+   % #VALUE_ID: LEX-P0016-V0021
+% #FIELD_VALUE: 随请验单一起提供
+% #HANDWRITTEN: checked
+\hwfield{LEX-P0016-V0021}{\fieldvalue{\handwritten{\checkboxfield{checked}}} 随请验单一起提供}
+\quad
+% #VALUE_ID: LEX-P0016-V0022
+% #FIELD_VALUE: 未随请验单一起提供
+\hwfield{LEX-P0016-V0022}{\fieldvalue{\checkboxfield{unchecked}} 未随请验单一起提供} &
+   &
+  \\
+  \hline
+   请验人 &
+   % #VALUE_ID: LEX-P0016-V0023
+% #FIELD_VALUE: 请验人
+% TODO #HANDWRITTEN: 许...; signature partially illegible
+\hwfield{LEX-P0016-V0023}{\fieldvalue{\handwritten{许...}}} &
+   请验日期 &
+   % #VALUE_ID: LEX-P0016-V0024
+% #FIELD_VALUE: 请验日期
+% #HANDWRITTEN: 2026.05.26
+\hwfield{LEX-P0016-V0024}{\fieldvalue{\handwritten{2026.05.26}}}\\
+  \hline
+   收货人 &
+   % #VALUE_ID: LEX-P0016-V0025
+% #FIELD_VALUE: 收货人
+% TODO #HANDWRITTEN: 丁...; signature partially illegible
+\hwfield{LEX-P0016-V0025}{\fieldvalue{\handwritten{丁...}}} &
+   收货日期 &
+   % #VALUE_ID: LEX-P0016-V0026
+% #FIELD_VALUE: 收货日期
+% TODO #HANDWRITTEN: 2026.05.27; final digit partially illegible
+\hwfield{LEX-P0016-V0026}{\fieldvalue{\handwritten{2026.05.27}}}\\
+  \hline
+   备注 &
+   % #VALUE_ID: LEX-P0016-V0027
+% #FIELD_VALUE: 备注
+% TODO #HANDWRITTEN: 66 h / 89.1 kg; handwriting partially illegible
+\hwfield{LEX-P0016-V0027}{\fieldvalue{\handwritten{66 h / 89.1 kg}}} &
+   &
+  \\
+  \hline
+\end{tabular}
+\end{center}
+
+% #VALUE_ID: LEX-P0016-V0028
+% #HANDWRITTEN: 采样...; handwriting partially illegible
+\handwritten{采样...}
+
+\vfill
+
+% TODO: Additional handwritten content is partially cut off at the bottom page boundary.
+% LEXOID_PAGE_COMPLETED: 16/57
+
+\newpage
+
+\begin{center}
+\textbf{请验单}
+\end{center}
+
+\small
+\begin{tabular}{|p{2.2cm}|p{4.0cm}|p{2.2cm}|p{4.0cm}|}
+  \hline
+   样品名称 &
+   % #TODO: 手写内容部分难以辨认
+% #VALUE_ID: LEX-P0017-V0001
+% #FIELD_VALUE: 样品名称
+% #TODO #HANDWRITTEN: 三...; 手写字迹模糊
+\hwfield{LEX-P0017-V0001}{\fieldvalue{\handwritten{三...}}} &
+   样品代码 &
+   % #TODO: 手写代码部分难以辨认
+% #VALUE_ID: LEX-P0017-V0002
+% #FIELD_VALUE: 样品代码
+% #TODO #HANDWRITTEN: G?0?0b; 手写字迹模糊
+\hwfield{LEX-P0017-V0002}{\fieldvalue{\handwritten{G?0?0b}}}\\
+  \hline
+   样品批号 &
+   % #TODO: 手写批号部分难以辨认
+% #VALUE_ID: LEX-P0017-V0003
+% #FIELD_VALUE: 样品批号
+% #TODO #HANDWRITTEN: A?3>...; 手写字迹模糊
+\hwfield{LEX-P0017-V0003}{\fieldvalue{\handwritten{A?3>...}}} &
+   样品规格/数量 &
+   % #TODO: 手写规格部分难以辨认
+% #VALUE_ID: LEX-P0017-V0004
+% #FIELD_VALUE: 样品规格/数量
+% #TODO #HANDWRITTEN: 约20mL及若干克; 手写字迹模糊
+\hwfield{LEX-P0017-V0004}{\fieldvalue{\handwritten{约20mL及若干克}}}\\
+  \hline
+   样品类别 &
+   % #VALUE_ID: LEX-P0017-V0005
+% #FIELD_VALUE: 样品类别：生产过程中检验样品
+% #HANDWRITTEN: checked
+\hwfield{LEX-P0017-V0005}{\fieldvalue{\handwritten{\checkboxfield{checked}}} 生产过程中检验样品} &
+   &
+   % #VALUE_ID: LEX-P0017-V0006
+% #FIELD_VALUE: 样品类别：包装产品
+\hwfield{LEX-P0017-V0006}{\fieldvalue{\checkboxfield{unchecked}} 包装产品}\\
+  \cline{1-4}
+   &
+   % #VALUE_ID: LEX-P0017-V0007
+% #FIELD_VALUE: 样品类别：成品
+\hwfield{LEX-P0017-V0007}{\fieldvalue{\checkboxfield{unchecked}} 成品} &
+   &
+   % #VALUE_ID: LEX-P0017-V0008
+% #FIELD_VALUE: 样品类别：其他
+\hwfield{LEX-P0017-V0008}{\fieldvalue{\checkboxfield{unchecked}} 其他（\hspace{1cm}）}\\
+  \hline
+   检验类型 &
+   % #VALUE_ID: LEX-P0017-V0009
+% #FIELD_VALUE: 检验类型：初验
+\hwfield{LEX-P0017-V0009}{\fieldvalue{\checkboxfield{unchecked}} 初验} &
+   &
+   % #VALUE_ID: LEX-P0017-V0010
+% #FIELD_VALUE: 检验类型：复验
+\hwfield{LEX-P0017-V0010}{\fieldvalue{\checkboxfield{unchecked}} 复验}\\
+  \cline{1-4}
+   &
+   % #VALUE_ID: LEX-P0017-V0011
+% #FIELD_VALUE: 检验类型：退货
+\hwfield{LEX-P0017-V0011}{\fieldvalue{\checkboxfield{unchecked}} 退货} &
+   &
+   % #VALUE_ID: LEX-P0017-V0012
+% #FIELD_VALUE: 检验类型：稳定性
+\hwfield{LEX-P0017-V0012}{\fieldvalue{\checkboxfield{unchecked}} 稳定性}\\
+  \cline{1-4}
+   &
+   % #VALUE_ID: LEX-P0017-V0013
+% #FIELD_VALUE: 检验类型：留样
+% #HANDWRITTEN: checked
+\hwfield{LEX-P0017-V0013}{\fieldvalue{\handwritten{\checkboxfield{checked}}} 留样} &
+   &
+  \\
+  \hline
+   请验项目 &
+   % #VALUE_ID: LEX-P0017-V0014
+% #FIELD_VALUE: 请验项目：全检
+\hwfield{LEX-P0017-V0014}{\fieldvalue{\checkboxfield{unchecked}} 全检} &
+   &
+   % #VALUE_ID: LEX-P0017-V0015
+% #FIELD_VALUE: 请验项目：留样
+% #HANDWRITTEN: checked
+\hwfield{LEX-P0017-V0015}{\fieldvalue{\handwritten{\checkboxfield{checked}}} 留样}\\
+  \cline{1-4}
+   &
+   % #VALUE_ID: LEX-P0017-V0016
+% #FIELD_VALUE: 请验项目：其他
+\hwfield{LEX-P0017-V0016}{\fieldvalue{\checkboxfield{unchecked}} 其他（\hspace{1cm}）} &
+   &
+  \\
+  \hline
+   请验部门 &
+   % #VALUE_ID: LEX-P0017-V0017
+% #FIELD_VALUE: 请验部门：生产部
+% #HANDWRITTEN: checked
+\hwfield{LEX-P0017-V0017}{\fieldvalue{\handwritten{\checkboxfield{checked}}} 生产部} &
+   &
+   % #VALUE_ID: LEX-P0017-V0018
+% #FIELD_VALUE: 请验部门：物料管理部
+\hwfield{LEX-P0017-V0018}{\fieldvalue{\checkboxfield{unchecked}} 物料管理部}\\
+  \cline{1-4}
+   &
+   % #VALUE_ID: LEX-P0017-V0019
+% #FIELD_VALUE: 请验部门：其他
+\hwfield{LEX-P0017-V0019}{\fieldvalue{\checkboxfield{unchecked}} 其他（\hspace{1cm}）} &
+   &
+  \\
+  \hline
+   样品情况 &
+   % #VALUE_ID: LEX-P0017-V0020
+% #FIELD_VALUE: 样品情况：随请验单一起提供
+% #HANDWRITTEN: checked
+\hwfield{LEX-P0017-V0020}{\fieldvalue{\handwritten{\checkboxfield{checked}}} 随请验单一起提供} &
+   &
+   % #VALUE_ID: LEX-P0017-V0021
+% #FIELD_VALUE: 样品情况：未随请验单一起提供
+\hwfield{LEX-P0017-V0021}{\fieldvalue{\checkboxfield{unchecked}} 未随请验单一起提供}\\
+  \hline
+   请验人 &
+   % #VALUE_ID: LEX-P0017-V0022
+% #FIELD_VALUE: 请验人
+% #HANDWRITTEN: 张... 
+\hwfield{LEX-P0017-V0022}{\fieldvalue{\handwritten{张...}}} &
+   请验日期 &
+   % #TODO: 日期末位难以辨认
+% #VALUE_ID: LEX-P0017-V0023
+% #FIELD_VALUE: 请验日期
+% #TODO #HANDWRITTEN: 2025.03.25; 日期字迹模糊
+\hwfield{LEX-P0017-V0023}{\fieldvalue{\handwritten{2025.03.25}}}\\
+  \hline
+   收验人 &
+   % #TODO: 手写姓名难以辨认
+% #VALUE_ID: LEX-P0017-V0024
+% #FIELD_VALUE: 收验人
+% #TODO #HANDWRITTEN: 陈...; 手写字迹模糊
+\hwfield{LEX-P0017-V0024}{\fieldvalue{\handwritten{陈...}}} &
+   收验日期 &
+   % #TODO: 日期部分难以辨认
+% #VALUE_ID: LEX-P0017-V0025
+% #FIELD_VALUE: 收验日期
+% #TODO #HANDWRITTEN: 2025.05.25; 手写字迹模糊
+\hwfield{LEX-P0017-V0025}{\fieldvalue{\handwritten{2025.05.25}}}\\
+  \hline
+   备注 &
+   % #TODO: 手写内容难以辨认
+% #VALUE_ID: LEX-P0017-V0026
+% #FIELD_VALUE: 备注
+% #TODO #HANDWRITTEN: 70?4; 手写字迹模糊
+\hwfield{LEX-P0017-V0026}{\fieldvalue{\handwritten{70?4}}} &
+   &
+  \\
+  \hline
+\end{tabular}
+
+\vspace{0.5em}
+
+% #TODO: 以下为表格下方可见的两处独立手写签注，具体字段标签不可见。
+% #VALUE_ID: LEX-P0017-V0027
+% #TODO #HANDWRITTEN: …… 2025.05.25; 内容及对应标签难以辨认
+\handwritten{…… 2025.05.25}
+
+% #VALUE_ID: LEX-P0017-V0028
+% #TODO #HANDWRITTEN: …… 2025.05.25; 内容及对应标签难以辨认
+\handwritten{…… 2025.05.25}
+
+\vspace{1em}
+
+\begin{center}
+\textbf{请验单}
+\end{center}
+
+\begin{tabular}{|p{2.2cm}|p{4.0cm}|p{2.2cm}|p{4.0cm}|}
+  \hline
+   样品名称 &
+   % #TODO: 手写内容部分难以辨认
+% #VALUE_ID: LEX-P0017-V0029
+% #FIELD_VALUE: 样品名称
+% #TODO #HANDWRITTEN: 三...; 手写字迹模糊
+\hwfield{LEX-P0017-V0029}{\fieldvalue{\handwritten{三...}}} &
+   样品代码 &
+   % #TODO: 手写代码部分难以辨认
+% #VALUE_ID: LEX-P0017-V0030
+% #FIELD_VALUE: 样品代码
+% #TODO #HANDWRITTEN: G?0?0b; 手写字迹模糊
+\hwfield{LEX-P0017-V0030}{\fieldvalue{\handwritten{G?0?0b}}}\\
+  \hline
+   样品批号 &
+   % #TODO: 手写批号部分难以辨认
+% #VALUE_ID: LEX-P0017-V0031
+% #FIELD_VALUE: 样品批号
+% #TODO #HANDWRITTEN: A?3>...; 手写字迹模糊
+\hwfield{LEX-P0017-V0031}{\fieldvalue{\handwritten{A?3>...}}} &
+   样品规格/数量 &
+   % #TODO: 手写规格部分难以辨认
+% #VALUE_ID: LEX-P0017-V0032
+% #FIELD_VALUE: 样品规格/数量
+% #TODO #HANDWRITTEN: 约20mL及若干克; 手写字迹模糊
+\hwfield{LEX-P0017-V0032}{\fieldvalue{\handwritten{约20mL及若干克}}}\\
+  \hline
+   样品类别 &
+   % #VALUE_ID: LEX-P0017-V0033
+% #FIELD_VALUE: 样品类别：生产过程中检验样品
+% #HANDWRITTEN: checked
+\hwfield{LEX-P0017-V0033}{\fieldvalue{\handwritten{\checkboxfield{checked}}} 生产过程中检验样品} &
+   &
+   % #VALUE_ID: LEX-P0017-V0034
+% #FIELD_VALUE: 样品类别：包装产品
+\hwfield{LEX-P0017-V0034}{\fieldvalue{\checkboxfield{unchecked}} 包装产品}\\
+  \cline{1-4}
+   &
+   % #VALUE_ID: LEX-P0017-V0035
+% #FIELD_VALUE: 样品类别：成品
+\hwfield{LEX-P0017-V0035}{\fieldvalue{\checkboxfield{unchecked}} 成品} &
+   &
+   % #VALUE_ID: LEX-P0017-V0036
+% #FIELD_VALUE: 样品类别：其他
+\hwfield{LEX-P0017-V0036}{\fieldvalue{\checkboxfield{unchecked}} 其他（\hspace{1cm}）}\\
+  \hline
+   检验类型 &
+   % #VALUE_ID: LEX-P0017-V0037
+% #FIELD_VALUE: 检验类型：初验
+% #HANDWRITTEN: checked
+\hwfield{LEX-P0017-V0037}{\fieldvalue{\handwritten{\checkboxfield{checked}}} 初验} &
+   &
+   % #VALUE_ID: LEX-P0017-V0038
+% #FIELD_VALUE: 检验类型：复验
+\hwfield{LEX-P0017-V0038}{\fieldvalue{\checkboxfield{unchecked}} 复验}\\
+  \cline{1-4}
+   &
+   % #VALUE_ID: LEX-P0017-V0039
+% #FIELD_VALUE: 检验类型：退货
+\hwfield{LEX-P0017-V0039}{\fieldvalue{\checkboxfield{unchecked}} 退货} &
+   &
+   % #VALUE_ID: LEX-P0017-V0040
+% #FIELD_VALUE: 检验类型：稳定性
+\hwfield{LEX-P0017-V0040}{\fieldvalue{\checkboxfield{unchecked}} 稳定性}\\
+  \cline{1-4}
+   &
+   % #VALUE_ID: LEX-P0017-V0041
+% #FIELD_VALUE: 检验类型：留样
+\hwfield{LEX-P0017-V0041}{\fieldvalue{\checkboxfield{unchecked}} 留样} &
+   &
+  \\
+  \hline
+   请验项目 &
+   % #VALUE_ID: LEX-P0017-V0042
+% #FIELD_VALUE: 请验项目：全检
+\hwfield{LEX-P0017-V0042}{\fieldvalue{\checkboxfield{unchecked}} 全检} &
+   &
+   % #VALUE_ID: LEX-P0017-V0043
+% #FIELD_VALUE: 请验项目：留样
+\hwfield{LEX-P0017-V0043}{\fieldvalue{\checkboxfield{unchecked}} 留样}\\
+  \cline{1-4}
+   &
+   % #VALUE_ID: LEX-P0017-V0044
+% #FIELD_VALUE: 请验项目：其他
+% #HANDWRITTEN: checked
+\hwfield{LEX-P0017-V0044}{\fieldvalue{\handwritten{\checkboxfield{checked}}} 其他（}
+% #VALUE_ID: LEX-P0017-V0045
+% #FIELD_VALUE: 请验项目“其他”的填写内容
+% #TODO #HANDWRITTEN: 委托...; 手写内容难以辨认
+\hwfield{LEX-P0017-V0045}{\fieldvalue{\handwritten{委托...}}）} &
+   &
+  \\
+  \hline
+   请验部门 &
+   % #VALUE_ID: LEX-P0017-V0046
+% #FIELD_VALUE: 请验部门：生产部
+% #HANDWRITTEN: checked
+\hwfield{LEX-P0017-V0046}{\fieldvalue{\handwritten{\checkboxfield{checked}}} 生产部} &
+   &
+   % #VALUE_ID: LEX-P0017-V0047
+% #FIELD_VALUE: 请验部门：物料管理部
+\hwfield{LEX-P0017-V0047}{\fieldvalue{\checkboxfield{unchecked}} 物料管理部}\\
+  \cline{1-4}
+   &
+   % #VALUE_ID: LEX-P0017-V0048
+% #FIELD_VALUE: 请验部门：其他
+\hwfield{LEX-P0017-V0048}{\fieldvalue{\checkboxfield{unchecked}} 其他（\hspace{1cm}）} &
+   &
+  \\
+  \hline
+   样品情况 &
+   % #VALUE_ID: LEX-P0017-V0049
+% #FIELD_VALUE: 样品情况：随请验单一起提供
+% #HANDWRITTEN: checked
+\hwfield{LEX-P0017-V0049}{\fieldvalue{\handwritten{\checkboxfield{checked}}} 随请验单一起提供} &
+   &
+   % #VALUE_ID: LEX-P0017-V0050
+% #FIELD_VALUE: 样品情况：未随请验单一起提供
+\hwfield{LEX-P0017-V0050}{\fieldvalue{\checkboxfield{unchecked}} 未随请验单一起提供}\\
+  \hline
+   请验人 &
+   % #TODO: 手写姓名难以辨认
+% #VALUE_ID: LEX-P0017-V0051
+% #FIELD_VALUE: 请验人
+% #TODO #HANDWRITTEN: 张...; 手写字迹模糊
+\hwfield{LEX-P0017-V0051}{\fieldvalue{\handwritten{张...}}} &
+   请验日期 &
+   % #TODO: 日期部分难以辨认
+% #VALUE_ID: LEX-P0017-V0052
+% #FIELD_VALUE: 请验日期
+% #TODO #HANDWRITTEN: 2025.03.25; 手写字迹模糊
+\hwfield{LEX-P0017-V0052}{\fieldvalue{\handwritten{2025.03.25}}}\\
+  \hline
+   收验人 &
+   % #TODO: 手写姓名难以辨认
+% #VALUE_ID: LEX-P0017-V0053
+% #FIELD_VALUE: 收验人
+% #TODO #HANDWRITTEN: 陈...; 手写字迹模糊
+\hwfield{LEX-P0017-V0053}{\fieldvalue{\handwritten{陈...}}} &
+   收验日期 &
+   % #TODO: 日期部分难以辨认
+% #VALUE_ID: LEX-P0017-V0054
+% #FIELD_VALUE: 收验日期
+% #TODO #HANDWRITTEN: 2025.05.25; 手写字迹模糊
+\hwfield{LEX-P0017-V0054}{\fieldvalue{\handwritten{2025.05.25}}}\\
+  \hline
+   备注 &
+   % #TODO: 手写备注及后续签注难以辨认
+% #VALUE_ID: LEX-P0017-V0055
+% #FIELD_VALUE: 备注
+% #TODO #HANDWRITTEN: 70?4; 手写字迹模糊
+\hwfield{LEX-P0017-V0055}{\fieldvalue{\handwritten{70?4}}} &
+   &
+  \\
+  \hline
+\end{tabular}
+
+\vspace{0.3em}
+
+% #VALUE_ID: LEX-P0017-V0056
+% #TODO #HANDWRITTEN: 备注后手写签注；内容难以辨认
+\handwritten{手写签注}
+
+% #VALUE_ID: LEX-P0017-V0057
+% #TODO #HANDWRITTEN: P?1 2025.05.10; 内容难以辨认
+\handwritten{P?1 2025.05.10}
+
+\vfill
+\noindent\scriptsize
+% TODO: 本页包含两份相同格式表单；仅呈现本页可见内容。
+% LEXOID_PAGE_COMPLETED: 17/57
+
+\newpage
+
+\begin{center}
+    \textbf{请验单}
+\end{center}
+
+\noindent
+\textbf{RP-PD-2026-02737}\hfill
+文件编号：REC-YZ-SMP-QC-01-001-03\quad 版本号：2.0
+
+\medskip
+
+\begin{tabular}{|p{2.3cm}|p{5.0cm}|p{2.3cm}|p{5.0cm}|}
+  \hline
+   样品名称 &
+   % #VALUE_ID: LEX-P0018-V0001
+% #FIELD_VALUE: 样品名称
+% #TODO #HANDWRITTEN: 三氯...玻璃...; 字迹较模糊
+\hwfield{LEX-P0018-V0001}{\fieldvalue{\handwritten{三氯...玻璃...}}} &
+   样品代码 &
+   % #VALUE_ID: LEX-P0018-V0002
+% #FIELD_VALUE: 样品代码
+% #TODO #HANDWRITTEN: Gly0b; 字迹不清
+\hwfield{LEX-P0018-V0002}{\fieldvalue{\handwritten{Gly0b}}}\\
+  \hline
+   样品批号 &
+   % #VALUE_ID: LEX-P0018-V0003
+% #FIELD_VALUE: 样品批号
+% #TODO #HANDWRITTEN: A?22?0?b?0...; 字迹不清
+\hwfield{LEX-P0018-V0003}{\fieldvalue{\handwritten{A?22?0?b?0...}}} &
+   样品规格/数量 &
+   % #VALUE_ID: LEX-P0018-V0004
+% #FIELD_VALUE: 样品规格/数量
+% #TODO #HANDWRITTEN: 30ml/瓶...; 字迹不清
+\hwfield{LEX-P0018-V0004}{\fieldvalue{\handwritten{30ml/瓶...}}}\\
+  \hline
+   样品类别 &
+   生产过程检验\ 
+% #VALUE_ID: LEX-P0018-V0005
+% #FIELD_VALUE: 生产过程检验
+\hwfield{LEX-P0018-V0005}{\fieldvalue{\checkboxfield{checked}}} &
+  \multicolumn{2}{l|}{ 
+待包装产品\ 
+% #VALUE_ID: LEX-P0018-V0006
+% #FIELD_VALUE: 待包装产品
+\hwfield{LEX-P0018-V0006}{\fieldvalue{\checkboxfield{unchecked}}}
+\quad
+成品\ 
+% #VALUE_ID: LEX-P0018-V0007
+% #FIELD_VALUE: 成品
+\hwfield{LEX-P0018-V0007}{\fieldvalue{\checkboxfield{unchecked}}}
+}\\
+  \cline{2-4}
+   &
+   其他（
+% #VALUE_ID: LEX-P0018-V0008
+% #FIELD_VALUE: 其他
+\hwfield{LEX-P0018-V0008}{\fieldvalue{\checkboxfield{unchecked}}}
+\hspace{2cm}） &
+   &
+  \\
+  \hline
+   检验类型 &
+   初验\ 
+% #VALUE_ID: LEX-P0018-V0009
+% #FIELD_VALUE: 初验
+\hwfield{LEX-P0018-V0009}{\fieldvalue{\checkboxfield{checked}}}
+\quad
+复验\ 
+% #VALUE_ID: LEX-P0018-V0010
+% #FIELD_VALUE: 复验
+\hwfield{LEX-P0018-V0010}{\fieldvalue{\checkboxfield{unchecked}}}
+\quad
+退货\ 
+% #VALUE_ID: LEX-P0018-V0011
+% #FIELD_VALUE: 退货
+\hwfield{LEX-P0018-V0011}{\fieldvalue{\checkboxfield{unchecked}}} &
+   稳定性\ 
+% #VALUE_ID: LEX-P0018-V0012
+% #FIELD_VALUE: 稳定性
+\hwfield{LEX-P0018-V0012}{\fieldvalue{\checkboxfield{unchecked}}}
+\quad
+回样\ 
+% #VALUE_ID: LEX-P0018-V0013
+% #FIELD_VALUE: 回样
+\hwfield{LEX-P0018-V0013}{\fieldvalue{\checkboxfield{unchecked}}} &
+  \\
+  \hline
+   请验目的 &
+   留样\ 
+% #VALUE_ID: LEX-P0018-V0014
+% #FIELD_VALUE: 留样
+\hwfield{LEX-P0018-V0014}{\fieldvalue{\checkboxfield{unchecked}}}
+\quad
+回收\ 
+% #VALUE_ID: LEX-P0018-V0015
+% #FIELD_VALUE: 回收
+\hwfield{LEX-P0018-V0015}{\fieldvalue{\checkboxfield{unchecked}}}
+\quad
+其他（
+% #VALUE_ID: LEX-P0018-V0016
+% #FIELD_VALUE: 其他
+\hwfield{LEX-P0018-V0016}{\fieldvalue{\checkboxfield{checked}}}
+% #TODO #HANDWRITTEN: 细胞培养...; 括号内字迹模糊
+\hwfield{LEX-P0018-V0016}{\fieldvalue{\handwritten{细胞培养...}}}
+） &
+   &
+  \\
+  \hline
+   请验部门 &
+   生产部\ 
+% #VALUE_ID: LEX-P0018-V0017
+% #FIELD_VALUE: 生产部
+\hwfield{LEX-P0018-V0017}{\fieldvalue{\checkboxfield{checked}}}
+\quad
+物料管理部\ 
+% #VALUE_ID: LEX-P0018-V0018
+% #FIELD_VALUE: 物料管理部
+\hwfield{LEX-P0018-V0018}{\fieldvalue{\checkboxfield{unchecked}}} &
+   其他（
+% #VALUE_ID: LEX-P0018-V0019
+% #FIELD_VALUE: 其他
+\hwfield{LEX-P0018-V0019}{\fieldvalue{\checkboxfield{unchecked}}}
+\hspace{1.5cm}） &
+  \\
+  \hline
+   样品情况 &
+   随请验单一起提供\ 
+% #VALUE_ID: LEX-P0018-V0020
+% #FIELD_VALUE: 随请验单一起提供
+\hwfield{LEX-P0018-V0020}{\fieldvalue{\checkboxfield{checked}}} &
+   未随请验单一起提供\ 
+% #VALUE_ID: LEX-P0018-V0021
+% #FIELD_VALUE: 未随请验单一起提供
+\hwfield{LEX-P0018-V0021}{\fieldvalue{\checkboxfield{unchecked}}} &
+  \\
+  \hline
+   请验人 &
+   % #VALUE_ID: LEX-P0018-V0022
+% #FIELD_VALUE: 请验人
+% #TODO #HANDWRITTEN: 汪?强; 姓名部分字迹不清
+\hwfield{LEX-P0018-V0022}{\fieldvalue{\handwritten{汪?强}}} &
+   请验日期 &
+   % #VALUE_ID: LEX-P0018-V0023
+% #FIELD_VALUE: 请验日期
+% #HANDWRITTEN: 2026.05.25
+\hwfield{LEX-P0018-V0023}{\fieldvalue{\handwritten{2026.05.25}}}\\
+  \hline
+   收验人 &
+   % #VALUE_ID: LEX-P0018-V0024
+% #FIELD_VALUE: 收验人
+% #TODO #HANDWRITTEN: 高?鹏; 字迹不清
+\hwfield{LEX-P0018-V0024}{\fieldvalue{\handwritten{高?鹏}}} &
+   收验日期 &
+   % #VALUE_ID: LEX-P0018-V0025
+% #FIELD_VALUE: 收验日期
+% #HANDWRITTEN: 2026.05.25
+\hwfield{LEX-P0018-V0025}{\fieldvalue{\handwritten{2026.05.25}}}\\
+  \hline
+   备注 &
+   % #VALUE_ID: LEX-P0018-V0026
+% #FIELD_VALUE: 备注
+% #TODO #HANDWRITTEN: 70.7h；检验结果：PD 00?04?; 字迹较模糊
+\hwfield{LEX-P0018-V0026}{\fieldvalue{\handwritten{70.7h；检验结果：PD 00?04?}}} &
+  \multicolumn{2}{l|}{ }\\
+  \hline
+\end{tabular}
+
+% #VALUE_ID: LEX-P0018-V0027
+% #TODO #HANDWRITTEN: 备注性手写文字“...”; 位于表格下方，字迹无法完全辨认
+\handwritten{...}
+% LEXOID_PAGE_COMPLETED: 18/57
+
+\newpage
+
+\begin{center}
+文件编号：REC-YZ-SOP-QC-99-006-02 \qquad 版本号：2.0
+
+\vspace{0.5em}
+\textbf{生物反应器细胞液检测通知单}
+\end{center}
+
+\begin{tabular}{|p{0.12\linewidth}|p{0.38\linewidth}|p{0.12\linewidth}|p{0.30\linewidth}|}
+  \hline
+   名称 &
+   % #VALUE_ID: LEX-P0019-V0001
+% #FIELD_VALUE: 名称
+\hwfield{LEX-P0019-V0001}{\fieldvalue{生物反应器细胞液}} &
+   批号 &
+   % #VALUE_ID: LEX-P0019-V0002
+% #FIELD_VALUE: 批号
+% TODO #HANDWRITTEN: A?202?06?03?; handwriting is unclear
+\hwfield{LEX-P0019-V0002}{\fieldvalue{\handwritten{A?202?06?03?}}}\\
+  \hline
+   取样时间 &
+   % #VALUE_ID: LEX-P0019-V0003
+% #FIELD_VALUE: 取样时间
+% TODO #HANDWRITTEN: 2026年07月14日; digits are handwritten and partially unclear
+\hwfield{LEX-P0019-V0003}{\fieldvalue{\handwritten{2026年07月14日}}} &
+   报告时间 &
+   % #VALUE_ID: LEX-P0019-V0004
+% #FIELD_VALUE: 报告时间
+% TODO #HANDWRITTEN: 2026年07月14日; final digit is unclear
+\hwfield{LEX-P0019-V0004}{\fieldvalue{\handwritten{2026年07月1?日}}}\\
+  \hline
+  \multicolumn{4}{|c|}{ \textbf{内\quad 容}}\\
+  \hline
+   检测类别 &
+   检测项目 &
+   检测方法 &
+   检测结果\\
+  \hline
+   \multirow{3}{*}{【细胞活性】} &
+   细胞密度 &
+   AO/PI 染色 &
+   % #VALUE_ID: LEX-P0019-V0005
+% #FIELD_VALUE: 细胞密度检测结果
+% TODO #HANDWRITTEN: 6.94$\times$10^{6}$个细胞/ml; superscript is handwritten and somewhat unclear
+\hwfield{LEX-P0019-V0005}{\fieldvalue{\handwritten{$6.94\times 10^{6}$个细胞/ml}}}\\
+  \cline{2-4}
+   &
+   细胞活率 &
+   AO/PI 染色 &
+   % #VALUE_ID: LEX-P0019-V0006
+% #FIELD_VALUE: 细胞活率检测结果
+% #HANDWRITTEN: 97\%
+\hwfield{LEX-P0019-V0006}{\fieldvalue{\handwritten{97\%}}}\\
+  \cline{2-4}
+   &
+   反应罐细胞总数 &
+   AO/PI 染色 &
+   % #VALUE_ID: LEX-P0019-V0007
+% #FIELD_VALUE: 反应罐细胞总数检测结果
+% TODO #HANDWRITTEN: 4.37$\times$10^{?}$个细胞/罐; exponent is unclear
+\hwfield{LEX-P0019-V0007}{\fieldvalue{\handwritten{$4.37\times 10^{?}$个细胞/罐}}}\\
+  \hline
+   备注 &
+  \multicolumn{3}{p{0.78\linewidth}|}{ 
+% #VALUE_ID: LEX-P0019-V0008
+% #FIELD_VALUE: 备注
+% TODO #HANDWRITTEN: 6h; handwritten notation is somewhat unclear
+\hwfield{LEX-P0019-V0008}{\fieldvalue{\handwritten{6h}}\quad}
+% #VALUE_ID: LEX-P0019-V0009
+% #FIELD_VALUE: 备注
+% #HANDWRITTEN: 48.9kg
+\hwfield{LEX-P0019-V0009}{\fieldvalue{\handwritten{48.9kg}}}
+}\\
+  \hline
+\end{tabular}
+
+\vspace{1.5em}
+
+报告人：
+% #VALUE_ID: LEX-P0019-V0010
+% #FIELD_VALUE: 报告人
+% TODO #HANDWRITTEN: 李海丽; handwritten name is partially unclear
+\fieldvalue{\handwritten{李海丽}}
+\hfill
+复核人：
+% #VALUE_ID: LEX-P0019-V0011
+% #FIELD_VALUE: 复核人
+% TODO #HANDWRITTEN: 柳玲; handwritten name is unclear
+\fieldvalue{\handwritten{柳玲}}
+
+\vspace{0.8em}
+
+日　期：
+% #VALUE_ID: LEX-P0019-V0012
+% #FIELD_VALUE: 报告日期
+% TODO #HANDWRITTEN: 2026.05.05; handwritten date is partially unclear
+\fieldvalue{\handwritten{2026.05.05}}
+\hfill
+日　期：
+% #VALUE_ID: LEX-P0019-V0013
+% #FIELD_VALUE: 复核日期
+% TODO #HANDWRITTEN: 2026.07.07; handwritten date is partially unclear
+\fieldvalue{\handwritten{2026.07.07}}
+
+\vfill
+
+\begin{center}
+第 1 页 共 1 页
+
+打印人：赵玉霞，打印时间：2026-05-07 10:51:54
+\end{center}
+% LEXOID_PAGE_COMPLETED: 19/57
+
+\newpage
+
+\begin{center}
+\small
+\textbf{生物反应器细胞浓度检测通知单}\\[2mm]
+文档编号：REC-YZ-SOP-99-006-02 \qquad 版本号：2.0
+\end{center}
+
+\noindent
+\texttt{RP-QC-2026-02767}
+
+\medskip
+
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|p{0.14\linewidth}|p{0.34\linewidth}|p{0.14\linewidth}|p{0.30\linewidth}|}
+  \hline
+   名称 &
+   % #VALUE_ID: LEX-P0020-V0001
+% #FIELD_VALUE: 名称
+\hwfield{LEX-P0020-V0001}{\fieldvalue{生物质反应器细胞浓度}} &
+   批号 &
+   % #VALUE_ID: LEX-P0020-V0002
+% #FIELD_VALUE: 批号
+% #TODO #HANDWRITTEN: A3?3?--?4?; handwriting is unclear
+\hwfield{LEX-P0020-V0002}{\fieldvalue{\handwritten{A3?3?--?4?}}}\\
+  \hline
+   取样时间 &
+   % #VALUE_ID: LEX-P0020-V0003
+% #FIELD_VALUE: 取样时间
+% #HANDWRITTEN: 2026年2月17日
+\hwfield{LEX-P0020-V0003}{\fieldvalue{\handwritten{2026年2月17日}}} &
+   报告时间 &
+   % #VALUE_ID: LEX-P0020-V0004
+% #FIELD_VALUE: 报告时间
+% #HANDWRITTEN: 2026年02月17日
+\hwfield{LEX-P0020-V0004}{\fieldvalue{\handwritten{2026年02月17日}}}\\
+  \hline
+  \multicolumn{4}{|c|}{ \textbf{内容}}\\
+  \hline
+   \textbf{检测类别} &
+   \textbf{检测项目} &
+   \textbf{检测方法} &
+   \textbf{检测结果}\\
+  \hline
+   \multirow{3}{*}{\textbf{【细胞活性】}} &
+   细胞密度 &
+   AO/PI 染色 &
+   % #VALUE_ID: LEX-P0020-V0005
+% #FIELD_VALUE: 细胞密度
+% #HANDWRITTEN: 8.73$\times 10^{5}$
+\hwfield{LEX-P0020-V0005}{\fieldvalue{\handwritten{$8.73\times10^{5}$}} 个细胞/ml}\\
+  \cline{2-4}
+   &
+   细胞活率 &
+   AO/PI 染色 &
+   % #VALUE_ID: LEX-P0020-V0006
+% #FIELD_VALUE: 细胞活率
+% #HANDWRITTEN: 98
+\hwfield{LEX-P0020-V0006}{\fieldvalue{\handwritten{98}}\ \%}\\
+  \cline{2-4}
+   &
+   反应细胞总数 &
+   AO/PI 染色 &
+   % #VALUE_ID: LEX-P0020-V0007
+% #FIELD_VALUE: 反应细胞总数
+% #TODO #HANDWRITTEN: 4.27$\times 10^{?}$; exponent is unclear
+\hwfield{LEX-P0020-V0007}{\fieldvalue{\handwritten{$4.27\times10^{?}$}} 个细胞/皿}\\
+  \hline
+   \multirow{2}{*}{备注} &
+  \multicolumn{3}{p{0.78\linewidth}|}{ 
+% #VALUE_ID: LEX-P0020-V0008
+% #FIELD_VALUE: 备注
+% #HANDWRITTEN: 6h
+\hwfield{LEX-P0020-V0008}{\fieldvalue{\handwritten{6h}}\quad}
+% #VALUE_ID: LEX-P0020-V0009
+% #FIELD_VALUE: 备注
+% #TODO #HANDWRITTEN: 细胞?; handwriting is illegible
+\hwfield{LEX-P0020-V0009}{\fieldvalue{\handwritten{细胞?}}}
+}\\
+  \cline{2-4}
+   &
+  \multicolumn{3}{p{0.78\linewidth}|}{ }\\
+  \hline
+\end{tabular}
+
+\medskip
+
+\noindent
+报告人：
+% #VALUE_ID: LEX-P0020-V0010
+% #FIELD_VALUE: 报告人
+% #TODO #HANDWRITTEN: 邓?森; signature is unclear
+\fieldvalue{\handwritten{邓?森}}
+\hfill
+复核人：
+% #VALUE_ID: LEX-P0020-V0011
+% #FIELD_VALUE: 复核人
+% #TODO #HANDWRITTEN: 杨钟静; signature is unclear
+\fieldvalue{\handwritten{杨钟静}}
+
+\medskip
+
+\noindent
+日\quad 期：
+% #VALUE_ID: LEX-P0020-V0012
+% #FIELD_VALUE: 报告日期
+% #HANDWRITTEN: 2026.02.24
+\fieldvalue{\handwritten{2026.02.24}}
+\hfill
+日\quad 期：
+% #VALUE_ID: LEX-P0020-V0013
+% #FIELD_VALUE: 复核日期
+% #TODO #HANDWRITTEN: 2026.05.25; handwriting is unclear
+\fieldvalue{\handwritten{2026.05.25}}
+
+\vfill
+
+\begin{center}
+第 1 页 共 1 页
+\end{center}
+
+\noindent
+打印人：孟玉霞，打印时间：2026-05-07 10:51:54
+
+\begin{flushright}
+% #VALUE_ID: LEX-P0020-V0014
+% #TODO #HANDWRITTEN: 存档；handwritten note is unclear
+\handwritten{存档}\\
+% #VALUE_ID: LEX-P0020-V0015
+% #TODO #HANDWRITTEN: 2026-05-25 515; handwritten note is unclear
+\handwritten{2026-05-25\ 515}
+\end{flushright}
+% LEXOID_PAGE_COMPLETED: 20/57
+
+\newpage
+
+% #VALUE_ID: LEX-P0021-V0001
+% #HANDWRITTEN: 样品：细胞库入库液申请单相关备注
+\handwritten{样品：细胞库入库液申请单相关备注}
+
+\section{细胞培养上清液入库申请单}
+
+\noindent
+文件编号：REC-YZ-SMP-QA-04-007
+
+\begin{tabular}{|p{0.19\linewidth}|p{0.74\linewidth}|}
+  \hline
+   入库细胞培养上清液名称 &
+   P0代细胞培养上清液\ \ % checkbox values below
+% #VALUE_ID: LEX-P0021-V0002
+% #FIELD_VALUE: P0代细胞培养上清液
+\hwfield{LEX-P0021-V0002}{\fieldvalue{\checkboxfield{unchecked}}\quad}
+P1代细胞培养上清液\ 
+% #VALUE_ID: LEX-P0021-V0003
+% #FIELD_VALUE: P1代细胞培养上清液
+\hwfield{LEX-P0021-V0003}{\fieldvalue{\checkboxfield{unchecked}}\quad}
+P2代细胞培养上清液\ 
+% #VALUE_ID: LEX-P0021-V0004
+% #FIELD_VALUE: P2代细胞培养上清液
+\hwfield{LEX-P0021-V0004}{\fieldvalue{\checkboxfield{unchecked}}}\\
+   &
+   一级生物反应器上清液\ 
+% #VALUE_ID: LEX-P0021-V0005
+% #FIELD_VALUE: 一级生物反应器上清液
+\hwfield{LEX-P0021-V0005}{\fieldvalue{\checkboxfield{unchecked}}\quad}
+二级生物反应器上清液\ 
+% #VALUE_ID: LEX-P0021-V0006
+% #FIELD_VALUE: 二级生物反应器上清液
+\hwfield{LEX-P0021-V0006}{\fieldvalue{\checkboxfield{unchecked}}\quad}
+三级生物反应器上清液\ 
+% #VALUE_ID: LEX-P0021-V0007
+% #FIELD_VALUE: 三级生物反应器上清液
+\hwfield{LEX-P0021-V0007}{\fieldvalue{\checkboxfield{checked}}}\\
+   &
+   其它：\ 
+% #VALUE_ID: LEX-P0021-V0008
+% #FIELD_VALUE: 其它
+\hwfield{LEX-P0021-V0008}{\fieldvalue{\checkboxfield{unchecked}}}\\
+  \hline
+   细胞培养液批号 &
+   % #VALUE_ID: LEX-P0021-V0009
+% #FIELD_VALUE: 细胞培养液批号
+% #TODO #HANDWRITTEN: A?3?0-?0?0; handwriting is unclear
+\hwfield{LEX-P0021-V0009}{\fieldvalue{\handwritten{A?3?0-?0?0}}}\\
+  \hline
+   无血清培养基 &
+   % #VALUE_ID: LEX-P0021-V0010
+% #FIELD_VALUE: 无血清培养基（华...）
+% #HANDWRITTEN: ✓
+\hwfield{LEX-P0021-V0010}{\fieldvalue{\handwritten{\checkboxfield{checked}}}\quad}
+其它：
+% #VALUE_ID: LEX-P0021-V0011
+% #FIELD_VALUE: 无血清培养基其它
+\hwfield{LEX-P0021-V0011}{\fieldvalue{\checkboxfield{unchecked}}}\\
+  \hline
+   报装数量 &
+   % #VALUE_ID: LEX-P0021-V0012
+% #FIELD_VALUE: 报装数量
+% #TODO #HANDWRITTEN: 10?; handwriting is unclear
+\hwfield{LEX-P0021-V0012}{\fieldvalue{\handwritten{10?}}}\\
+  \hline
+   申请人 &
+   % #VALUE_ID: LEX-P0021-V0013
+% #FIELD_VALUE: 申请人
+% #TODO #HANDWRITTEN: 申请人签名; handwriting is illegible
+\hwfield{LEX-P0021-V0013}{\fieldvalue{\handwritten{申请人签名}}}\\
+  \hline
+   复核人 &
+   % #VALUE_ID: LEX-P0021-V0014
+% #FIELD_VALUE: 复核人
+% #TODO #HANDWRITTEN: 复核人签名; handwriting is illegible
+\hwfield{LEX-P0021-V0014}{\fieldvalue{\handwritten{复核人签名}}}\\
+  \hline
+   接收人 &
+   % #VALUE_ID: LEX-P0021-V0015
+% #FIELD_VALUE: 接收人
+% #TODO #HANDWRITTEN: 接收人签名; handwriting is unclear
+\hwfield{LEX-P0021-V0015}{\fieldvalue{\handwritten{接收人签名}}}\\
+  \hline
+   备注 &
+   % #VALUE_ID: LEX-P0021-V0016
+% #FIELD_VALUE: 备注
+% #HANDWRITTEN: —
+\hwfield{LEX-P0021-V0016}{\fieldvalue{\handwritten{—}}}\\
+  \hline
+\end{tabular}
+
+\begin{tabular}{|p{0.45\linewidth}|p{0.45\linewidth}|}
+  \hline
+   净重 &
+   % #VALUE_ID: LEX-P0021-V0017
+% #FIELD_VALUE: 净重
+% #TODO #HANDWRITTEN: ml/kg; handwriting is unclear
+\hwfield{LEX-P0021-V0017}{\fieldvalue{\handwritten{ml/kg}}}\\
+  \hline
+   申请日期 &
+   % #VALUE_ID: LEX-P0021-V0018
+% #FIELD_VALUE: 申请日期
+% #TODO #HANDWRITTEN: 2024.05.27; digits are partially unclear
+\hwfield{LEX-P0021-V0018}{\fieldvalue{\handwritten{2024.05.27}}}\\
+  \hline
+   批准日期 &
+   % #VALUE_ID: LEX-P0021-V0019
+% #FIELD_VALUE: 批准日期
+% #TODO #HANDWRITTEN: 2024.05.27; digits are partially unclear
+\hwfield{LEX-P0021-V0019}{\fieldvalue{\handwritten{2024.05.27}}}\\
+  \hline
+   入库日期 &
+   % #VALUE_ID: LEX-P0021-V0020
+% #FIELD_VALUE: 入库日期
+% #TODO #HANDWRITTEN: 2024.05.25; digits are partially unclear
+\hwfield{LEX-P0021-V0020}{\fieldvalue{\handwritten{2024.05.25}}}\\
+  \hline
+\end{tabular}
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0021-V0021
+% #HANDWRITTEN: 申请单相关备注
+\handwritten{申请单相关备注}
+
+\section{细胞培养上清液出库申请单}
+
+\noindent
+文件编号：REC-YZ-SMP-QA-04-007
+
+\begin{tabular}{|p{0.19\linewidth}|p{0.74\linewidth}|}
+  \hline
+   出库细胞培养上清液名称 &
+   P0代细胞培养上清液\ 
+% #VALUE_ID: LEX-P0021-V0022
+% #FIELD_VALUE: P0代细胞培养上清液
+\hwfield{LEX-P0021-V0022}{\fieldvalue{\checkboxfield{unchecked}}\quad}
+P1代细胞培养上清液\ 
+% #VALUE_ID: LEX-P0021-V0023
+% #FIELD_VALUE: P1代细胞培养上清液
+\hwfield{LEX-P0021-V0023}{\fieldvalue{\checkboxfield{unchecked}}\quad}
+P2代细胞培养上清液\ 
+% #VALUE_ID: LEX-P0021-V0024
+% #FIELD_VALUE: P2代细胞培养上清液
+\hwfield{LEX-P0021-V0024}{\fieldvalue{\checkboxfield{unchecked}}}\\
+   &
+   一级生物反应器上清液\ 
+% #VALUE_ID: LEX-P0021-V0025
+% #FIELD_VALUE: 一级生物反应器上清液
+\hwfield{LEX-P0021-V0025}{\fieldvalue{\checkboxfield{unchecked}}\quad}
+二级生物反应器上清液\ 
+% #VALUE_ID: LEX-P0021-V0026
+% #FIELD_VALUE: 二级生物反应器上清液
+\hwfield{LEX-P0021-V0026}{\fieldvalue{\checkboxfield{unchecked}}\quad}
+三级生物反应器上清液\ 
+% #VALUE_ID: LEX-P0021-V0027
+% #FIELD_VALUE: 三级生物反应器上清液
+\hwfield{LEX-P0021-V0027}{\fieldvalue{\checkboxfield{checked}}}\\
+   &
+   其它：
+% #VALUE_ID: LEX-P0021-V0028
+% #FIELD_VALUE: 其它
+\hwfield{LEX-P0021-V0028}{\fieldvalue{\checkboxfield{unchecked}}}\\
+  \hline
+   细胞库批号 &
+   % #VALUE_ID: LEX-P0021-V0029
+% #FIELD_VALUE: 细胞库批号
+% #TODO #HANDWRITTEN: A?3?0-?0?0; handwriting is unclear
+\hwfield{LEX-P0021-V0029}{\fieldvalue{\handwritten{A?3?0-?0?0}}}\\
+  \hline
+   出库用途 &
+   % #VALUE_ID: LEX-P0021-V0030
+% #FIELD_VALUE: 出库用途
+% #TODO #HANDWRITTEN: 细胞培养液相关实验用途; handwriting is partially illegible
+\hwfield{LEX-P0021-V0030}{\fieldvalue{\handwritten{细胞培养液相关实验用途}}}\\
+  \hline
+   申请人 &
+   % #VALUE_ID: LEX-P0021-V0031
+% #FIELD_VALUE: 申请人
+% #TODO #HANDWRITTEN: 刘?; handwriting is unclear
+\hwfield{LEX-P0021-V0031}{\fieldvalue{\handwritten{刘?}}}\\
+  \hline
+   部门经理 &
+   % #VALUE_ID: LEX-P0021-V0032
+% #FIELD_VALUE: 部门经理
+% #TODO #HANDWRITTEN: 林芳; handwriting is partially unclear
+\hwfield{LEX-P0021-V0032}{\fieldvalue{\handwritten{林芳}}}\\
+  \hline
+   总经理 &
+   % #VALUE_ID: LEX-P0021-V0033
+% #FIELD_VALUE: 总经理
+% #HANDWRITTEN: —
+\hwfield{LEX-P0021-V0033}{\fieldvalue{\handwritten{—}}}\\
+  \hline
+   出库人 &
+   % #VALUE_ID: LEX-P0021-V0034
+% #FIELD_VALUE: 出库人
+% #TODO #HANDWRITTEN: 刘?; handwriting is unclear
+\hwfield{LEX-P0021-V0034}{\fieldvalue{\handwritten{刘?}}}\\
+  \hline
+   接收人 &
+   % #VALUE_ID: LEX-P0021-V0035
+% #FIELD_VALUE: 接收人
+% #TODO #HANDWRITTEN: 刘?; handwriting is unclear
+\hwfield{LEX-P0021-V0035}{\fieldvalue{\handwritten{刘?}}}\\
+  \hline
+   备注 &
+   % #VALUE_ID: LEX-P0021-V0036
+% #FIELD_VALUE: 备注
+% #HANDWRITTEN: —
+\hwfield{LEX-P0021-V0036}{\fieldvalue{\handwritten{—}}}\\
+  \hline
+\end{tabular}
+
+\begin{tabular}{|p{0.45\linewidth}|p{0.45\linewidth}|}
+  \hline
+   出库细胞培养上清液数量 &
+   % #VALUE_ID: LEX-P0021-V0037
+% #FIELD_VALUE: 出库细胞培养上清液数量
+% #TODO #HANDWRITTEN: 50?; handwriting is unclear
+\hwfield{LEX-P0021-V0037}{\fieldvalue{\handwritten{50?}}}\\
+  \hline
+   申请日期 &
+   % #VALUE_ID: LEX-P0021-V0038
+% #FIELD_VALUE: 申请日期
+% #TODO #HANDWRITTEN: 2024.05.25; digits are partially unclear
+\hwfield{LEX-P0021-V0038}{\fieldvalue{\handwritten{2024.05.25}}}\\
+  \hline
+   批准日期 &
+   % #VALUE_ID: LEX-P0021-V0039
+% #FIELD_VALUE: 批准日期
+% #TODO #HANDWRITTEN: 2024.05.25; digits are partially unclear
+\hwfield{LEX-P0021-V0039}{\fieldvalue{\handwritten{2024.05.25}}}\\
+  \hline
+   出库日期 &
+   % #VALUE_ID: LEX-P0021-V0040
+% #FIELD_VALUE: 出库日期
+% #TODO #HANDWRITTEN: 2024.06.25; digits are partially unclear
+\hwfield{LEX-P0021-V0040}{\fieldvalue{\handwritten{2024.06.25}}}\\
+  \hline
+   接收日期 &
+   % #VALUE_ID: LEX-P0021-V0041
+% #FIELD_VALUE: 接收日期
+% #TODO #HANDWRITTEN: 2024.06.25; digits are partially unclear
+\hwfield{LEX-P0021-V0041}{\fieldvalue{\handwritten{2024.06.25}}}\\
+  \hline
+\end{tabular}
+
+\medskip
+
+注释：公司内部库使用细胞培养上清液时无需总经理签字，委外使用细胞培养上清液时需总经理签字。
+
+% #VALUE_ID: LEX-P0021-V0042
+% #HANDWRITTEN: 2024.06.25
+\handwritten{2024.06.25}
+% LEXOID_PAGE_COMPLETED: 21/57
+
+\newpage
+
+\section*{工艺记录}
+
+\begin{tabular}{@{}p{0.22\linewidth}p{0.25\linewidth}p{0.22\linewidth}p{0.25\linewidth}@{}}
+   工艺编号 &
+   % #VALUE_ID: LEX-P0022-V0001
+% #FIELD_VALUE: 工艺编号
+\hwfield{LEX-P0022-V0001}{\fieldvalue{2026-05-29-04-09}} &
+   工序号 &
+   % #VALUE_ID: LEX-P0022-V0002
+% #FIELD_VALUE: 工序号
+\hwfield{LEX-P0022-V0002}{\fieldvalue{C002}}\\
+   日期 &
+   % #VALUE_ID: LEX-P0022-V0003
+% #FIELD_VALUE: 日期
+\hwfield{LEX-P0022-V0003}{\fieldvalue{2020-05-29 04:09}} &
+   版本 &
+   % #VALUE_ID: LEX-P0022-V0004
+% #FIELD_VALUE: 版本
+\hwfield{LEX-P0022-V0004}{\fieldvalue{V18.0}}\\
+   工件号 &
+   % #VALUE_ID: LEX-P0022-V0005
+% #FIELD_VALUE: 工件号
+\hwfield{LEX-P0022-V0005}{\fieldvalue{20200529\textendash 04\textendash 09}} &
+   批次号 &
+   % #VALUE_ID: LEX-P0022-V0006
+% #FIELD_VALUE: 批次号
+\hwfield{LEX-P0022-V0006}{\fieldvalue{20200529}}\\
+   生产单位 &
+   % #VALUE_ID: LEX-P0022-V0007
+% #FIELD_VALUE: 生产单位
+\hwfield{LEX-P0022-V0007}{\fieldvalue{[\textit{字迹不清}]}} &
+   操作者 &
+   % #VALUE_ID: LEX-P0022-V0008
+% #FIELD_VALUE: 操作者
+\hwfield{LEX-P0022-V0008}{\fieldvalue{[\textit{字迹不清}]}}
+\end{tabular}
+
+\vspace{1em}
+
+\begin{tabular}{|p{0.15\linewidth}|p{0.19\linewidth}|p{0.27\linewidth}|p{0.29\linewidth}|}
+  \hline
+   序号 &
+   时间 &
+   工序内容 &
+   工艺参数、检验结果\\
+  \hline
+   1 &
+   % #VALUE_ID: LEX-P0022-V0009
+% #FIELD_VALUE: 时间
+\hwfield{LEX-P0022-V0009}{\fieldvalue{08:00}} &
+   % #VALUE_ID: LEX-P0022-V0010
+% #FIELD_VALUE: 工序内容
+\hwfield{LEX-P0022-V0010}{\fieldvalue{准备工作}} &
+   % #VALUE_ID: LEX-P0022-V0011
+% #FIELD_VALUE: 工艺参数、检验结果
+\hwfield{LEX-P0022-V0011}{\fieldvalue{[\textit{字迹不清}]}}\\
+  \hline
+   2 &
+   % #VALUE_ID: LEX-P0022-V0012
+% #FIELD_VALUE: 时间
+\hwfield{LEX-P0022-V0012}{\fieldvalue{09:00}} &
+   % #VALUE_ID: LEX-P0022-V0013
+% #FIELD_VALUE: 工序内容
+\hwfield{LEX-P0022-V0013}{\fieldvalue{材料检查}} &
+   % #VALUE_ID: LEX-P0022-V0014
+% #FIELD_VALUE: 工艺参数、检验结果
+\hwfield{LEX-P0022-V0014}{\fieldvalue{[\textit{字迹不清}]}}\\
+  \hline
+   3 &
+   % #VALUE_ID: LEX-P0022-V0015
+% #FIELD_VALUE: 时间
+\hwfield{LEX-P0022-V0015}{\fieldvalue{09:00}} &
+   % #VALUE_ID: LEX-P0022-V0016
+% #FIELD_VALUE: 工序内容
+\hwfield{LEX-P0022-V0016}{\fieldvalue{装配、连接}} &
+   % #VALUE_ID: LEX-P0022-V0017
+% #FIELD_VALUE: 工艺参数、检验结果
+\hwfield{LEX-P0022-V0017}{\fieldvalue{[\textit{字迹不清}]}}\\
+  \hline
+   4 &
+   % #VALUE_ID: LEX-P0022-V0018
+% #FIELD_VALUE: 时间
+\hwfield{LEX-P0022-V0018}{\fieldvalue{09:00}} &
+   % #VALUE_ID: LEX-P0022-V0019
+% #FIELD_VALUE: 工序内容
+\hwfield{LEX-P0022-V0019}{\fieldvalue{外观检查}} &
+   % #VALUE_ID: LEX-P0022-V0020
+% #FIELD_VALUE: 工艺参数、检验结果
+\hwfield{LEX-P0022-V0020}{\fieldvalue{[\textit{字迹不清}]}}\\
+  \hline
+   5 &
+   % #VALUE_ID: LEX-P0022-V0021
+% #FIELD_VALUE: 时间
+\hwfield{LEX-P0022-V0021}{\fieldvalue{09:00}} &
+   % #VALUE_ID: LEX-P0022-V0022
+% #FIELD_VALUE: 工序内容
+\hwfield{LEX-P0022-V0022}{\fieldvalue{尺寸检查}} &
+   % #VALUE_ID: LEX-P0022-V0023
+% #FIELD_VALUE: 工艺参数、检验结果
+\hwfield{LEX-P0022-V0023}{\fieldvalue{[\textit{字迹不清}]}}\\
+  \hline
+   6 &
+   % #VALUE_ID: LEX-P0022-V0024
+% #FIELD_VALUE: 时间
+\hwfield{LEX-P0022-V0024}{\fieldvalue{10:00}} &
+   % #VALUE_ID: LEX-P0022-V0025
+% #FIELD_VALUE: 工序内容
+\hwfield{LEX-P0022-V0025}{\fieldvalue{性能检查}} &
+   % #VALUE_ID: LEX-P0022-V0026
+% #FIELD_VALUE: 工艺参数、检验结果
+\hwfield{LEX-P0022-V0026}{\fieldvalue{[\textit{字迹不清}]}}\\
+  \hline
+   7 &
+   % #VALUE_ID: LEX-P0022-V0027
+% #FIELD_VALUE: 时间
+\hwfield{LEX-P0022-V0027}{\fieldvalue{10:00}} &
+   % #VALUE_ID: LEX-P0022-V0028
+% #FIELD_VALUE: 工序内容
+\hwfield{LEX-P0022-V0028}{\fieldvalue{记录确认}} &
+   % #VALUE_ID: LEX-P0022-V0029
+% #FIELD_VALUE: 工艺参数、检验结果
+\hwfield{LEX-P0022-V0029}{\fieldvalue{[\textit{字迹不清}]}}\\
+  \hline
+   8 &
+   % #VALUE_ID: LEX-P0022-V0030
+% #FIELD_VALUE: 时间
+\hwfield{LEX-P0022-V0030}{\fieldvalue{12:00}} &
+   % #VALUE_ID: LEX-P0022-V0031
+% #FIELD_VALUE: 工序内容
+\hwfield{LEX-P0022-V0031}{\fieldvalue{最终检查}} &
+   % #VALUE_ID: LEX-P0022-V0032
+% #FIELD_VALUE: 工艺参数、检验结果
+\hwfield{LEX-P0022-V0032}{\fieldvalue{[\textit{字迹不清}]}}\\
+  \hline
+\end{tabular}
+
+\vspace{1em}
+
+\noindent
+\textbf{测量记录：}
+
+\begin{tabular}{@{}p{0.32\linewidth}p{0.25\linewidth}p{0.32\linewidth}@{}}
+   项目 &
+   记录值 &
+   单位或备注\\
+  \hline
+   测量项目 1 &
+   % #VALUE_ID: LEX-P0022-V0033
+% #FIELD_VALUE: 测量项目 1
+\hwfield{LEX-P0022-V0033}{\fieldvalue{54.43}} &
+   % #VALUE_ID: LEX-P0022-V0034
+% #FIELD_VALUE: 测量项目 1 单位或备注
+\hwfield{LEX-P0022-V0034}{\fieldvalue{mL}}\\
+   测量项目 2 &
+   % #VALUE_ID: LEX-P0022-V0035
+% #FIELD_VALUE: 测量项目 2
+\hwfield{LEX-P0022-V0035}{\fieldvalue{10.0}} &
+   % #VALUE_ID: LEX-P0022-V0036
+% #FIELD_VALUE: 测量项目 2 单位或备注
+\hwfield{LEX-P0022-V0036}{\fieldvalue{mL}}\\
+   测量项目 3 &
+   % #VALUE_ID: LEX-P0022-V0037
+% #FIELD_VALUE: 测量项目 3
+\hwfield{LEX-P0022-V0037}{\fieldvalue{[\textit{字迹不清}]}} &
+   % #VALUE_ID: LEX-P0022-V0038
+% #FIELD_VALUE: 测量项目 3 单位或备注
+\hwfield{LEX-P0022-V0038}{\fieldvalue{mL}}\\
+\end{tabular}
+
+\vspace{1em}
+
+\noindent
+\textbf{手写补充记录：}
+
+% #VALUE_ID: LEX-P0022-V0039
+% #FIELD_VALUE: 手写补充记录 1
+% #TODO #HANDWRITTEN: 7/24/??; 蓝色手写日期难以辨认
+\fieldvalue{\handwritten{7/24/??}}
+
+% #VALUE_ID: LEX-P0022-V0040
+% #FIELD_VALUE: 手写补充记录 2
+% #TODO #HANDWRITTEN: 202?; 蓝色手写内容不清
+\fieldvalue{\handwritten{202?}}
+
+% #VALUE_ID: LEX-P0022-V0041
+% #FIELD_VALUE: 手写补充记录 3
+% #TODO #HANDWRITTEN: 16?; 蓝色手写数字不清
+\fieldvalue{\handwritten{16?}}
+
+% #VALUE_ID: LEX-P0022-V0042
+% #FIELD_VALUE: 手写补充记录 4
+% #TODO #HANDWRITTEN: 1/24; 蓝色手写日期或页码性质不明确
+\fieldvalue{\handwritten{1/24}}
+
+% TODO：本页表格及蓝色手写批注部分字迹分辨率较低；以上难辨内容需结合原始 PDF 高分辨率图像复核。
+% LEXOID_PAGE_COMPLETED: 22/57
+
+\newpage
+
+% TODO: This page is a sideways scan containing two dense Chinese itemized lists. The
+% individual item codes and descriptions are not reliably legible at the supplied
+% resolution; preserve the visible two-block layout for later verification.
+\begin{center}
+\rotatebox{90}{%
+\begin{minipage}{0.92\textheight}
+\small
+\begin{tabular}{@{}p{0.43\textheight}@{\hspace{1em}}p{0.43\textheight}@{}}
+   \raggedright
+% TODO: Transcribe the upper visible block of numbered Chinese entries here.
+\text{（中文编号及品名清单，逐项内容待核对）} &
+   \raggedright
+% TODO: Transcribe the lower visible block of numbered Chinese entries here.
+\text{（中文编号及品名清单，逐项内容待核对）}
+\end{tabular}
+\end{minipage}%
+}
+\end{center}
+% #VALUE_ID: LEX-P0023-V0001
+% #HANDWRITTEN: 3/14
+\handwritten{3/14}
+% LEXOID_PAGE_COMPLETED: 23/57
+
+\newpage
+
+% TODO: This page is a rotated, low-resolution scan containing two dense columns of
+% printed inventory/list entries. The individual identifiers and descriptions are
+% not sufficiently legible in the supplied image for reliable transcription.
+
+\noindent
+\begin{minipage}[t]{0.47\linewidth}
+\scriptsize
+\textit{Printed list of entries (left column).}\\[2pt]
+% TODO: Transcribe the visible sequential identifiers and accompanying printed
+% descriptions from the left column.
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.47\linewidth}
+\scriptsize
+\textit{Printed list of entries (right column).}\\[2pt]
+% TODO: Transcribe the visible sequential identifiers and accompanying printed
+% descriptions from the right column.
+\end{minipage}
+
+\vfill
+
+% #VALUE_ID: LEX-P0024-V0001
+% #HANDWRITTEN: 3/16
+\handwritten{3/16}
+% LEXOID_PAGE_COMPLETED: 24/57
+
+\newpage
+
+% TODO: This page contains two densely typeset, vertically oriented Chinese tables. The supplied
+% raster is too low-resolution to transcribe the item descriptions reliably without fabricating text.
+% The visible table structure and legible code ranges are represented below.
+
+\small
+\begin{tabular}{@{}p{0.22\linewidth}p{0.70\linewidth}@{}}
+   \textbf{编号} &
+   \textbf{项目内容}\\
+  \hline
+   13-15-54 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-46 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-44 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-43 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-42 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-41 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-40 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-39 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-38 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-37 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-36 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-35 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-34 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-33 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-32 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-31 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-30 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-29 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-28 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-27 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-26 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-25 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-24 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-23 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-22 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-21 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-20 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-19 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-18 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-17 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-16 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-15 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-14 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-13 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   13-15-12 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+\end{tabular}
+
+\vspace{1em}
+
+\begin{tabular}{@{}p{0.22\linewidth}p{0.70\linewidth}@{}}
+   \textbf{编号} &
+   \textbf{项目内容}\\
+  \hline
+   14-15-58 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-57 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-56 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-55 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-54 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-53 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-52 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-51 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-50 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-49 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-48 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-47 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-46 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-45 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-44 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-43 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-42 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-41 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-40 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-39 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-38 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-37 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-36 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-35 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-34 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-33 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-32 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-31 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-30 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-29 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-28 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-27 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-26 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+   14-15-25 &
+   \textit{[中文项目内容过小，无法可靠辨识]}\\
+\end{tabular}
+
+\vfill
+
+% #VALUE_ID: LEX-P0025-V0001
+% #HANDWRITTEN: 14/4
+\handwritten{14/4}
+% LEXOID_PAGE_COMPLETED: 25/57
+
+\newpage
+
+% TODO: The page is rotated in the source image and the printed Chinese table text is not reliably legible at the provided resolution. The visible layout is represented below; verify all codes and descriptions against the original PDF.
+
+\small
+\begin{tabular}{@{}p{0.22\linewidth}p{0.70\linewidth}@{}}
+   \texttt{14.2.4.22} &
+   中文项目文字（待核对）\\
+   \texttt{14.2.4.21} &
+   中文项目文字（待核对）\\
+   \texttt{14.2.4.20} &
+   中文项目文字（待核对）\\
+   \texttt{14.2.4.11} &
+   中文项目文字（待核对）\\
+   \texttt{14.2.4.15} &
+   中文项目文字（待核对）\\
+   \texttt{14.2.4.06} &
+   中文项目文字（待核对）\\
+   \texttt{14.2.4.10} &
+   中文项目文字（待核对）\\
+   \texttt{14.2.4.09} &
+   中文项目文字（待核对）\\
+   \texttt{14.2.4.08} &
+   中文项目文字（待核对）\\
+   \texttt{14.2.4.07} &
+   中文项目文字（待核对）\\
+   \texttt{14.2.4.03} &
+   中文项目文字（待核对）\\
+   \texttt{14.2.4.04} &
+   中文项目文字（待核对）\\
+   \texttt{14.2.4.02} &
+   中文项目文字（待核对）\\
+   \texttt{14.2.4.01} &
+   中文项目文字（待核对）\\
+   \texttt{14.2.4.00} &
+   中文项目文字（待核对）\\
+\end{tabular}
+
+\vspace{1em}
+
+\begin{tabular}{@{}p{0.22\linewidth}p{0.70\linewidth}@{}}
+   \texttt{14.2.4.24} &
+   中文项目文字（待核对）\\
+   \texttt{14.2.4.20} &
+   中文项目文字（待核对）\\
+   \texttt{14.2.4.19} &
+   中文项目文字（待核对）\\
+   \texttt{14.2.4.18} &
+   中文项目文字（待核对）\\
+   \texttt{14.2.4.17} &
+   中文项目文字（待核对）\\
+   \texttt{14.2.4.16} &
+   中文项目文字（待核对）\\
+   \texttt{14.2.4.15} &
+   中文项目文字（待核对）\\
+   \texttt{14.2.4.14} &
+   中文项目文字（待核对）\\
+   \texttt{14.2.4.13} &
+   中文项目文字（待核对）\\
+   \texttt{14.2.4.12} &
+   中文项目文字（待核对）\\
+   \texttt{15.0.0.01} &
+   中文项目文字（待核对）\\
+   \texttt{15.0.0.02} &
+   中文项目文字（待核对）\\
+   \texttt{15.0.0.03} &
+   中文项目文字（待核对）\\
+   \texttt{15.0.0.04} &
+   中文项目文字（待核对）\\
+   \texttt{15.0.0.05} &
+   中文项目文字（待核对）\\
+   \texttt{15.0.0.06} &
+   中文项目文字（待核对）\\
+\end{tabular}
+
+\vfill
+
+% #VALUE_ID: LEX-P0026-V0001
+% #HANDWRITTEN: 7/16
+\handwritten{7/16}
+% LEXOID_PAGE_COMPLETED: 26/57
+
+\newpage
+
+\noindent
+% The page contains two rotated line charts; no source filename is available.
+\begin{center}
+\fbox{\parbox[c][0.28\textheight][c]{0.88\linewidth}{\centering
+\textit{上方折线图}\\
+% TODO: Transcribe the chart title, axes, legend, and plotted curves from the rotated image.
+}}
+\end{center}
+
+\vspace{1em}
+
+\begin{center}
+\fbox{\parbox[c][0.28\textheight][c]{0.88\linewidth}{\centering
+\textit{下方折线图}\\
+% TODO: Transcribe the chart title, axes, legend, and plotted curve from the rotated image.
+}}
+\end{center}
+
+\vspace{1em}
+
+\noindent
+审核：%
+% #VALUE_ID: LEX-P0027-V0001
+% #FIELD_VALUE: 审核
+% #TODO #HANDWRITTEN: [姓名不清]; 蓝色手写内容分辨率不足
+\fieldvalue{\handwritten{[姓名不清]}}
+\quad
+日期：%
+% #VALUE_ID: LEX-P0027-V0002
+% #FIELD_VALUE: 日期
+% #TODO #HANDWRITTEN: 2025.7.18?; 日期末位数字不清
+\fieldvalue{\handwritten{2025.7.18?}}
+
+\vfill
+
+% #VALUE_ID: LEX-P0027-V0003
+% #TODO #HANDWRITTEN: 1/6?; 页面左下角蓝色手写标记难以辨认
+\handwritten{1/6?}
+% LEXOID_PAGE_COMPLETED: 27/57
+
+\newpage
+
+% TODO: The page contains two vertically arranged chart panels. No source image filename was provided, so the chart artwork is represented by placeholders.
+
+\begin{figure}[ht]
+\centering
+\fbox{%
+  \begin{minipage}[c][0.38\textheight][c]{0.88\linewidth}
+  \centering
+  \textit{Chart image placeholder}\\[0.5em]
+  % TODO: Reproduce the upper chart, including the orange stepped line,
+  % pale-blue chart background, vertical scale markings, date labels
+  % (12/07/24, 13/07/24, and 15/07/24), and the orange legend marker.
+  \end{minipage}%
+}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\fbox{%
+  \begin{minipage}[c][0.38\textheight][c]{0.88\linewidth}
+  \centering
+  \textit{Chart image placeholder}\\[0.5em]
+  % TODO: Reproduce the lower chart, including the orange and green
+  % plotted lines, pale-blue chart background, vertical scale markings,
+  % date labels (12/07/24, 13/07/24, and 15/07/24), and the two-item legend.
+  \end{minipage}%
+}
+\end{figure}
+
+% #VALUE_ID: LEX-P0028-V0001
+% #TODO #HANDWRITTEN: 7/??; final characters are illegible
+\handwritten{7/??}
+% LEXOID_PAGE_COMPLETED: 28/57
+
+\newpage
+
+\begin{figure}[ht]
+\centering
+% TODO: Insert the upper chart visible on this page; no source filename was provided.
+\fbox{\parbox[c][0.38\textheight][c]{0.88\linewidth}{%
+\centering
+\textbf{溫度 (℃)}\\[0.5em]
+Temperature chart with a single plotted series labeled ``溫度''.
+}}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+% TODO: Insert the lower chart visible on this page; no source filename was provided.
+\fbox{\parbox[c][0.38\textheight][c]{0.88\linewidth}{%
+\centering
+\textbf{壓力 (kPa)}\\[0.5em]
+Pressure chart with four plotted series labeled ``區域 1'', ``區域 2'',
+``區域 3'', and ``區域 4''.
+}}
+\end{figure}
+
+% #VALUE_ID: LEX-P0029-V0001
+% #HANDWRITTEN: 3/14; final digit is unclear
+\noindent\handwritten{3/14}
+% LEXOID_PAGE_COMPLETED: 29/57
+
+\newpage
+
+\section{工艺记录}
+
+\begin{tabular}{@{}p{0.22\linewidth}p{0.27\linewidth}p{0.22\linewidth}p{0.27\linewidth}@{}}
+   工艺编号 &
+   % #VALUE_ID: LEX-P0030-V0001
+% #FIELD_VALUE: 工艺编号
+\hwfield{LEX-P0030-V0001}{\fieldvalue{Prod-4H-C002}} &
+   记录日期 &
+   % #VALUE_ID: LEX-P0030-V0002
+% #FIELD_VALUE: 记录日期
+\hwfield{LEX-P0030-V0002}{\fieldvalue{2024-09-25 09:20:04}}\\
+   开始时间 &
+   % #VALUE_ID: LEX-P0030-V0003
+% #FIELD_VALUE: 开始时间
+\hwfield{LEX-P0030-V0003}{\fieldvalue{2024-09-25 09:50:45}} &
+   版本 &
+   % #VALUE_ID: LEX-P0030-V0004
+% #FIELD_VALUE: 版本
+\hwfield{LEX-P0030-V0004}{\fieldvalue{V1.0}}\\
+   产品名称 &
+   % #VALUE_ID: LEX-P0030-V0005
+% #FIELD_VALUE: 产品名称
+\hwfield{LEX-P0030-V0005}{\fieldvalue{[无法辨认]}} &
+   规格型号 &
+   % #VALUE_ID: LEX-P0030-V0006
+% #FIELD_VALUE: 规格型号
+\hwfield{LEX-P0030-V0006}{\fieldvalue{[无法辨认]}}\\
+   工艺参数 &
+   % #VALUE_ID: LEX-P0030-V0007
+% #FIELD_VALUE: 工艺参数
+\hwfield{LEX-P0030-V0007}{\fieldvalue{[无法辨认]}} &
+   操作人员 &
+   % #VALUE_ID: LEX-P0030-V0008
+% #FIELD_VALUE: 操作人员
+\hwfield{LEX-P0030-V0008}{\fieldvalue{[无法辨认]}}\\
+\end{tabular}
+
+\vspace{1em}
+
+\subsection{原材料及用量}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.22\linewidth}p{0.28\linewidth}p{0.22\linewidth}@{}}
+   材料名称 &
+   用量 &
+   材料名称 &
+   用量\\
+  \hline
+   材料一 &
+   % #VALUE_ID: LEX-P0030-V0009
+% #FIELD_VALUE: 材料一用量
+\hwfield{LEX-P0030-V0009}{\fieldvalue{520.0\,mL}} &
+   材料二 &
+   % #VALUE_ID: LEX-P0030-V0010
+% #FIELD_VALUE: 材料二用量
+\hwfield{LEX-P0030-V0010}{\fieldvalue{50.0\,mL}}\\
+   材料三 &
+   % #VALUE_ID: LEX-P0030-V0011
+% #FIELD_VALUE: 材料三用量
+\hwfield{LEX-P0030-V0011}{\fieldvalue{50.0\,mL}} &
+   材料四 &
+   % #VALUE_ID: LEX-P0030-V0012
+% #FIELD_VALUE: 材料四用量
+\hwfield{LEX-P0030-V0012}{\fieldvalue{50.0\,mL}}\\
+   材料五 &
+   % #VALUE_ID: LEX-P0030-V0013
+% #FIELD_VALUE: 材料五用量
+\hwfield{LEX-P0030-V0013}{\fieldvalue{[无法辨认]}} &
+   材料六 &
+   % #VALUE_ID: LEX-P0030-V0014
+% #FIELD_VALUE: 材料六用量
+\hwfield{LEX-P0030-V0014}{\fieldvalue{110.0\,mL}}\\
+\end{tabular}
+
+\vspace{1em}
+
+\subsection{工艺过程记录}
+
+\begin{tabular}{@{}p{0.18\linewidth}p{0.32\linewidth}p{0.25\linewidth}p{0.25\linewidth}@{}}
+   时间 &
+   工序名称 &
+   工艺参数 &
+   备注\\
+  \hline
+   12:00:04 &
+   % #VALUE_ID: LEX-P0030-V0015
+% #FIELD_VALUE: 工序名称（12:00:04）
+\hwfield{LEX-P0030-V0015}{\fieldvalue{[无法辨认]}} &
+   % #VALUE_ID: LEX-P0030-V0016
+% #FIELD_VALUE: 工艺参数（12:00:04）
+\hwfield{LEX-P0030-V0016}{\fieldvalue{[无法辨认]}} &
+   % #VALUE_ID: LEX-P0030-V0017
+% #FIELD_VALUE: 备注（12:00:04）
+\hwfield{LEX-P0030-V0017}{\fieldvalue{[无]}}\\
+   12:01:04 &
+   % #VALUE_ID: LEX-P0030-V0018
+% #FIELD_VALUE: 工序名称（12:01:04）
+\hwfield{LEX-P0030-V0018}{\fieldvalue{[无法辨认]}} &
+   % #VALUE_ID: LEX-P0030-V0019
+% #FIELD_VALUE: 工艺参数（12:01:04）
+\hwfield{LEX-P0030-V0019}{\fieldvalue{[无法辨认]}} &
+   % #VALUE_ID: LEX-P0030-V0020
+% #FIELD_VALUE: 备注（12:01:04）
+\hwfield{LEX-P0030-V0020}{\fieldvalue{[无]}}\\
+   12:02:04 &
+   % #VALUE_ID: LEX-P0030-V0021
+% #FIELD_VALUE: 工序名称（12:02:04）
+\hwfield{LEX-P0030-V0021}{\fieldvalue{[无法辨认]}} &
+   % #VALUE_ID: LEX-P0030-V0022
+% #FIELD_VALUE: 工艺参数（12:02:04）
+\hwfield{LEX-P0030-V0022}{\fieldvalue{[无法辨认]}} &
+   % #VALUE_ID: LEX-P0030-V0023
+% #FIELD_VALUE: 备注（12:02:04）
+\hwfield{LEX-P0030-V0023}{\fieldvalue{[无]}}\\
+   12:03:04 &
+   % #VALUE_ID: LEX-P0030-V0024
+% #FIELD_VALUE: 工序名称（12:03:04）
+\hwfield{LEX-P0030-V0024}{\fieldvalue{[无法辨认]}} &
+   % #VALUE_ID: LEX-P0030-V0025
+% #FIELD_VALUE: 工艺参数（12:03:04）
+\hwfield{LEX-P0030-V0025}{\fieldvalue{[无法辨认]}} &
+   % #VALUE_ID: LEX-P0030-V0026
+% #FIELD_VALUE: 备注（12:03:04）
+\hwfield{LEX-P0030-V0026}{\fieldvalue{[无]}}\\
+   12:04:04 &
+   % #VALUE_ID: LEX-P0030-V0027
+% #FIELD_VALUE: 工序名称（12:04:04）
+\hwfield{LEX-P0030-V0027}{\fieldvalue{[无法辨认]}} &
+   % #VALUE_ID: LEX-P0030-V0028
+% #FIELD_VALUE: 工艺参数（12:04:04）
+\hwfield{LEX-P0030-V0028}{\fieldvalue{[无法辨认]}} &
+   % #VALUE_ID: LEX-P0030-V0029
+% #FIELD_VALUE: 备注（12:04:04）
+\hwfield{LEX-P0030-V0029}{\fieldvalue{[无]}}\\
+   12:05:04 &
+   % #VALUE_ID: LEX-P0030-V0030
+% #FIELD_VALUE: 工序名称（12:05:04）
+\hwfield{LEX-P0030-V0030}{\fieldvalue{[无法辨认]}} &
+   % #VALUE_ID: LEX-P0030-V0031
+% #FIELD_VALUE: 工艺参数（12:05:04）
+\hwfield{LEX-P0030-V0031}{\fieldvalue{[无法辨认]}} &
+   % #VALUE_ID: LEX-P0030-V0032
+% #FIELD_VALUE: 备注（12:05:04）
+\hwfield{LEX-P0030-V0032}{\fieldvalue{[无]}}\\
+\end{tabular}
+
+\vspace{1em}
+
+% TODO: 页面中的其余工艺记录行在扫描图中分辨率不足，无法可靠辨认。
+
+\subsection{签字及补充记录}
+
+% #VALUE_ID: LEX-P0030-V0033
+% #FIELD_VALUE: 手写补充记录
+% TODO #HANDWRITTEN: “112? / 高? / 3?45?5”; 蓝色手写文字分辨率不足
+\fieldvalue{\handwritten{112? / 高? / 3?45?5}}
+
+% #VALUE_ID: LEX-P0030-V0034
+% #HANDWRITTEN: “%??”; 蓝色签名分辨率不足
+\handwritten{\%??}
+% LEXOID_PAGE_COMPLETED: 30/57
+
+\newpage
+
+% The source page is scanned with the tabular content rotated relative to the page.
+\small
+\begin{tabular}{p{0.18\linewidth}p{0.72\linewidth}}
+   1254501 &
+   氯化钠注射液 0.9\%，250\,ml，1 瓶\\
+   1254502 &
+   氯化钠注射液 0.9\%，100\,ml，1 瓶\\
+   1254503 &
+   葡萄糖注射液 5\%，250\,ml，1 瓶\\
+   1254504 &
+   葡萄糖注射液 10\%，250\,ml，1 瓶\\
+   1254505 &
+   氯化钾注射液 10\,ml：1\,g，1 支\\
+   1254506 &
+   维生素 C 注射液 2\,ml：0.5\,g，1 支\\
+   1254507 &
+   维生素 B$_6$ 注射液 2\,ml：0.1\,g，1 支\\
+   1254508 &
+   地塞米松磷酸钠注射液 1\,ml：5\,mg，1 支\\
+   1254509 &
+   呋塞米注射液 2\,ml：20\,mg，1 支\\
+   1254510 &
+   盐酸甲氧氯普胺注射液 1\,ml：10\,mg，1 支\\
+   1254511 &
+   肌苷注射液 2\,ml：0.1\,g，1 支\\
+   1254512 &
+   注射用青霉素钠，80 万单位，1 支\\
+   1254513 &
+   注射用头孢唑林钠，0.5\,g，1 支\\
+   1254514 &
+   注射用头孢曲松钠，1\,g，1 支\\
+   1254515 &
+   注射用头孢呋辛钠，0.75\,g，1 支\\
+   1254516 &
+   注射用阿莫西林钠，0.5\,g，1 支\\
+   1254517 &
+   注射用乳糖酸红霉素，0.25\,g，1 支\\
+   1254518 &
+   硫酸庆大霉素注射液 2\,ml：80\,000 单位，1 支\\
+   1254519 &
+   盐酸左氧氟沙星注射液 100\,ml：0.2\,g，1 瓶\\
+   1254520 &
+   甲硝唑氯化钠注射液 100\,ml，1 瓶\\
+   1254521 &
+   复方氨基酸注射液，250\,ml，1 瓶\\
+   1254522 &
+   脂肪乳注射液，250\,ml，1 瓶\\
+\end{tabular}
+
+\vspace{1em}
+
+\begin{tabular}{p{0.18\linewidth}p{0.72\linewidth}}
+   125? &
+   注射用头孢哌酮钠舒巴坦钠，1.5\,g，1 支\\
+   125? &
+   注射用头孢他啶，1\,g，1 支\\
+   125? &
+   注射用头孢噻肟钠，1\,g，1 支\\
+   125? &
+   注射用头孢西丁钠，1\,g，1 支\\
+   125? &
+   注射用氨苄西林钠，0.5\,g，1 支\\
+   125? &
+   注射用美洛西林钠，1\,g，1 支\\
+   125? &
+   注射用哌拉西林钠，1\,g，1 支\\
+   125? &
+   注射用盐酸万古霉素，0.5\,g，1 支\\
+   125? &
+   盐酸克林霉素注射液 2\,ml：0.3\,g，1 支\\
+   125? &
+   硫酸阿米卡星注射液 2\,ml：0.2\,g，1 支\\
+   125? &
+   氟康唑氯化钠注射液 100\,ml：0.2\,g，1 瓶\\
+   125? &
+   阿昔洛韦注射液，0.25\,g，1 支\\
+   125? &
+   甘露醇注射液 250\,ml：50\,g，1 瓶\\
+   125? &
+   复方电解质注射液，500\,ml，1 瓶\\
+   125? &
+   右旋糖酐 40 葡萄糖注射液，500\,ml，1 瓶\\
+   125? &
+   乳酸钠林格注射液，500\,ml，1 瓶\\
+   125? &
+   复方氯化钠注射液，500\,ml，1 瓶\\
+   125? &
+   维生素 B$_1$ 注射液 2\,ml：50\,mg，1 支\\
+   125? &
+   盐酸异丙嗪注射液 1\,ml：25\,mg，1 支\\
+   125? &
+   盐酸山莨菪碱注射液 1\,ml：10\,mg，1 支\\
+   125? &
+   盐酸消旋山莨菪碱注射液 1\,ml：10\,mg，1 支\\
+   125? &
+   注射用水，2\,ml，1 支\\
+\end{tabular}
+
+% TODO: The printed item codes and several medicine names are too small to read
+% reliably in the supplied page image; verify against the original PDF.
+% #VALUE_ID: LEX-P0031-V0001
+% #TODO #HANDWRITTEN: 19/4?; blue handwritten notation is partially illegible.
+\handwritten{19/4?}
+% LEXOID_PAGE_COMPLETED: 31/57
+
+\newpage
+
+% TODO: The page is a sideways scan containing two dense Chinese tabular/list sections.
+% The source text is too small and blurred for a reliable complete transcription.
+\rotatebox{90}{%
+\begin{minipage}{0.96\textheight}
+\scriptsize
+\noindent
+\begin{minipage}[t]{0.47\linewidth}
+\textbf{药品编码及名称、规格、数量（左栏）}
+
+\begin{tabular}{p{0.22\linewidth}p{0.72\linewidth}}
+   1535790 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535791 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535792 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535793 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535794 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535795 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535796 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535797 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535798 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535799 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535800 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535801 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535802 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535803 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535804 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535805 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535806 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535807 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535808 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535809 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535810 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535811 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535812 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535813 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535814 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535815 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535816 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1535817 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+\end{tabular}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.47\linewidth}
+\textbf{药品编码及名称、规格、数量（右栏）}
+
+\begin{tabular}{p{0.22\linewidth}p{0.72\linewidth}}
+   1537709 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537710 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537711 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537712 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537713 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537714 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537715 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537716 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537717 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537718 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537719 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537720 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537721 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537722 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537723 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537724 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537725 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537726 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537727 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537728 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537729 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537730 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537731 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537732 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537733 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537734 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537735 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+1537736 &
+   {}\\
+   % TODO: Chinese item description is illegible in the supplied scan.\\
+\end{tabular}
+\end{minipage}
+
+\vfill
+
+% #VALUE_ID: LEX-P0032-V0001
+% #TODO #HANDWRITTEN: illegible handwritten notation; the blue mark at the lower margin is too blurred to read.
+\handwritten{[illegible handwritten notation]}
+
+\end{minipage}%
+}
+% LEXOID_PAGE_COMPLETED: 32/57
+
+\newpage
+
+% TODO: This page is a sideways, low-resolution scan containing two dense printed lists/tables.
+% TODO: The printed identifiers and accompanying text are not sufficiently legible to transcribe
+% TODO: reliably from the provided image. The visible layout consists of an upper list and a
+% TODO: lower list, each with a narrow identifier column and several accompanying text columns.
+
+\begin{center}
+\begin{tabular}{p{0.18\linewidth}p{0.72\linewidth}}
+   \textit{Upper printed list} &
+   \textit{[Printed entries visible but illegible in the supplied scan.]}\\[1ex]
+   \textit{Lower printed list} &
+   \textit{[Printed entries visible but illegible in the supplied scan.]}
+\end{tabular}
+\end{center}
+
+% #VALUE_ID: LEX-P0033-V0001
+% #HANDWRITTEN: 12/4/
+\handwritten{12/4/}
+% LEXOID_PAGE_COMPLETED: 33/57
+
+\newpage
+
+% TODO: The page content is a rotated, low-resolution Chinese tabular/listing page. The individual item numbers and descriptions are not reliably legible at the supplied resolution; no text has been fabricated.
+
+\begin{center}
+\textit{[Rotated Chinese item listing; transcription requires a higher-resolution page image]}
+\end{center}
+
+% #VALUE_ID: LEX-P0034-V0001
+% #HANDWRITTEN: 13/??; final digits illegible
+\handwritten{13/??}
+% LEXOID_PAGE_COMPLETED: 34/57
+
+\newpage
+
+% TODO: The page is largely blank and contains a rotated two-panel graph. No source
+% filename is available for the graph image; insert the original graph here.
+\begin{center}
+\fbox{\parbox[c][0.42\textheight][c]{0.72\linewidth}{\centering
+\textit{TODO: insert the visible two-panel graph from this page}\\[1ex]
+\small The graph contains colored line plots, axes, legends, and date/time
+tick marks.}}
+\end{center}
+
+% The following handwritten annotations appear beside the graph/form area.
+% TODO: The surrounding printed field labels are partially illegible due to the
+% page rotation and scan quality.
+
+% #VALUE_ID: LEX-P0035-V0001
+% #FIELD_VALUE: date/time annotation
+% TODO #HANDWRITTEN: illegible; blue handwriting is too small and rotated
+\fieldvalue{\handwritten{illegible}}
+
+% #VALUE_ID: LEX-P0035-V0002
+% #FIELD_VALUE: date/time annotation
+% TODO #HANDWRITTEN: illegible; blue handwriting is too small and rotated
+\fieldvalue{\handwritten{illegible}}
+
+% #VALUE_ID: LEX-P0035-V0003
+% #FIELD_VALUE: date annotation
+% #TODO #HANDWRITTEN: 5/25日; partially legible blue handwriting
+\fieldvalue{\handwritten{5/25日}}
+
+% #VALUE_ID: LEX-P0035-V0004
+% #HANDWRITTEN: 10/4
+\handwritten{10/4}
+% LEXOID_PAGE_COMPLETED: 35/57
+
+\newpage
+
+\begin{figure}[ht]
+\centering
+\fbox{\parbox[c][0.36\textheight][c]{0.92\linewidth}{%
+\centering
+% TODO: Insert the upper chart from the source PDF; no image filename is available.
+\textbf{腔压力 (g)}\\[0.5em]
+纵轴刻度：$0,\ 88,\ 176,\ 264,\ 352,\ 440$\\
+横轴时间：12/07/12,\ 13:37:12,\ 15:07:12\\
+图例：腔压力
+}}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\fbox{\parbox[c][0.36\textheight][c]{0.92\linewidth}{%
+\centering
+% TODO: Insert the lower chart from the source PDF; no image filename is available.
+\textbf{流量 (mL/min)}\\[0.5em]
+纵轴刻度：$0,\ 66,\ 132,\ 198,\ 264,\ 330$\\
+横轴时间：12/07/12,\ 13:37:12,\ 15:07:12\\
+图例：流量1，流量2
+}}
+\end{figure}
+
+% #VALUE_ID: LEX-P0036-V0001
+% #TODO #HANDWRITTEN: 1/4; blue handwritten notation in the lower margin is partially unclear
+\handwritten{1/4}
+% LEXOID_PAGE_COMPLETED: 36/57
+
+\newpage
+
+\begin{figure}[ht]
+\centering
+\fbox{%
+\begin{minipage}{0.88\linewidth}
+\centering
+% TODO: Insert the visible temperature graph from this page.
+\textbf{温度 (°C)}
+
+\vspace{0.5em}
+\begin{tabular}{c@{\qquad}c}
+   Vertical axis ticks: $-10,\ 0,\ 10,\ 20,\ 30,\ 40$ &
+   Legend: \textcolor{orange}{温度}
+\end{tabular}
+
+\vspace{0.5em}
+Horizontal axis: 12:07:12 \qquad 13:37:12 \qquad 15:07:12
+
+\vspace{0.5em}
+Visible curve: temperature rises sharply, drops to approximately $0$, rises again, then gradually declines and levels off.
+\end{minipage}}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\fbox{%
+\begin{minipage}{0.88\linewidth}
+\centering
+% TODO: Insert the visible pressure graph from this page.
+\textbf{压力 (kPa)}
+
+\vspace{0.5em}
+\begin{tabular}{c@{\qquad}c}
+   Vertical axis ticks: $-150,\ 0,\ 150,\ 260,\ 380,\ 520$ &
+   Legend: 压力1 \quad 压力2 \quad 压力3 \quad 压力4
+\end{tabular}
+
+\vspace{0.5em}
+Horizontal axis: 12:07:12 \qquad 13:37:12 \qquad 15:07:12
+
+\vspace{0.5em}
+Visible plot: multiple colored pressure traces with repeated sharp oscillations and a later gradual return toward baseline.
+\end{minipage}}
+\end{figure}
+
+% #VALUE_ID: LEX-P0037-V0001
+% #TODO #HANDWRITTEN: 16/6; faint blue handwritten annotation
+% #HANDWRITTEN: 16/6
+\handwritten{16/6}
+% LEXOID_PAGE_COMPLETED: 37/57
+
+\newpage
+
+\begin{center}
+\textbf{工程记录}
+\end{center}
+
+\noindent
+\begin{tabular}{@{}p{0.46\linewidth}p{0.46\linewidth}@{}}
+   \textbf{工程信息} &
+   \textbf{工程量信息}\\[2pt]
+   \begin{tabular}[t]{@{}p{0.34\linewidth}p{0.56\linewidth}@{}}
+   工程编号 &
+   C002\\
+   导出日期 &
+   2020-05-25 15:05:54\\
+   日期 &
+   2020-05-25 15:05:54\\
+   版本 &
+   V1.8\\
+\end{tabular} &
+   \begin{tabular}[t]{@{}p{0.34\linewidth}p{0.56\linewidth}@{}}
+   工程量 &
+   4807.2\,mL\\
+   工程量 &
+   4960\,mL\\
+   工程量 &
+   1685\,mL\\
+   工程量 &
+   509\,mL\\
+   工程量 &
+   1013.0\,mL\\
+\end{tabular}
+\end{tabular}
+
+\vspace{1em}
+
+\noindent
+\begin{tabular}{@{}p{0.46\linewidth}p{0.46\linewidth}@{}}
+   \textbf{工程基本信息} &
+   \textbf{测量记录}\\[2pt]
+   \begin{tabular}[t]{@{}p{0.34\linewidth}p{0.56\linewidth}@{}}
+   工程名称 &
+  \\
+   施工单位 &
+  \\
+   监理单位 &
+  \\
+   设计单位 &
+  \\
+   建设单位 &
+  \\
+   工程地点 &
+  \\
+\end{tabular} &
+   \begin{tabular}[t]{@{}p{0.34\linewidth}p{0.56\linewidth}@{}}
+   测量日期 &
+   2020-05-25\\
+   测量人员 &
+  \\
+   测量范围 &
+  \\
+   备注 &
+  \\
+\end{tabular}
+\end{tabular}
+
+\vspace{1em}
+
+\noindent
+\textbf{记录数据}
+
+\begin{tabular}{@{}p{0.18\linewidth}p{0.20\linewidth}p{0.18\linewidth}p{0.20\linewidth}@{}}
+   编号 &
+   记录值 &
+   编号 &
+   记录值\\
+  \hline
+   1227/03 &
+   &
+   1227/04 &
+  \\
+   1227/05 &
+   &
+   1227/06 &
+  \\
+   1227/07 &
+   &
+   1227/08 &
+  \\
+   1227/09 &
+   &
+   1227/10 &
+  \\
+   1227/11 &
+   &
+   1227/12 &
+  \\
+   1227/13 &
+   &
+   1227/14 &
+  \\
+   1227/15 &
+   &
+   1227/16 &
+  \\
+   1227/17 &
+   &
+   1227/18 &
+  \\
+   1227/19 &
+   &
+   1227/20 &
+  \\
+   1227/21 &
+   &
+   1227/22 &
+  \\
+\end{tabular}
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0038-V0001
+% #TODO #HANDWRITTEN: 11.06米; handwriting is partially unclear
+\handwritten{11.06米}
+
+% #VALUE_ID: LEX-P0038-V0002
+% #TODO #HANDWRITTEN: 全深度; handwriting is partially unclear
+\handwritten{全深度}
+
+% #VALUE_ID: LEX-P0038-V0003
+% #HANDWRITTEN: 2006.8.25
+\handwritten{2006.8.25}
+
+\vfill
+
+% #VALUE_ID: LEX-P0038-V0004
+% #HANDWRITTEN: 17/4
+\handwritten{17/4}
+
+% TODO: The source page is scanned sideways and several small Chinese labels and
+% tabular values are too low-resolution to transcribe reliably.
+% LEXOID_PAGE_COMPLETED: 38/57
+
+\newpage
+
+% TODO: The page is scanned sideways and the catalog text is too small/low-resolution
+% to transcribe reliably. The visible content consists of two dense catalog tables.
+% TODO: Rotate the source page counterclockwise for normal reading orientation.
+
+\begin{center}
+\scriptsize
+\begin{tabular}{p{0.18\linewidth}p{0.72\linewidth}}
+   \textbf{Item code} &
+   \textbf{Catalog description}\\
+  \hline
+   1254280 &
+   \textit{[catalog text illegible]}\\
+   1254290 &
+   \textit{[catalog text illegible]}\\
+   1254300 &
+   \textit{[catalog text illegible]}\\
+   1254310 &
+   \textit{[catalog text illegible]}\\
+   1254320 &
+   \textit{[catalog text illegible]}\\
+   1254330 &
+   \textit{[catalog text illegible]}\\
+   1254340 &
+   \textit{[catalog text illegible]}\\
+   1254350 &
+   \textit{[catalog text illegible]}\\
+   1254360 &
+   \textit{[catalog text illegible]}\\
+   1254370 &
+   \textit{[catalog text illegible]}\\
+   1254380 &
+   \textit{[catalog text illegible]}\\
+   1254390 &
+   \textit{[catalog text illegible]}\\
+   1254400 &
+   \textit{[catalog text illegible]}\\
+   1254410 &
+   \textit{[catalog text illegible]}\\
+   1254420 &
+   \textit{[catalog text illegible]}\\
+   1254430 &
+   \textit{[catalog text illegible]}\\
+   1254440 &
+   \textit{[catalog text illegible]}\\
+   1254450 &
+   \textit{[catalog text illegible]}\\
+   1254460 &
+   \textit{[catalog text illegible]}\\
+   1254470 &
+   \textit{[catalog text illegible]}\\
+   1254480 &
+   \textit{[catalog text illegible]}\\
+  \hline
+\end{tabular}
+
+\vspace{1em}
+
+\begin{tabular}{p{0.18\linewidth}p{0.72\linewidth}}
+   \textbf{Item code} &
+   \textbf{Catalog description}\\
+  \hline
+   1524241 &
+   \textit{[catalog text illegible]}\\
+   1524242 &
+   \textit{[catalog text illegible]}\\
+   1524243 &
+   \textit{[catalog text illegible]}\\
+   1524244 &
+   \textit{[catalog text illegible]}\\
+   1524245 &
+   \textit{[catalog text illegible]}\\
+   1524246 &
+   \textit{[catalog text illegible]}\\
+   1524247 &
+   \textit{[catalog text illegible]}\\
+   1524248 &
+   \textit{[catalog text illegible]}\\
+   1524249 &
+   \textit{[catalog text illegible]}\\
+   1524250 &
+   \textit{[catalog text illegible]}\\
+   1524251 &
+   \textit{[catalog text illegible]}\\
+   1524252 &
+   \textit{[catalog text illegible]}\\
+   1524253 &
+   \textit{[catalog text illegible]}\\
+   1524254 &
+   \textit{[catalog text illegible]}\\
+   1524255 &
+   \textit{[catalog text illegible]}\\
+   1524256 &
+   \textit{[catalog text illegible]}\\
+   1524257 &
+   \textit{[catalog text illegible]}\\
+   1524258 &
+   \textit{[catalog text illegible]}\\
+   1524259 &
+   \textit{[catalog text illegible]}\\
+   1524260 &
+   \textit{[catalog text illegible]}\\
+   1524261 &
+   \textit{[catalog text illegible]}\\
+   1524262 &
+   \textit{[catalog text illegible]}\\
+   1524263 &
+   \textit{[catalog text illegible]}\\
+   1524264 &
+   \textit{[catalog text illegible]}\\
+   1524265 &
+   \textit{[catalog text illegible]}\\
+  \hline
+\end{tabular}
+\end{center}
+
+% TODO #HANDWRITTEN: 4006; blue handwritten notation is rotated and partially unclear
+% #VALUE_ID: LEX-P0039-V0001
+\handwritten{4006}
+% LEXOID_PAGE_COMPLETED: 39/57
+
+\newpage
+
+% The page contains two densely printed, vertically oriented tabular blocks.
+% The supplied raster resolution is insufficient to transcribe the individual
+% row identifiers and descriptions reliably.
+\begin{center}
+\textit{[Dense vertically oriented tabular content visible in the upper portion of the page.]}
+
+\vspace{4cm}
+
+\textit{[Dense vertically oriented tabular content visible in the lower portion of the page.]}
+\end{center}
+
+% TODO: Transcribe the individual entries from a higher-resolution rendering of
+% physical PDF page 40; the text is too small and blurred in the supplied image.
+
+% #VALUE_ID: LEX-P0040-V0001
+% #HANDWRITTEN: 1764
+\handwritten{1764}
+% LEXOID_PAGE_COMPLETED: 40/57
+
+\newpage
+
+% TODO: The printed text on this page is rotated and too low-resolution for reliable transcription.
+% TODO: The page appears to contain two continuation sections of a tabular medication/item listing,
+% TODO: with item codes in the left column and Chinese descriptions/specifications in the right column.
+\rotatebox{90}{%
+\begin{minipage}{0.92\textheight}
+\small
+\begin{tabular}{p{0.18\linewidth}p{0.68\linewidth}}
+   \textbf{项目代码} &
+   \textbf{项目名称及规格}\\[2pt]
+  \multicolumn{2}{l}{ \textit{（本页上半部分；内容为续表）}}\\
+  \multicolumn{2}{l}{ \text{[打印内容过小，无法可靠辨识]}}\\
+\end{tabular}
+
+\vspace{1em}
+
+\begin{tabular}{p{0.18\linewidth}p{0.68\linewidth}}
+   \textbf{项目代码} &
+   \textbf{项目名称及规格}\\[2pt]
+  \multicolumn{2}{l}{ \textit{（本页下半部分；内容为续表）}}\\
+  \multicolumn{2}{l}{ \text{[打印内容过小，无法可靠辨识]}}\\
+\end{tabular}
+\end{minipage}%
+}
+
+\vfill
+
+% #VALUE_ID: LEX-P0041-V0001
+% #HANDWRITTEN: [日期；具体数字及字迹不清]
+\handwritten{[日期；具体数字及字迹不清]}
+
+% #VALUE_ID: LEX-P0041-V0002
+% #HANDWRITTEN: [签名或备注；字迹不清]
+\handwritten{[签名或备注；字迹不清]}
+% LEXOID_PAGE_COMPLETED: 41/57
+
+\newpage
+
+% TODO: This page is a rotated, low-resolution two-column Chinese item list. The printed item codes and descriptions are not sufficiently legible for reliable transcription.
+\begin{center}
+\begin{tabular}{p{0.44\linewidth}@{\hspace{0.08\linewidth}}p{0.44\linewidth}}
+   \textit{[Rotated printed item list; transcription required]} &
+   \textit{[Rotated printed item list; transcription required]}
+\end{tabular}
+\end{center}
+
+% #VALUE_ID: LEX-P0042-V0001
+% #HANDWRITTEN: 2/14
+\handwritten{2/14}
+% LEXOID_PAGE_COMPLETED: 42/57
+
+\newpage
+
+\begin{center}
+\textbf{（实验记录）}
+\end{center}
+
+\noindent
+\textbf{姓名：}
+% #VALUE_ID: LEX-P0043-V0001
+% #FIELD_VALUE: 姓名
+% #HANDWRITTEN: （姓名，字迹不清）
+\fieldvalue{\handwritten{（姓名，字迹不清）}}
+
+\medskip
+
+\noindent
+\textbf{日期：}
+% #VALUE_ID: LEX-P0043-V0002
+% #FIELD_VALUE: 日期
+% #HANDWRITTEN: 2024年05月21日
+\fieldvalue{\handwritten{2024年05月21日}}
+
+\medskip
+
+% TODO: The page contains two adjacent colored line graphs. The graph labels and
+% legends are small and partially illegible in the supplied scan; reproduce the
+% visible graph as an image if an asset becomes available.
+\begin{figure}[ht]
+\centering
+\fbox{\parbox[c][0.48\textheight][c]{0.92\linewidth}{\centering
+\textit{图表区域}\\[1ex]
+\small 两个相邻的彩色折线图（原页图表）
+}}
+\caption{实验数据曲线图}
+\end{figure}
+
+% TODO: A small handwritten blue notation appears near the lower edge of the page.
+% #VALUE_ID: LEX-P0043-V0003
+% #HANDWRITTEN: 7/4
+\handwritten{7/4}
+% LEXOID_PAGE_COMPLETED: 43/57
+
+\newpage
+
+\begin{figure}[ht]
+\centering
+\fbox{%
+  \begin{minipage}[c][0.43\textheight][c]{0.88\linewidth}
+    \centering
+    \textbf{蒸汽压力}\\[1ex]
+    \textit{图表区域：橙色趋势线}\\[1ex]
+    \small
+    纵轴刻度：0,\ 85,\ 170,\ 255,\ 340,\ 425\\
+    横轴时间标记：17:22:56,\ 15:52:56,\ 15:22:56\\
+    图例：阀门1
+  \end{minipage}%
+}
+\caption{蒸汽压力趋势图}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\fbox{%
+  \begin{minipage}[c][0.43\textheight][c]{0.88\linewidth}
+    \centering
+    \textbf{流量 (mL/min)}\\[1ex]
+    \textit{图表区域：橙色和绿色趋势线}\\[1ex]
+    \small
+    纵轴刻度：0,\ 66,\ 132,\ 198,\ 264,\ 330\\
+    横轴时间标记：17:22:56,\ 15:52:56,\ 15:22:56\\
+    图例：通道1；通道2
+  \end{minipage}%
+}
+\caption{流量趋势图}
+\end{figure}
+
+% TODO: The two chart graphics are visible on this page, but no source image filename is available for direct inclusion.
+
+% #VALUE_ID: LEX-P0044-V0001
+% #TODO #HANDWRITTEN: 3/24; handwritten mark is partially illegible
+\handwritten{3/24}
+% LEXOID_PAGE_COMPLETED: 44/57
+
+\newpage
+
+\begin{figure}[ht]
+\centering
+% TODO: Reproduce or insert the visible temperature chart; no source filename is available.
+\fbox{\parbox{0.92\linewidth}{\centering
+\textbf{温度（\textdegree C）}\\[0.5em]
+温度随时间变化曲线\\[0.5em]
+纵轴刻度：$-10,\ 0,\ 10,\ 20,\ 30,\ 40$；横轴时间标记约为
+12:25:26、13:25:26、15:25:26。\\
+图例：温度
+}}
+\caption{温度曲线}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+% TODO: Reproduce or insert the visible pressure chart; no source filename is available.
+\fbox{\parbox{0.92\linewidth}{\centering
+\textbf{压力（kPa）}\\[0.5em]
+多通道压力随时间变化曲线\\[0.5em]
+纵轴刻度：$-110,\ 0,\ 110,\ 220,\ 330,\ 440$；横轴时间标记约为
+12:25:26、13:25:26、15:25:26。\\
+图例：压力1、压力2、压力3、压力4
+}}
+\caption{压力曲线}
+\end{figure}
+
+% #VALUE_ID: LEX-P0045-V0001
+% #TODO #HANDWRITTEN: 疑似“审核”; 字迹位于页面左下方，无法完全辨认
+\handwritten{审核}
+
+% #VALUE_ID: LEX-P0045-V0002
+% #TODO #HANDWRITTEN: 疑似“11/14”; 蓝色手写日期，部分笔画不清
+\handwritten{11/14}
+
+% #VALUE_ID: LEX-P0045-V0003
+% #TODO #HANDWRITTEN: 疑似“7/06/23”; 蓝色手写日期，部分数字不清
+\handwritten{7/06/23}
+% LEXOID_PAGE_COMPLETED: 45/57
+
+\newpage
+
+\begin{center}
+\textbf{蒸汽灭菌器使用记录}
+\end{center}
+
+\noindent
+\textbf{文档编号：} RP-D-2026-0151\qquad
+\textbf{文件编号：} REC-YK-SOP-PD-0145-01\qquad
+\textbf{版本号：} 2.0
+
+% TODO：页面顶部有一段蓝色手写备注，部分字迹无法可靠辨认。
+% #VALUE_ID: LEX-P0046-V0001
+% #HANDWRITTEN: （手写备注，字迹不清）
+\handwritten{（手写备注，字迹不清）}
+
+\vspace{0.5em}
+
+\begin{center}
+\small
+\begin{tabular}{|p{1.7cm}|p{1.65cm}|p{1.65cm}|p{1.65cm}|p{2.5cm}|p{1.7cm}|p{1.7cm}|p{1.7cm}|}
+  \hline
+   日期 &
+   灭菌时间 &
+   灭菌温度 &
+   灭菌压力 &
+   监测结果 &
+   监测人 &
+   复核人 &
+   备注\\
+  \hline
+   % #VALUE_ID: LEX-P0046-V0002
+% #FIELD_VALUE: 日期
+\hwfield{LEX-P0046-V0002}{\fieldvalue{\handwritten{2025.9.26}}} &
+   % #VALUE_ID: LEX-P0046-V0003
+% #FIELD_VALUE: 灭菌时间
+\hwfield{LEX-P0046-V0003}{\fieldvalue{\handwritten{11:00}}} &
+   % #VALUE_ID: LEX-P0046-V0004
+% #FIELD_VALUE: 灭菌温度
+\hwfield{LEX-P0046-V0004}{\fieldvalue{\handwritten{134.6}}} &
+   % #VALUE_ID: LEX-P0046-V0005
+% #FIELD_VALUE: 灭菌压力
+\hwfield{LEX-P0046-V0005}{\fieldvalue{\handwritten{0.21}}} &
+   合格\ %
+% #VALUE_ID: LEX-P0046-V0006
+% #FIELD_VALUE: 合格
+% #HANDWRITTEN: 已勾选
+\hwfield{LEX-P0046-V0006}{\fieldvalue{\handwritten{\checkboxfield{checked}}}}
+\quad 不合格\ %
+% #VALUE_ID: LEX-P0046-V0007
+% #FIELD_VALUE: 不合格
+\hwfield{LEX-P0046-V0007}{\fieldvalue{\checkboxfield{unchecked}}} &
+   % #VALUE_ID: LEX-P0046-V0008
+% #FIELD_VALUE: 监测人
+\hwfield{LEX-P0046-V0008}{\fieldvalue{\handwritten{王娟}}} &
+   % #VALUE_ID: LEX-P0046-V0009
+% #FIELD_VALUE: 复核人
+\hwfield{LEX-P0046-V0009}{\fieldvalue{\handwritten{李小明}}} &
+   % #VALUE_ID: LEX-P0046-V0010
+% #FIELD_VALUE: 备注
+\hwfield{LEX-P0046-V0010}{\fieldvalue{\handwritten{--}}}\\
+  \hline
+   % #VALUE_ID: LEX-P0046-V0011
+% #FIELD_VALUE: 日期
+\hwfield{LEX-P0046-V0011}{\fieldvalue{\handwritten{2025.9.27}}} &
+   % #VALUE_ID: LEX-P0046-V0012
+% #FIELD_VALUE: 灭菌时间
+\hwfield{LEX-P0046-V0012}{\fieldvalue{\handwritten{11:00}}} &
+   % #VALUE_ID: LEX-P0046-V0013
+% #FIELD_VALUE: 灭菌温度
+\hwfield{LEX-P0046-V0013}{\fieldvalue{\handwritten{134.6}}} &
+   % #VALUE_ID: LEX-P0046-V0014
+% #FIELD_VALUE: 灭菌压力
+\hwfield{LEX-P0046-V0014}{\fieldvalue{\handwritten{0.21}}} &
+   合格\ %
+% #VALUE_ID: LEX-P0046-V0015
+% #FIELD_VALUE: 合格
+% #HANDWRITTEN: 已勾选
+\hwfield{LEX-P0046-V0015}{\fieldvalue{\handwritten{\checkboxfield{checked}}}}
+\quad 不合格\ %
+% #VALUE_ID: LEX-P0046-V0016
+% #FIELD_VALUE: 不合格
+\hwfield{LEX-P0046-V0016}{\fieldvalue{\checkboxfield{unchecked}}} &
+   % #VALUE_ID: LEX-P0046-V0017
+% #FIELD_VALUE: 监测人
+\hwfield{LEX-P0046-V0017}{\fieldvalue{\handwritten{王娟}}} &
+   % #VALUE_ID: LEX-P0046-V0018
+% #FIELD_VALUE: 复核人
+\hwfield{LEX-P0046-V0018}{\fieldvalue{\handwritten{李小明}}} &
+   % #VALUE_ID: LEX-P0046-V0019
+% #FIELD_VALUE: 备注
+\hwfield{LEX-P0046-V0019}{\fieldvalue{\handwritten{--}}}\\
+  \hline
+   % #VALUE_ID: LEX-P0046-V0020
+% #FIELD_VALUE: 日期
+\hwfield{LEX-P0046-V0020}{\fieldvalue{\handwritten{2025.9.28}}} &
+   % #VALUE_ID: LEX-P0046-V0021
+% #FIELD_VALUE: 灭菌时间
+\hwfield{LEX-P0046-V0021}{\fieldvalue{\handwritten{11:00}}} &
+   % #VALUE_ID: LEX-P0046-V0022
+% #FIELD_VALUE: 灭菌温度
+\hwfield{LEX-P0046-V0022}{\fieldvalue{\handwritten{134.6}}} &
+   % #VALUE_ID: LEX-P0046-V0023
+% #FIELD_VALUE: 灭菌压力
+\hwfield{LEX-P0046-V0023}{\fieldvalue{\handwritten{0.21}}} &
+   合格\ %
+% #VALUE_ID: LEX-P0046-V0024
+% #FIELD_VALUE: 合格
+% #HANDWRITTEN: 已勾选
+\hwfield{LEX-P0046-V0024}{\fieldvalue{\handwritten{\checkboxfield{checked}}}}
+\quad 不合格\ %
+% #VALUE_ID: LEX-P0046-V0025
+% #FIELD_VALUE: 不合格
+\hwfield{LEX-P0046-V0025}{\fieldvalue{\checkboxfield{unchecked}}} &
+   % #VALUE_ID: LEX-P0046-V0026
+% #FIELD_VALUE: 监测人
+\hwfield{LEX-P0046-V0026}{\fieldvalue{\handwritten{王娟}}} &
+   % #VALUE_ID: LEX-P0046-V0027
+% #FIELD_VALUE: 复核人
+\hwfield{LEX-P0046-V0027}{\fieldvalue{\handwritten{李小明}}} &
+   % #VALUE_ID: LEX-P0046-V0028
+% #FIELD_VALUE: 备注
+\hwfield{LEX-P0046-V0028}{\fieldvalue{\handwritten{--}}}\\
+  \hline
+   % #VALUE_ID: LEX-P0046-V0029
+% #FIELD_VALUE: 日期
+\hwfield{LEX-P0046-V0029}{\fieldvalue{\handwritten{2025.9.29}}} &
+   % #VALUE_ID: LEX-P0046-V0030
+% #FIELD_VALUE: 灭菌时间
+\hwfield{LEX-P0046-V0030}{\fieldvalue{\handwritten{11:00}}} &
+   % #VALUE_ID: LEX-P0046-V0031
+% #FIELD_VALUE: 灭菌温度
+\hwfield{LEX-P0046-V0031}{\fieldvalue{\handwritten{134.6}}} &
+   % #VALUE_ID: LEX-P0046-V0032
+% #FIELD_VALUE: 灭菌压力
+\hwfield{LEX-P0046-V0032}{\fieldvalue{\handwritten{0.21}}} &
+   合格\ %
+% #VALUE_ID: LEX-P0046-V0033
+% #FIELD_VALUE: 合格
+% #HANDWRITTEN: 已勾选
+\hwfield{LEX-P0046-V0033}{\fieldvalue{\handwritten{\checkboxfield{checked}}}}
+\quad 不合格\ %
+% #VALUE_ID: LEX-P0046-V0034
+% #FIELD_VALUE: 不合格
+\hwfield{LEX-P0046-V0034}{\fieldvalue{\checkboxfield{unchecked}}} &
+   % #VALUE_ID: LEX-P0046-V0035
+% #FIELD_VALUE: 监测人
+\hwfield{LEX-P0046-V0035}{\fieldvalue{\handwritten{王娟}}} &
+   % #VALUE_ID: LEX-P0046-V0036
+% #FIELD_VALUE: 复核人
+\hwfield{LEX-P0046-V0036}{\fieldvalue{\handwritten{李小明}}} &
+   % #VALUE_ID: LEX-P0046-V0037
+% #FIELD_VALUE: 备注
+\hwfield{LEX-P0046-V0037}{\fieldvalue{\handwritten{--}}}\\
+  \hline
+   % #VALUE_ID: LEX-P0046-V0038
+% #FIELD_VALUE: 日期
+\hwfield{LEX-P0046-V0038}{\fieldvalue{\handwritten{2025.9.30}}} &
+   % #VALUE_ID: LEX-P0046-V0039
+% #FIELD_VALUE: 灭菌时间
+\hwfield{LEX-P0046-V0039}{\fieldvalue{\handwritten{11:00}}} &
+   % #VALUE_ID: LEX-P0046-V0040
+% #FIELD_VALUE: 灭菌温度
+\hwfield{LEX-P0046-V0040}{\fieldvalue{\handwritten{134.6}}} &
+   % #VALUE_ID: LEX-P0046-V0041
+% #FIELD_VALUE: 灭菌压力
+\hwfield{LEX-P0046-V0041}{\fieldvalue{\handwritten{0.21}}} &
+   合格\ %
+% #VALUE_ID: LEX-P0046-V0042
+% #FIELD_VALUE: 合格
+% #HANDWRITTEN: 已勾选
+\hwfield{LEX-P0046-V0042}{\fieldvalue{\handwritten{\checkboxfield{checked}}}}
+\quad 不合格\ %
+% #VALUE_ID: LEX-P0046-V0043
+% #FIELD_VALUE: 不合格
+\hwfield{LEX-P0046-V0043}{\fieldvalue{\checkboxfield{unchecked}}} &
+   % #VALUE_ID: LEX-P0046-V0044
+% #FIELD_VALUE: 监测人
+\hwfield{LEX-P0046-V0044}{\fieldvalue{\handwritten{王娟}}} &
+   % #VALUE_ID: LEX-P0046-V0045
+% #FIELD_VALUE: 复核人
+\hwfield{LEX-P0046-V0045}{\fieldvalue{\handwritten{李小明}}} &
+   % #VALUE_ID: LEX-P0046-V0046
+% #FIELD_VALUE: 备注
+\hwfield{LEX-P0046-V0046}{\fieldvalue{\handwritten{--}}}\\
+  \hline
+   日期 &
+   灭菌时间 &
+   灭菌温度 &
+   灭菌压力 &
+   合格\ %
+% #VALUE_ID: LEX-P0046-V0047
+% #FIELD_VALUE: 合格
+\hwfield{LEX-P0046-V0047}{\fieldvalue{\checkboxfield{unchecked}}}
+\quad 不合格\ %
+% #VALUE_ID: LEX-P0046-V0048
+% #FIELD_VALUE: 不合格
+\hwfield{LEX-P0046-V0048}{\fieldvalue{\checkboxfield{unchecked}}} &
+   &
+   &
+  \\
+  \hline
+   日期 &
+   灭菌时间 &
+   灭菌温度 &
+   灭菌压力 &
+   合格\ %
+% #VALUE_ID: LEX-P0046-V0049
+% #FIELD_VALUE: 合格
+\hwfield{LEX-P0046-V0049}{\fieldvalue{\checkboxfield{unchecked}}}
+\quad 不合格\ %
+% #VALUE_ID: LEX-P0046-V0050
+% #FIELD_VALUE: 不合格
+\hwfield{LEX-P0046-V0050}{\fieldvalue{\checkboxfield{unchecked}}} &
+   &
+   &
+  \\
+  \hline
+   日期 &
+   灭菌时间 &
+   灭菌温度 &
+   灭菌压力 &
+   合格\ %
+% #VALUE_ID: LEX-P0046-V0051
+% #FIELD_VALUE: 合格
+\hwfield{LEX-P0046-V0051}{\fieldvalue{\checkboxfield{unchecked}}}
+\quad 不合格\ %
+% #VALUE_ID: LEX-P0046-V0052
+% #FIELD_VALUE: 不合格
+\hwfield{LEX-P0046-V0052}{\fieldvalue{\checkboxfield{unchecked}}} &
+   &
+   &
+  \\
+  \hline
+   日期 &
+   灭菌时间 &
+   灭菌温度 &
+   灭菌压力 &
+   合格\ %
+% #VALUE_ID: LEX-P0046-V0053
+% #FIELD_VALUE: 合格
+\hwfield{LEX-P0046-V0053}{\fieldvalue{\checkboxfield{unchecked}}}
+\quad 不合格\ %
+% #VALUE_ID: LEX-P0046-V0054
+% #FIELD_VALUE: 不合格
+\hwfield{LEX-P0046-V0054}{\fieldvalue{\checkboxfield{unchecked}}} &
+   &
+   &
+  \\
+  \hline
+   日期 &
+   灭菌时间 &
+   灭菌温度 &
+   灭菌压力 &
+   合格\ %
+% #VALUE_ID: LEX-P0046-V0055
+% #FIELD_VALUE: 合格
+\hwfield{LEX-P0046-V0055}{\fieldvalue{\checkboxfield{unchecked}}}
+\quad 不合格\ %
+% #VALUE_ID: LEX-P0046-V0056
+% #FIELD_VALUE: 不合格
+\hwfield{LEX-P0046-V0056}{\fieldvalue{\checkboxfield{unchecked}}} &
+   &
+   &
+  \\
+  \hline
+\end{tabular}
+\end{center}
+
+% TODO：表格下方可见蓝色斜线及页脚手写标记；其不属于明确的表单字段。
+% LEXOID_PAGE_COMPLETED: 46/57
+
+\newpage
+
+\section*{PAL Flowstar IV 流量计结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+   日期 &
+   % #VALUE_ID: LEX-P0047-V0001
+% #FIELD_VALUE: 日期
+\hwfield{LEX-P0047-V0001}{\fieldvalue{2025/12/28}}\\
+   时间 &
+   % #VALUE_ID: LEX-P0047-V0002
+% #FIELD_VALUE: 时间
+\hwfield{LEX-P0047-V0002}{\fieldvalue{10:21}}\\
+   Serial number &
+   % #VALUE_ID: LEX-P0047-V0003
+% #FIELD_VALUE: Serial number
+\hwfield{LEX-P0047-V0003}{\fieldvalue{2380344?}}\\
+   型号 &
+   % #VALUE_ID: LEX-P0047-V0004
+% #FIELD_VALUE: 型号
+\hwfield{LEX-P0047-V0004}{\fieldvalue{SH-SP?2002?A}}\\
+   测量介质 &
+   % #VALUE_ID: LEX-P0047-V0005
+% #FIELD_VALUE: 测量介质
+\hwfield{LEX-P0047-V0005}{\fieldvalue{C}}\\
+   介质温度 &
+   % #VALUE_ID: LEX-P0047-V0006
+% #FIELD_VALUE: 介质温度
+\hwfield{LEX-P0047-V0006}{\fieldvalue{K}}\\
+   介质密度 &
+   % #VALUE_ID: LEX-P0047-V0007
+% #FIELD_VALUE: 介质密度
+\hwfield{LEX-P0047-V0007}{\fieldvalue{800 kg/m$^3$}}\\
+   流量范围 &
+   % #VALUE_ID: LEX-P0047-V0008
+% #FIELD_VALUE: 流量范围
+\hwfield{LEX-P0047-V0008}{\fieldvalue{0--?}}\\
+   仪表系数 &
+   % #VALUE_ID: LEX-P0047-V0009
+% #FIELD_VALUE: 仪表系数
+\hwfield{LEX-P0047-V0009}{\fieldvalue{SH?ST?002?}}\\
+   脉冲宽度 &
+   % #VALUE_ID: LEX-P0047-V0010
+% #FIELD_VALUE: 脉冲宽度
+\hwfield{LEX-P0047-V0010}{\fieldvalue{1 ms}}\\
+   输出 &
+   % #VALUE_ID: LEX-P0047-V0011
+% #FIELD_VALUE: 输出
+\hwfield{LEX-P0047-V0011}{\fieldvalue{4--20 mA}}\\
+   最大流量 &
+   % #VALUE_ID: LEX-P0047-V0012
+% #FIELD_VALUE: 最大流量
+\hwfield{LEX-P0047-V0012}{\fieldvalue{1400 l/min}}\\
+   最小流量 &
+   % #VALUE_ID: LEX-P0047-V0013
+% #FIELD_VALUE: 最小流量
+\hwfield{LEX-P0047-V0013}{\fieldvalue{600 l/min}}\\
+   压力 &
+   % #VALUE_ID: LEX-P0047-V0014
+% #FIELD_VALUE: 压力
+\hwfield{LEX-P0047-V0014}{\fieldvalue{1600 mbar}}\\
+   测试时间 &
+   % #VALUE_ID: LEX-P0047-V0015
+% #FIELD_VALUE: 测试时间
+\hwfield{LEX-P0047-V0015}{\fieldvalue{22/12/2025 15:39}}
+\end{tabular}
+
+% #VALUE_ID: LEX-P0047-V0016
+% #HANDWRITTEN: 验收日期：2025.05.22
+\handwritten{验收日期：2025.05.22}
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0047-V0017
+% #HANDWRITTEN: 签名；字迹较难辨认
+\handwritten{签名}
+
+\section*{PAL Flowstar IV 流量计结果}
+
+日期：2025/12/28 \quad 时间：15:38 \hfill 2 of 2
+
+\vspace{0.5em}
+
+\noindent
+\begin{minipage}{0.78\linewidth}
+\centering
+\setlength{\fboxsep}{6pt}
+\fbox{%
+\begin{minipage}[c][0.25\textheight][c]{0.92\linewidth}
+\centering
+\textit{流量（l/min）}
+
+\vspace{1em}
+
+\begin{tabular}{c@{\qquad}c@{\qquad}c@{\qquad}c@{\qquad}c}
+   0 &
+   450 &
+   900 &
+   1350 &
+   1600
+\end{tabular}
+
+\vfill
+
+\begin{tabular}{c@{\qquad}c@{\qquad}c@{\qquad}c@{\qquad}c}
+   0 &
+   1:00 &
+   2:00 &
+   3:00 &
+   4:00
+\end{tabular}
+
+\vspace{0.5em}
+
+\textit{时间（min）}
+
+\vspace{1em}
+
+\begin{tabular}{l}
+\texttt{\hspace*{8em}\_\_\_\_\_\_}\\
+\texttt{\hspace*{6em}\_\_\_\_/}\\
+\texttt{\hspace*{4em}\_\_\_\_/}\\
+\texttt{\_\_\_\_\_\_\_\_\_\_\_\_\_\_/}
+\end{tabular}
+\end{minipage}}
+\end{minipage}
+
+\vspace{0.5em}
+
+% #VALUE_ID: LEX-P0047-V0018
+% #HANDWRITTEN: 验收日期：2025.05.22
+\handwritten{验收日期：2025.05.22}
+
+% #VALUE_ID: LEX-P0047-V0019
+% #HANDWRITTEN: //；疑似手写标记
+\handwritten{//}
+
+% TODO: The page contains rotated Chinese report text and a plotted graph.
+% Several serial-number, model, and graph annotations are partially illegible in the source image.
+% LEXOID_PAGE_COMPLETED: 47/57
+
+\newpage
+
+\section*{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.30\linewidth}p{0.60\linewidth}@{}}
+   日期 &
+   % #VALUE_ID: LEX-P0048-V0001
+% #FIELD_VALUE: 日期
+\hwfield{LEX-P0048-V0001}{\fieldvalue{22/Mar/2026 15:28:38}}\\
+   时间 &
+   % #VALUE_ID: LEX-P0048-V0002
+% #FIELD_VALUE: 时间
+\hwfield{LEX-P0048-V0002}{\fieldvalue{1.0 d}}\\
+   Palltronic 流量测试仪编号 &
+   % #VALUE_ID: LEX-P0048-V0003
+% #FIELD_VALUE: Palltronic 流量测试仪编号
+\hwfield{LEX-P0048-V0003}{\fieldvalue{2388047436}}\\
+   序列号 &
+   % #VALUE_ID: LEX-P0048-V0004
+% #FIELD_VALUE: 序列号
+\hwfield{LEX-P0048-V0004}{\fieldvalue{[不清晰]}}\\
+   测试结果 &
+   % #VALUE_ID: LEX-P0048-V0005
+% #FIELD_VALUE: 测试结果
+\hwfield{LEX-P0048-V0005}{\fieldvalue{OK}}\\
+   测试类型 &
+   % #VALUE_ID: LEX-P0048-V0006
+% #FIELD_VALUE: 测试类型
+\hwfield{LEX-P0048-V0006}{\fieldvalue{[不清晰]}}\\
+   设备名称 &
+   % #VALUE_ID: LEX-P0048-V0007
+% #FIELD_VALUE: 设备名称
+\hwfield{LEX-P0048-V0007}{\fieldvalue{[不清晰]}}\\
+   产品名称 &
+   % #VALUE_ID: LEX-P0048-V0008
+% #FIELD_VALUE: 产品名称
+\hwfield{LEX-P0048-V0008}{\fieldvalue{[不清晰]}}\\
+   产品编号 &
+   % #VALUE_ID: LEX-P0048-V0009
+% #FIELD_VALUE: 产品编号
+\hwfield{LEX-P0048-V0009}{\fieldvalue{[不清晰]}}\\
+   测试介质 &
+   % #VALUE_ID: LEX-P0048-V0010
+% #FIELD_VALUE: 测试介质
+\hwfield{LEX-P0048-V0010}{\fieldvalue{Air}}\\
+   测试压力 &
+   % #VALUE_ID: LEX-P0048-V0011
+% #FIELD_VALUE: 测试压力
+\hwfield{LEX-P0048-V0011}{\fieldvalue{4.0 bar}}\\
+   测试持续时间 &
+   % #VALUE_ID: LEX-P0048-V0012
+% #FIELD_VALUE: 测试持续时间
+\hwfield{LEX-P0048-V0012}{\fieldvalue{1,000 mbar}}\\
+   测试气体 &
+   % #VALUE_ID: LEX-P0048-V0013
+% #FIELD_VALUE: 测试气体
+\hwfield{LEX-P0048-V0013}{\fieldvalue{Air}}\\
+   测试压力范围 &
+   % #VALUE_ID: LEX-P0048-V0014
+% #FIELD_VALUE: 测试压力范围
+\hwfield{LEX-P0048-V0014}{\fieldvalue{1600 mbar}}\\
+   报告签署时间 &
+   % #VALUE_ID: LEX-P0048-V0015
+% #FIELD_VALUE: 报告签署时间
+\hwfield{LEX-P0048-V0015}{\fieldvalue{22/Mar/2026 15:35:39}}
+\end{tabular}
+
+% #VALUE_ID: LEX-P0048-V0016
+% #HANDWRITTEN: [日期，疑似 2026.03.22]
+\handwritten{[日期，疑似 2026.03.22]}
+
+\bigskip
+
+\section*{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.30\linewidth}p{0.60\linewidth}@{}}
+   日期 &
+   % #VALUE_ID: LEX-P0048-V0017
+% #FIELD_VALUE: 日期
+\hwfield{LEX-P0048-V0017}{\fieldvalue{22/Mar/2026 15:28:38}}\\
+   时间 &
+   % #VALUE_ID: LEX-P0048-V0018
+% #FIELD_VALUE: 时间
+\hwfield{LEX-P0048-V0018}{\fieldvalue{2.0 d}}
+\end{tabular}
+
+\medskip
+
+\noindent
+\begin{minipage}{0.82\linewidth}
+\centering
+\setlength{\fboxsep}{8pt}
+\fbox{%
+\begin{minipage}{0.90\linewidth}
+\centering
+$\Delta P$（mbar/min）
+
+\medskip
+\begin{tabular}{c|ccccc}
+   1800 &
+   &
+   &
+   &
+   &
+  \\
+   1350 &
+   &
+   &
+   &
+   &
+  \\
+   900 &
+   &
+   &
+   &
+   &
+  \\
+   450 &
+   &
+   &
+   &
+   &
+  \\
+   0 &
+  \multicolumn{5}{c}{ \rule{0pt}{1.2cm}}\\
+  \hline
+   &
+   0 &
+   1200 &
+   2400 &
+   3600 &
+   4800\\
+  \multicolumn{6}{c}{ E\textsubscript{test}（mbar）}
+\end{tabular}
+
+% TODO: The page contains a plotted test curve. Reproduce the exact curve and
+% graph annotations if a graphical extraction is available.
+\end{minipage}}
+\end{minipage}
+
+\bigskip
+
+% #VALUE_ID: LEX-P0048-V0019
+% #HANDWRITTEN: [签名/日期，无法清晰辨认]
+\handwritten{[签名/日期，无法清晰辨认]}
+
+% #VALUE_ID: LEX-P0048-V0020
+% #HANDWRITTEN: 3/1
+\handwritten{3/1}
+% LEXOID_PAGE_COMPLETED: 48/57
+
+\newpage
+
+\section{Panasonic Flowstar IV 流量计检定结果}
+
+\begin{center}
+\textbf{Panasonic Flowstar IV 流量计检定结果}
+\end{center}
+
+\noindent
+日期：
+% #VALUE_ID: LEX-P0049-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{22/02/2025 15:40:27}
+
+\noindent
+压力：
+% #VALUE_ID: LEX-P0049-V0002
+% #FIELD_VALUE: 压力
+\fieldvalue{2.0 d}
+
+\vspace{1em}
+
+\begin{center}
+\begin{tabular}{|p{0.18\linewidth}|p{0.58\linewidth}|}
+  \hline
+   \textbf{压力（mbar/min）} &
+  \\
+  \hline
+   1800 &
+  \\
+  \hline
+   1350 &
+  \\
+  \hline
+   900 &
+  \\
+  \hline
+   450 &
+  \\
+  \hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5em}
+
+\noindent
+\begin{tabular}{p{0.22\linewidth}p{0.65\linewidth}}
+   \textbf{流量（m$^3$/min）} &
+  \\
+   1200 &
+  \\
+   2400 &
+  \\
+   3600 &
+  \\
+   4800 &
+  \\
+   6000 &
+  \\
+\end{tabular}
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0049-V0003
+% #HANDWRITTEN: 赵旭明
+\handwritten{赵旭明}\quad
+% #VALUE_ID: LEX-P0049-V0004
+% #HANDWRITTEN: 2025.02.22
+\handwritten{2025.02.22}
+
+\section{流量计检定记录}
+
+\begin{center}
+\textbf{Panasonic Flowstar IV 流量计检定记录}
+\end{center}
+
+\begin{tabular}{|p{0.23\linewidth}|p{0.56\linewidth}|}
+  \hline
+   项目 &
+   记录\\
+  \hline
+   型号 &
+   % #VALUE_ID: LEX-P0049-V0005
+% #FIELD_VALUE: 型号
+\hwfield{LEX-P0049-V0005}{\fieldvalue{2Z?2/??26/??}}\\
+  \hline
+   编号 &
+   % #VALUE_ID: LEX-P0049-V0006
+% #FIELD_VALUE: 编号
+\hwfield{LEX-P0049-V0006}{\fieldvalue{1.02}}\\
+  \hline
+   介质 &
+   % #VALUE_ID: LEX-P0049-V0007
+% #FIELD_VALUE: 介质
+\hwfield{LEX-P0049-V0007}{\fieldvalue{T?G?44}}\\
+  \hline
+   Serial number &
+   % #VALUE_ID: LEX-P0049-V0008
+% #FIELD_VALUE: Serial number
+\hwfield{LEX-P0049-V0008}{\fieldvalue{285?4980}}\\
+  \hline
+   流量范围 &
+   % #VALUE_ID: LEX-P0049-V0009
+% #FIELD_VALUE: 流量范围
+\hwfield{LEX-P0049-V0009}{\fieldvalue{SH?P?10?2GM}}\\
+  \hline
+   输出信号 &
+   % #VALUE_ID: LEX-P0049-V0010
+% #FIELD_VALUE: 输出信号
+\hwfield{LEX-P0049-V0010}{\fieldvalue{C}}\\
+  \hline
+   连接方式 &
+   % #VALUE_ID: LEX-P0049-V0011
+% #FIELD_VALUE: 连接方式
+\hwfield{LEX-P0049-V0011}{\fieldvalue{N?T?}}\\
+  \hline
+   供电电源 &
+   % #VALUE_ID: LEX-P0049-V0012
+% #FIELD_VALUE: 供电电源
+\hwfield{LEX-P0049-V0012}{\fieldvalue{Shy?0?8}}\\
+  \hline
+   温度范围 &
+   % #VALUE_ID: LEX-P0049-V0013
+% #FIELD_VALUE: 温度范围
+\hwfield{LEX-P0049-V0013}{\fieldvalue{1?200?08}}\\
+  \hline
+   压力等级 &
+   % #VALUE_ID: LEX-P0049-V0014
+% #FIELD_VALUE: 压力等级
+\hwfield{LEX-P0049-V0014}{\fieldvalue{12?0?08}}\\
+  \hline
+   精度等级 &
+   % #VALUE_ID: LEX-P0049-V0015
+% #FIELD_VALUE: 精度等级
+\hwfield{LEX-P0049-V0015}{\fieldvalue{SH?P?0?2?50}}\\
+  \hline
+   显示方式 &
+   % #VALUE_ID: LEX-P0049-V0016
+% #FIELD_VALUE: 显示方式
+\hwfield{LEX-P0049-V0016}{\fieldvalue{SH?P?0?2?GM}}\\
+  \hline
+   安装方式 &
+   % #VALUE_ID: LEX-P0049-V0017
+% #FIELD_VALUE: 安装方式
+\hwfield{LEX-P0049-V0017}{\fieldvalue{IP?A-4.0?1}}\\
+  \hline
+   防护等级 &
+   % #VALUE_ID: LEX-P0049-V0018
+% #FIELD_VALUE: 防护等级
+\hwfield{LEX-P0049-V0018}{\fieldvalue{SH?P?0?2?GM}}\\
+  \hline
+   量程比 &
+   % #VALUE_ID: LEX-P0049-V0019
+% #FIELD_VALUE: 量程比
+\hwfield{LEX-P0049-V0019}{\fieldvalue{4A?}}\\
+  \hline
+   最小流量 &
+   % #VALUE_ID: LEX-P0049-V0020
+% #FIELD_VALUE: 最小流量
+\hwfield{LEX-P0049-V0020}{\fieldvalue{1:1000}}\\
+  \hline
+   最大工作压力 &
+   % #VALUE_ID: LEX-P0049-V0021
+% #FIELD_VALUE: 最大工作压力
+\hwfield{LEX-P0049-V0021}{\fieldvalue{4000 mbar}}\\
+  \hline
+   压力范围 &
+   % #VALUE_ID: LEX-P0049-V0022
+% #FIELD_VALUE: 压力范围
+\hwfield{LEX-P0049-V0022}{\fieldvalue{6000 mbar}}\\
+  \hline
+\end{tabular}
+
+\vspace{1em}
+
+\noindent
+测试结果：
+% #VALUE_ID: LEX-P0049-V0023
+% #FIELD_VALUE: 测试结果
+\fieldvalue{合格}
+
+\vspace{0.5em}
+
+\noindent
+测试介质：
+% #VALUE_ID: LEX-P0049-V0024
+% #FIELD_VALUE: 测试介质
+\fieldvalue{空气}
+
+\noindent
+测试压力范围：
+% #VALUE_ID: LEX-P0049-V0025
+% #FIELD_VALUE: 测试压力范围
+\fieldvalue{22\,mbar/6000\,mbar}
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0049-V0026
+% #HANDWRITTEN: 赵旭明
+\handwritten{赵旭明}\quad
+% #VALUE_ID: LEX-P0049-V0027
+% #HANDWRITTEN: 2025.02.22
+\handwritten{2025.02.22}
+
+\vfill
+
+% #VALUE_ID: LEX-P0049-V0028
+% #HANDWRITTEN: 4/1
+\handwritten{4/1}
+% LEXOID_PAGE_COMPLETED: 49/57
+
+\newpage
+
+\section{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+   日期 &
+   % #VALUE_ID: LEX-P0050-V0001
+% #FIELD_VALUE: 日期
+\hwfield{LEX-P0050-V0001}{\fieldvalue{2025/02/26 15:40:27}}\\
+   序列号 &
+   % #VALUE_ID: LEX-P0050-V0002
+% #FIELD_VALUE: 序列号
+\hwfield{LEX-P0050-V0002}{\fieldvalue{150?C?22?}}\\
+   设备号 &
+   % #VALUE_ID: LEX-P0050-V0003
+% #FIELD_VALUE: 设备号
+\hwfield{LEX-P0050-V0003}{\fieldvalue{150?C?22?}}\\
+   测试名称 &
+   % #VALUE_ID: LEX-P0050-V0004
+% #FIELD_VALUE: 测试名称
+\hwfield{LEX-P0050-V0004}{\fieldvalue{?}}\\
+   测试方法编号 &
+   % #VALUE_ID: LEX-P0050-V0005
+% #FIELD_VALUE: 测试方法编号
+\hwfield{LEX-P0050-V0005}{\fieldvalue{200?}}\\
+   检测介质 &
+   % #VALUE_ID: LEX-P0050-V0006
+% #FIELD_VALUE: 检测介质
+\hwfield{LEX-P0050-V0006}{\fieldvalue{Air}}\\
+   测试压力 &
+   % #VALUE_ID: LEX-P0050-V0007
+% #FIELD_VALUE: 测试压力
+\hwfield{LEX-P0050-V0007}{\fieldvalue{2.0 bar}}\\
+   测试时间 &
+   % #VALUE_ID: LEX-P0050-V0008
+% #FIELD_VALUE: 测试时间
+\hwfield{LEX-P0050-V0008}{\fieldvalue{?}}\\
+   测试结果 &
+   % #VALUE_ID: LEX-P0050-V0009
+% #FIELD_VALUE: 测试结果
+\hwfield{LEX-P0050-V0009}{\fieldvalue{Pass}}\\
+   泄漏率 &
+   % #VALUE_ID: LEX-P0050-V0010
+% #FIELD_VALUE: 泄漏率
+\hwfield{LEX-P0050-V0010}{\fieldvalue{?}}\\
+   最大允许泄漏率 &
+   % #VALUE_ID: LEX-P0050-V0011
+% #FIELD_VALUE: 最大允许泄漏率
+\hwfield{LEX-P0050-V0011}{\fieldvalue{?}}\\
+   测试压力曲线 &
+   % #VALUE_ID: LEX-P0050-V0012
+% #FIELD_VALUE: 测试压力曲线
+\hwfield{LEX-P0050-V0012}{\fieldvalue{?}}\\
+\end{tabular}
+
+% TODO: Several entries in the first results table are too small or blurred to transcribe reliably.
+
+% #VALUE_ID: LEX-P0050-V0013
+% #HANDWRITTEN: 赵立?;  handwriting is partially illegible
+\handwritten{赵立?}
+
+% #VALUE_ID: LEX-P0050-V0014
+% #HANDWRITTEN: 2025.2.27
+\handwritten{2025.2.27}
+
+\section{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+   日期 &
+   % #VALUE_ID: LEX-P0050-V0015
+% #FIELD_VALUE: 日期
+\hwfield{LEX-P0050-V0015}{\fieldvalue{2025/02/26 15:40:27}}\\
+   结果 &
+   % #VALUE_ID: LEX-P0050-V0016
+% #FIELD_VALUE: 结果
+\hwfield{LEX-P0050-V0016}{\fieldvalue{2.0?}}\\
+\end{tabular}
+
+\vspace{1em}
+
+% TODO: The visible pressure-versus-time graph is reproduced as a placeholder because no source filename is available.
+\noindent
+\fbox{\parbox[c][0.28\textheight][c]{0.88\linewidth}{\centering
+压力（mbar，相对）-- 时间（ms）曲线\\
+% TODO: Insert the visible graph trace and axes here.
+}}
+
+% #VALUE_ID: LEX-P0050-V0017
+% #HANDWRITTEN: 赵立?; handwriting is partially illegible
+\handwritten{赵立?}
+
+% #VALUE_ID: LEX-P0050-V0018
+% #HANDWRITTEN: 2025.2.22
+\handwritten{2025.2.22}
+% LEXOID_PAGE_COMPLETED: 50/57
+
+\newpage
+
+\section{Pathronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.34\linewidth}p{0.52\linewidth}@{}}
+   日期 &
+   % #VALUE_ID: LEX-P0051-V0001
+% #FIELD_VALUE: 日期
+\hwfield{LEX-P0051-V0001}{\fieldvalue{26/May/2025 15:26:02}}\\
+   时间 &
+   % #VALUE_ID: LEX-P0051-V0002
+% #FIELD_VALUE: 时间
+\hwfield{LEX-P0051-V0002}{\fieldvalue{1 of 2}}\\
+   Serial/Results number &
+   % #VALUE_ID: LEX-P0051-V0003
+% #FIELD_VALUE: Serial/Results number
+\hwfield{LEX-P0051-V0003}{\fieldvalue{2388044012}}\\
+   测试模式 &
+   % #VALUE_ID: LEX-P0051-V0004
+% #FIELD_VALUE: 测试模式
+\hwfield{LEX-P0051-V0004}{\fieldvalue{FS01?G?R / 2?1}}\\
+   测试介质 &
+   % #VALUE_ID: LEX-P0051-V0005
+% #FIELD_VALUE: 测试介质
+\hwfield{LEX-P0051-V0005}{\fieldvalue{PC}}\\
+   单位 &
+   % #VALUE_ID: LEX-P0051-V0006
+% #FIELD_VALUE: 单位
+\hwfield{LEX-P0051-V0006}{\fieldvalue{SH?P?T0022GH}}\\
+   气体类型 &
+   % #VALUE_ID: LEX-P0051-V0007
+% #FIELD_VALUE: 气体类型
+\hwfield{LEX-P0051-V0007}{\fieldvalue{C}}\\
+   设备名称 &
+   % #VALUE_ID: LEX-P0051-V0008
+% #FIELD_VALUE: 设备名称
+\hwfield{LEX-P0051-V0008}{\fieldvalue{Sinoflow}}\\
+   产品型号 &
+   % #VALUE_ID: LEX-P0051-V0009
+% #FIELD_VALUE: 产品型号
+\hwfield{LEX-P0051-V0009}{\fieldvalue{432?020?506?0}}\\
+   产品序列号 &
+   % #VALUE_ID: LEX-P0051-V0010
+% #FIELD_VALUE: 产品序列号
+\hwfield{LEX-P0051-V0010}{\fieldvalue{?}}\\
+   测试范围 &
+   % #VALUE_ID: LEX-P0051-V0011
+% #FIELD_VALUE: 测试范围
+\hwfield{LEX-P0051-V0011}{\fieldvalue{1--?}}\\
+   测试压力 &
+   % #VALUE_ID: LEX-P0051-V0012
+% #FIELD_VALUE: 测试压力
+\hwfield{LEX-P0051-V0012}{\fieldvalue{1.1?}}\\
+   测试流量 &
+   % #VALUE_ID: LEX-P0051-V0013
+% #FIELD_VALUE: 测试流量
+\hwfield{LEX-P0051-V0013}{\fieldvalue{1.1?}}\\
+   最大压力 &
+   % #VALUE_ID: LEX-P0051-V0014
+% #FIELD_VALUE: 最大压力
+\hwfield{LEX-P0051-V0014}{\fieldvalue{1.1?}}\\
+   结果 &
+   % #VALUE_ID: LEX-P0051-V0015
+% #FIELD_VALUE: 结果
+\hwfield{LEX-P0051-V0015}{\fieldvalue{6000 mbar}}\\
+\end{tabular}
+
+\vspace{1em}
+
+% TODO: Blue handwritten date/signature is partially illegible.
+% #VALUE_ID: LEX-P0051-V0016
+% #HANDWRITTEN: 2025?05?26
+\handwritten{2025?05?26}
+
+\section{测试曲线}
+
+\begin{center}
+\begin{tabular}{@{}p{0.88\linewidth}@{}}
+   \centering
+\textbf{PAIL Pathronic Flowstar IV 测试结果}\\[2pt]
+   日期：26/May/2025 15:26:02\\
+   1 of 2
+\end{tabular}
+
+\vspace{0.5em}
+
+\setlength{\unitlength}{1mm}
+\begin{picture}(125,65)
+  \put(12,5){\line(1,0){105}}
+  \put(12,5){\line(0,1){52}}
+  \put(12,57){\line(1,0){105}}
+  \put(117,5){\line(0,1){52}}
+  \put(10,2){\makebox(0,0)[r]{0}}
+  \put(38,2){\makebox(0,0)[c]{1200}}
+  \put(67,2){\makebox(0,0)[c]{2400}}
+  \put(95,2){\makebox(0,0)[c]{3600}}
+  \put(117,2){\makebox(0,0)[c]{6000}}
+  \put(3,57){\makebox(0,0)[r]{1800}}
+  \put(3,44){\makebox(0,0)[r]{1350}}
+  \put(3,31){\makebox(0,0)[r]{900}}
+  \put(3,18){\makebox(0,0)[r]{450}}
+  \put(64,0){\makebox(0,0)[c]{时间 (s)}}
+  \put(0,57){\makebox(0,0)[l]{流量 (mbar/min)}}
+  % TODO: The plotted test curve is reproduced schematically; exact curve geometry is unclear.
+  \put(12,5){\line(1,0){5}}
+  \put(17,5){\line(1,1){5}}
+  \put(22,10){\line(1,0){12}}
+  \put(34,10){\line(1,1){3}}
+  \put(37,13){\line(1,0){3}}
+  \put(40,13){\line(1,-1){2}}
+  \put(42,11){\line(1,0){75}}
+\end{picture}
+\end{center}
+
+% TODO: Blue handwritten annotation beneath the graph is partially illegible.
+% #VALUE_ID: LEX-P0051-V0017
+% #HANDWRITTEN: 2025.05.14
+\handwritten{2025.05.14}
+
+% #VALUE_ID: LEX-P0051-V0018
+% #HANDWRITTEN: 11
+\handwritten{11}
+% LEXOID_PAGE_COMPLETED: 51/57
+
+\newpage
+
+\begin{center}
+\textbf{PALL Palltronic Flowstar IV 流量报告}
+\end{center}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+   日期 &
+   % #VALUE_ID: LEX-P0052-V0001
+% #FIELD_VALUE: 日期
+\hwfield{LEX-P0052-V0001}{\fieldvalue{26/May/2026 15:26:02}}\\
+   序列号 &
+   % #VALUE_ID: LEX-P0052-V0002
+% #FIELD_VALUE: 序列号
+\hwfield{LEX-P0052-V0002}{\fieldvalue{FS?}}\\
+   软件版本 &
+   % #VALUE_ID: LEX-P0052-V0003
+% #FIELD_VALUE: 软件版本
+\hwfield{LEX-P0052-V0003}{\fieldvalue{2.38.024}}\\
+   测试类型 &
+   % #VALUE_ID: LEX-P0052-V0004
+% #FIELD_VALUE: 测试类型
+\hwfield{LEX-P0052-V0004}{\fieldvalue{Pressure Hold}}\\
+   测试程序 &
+   % #VALUE_ID: LEX-P0052-V0005
+% #FIELD_VALUE: 测试程序
+\hwfield{LEX-P0052-V0005}{\fieldvalue{SHSP?0023?}}\\
+   环境温度 &
+   % #VALUE_ID: LEX-P0052-V0006
+% #FIELD_VALUE: 环境温度
+\hwfield{LEX-P0052-V0006}{\fieldvalue{24.6}}\\
+   压力单位 &
+   % #VALUE_ID: LEX-P0052-V0007
+% #FIELD_VALUE: 压力单位
+\hwfield{LEX-P0052-V0007}{\fieldvalue{kPa}}\\
+   测试压力 &
+   % #VALUE_ID: LEX-P0052-V0008
+% #FIELD_VALUE: 测试压力
+\hwfield{LEX-P0052-V0008}{\fieldvalue{1200}}\\
+   流量单位 &
+   % #VALUE_ID: LEX-P0052-V0009
+% #FIELD_VALUE: 流量单位
+\hwfield{LEX-P0052-V0009}{\fieldvalue{mbar}}\\
+   测试持续时间 &
+   % #VALUE_ID: LEX-P0052-V0010
+% #FIELD_VALUE: 测试持续时间
+\hwfield{LEX-P0052-V0010}{\fieldvalue{60 s}}\\
+   测试结果 &
+   % #VALUE_ID: LEX-P0052-V0011
+% #FIELD_VALUE: 测试结果
+\hwfield{LEX-P0052-V0011}{\fieldvalue{PASS}}\\
+\end{tabular}
+
+\vspace{1em}
+
+\noindent
+测试压力：%
+% #VALUE_ID: LEX-P0052-V0012
+% #FIELD_VALUE: 测试压力
+\fieldvalue{1200 mbar}
+
+\medskip
+
+\noindent
+% #VALUE_ID: LEX-P0052-V0013
+% #FIELD_VALUE: 签名
+% #HANDWRITTEN: 于海 2026.5.26
+\fieldvalue{\handwritten{于海 2026.5.26}}
+
+\vfill
+
+\begin{center}
+\textbf{PALL Palltronic Flowstar IV 流量报告}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+   日期 &
+   % #VALUE_ID: LEX-P0052-V0014
+% #FIELD_VALUE: 日期
+\hwfield{LEX-P0052-V0014}{\fieldvalue{26/May/2026 15:26:02}}\\
+   页码 &
+   % #VALUE_ID: LEX-P0052-V0015
+% #FIELD_VALUE: 页码
+\hwfield{LEX-P0052-V0015}{\fieldvalue{2 of 2}}\\
+\end{tabular}
+
+\vspace{1em}
+
+\begin{tikzpicture}[x=0.0018\linewidth,y=0.0018\linewidth]
+\draw (0,0) rectangle (360,210);
+\draw[->] (0,0) -- (0,225);
+\draw[->] (0,0) -- (375,0);
+\node[rotate=90] at (-25,105) {空气流量 (mbar/min)};
+\node at (180,-22) {测试时间 (分钟)};
+\draw (0,0) -- (0,210);
+\draw (0,0) -- (360,0);
+\draw (0,0) .. controls (95,5) and (125,65) .. (155,70);
+\draw (155,70) -- (155,190);
+\node at (30,-12) {0};
+\node at (100,-12) {1200};
+\node at (180,-12) {2400};
+\node at (260,-12) {3600};
+\node at (340,-12) {4800};
+\end{tikzpicture}
+
+\end{center}
+
+\medskip
+
+\noindent
+% #VALUE_ID: LEX-P0052-V0016
+% #HANDWRITTEN: 于海 2026.5.26
+\handwritten{于海 2026.5.26}
+
+\vfill
+
+\noindent
+% #VALUE_ID: LEX-P0052-V0017
+% #HANDWRITTEN: 1/
+\handwritten{1/}
+
+% TODO: The source page is scanned sideways and contains a partially legible
+% Flowstar IV report. Several machine-printed identifiers and graph labels are
+% unclear in the scan and should be verified against the original PDF.
+% LEXOID_PAGE_COMPLETED: 52/57
+
+\newpage
+
+\section*{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+   日期 &
+   % #VALUE_ID: LEX-P0053-V0001
+% #FIELD_VALUE: 日期
+\hwfield{LEX-P0053-V0001}{\fieldvalue{23/May/2026 15:37:50}}\\
+   测试编号 &
+   % #VALUE_ID: LEX-P0053-V0002
+% #FIELD_VALUE: 测试编号
+\hwfield{LEX-P0053-V0002}{\fieldvalue{FS?}}\\
+   序列号 &
+   % #VALUE_ID: LEX-P0053-V0003
+% #FIELD_VALUE: 序列号
+\hwfield{LEX-P0053-V0003}{\fieldvalue{F?}}\\
+   仪器序列号 &
+   % #VALUE_ID: LEX-P0053-V0004
+% #FIELD_VALUE: 仪器序列号
+\hwfield{LEX-P0053-V0004}{\fieldvalue{2?}}\\
+   测试压力 &
+   % #VALUE_ID: LEX-P0053-V0005
+% #FIELD_VALUE: 测试压力
+\hwfield{LEX-P0053-V0005}{\fieldvalue{2.8 bar}}\\
+   温度 &
+   % #VALUE_ID: LEX-P0053-V0006
+% #FIELD_VALUE: 温度
+\hwfield{LEX-P0053-V0006}{\fieldvalue{$20\,^\circ\mathrm{C}$}}\\
+   测试气体 &
+   % #VALUE_ID: LEX-P0053-V0007
+% #FIELD_VALUE: 测试气体
+\hwfield{LEX-P0053-V0007}{\fieldvalue{Air}}\\
+   测试项目 &
+   % #VALUE_ID: LEX-P0053-V0008
+% #FIELD_VALUE: 测试项目
+\hwfield{LEX-P0053-V0008}{\fieldvalue{Flow}}\\
+   程序名称 &
+   % #VALUE_ID: LEX-P0053-V0009
+% #FIELD_VALUE: 程序名称
+\hwfield{LEX-P0053-V0009}{\fieldvalue{S?}}\\
+   测试结果 &
+   % #VALUE_ID: LEX-P0053-V0010
+% #FIELD_VALUE: 测试结果
+\hwfield{LEX-P0053-V0010}{\fieldvalue{Pass}}\\
+   测试流量 &
+   % #VALUE_ID: LEX-P0053-V0011
+% #FIELD_VALUE: 测试流量
+\hwfield{LEX-P0053-V0011}{\fieldvalue{1800 mbar}}\\
+\end{tabular}
+
+\vspace{1em}
+
+\noindent
+测试压力范围：
+% #VALUE_ID: LEX-P0053-V0012
+% #FIELD_VALUE: 测试压力范围
+\fieldvalue{1850 mbar}
+
+\par\noindent
+流量：
+% #VALUE_ID: LEX-P0053-V0013
+% #FIELD_VALUE: 流量
+\fieldvalue{1800 mbar}
+
+\par\noindent
+日期/时间：
+% #VALUE_ID: LEX-P0053-V0014
+% #FIELD_VALUE: 日期/时间
+\fieldvalue{23/May/2026 15:36:33}
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0053-V0015
+% #HANDWRITTEN: illegible handwritten date or notation
+% #TODO #HANDWRITTEN: illegible handwritten date or notation; blue handwriting is too unclear to transcribe
+\handwritten{[illegible handwritten date or notation]}
+
+\vspace{2em}
+
+\section*{Palltronic Flowstar IV 测试结果}
+
+\noindent
+日期：
+% #VALUE_ID: LEX-P0053-V0016
+% #FIELD_VALUE: 日期
+\fieldvalue{23/May/2026 15:37:50}
+
+\par\noindent
+测试时间：
+% #VALUE_ID: LEX-P0053-V0017
+% #FIELD_VALUE: 测试时间
+\fieldvalue{2:02}
+
+\vspace{1em}
+
+\noindent
+\begin{tabular}{@{}p{0.12\linewidth}p{0.78\linewidth}@{}}
+   \text{压力（mbar/min）} &
+   \begin{picture}(260,145)
+\put(0,0){\framebox(260,145){}}
+\put(-8,4){0}
+\put(-17,42){450}
+\put(-20,78){900}
+\put(-25,112){1330}
+\put(-25,137){1600}
+\put(18,-12){\makebox(220,10){时间（秒）}}
+\put(18,8){\makebox(220,10){0 \hfill 1200 \hfill 2400 \hfill 3600 \hfill 4800}}
+\put(30,54){\line(1,0){45}}
+\put(30,54){\line(0,1){42}}
+\end{picture}\\
+\end{tabular}
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0053-V0018
+% #HANDWRITTEN: illegible handwritten date or notation
+% #TODO #HANDWRITTEN: illegible handwritten date or notation; blue handwriting below the graph is unclear
+\handwritten{[illegible handwritten date or notation]}
+
+\vspace{2em}
+
+% #VALUE_ID: LEX-P0053-V0019
+% #HANDWRITTEN: ok
+\handwritten{ok}
+% LEXOID_PAGE_COMPLETED: 53/57
+
+\newpage
+
+\section*{Palltronic Flowstar IV 测试报告}
+
+\begin{tabular}{@{}p{0.30\linewidth}p{0.55\linewidth}@{}}
+   日期 &
+   % #VALUE_ID: LEX-P0054-V0001
+% #FIELD_VALUE: 日期
+\hwfield{LEX-P0054-V0001}{\fieldvalue{26/May/2025 15:39:50}}\\
+   测试编号 &
+   % #VALUE_ID: LEX-P0054-V0002
+% #FIELD_VALUE: 测试编号
+\hwfield{LEX-P0054-V0002}{\fieldvalue{1.02}}\\
+   序列号 &
+   % #VALUE_ID: LEX-P0054-V0003
+% #FIELD_VALUE: 序列号
+\hwfield{LEX-P0054-V0003}{\fieldvalue{[不清晰]}}\\
+   测试过滤器编号 &
+   % #VALUE_ID: LEX-P0054-V0004
+% #FIELD_VALUE: 测试过滤器编号
+\hwfield{LEX-P0054-V0004}{\fieldvalue{SH5FPT0020260A}}\\
+   测试气体 &
+   % #VALUE_ID: LEX-P0054-V0005
+% #FIELD_VALUE: 测试气体
+\hwfield{LEX-P0054-V0005}{\fieldvalue{N$_2$}}\\
+   测试压力 &
+   % #VALUE_ID: LEX-P0054-V0006
+% #FIELD_VALUE: 测试压力
+\hwfield{LEX-P0054-V0006}{\fieldvalue{1000}}\\
+   压力单位 &
+   % #VALUE_ID: LEX-P0054-V0007
+% #FIELD_VALUE: 压力单位
+\hwfield{LEX-P0054-V0007}{\fieldvalue{mbar}}\\
+   产品名称 &
+   % #VALUE_ID: LEX-P0054-V0008
+% #FIELD_VALUE: 产品名称
+\hwfield{LEX-P0054-V0008}{\fieldvalue{[不清晰]}}\\
+   产品编号 &
+   % #VALUE_ID: LEX-P0054-V0009
+% #FIELD_VALUE: 产品编号
+\hwfield{LEX-P0054-V0009}{\fieldvalue{1226244C}}\\
+   产品批号 &
+   % #VALUE_ID: LEX-P0054-V0010
+% #FIELD_VALUE: 产品批号
+\hwfield{LEX-P0054-V0010}{\fieldvalue{[不清晰]}}\\
+   过滤器类型 &
+   % #VALUE_ID: LEX-P0054-V0011
+% #FIELD_VALUE: 过滤器类型
+\hwfield{LEX-P0054-V0011}{\fieldvalue{PFA}}\\
+   过滤器材质 &
+   % #VALUE_ID: LEX-P0054-V0012
+% #FIELD_VALUE: 过滤器材质
+\hwfield{LEX-P0054-V0012}{\fieldvalue{[不清晰]}}\\
+   测试结果 &
+   % #VALUE_ID: LEX-P0054-V0013
+% #FIELD_VALUE: 测试结果
+\hwfield{LEX-P0054-V0013}{\fieldvalue{通过}}\\
+   最大压力 &
+   % #VALUE_ID: LEX-P0054-V0014
+% #FIELD_VALUE: 最大压力
+\hwfield{LEX-P0054-V0014}{\fieldvalue{1100 mbar}}\\
+   最小压力 &
+   % #VALUE_ID: LEX-P0054-V0015
+% #FIELD_VALUE: 最小压力
+\hwfield{LEX-P0054-V0015}{\fieldvalue{600 mbar}}\\
+   保压时间 &
+   % #VALUE_ID: LEX-P0054-V0016
+% #FIELD_VALUE: 保压时间
+\hwfield{LEX-P0054-V0016}{\fieldvalue{1850 mbar}}\\
+   结论 &
+   % #VALUE_ID: LEX-P0054-V0017
+% #FIELD_VALUE: 结论
+\hwfield{LEX-P0054-V0017}{\fieldvalue{通过}}\\
+\end{tabular}
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0054-V0018
+% #FIELD_VALUE: 签名
+% #TODO #HANDWRITTEN: 签名及日期; 字迹难以辨认
+% #HANDWRITTEN: 2025.05.26
+\fieldvalue{\handwritten{签名\quad 2025.05.26}}
+
+\vspace{2em}
+
+\section*{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.30\linewidth}p{0.55\linewidth}@{}}
+   日期 &
+   % #VALUE_ID: LEX-P0054-V0019
+% #FIELD_VALUE: 日期
+\hwfield{LEX-P0054-V0019}{\fieldvalue{26/May/2025 15:39:50}}\\
+   测试编号 &
+   % #VALUE_ID: LEX-P0054-V0020
+% #FIELD_VALUE: 测试编号
+\hwfield{LEX-P0054-V0020}{\fieldvalue{2.02}}\\
+\end{tabular}
+
+\vspace{1em}
+
+\begin{center}
+\begin{tabular}{c|c}
+  \multicolumn{2}{c}{ 压力（mbar/min）}\\
+   1800 &
+  \\
+   1350 &
+  \\
+   900 &
+  \\
+   450 &
+  \\
+   0 &
+  \\
+  \hline
+  \multicolumn{2}{c}{ 时间（秒）}\\
+\end{tabular}
+
+\vspace{-4em}
+
+\begin{center}
+\setlength{\unitlength}{1mm}
+\begin{picture}(105,55)
+\put(5,5){\line(1,0){95}}
+\put(5,5){\line(0,1){45}}
+\put(5,50){\line(1,0){95}}
+\put(100,5){\line(0,1){45}}
+\put(5,5){\line(1,1){0}}
+\put(5,5){\line(1,0){95}}
+\put(5,5){\line(0,1){45}}
+\put(5,5){\line(1,0){20}}
+\put(25,5){\line(0,1){30}}
+\put(25,35){\line(1,0){18}}
+\put(43,35){\line(0,1){2}}
+\put(43,37){\line(1,0){10}}
+\end{picture}
+\end{center}
+\end{center}
+
+% TODO: The plotted pressure curve and axis annotations are reproduced schematically from the visible graph.
+
+% #VALUE_ID: LEX-P0054-V0021
+% #FIELD_VALUE: 签名
+% #TODO #HANDWRITTEN: 签名及日期; 字迹难以辨认
+% #HANDWRITTEN: 2025.05.26
+\fieldvalue{\handwritten{签名\quad 2025.05.26}}
+
+% #VALUE_ID: LEX-P0054-V0022
+% #HANDWRITTEN: 711
+\handwritten{711}
+% LEXOID_PAGE_COMPLETED: 54/57
+
+\newpage
+
+\rotatebox{90}{%
+\begin{minipage}{0.95\textheight}
+\small
+
+\begin{center}
+\textbf{PALL Pantronic Flowscan IV 测试结果}
+\end{center}
+
+\begin{tabular}{@{}p{0.25\linewidth}p{0.65\linewidth}@{}}
+   日期 &
+   % #VALUE_ID: LEX-P0055-V0001
+% #FIELD_VALUE: 日期
+\hwfield{LEX-P0055-V0001}{\fieldvalue{26/Mar/2025 18:38:38}}\\
+   时间 &
+   % #VALUE_ID: LEX-P0055-V0002
+% #FIELD_VALUE: 时间
+\hwfield{LEX-P0055-V0002}{\fieldvalue{10:00}}\\
+   Sample number &
+   % #VALUE_ID: LEX-P0055-V0003
+% #FIELD_VALUE: Sample number
+\hwfield{LEX-P0055-V0003}{\fieldvalue{FSH?G?L?/2?41}}\\
+   仪器型号 &
+   % #VALUE_ID: LEX-P0055-V0004
+% #FIELD_VALUE: 仪器型号
+\hwfield{LEX-P0055-V0004}{\fieldvalue{FSH?G?L?/2?41}}\\
+   测试模式 &
+   % #VALUE_ID: LEX-P0055-V0005
+% #FIELD_VALUE: 测试模式
+\hwfield{LEX-P0055-V0005}{\fieldvalue{PC}}\\
+   程序 &
+   % #VALUE_ID: LEX-P0055-V0006
+% #FIELD_VALUE: 程序
+\hwfield{LEX-P0055-V0006}{\fieldvalue{FSH?P?002?M}}\\
+   地点 &
+   % #VALUE_ID: LEX-P0055-V0007
+% #FIELD_VALUE: 地点
+\hwfield{LEX-P0055-V0007}{\fieldvalue{Shanghai}}\\
+   样品温度 &
+   % #VALUE_ID: LEX-P0055-V0008
+% #FIELD_VALUE: 样品温度
+\hwfield{LEX-P0055-V0008}{\fieldvalue{N?Z?C}}\\
+   样品编号 &
+   % #VALUE_ID: LEX-P0055-V0009
+% #FIELD_VALUE: 样品编号
+\hwfield{LEX-P0055-V0009}{\fieldvalue{043?202?C?009?0}}\\
+   国家 &
+   % #VALUE_ID: LEX-P0055-V0010
+% #FIELD_VALUE: 国家
+\hwfield{LEX-P0055-V0010}{\fieldvalue{JAP}}\\
+   测试压力 &
+   % #VALUE_ID: LEX-P0055-V0011
+% #FIELD_VALUE: 测试压力
+\hwfield{LEX-P0055-V0011}{\fieldvalue{1.2?A}}\\
+   压力单位 &
+   % #VALUE_ID: LEX-P0055-V0012
+% #FIELD_VALUE: 压力单位
+\hwfield{LEX-P0055-V0012}{\fieldvalue{mbar}}\\
+   升压速率 &
+   % #VALUE_ID: LEX-P0055-V0013
+% #FIELD_VALUE: 升压速率
+\hwfield{LEX-P0055-V0013}{\fieldvalue{1.000}}\\
+   降压速率 &
+   % #VALUE_ID: LEX-P0055-V0014
+% #FIELD_VALUE: 降压速率
+\hwfield{LEX-P0055-V0014}{\fieldvalue{1.000}}\\
+   最大压力 &
+   % #VALUE_ID: LEX-P0055-V0015
+% #FIELD_VALUE: 最大压力
+\hwfield{LEX-P0055-V0015}{\fieldvalue{6000 mbar}}
+\end{tabular}
+
+\vspace{1em}
+
+% TODO: Handwritten date is partly illegible.
+% #VALUE_ID: LEX-P0055-V0016
+% #FIELD_VALUE: 手写日期
+% #TODO #HANDWRITTEN: 25? 2025.03.21; handwriting is partially illegible
+\fieldvalue{\handwritten{25? 2025.03.21}}
+
+\vspace{1em}
+
+\begin{tabular}{@{}p{0.25\linewidth}p{0.65\linewidth}@{}}
+   结果 &
+   % #VALUE_ID: LEX-P0055-V0017
+% #FIELD_VALUE: 结果
+\hwfield{LEX-P0055-V0017}{\fieldvalue{指定范围内：1800 mbar}}\\
+   测量范围 &
+   % #VALUE_ID: LEX-P0055-V0018
+% #FIELD_VALUE: 测量范围
+\hwfield{LEX-P0055-V0018}{\fieldvalue{1800 mbar}}\\
+   报告日期 &
+   % #VALUE_ID: LEX-P0055-V0019
+% #FIELD_VALUE: 报告日期
+\hwfield{LEX-P0055-V0019}{\fieldvalue{28/Mar/2025}}
+\end{tabular}
+
+\vspace{1em}
+
+\begin{center}
+\textbf{PALL Pantronic Flowscan IV 测试结果}
+
+\begin{tabular}{@{}p{0.25\linewidth}p{0.55\linewidth}@{}}
+   日期 &
+   % #VALUE_ID: LEX-P0055-V0020
+% #FIELD_VALUE: 日期
+\hwfield{LEX-P0055-V0020}{\fieldvalue{26/Mar/2025 18:38:31}}\\
+   页码 &
+   % #VALUE_ID: LEX-P0055-V0021
+% #FIELD_VALUE: 页码
+\hwfield{LEX-P0055-V0021}{\fieldvalue{2 of 2}}
+\end{tabular}
+\end{center}
+
+\vspace{1em}
+
+\begin{center}
+\begin{tikzpicture}[x=0.8cm,y=0.8cm]
+\draw (0,0) rectangle (7,4.5);
+\draw[->] (0,0) -- (7.3,0) node[right]{时间 (min)};
+\draw[->] (0,0) -- (0,4.8) node[above]{压力 (mbar)};
+\draw (0,0) node[below left]{0};
+\draw (0,1.2) node[left]{450};
+\draw (0,2.3) node[left]{900};
+\draw (0,3.4) node[left]{1350};
+\draw (0,4.5) node[left]{1800};
+\draw (1.4,0) node[below]{1200};
+\draw (2.8,0) node[below]{2400};
+\draw (4.2,0) node[below]{3600};
+\draw (5.6,0) node[below]{4800};
+\draw (7,0) node[below]{6000};
+\draw (0.15,4.35) .. controls (0.25,3.8) and (0.35,3.3) .. (0.65,3.0);
+\end{tikzpicture}
+\end{center}
+
+\vspace{1em}
+
+% TODO: Handwritten annotation below the graph is partly illegible.
+% #VALUE_ID: LEX-P0055-V0022
+% #FIELD_VALUE: 图表手写标注
+% #TODO #HANDWRITTEN: 24?mbar?; handwritten annotation is unclear
+\fieldvalue{\handwritten{24?mbar?}}
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0055-V0023
+% #HANDWRITTEN: 1/1
+\handwritten{1/1}
+
+\end{minipage}%
+}
+% LEXOID_PAGE_COMPLETED: 55/57
+
+\newpage
+
+\section{Pulmonary Flowability IV 检测结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+   日期 &
+   % #VALUE_ID: LEX-P0056-V0001
+% #FIELD_VALUE: 日期
+\hwfield{LEX-P0056-V0001}{\fieldvalue{26/May/2025 15:48:34}}\\
+   患者号 &
+   % #VALUE_ID: LEX-P0056-V0002
+% #FIELD_VALUE: 患者号
+\hwfield{LEX-P0056-V0002}{\fieldvalue{100}}\\
+   姓名 &
+   % #VALUE_ID: LEX-P0056-V0003
+% #FIELD_VALUE: 姓名
+\hwfield{LEX-P0056-V0003}{\fieldvalue{F\ldots}}\\
+   病历号 &
+   % #VALUE_ID: LEX-P0056-V0004
+% #FIELD_VALUE: 病历号
+\hwfield{LEX-P0056-V0004}{\fieldvalue{28\ldots}}\\
+   性别 &
+   % #VALUE_ID: LEX-P0056-V0005
+% #FIELD_VALUE: 性别
+\hwfield{LEX-P0056-V0005}{\fieldvalue{女}}\\
+   年龄 &
+   % #VALUE_ID: LEX-P0056-V0006
+% #FIELD_VALUE: 年龄
+\hwfield{LEX-P0056-V0006}{\fieldvalue{28}}\\
+   检查项目 &
+   % #VALUE_ID: LEX-P0056-V0007
+% #FIELD_VALUE: 检查项目
+\hwfield{LEX-P0056-V0007}{\fieldvalue{肺功能}}\\
+   设备型号 &
+   % #VALUE_ID: LEX-P0056-V0008
+% #FIELD_VALUE: 设备型号
+\hwfield{LEX-P0056-V0008}{\fieldvalue{Spiro\ldots}}\\
+   检查模式 &
+   % #VALUE_ID: LEX-P0056-V0009
+% #FIELD_VALUE: 检查模式
+\hwfield{LEX-P0056-V0009}{\fieldvalue{C}}\\
+   其他报告参数 &
+   % #VALUE_ID: LEX-P0056-V0010
+% #FIELD_VALUE: 其他报告参数
+\hwfield{LEX-P0056-V0010}{\fieldvalue{\text{[部分难以辨认]}}}\\
+\end{tabular}
+
+\vspace{1em}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+   备注 &
+   % #VALUE_ID: LEX-P0056-V0011
+% #FIELD_VALUE: 备注
+\hwfield{LEX-P0056-V0011}{\fieldvalue{\text{[空白]}}}\\
+   检查时间 &
+   % #VALUE_ID: LEX-P0056-V0012
+% #FIELD_VALUE: 检查时间
+\hwfield{LEX-P0056-V0012}{\fieldvalue{26/May/2025 15:53:03}}\\
+   签名 &
+   % #VALUE_ID: LEX-P0056-V0013
+% #FIELD_VALUE: 签名
+% #HANDWRITTEN: [签名，难以辨认]
+\hwfield{LEX-P0056-V0013}{\fieldvalue{\handwritten{\text{[签名]}}}}\\
+\end{tabular}
+
+% TODO: 页面左侧报告中的若干设备、参数及身份字段因图像分辨率不足而难以完整辨认。
+
+\vspace{2em}
+
+% #VALUE_ID: LEX-P0056-V0014
+% #HANDWRITTEN: 25年06.26
+\handwritten{25年06.26}
+
+\section{Pulmonary Flowability IV 测量结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+   日期 &
+   % #VALUE_ID: LEX-P0056-V0015
+% #FIELD_VALUE: 日期
+\hwfield{LEX-P0056-V0015}{\fieldvalue{26/May/2025 15:48:31}}\\
+   页码/次数 &
+   % #VALUE_ID: LEX-P0056-V0016
+% #FIELD_VALUE: 页码/次数
+\hwfield{LEX-P0056-V0016}{\fieldvalue{2 of 2}}\\
+\end{tabular}
+
+\vspace{1em}
+
+\begin{center}
+\begin{minipage}{0.75\linewidth}
+\centering
+\setlength{\fboxsep}{4pt}
+\fbox{%
+\begin{minipage}{0.92\linewidth}
+\centering
+\textbf{大气流量 (mbar/min)}
+
+\vspace{0.5em}
+
+\begin{tabular}{c|ccccc}
+   &
+   0 &
+   450 &
+   900 &
+   1350 &
+   1800\\
+  \hline
+   \raisebox{1.5em}{\rotatebox{90}{流量}} &
+  \multicolumn{5}{c}{ \rule{0pt}{3.5cm}}\\
+\end{tabular}
+
+\vspace{-1em}
+
+\begin{tabular}{c|ccccc}
+   时间 (sec) &
+   0 &
+   1200 &
+   2400 &
+   3600 &
+   4800\\
+\end{tabular}
+\end{minipage}%
+}
+\end{minipage}
+\end{center}
+
+% TODO: 图表曲线仅能近似表示；页面显示的曲线从约1200秒处开始下降并趋于平缓。
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0056-V0017
+% #HANDWRITTEN: [黑色手写文字，难以辨认]
+\handwritten{\text{[黑色手写文字]}}
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0056-V0018
+% #HANDWRITTEN: 74?kg
+\handwritten{74?kg}
+
+% #VALUE_ID: LEX-P0056-V0019
+% #HANDWRITTEN: 20?5.8.11
+\handwritten{20?5.8.11}
+
+% TODO: 页面右下方蓝色手写批注的字符及日期因图像分辨率不足而无法完全确认。
+% LEXOID_PAGE_COMPLETED: 56/57
+
+\newpage
+
+% TODO: The handwritten Chinese note is faint and partially illegible.
+% #VALUE_ID: LEX-P0057-V0001
+% #HANDWRITTEN: 附件2：扫描仪对……校准……记录
+\handwritten{附件2：扫描仪对……校准……记录}
+
+% TODO #HANDWRITTEN: 202?年??月??日; date is faint and partially illegible.
+% #VALUE_ID: LEX-P0057-V0002
+% #HANDWRITTEN: 202?年??月??日
+\handwritten{202?年??月??日}
+
+\bigskip
+
+\begin{center}
+\begin{minipage}{0.42\linewidth}
+\small
+\texttt{METTLER TOLEDO}
+
+% #VALUE_ID: LEX-P0057-V0003
+% #FIELD_VALUE: Model
+Model: \fieldvalue{\texttt{HE2280/02}}
+
+% TODO: The serial number is faint; transcription may be inaccurate.
+% #VALUE_ID: LEX-P0057-V0004
+% #FIELD_VALUE: S/N
+S/N: \fieldvalue{\texttt{C224227?22}}
+
+% #VALUE_ID: LEX-P0057-V0005
+% #FIELD_VALUE: Date
+Date: \fieldvalue{\texttt{2026/05/22}}
+
+% #VALUE_ID: LEX-P0057-V0006
+% #FIELD_VALUE: Time
+Time: \fieldvalue{\texttt{12:41:29}}
+\end{minipage}
+\end{center}
+
+% TODO #HANDWRITTEN: A?……; handwritten annotation below the instrument printout is partially illegible.
+% #VALUE_ID: LEX-P0057-V0007
+% #HANDWRITTEN: A?……
+\handwritten{A?……}
+
+\medskip
+
+\noindent Signature:\quad
+% TODO #HANDWRITTEN: handwritten signature is illegible.
+% #VALUE_ID: LEX-P0057-V0008
+% #FIELD_VALUE: Signature
+% #HANDWRITTEN: illegible signature
+\fieldvalue{\handwritten{illegible signature}}
+
+\bigskip
+
+% TODO #HANDWRITTEN: handwritten signature/name is illegible.
+% #VALUE_ID: LEX-P0057-V0009
+% #HANDWRITTEN: illegible signature
+\handwritten{illegible signature}
+\hspace{2em}
+% TODO #HANDWRITTEN: date is partially illegible.
+% #VALUE_ID: LEX-P0057-V0010
+% #HANDWRITTEN: 2026年05月22日
+\handwritten{2026年05月22日}
+
+% LEXOID_PAGE_COMPLETED: 57/57
+\end{document}

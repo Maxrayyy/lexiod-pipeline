@@ -1,0 +1,361 @@
+================================================================================
+ANALYSIS: Pharmaceutical GMP Batch Record (hUC-MSC Cell Therapy)
+Source: 测试02.tex (Lexoid PDF→LaTeX extraction output)
+File:   batch_record_raw.tex (651,473 chars / 754,617 bytes / 25,377 lines)
+Pages:  132 physical pages (LEXOID_PAGE_COMPLETED markers)
+================================================================================
+
+1. ENCODING ISSUES (CRITICAL)
+================================================================================
+
+1a. DOUBLE-ENCODED UTF-8 (MOJIBAKE) — ALL Chinese text is corrupted
+    - 6,686 lines contain mojibake (double-encoded UTF-8)
+    - 0 lines contain correct Chinese characters
+    - Example: "è¾ç±³è¿èµè³æ³¨å°æ¶²" should be "艾米迈托赛注射液"
+    - Fix: line.encode('latin-1').decode('utf-8') recovers all text
+    - ROOT CAUSE: Lexoid extracted UTF-8 text, then the JSONL transport
+      or paste mechanism re-encoded it through Latin-1 → UTF-8
+
+1b. NEL CHARACTERS (U+0085)
+    - 1,260 NEL (Next Line) characters found in the file
+    - These are non-standard line terminators that may confuse some parsers
+    - File detected as "UTF-8 text, with LF, NEL line terminators"
+
+1c. NaN VALUES FROM OCR/EXTRACTION
+    - 44 occurrences of \fieldvalue{NaN}
+    - These represent values that Lexoid's OCR/extraction could not determine
+    - Must be treated as opaque field values, not errors to fix
+
+
+2. TABLE PATTERNS
+================================================================================
+
+2a. ENVIRONMENT DISTRIBUTION
+    - tabular:   188 tables (of which ~187 are standalone, 6 nested in tabularx)
+    - tabularx:  174 tables (all need conversion to tabular for SyncTeX)
+    - longtable: 0
+    - Total:     362 table environments
+    - Nesting:   Max depth 1 (6 tabular inside tabularx), balanced at exit
+
+2b. TABULARX WIDTH SPECIFICATIONS
+    Width                    Count
+    ──────────────────────────────
+    \textwidth               156    (89.7% — dominant pattern)
+    0.62\textwidth             5
+    0.58\textwidth             5
+    \linewidth                 4
+    0.48\linewidth             1
+    0.88\textwidth             1
+    0.86\textwidth             1
+
+2c. TABULARX COLUMN SPECS (top patterns)
+    Count  Column Spec
+    ─────  ──────────────────────────────────────────────────────
+      12   |X|X|X|X|X|                    (5 equal X cols)
+      11   |l|X|l|X|                      (label-value pairs)
+       7   @{}l X@{}                       (2-col borderless)
+       6   |X|X|X|                         (3 equal X cols)
+       5   @{}>{\raggedright\arraybackslash}X ...  (ragged X cols)
+       5   @{}X X X@{}                     (3-col borderless)
+       4   |X|X|                           (2 equal X cols)
+       4   |>{\centering\arraybackslash}X|...|X| (4 centered X)
+       4   |p{0.48\textwidth}|X|           (fixed + flexible)
+       3   |X|c|c|                         (1 flex + 2 fixed)
+       3   @{}lrr@{}                       (label + 2 right-aligned)
+
+2d. TABULAR COLUMN SPECS (top patterns)
+    Count  Column Spec                    Notes
+    ─────  ────────────────────────────── ──────────────────────────
+      37   c                              Single centered cell
+      20   @{}ll@{}                       2 left-aligned, borderless
+      19   ll                             2 left-aligned, with padding
+      16   cc                             2 centered
+      15   c|*{12}{c|}                    Calendar/checklist grid (13 cols)
+       7   c|c|c|c|c|c|c|c|c|c|c|c|c    Calendar grid explicit
+       4   ccc                            3 centered
+       4   c|*{12}{c}                     Calendar variant
+       4   c|*{12}{p{0.62cm}|}            Calendar with fixed widths
+
+2e. COLUMN COUNT DISTRIBUTION
+    Tabular:  1-col: 41 | 2-col: 87 | 3-col: 22 | 4-col: 11 | 13-col: 10
+    Tabularx: 1-col:  2 | 2-col: 37 | 3-col: 58 | 4-col: 30 | 5-col: 23
+
+2f. TABLE FEATURES
+    Feature              Count    Notes
+    ──────────────────────────── ──────────────────────────────────
+    \hline               1,411    Primary row separator
+    \cline                  94    Partial horizontal lines
+    \multicolumn           257    Column spanning
+    \multirow             36     Row spanning
+    \midrule               1     booktabs (rare)
+    *\{12\} patterns      ~40    Calendar/month grids (12 columns)
+
+
+3. FIELD TYPES
+================================================================================
+
+3a. FIELD VALUE BREAKDOWN
+    Type                                    Count    %
+    ─────────────────────────────────────────────────────
+    \fieldvalue{\handwritten{VALUE}}         1,197   28.6%
+    \fieldvalue{PLAIN_TEXT}                  2,958   70.8%
+    \fieldvalue{NaN}                            44    1.1%
+    ─────────────────────────────────────────────────────
+    TOTAL                                    4,179  100%
+
+3b. PLAIN FIELDVALUE SUBTYPES
+    Subtype                         Count    Examples
+    ──────────────────────────────────────────────────────────────
+    \scriptsize\text{[打印值难以辨认]}    72    OCR-unreadable print values
+    NaN                                    44    Extraction failures
+    Simple numbers (0, 1, etc.)           ~90    Numeric readings
+    \makecell{...}                        140    Multi-line cell content
+    \textbf{...}                           ~50    Bold-formatted values
+    Math expressions ($\geq$, etc.)        ~100    Specifications/limits
+    \shortstack{\texttt{...}}              ~84    Multi-line serial numbers
+    \text{---}                            115    Dash placeholders
+    Plain Chinese text                   ~2,000   Regular field labels/values
+
+3c. HANDWRITTEN FIELD VALUES
+    Total \handwritten{}: 1,313 (in fieldvalue) + additional standalone
+    Total #HANDWRITTEN comments: 1,012
+    Value stats: min=1 char, max=63 chars, avg=7.2 chars
+    Empty handwritten values: 0 (all have content)
+
+    Most common handwritten values:
+    - 0.4 (39x) — likely a repeated measurement
+    - 2025.07.13 (30x) — batch production date
+    - ✓ 有 (28x) — checkmark confirmations
+    - 4, 5, 8, 10, 20, 50, 200, 300, 400 — numeric measurements/counts
+
+3d. TODO/UNCERTAIN FIELDS
+    #TODO #HANDWRITTEN comments: 233
+    Patterns:
+    - Unclear signatures: "张?; 签名辨识不清" (name unclear)
+    - Illegible handwriting: "[签名难以辨认]; 蓝色手写签名"
+    - Uncertain digits: "202?; handwriting unclear"
+    - Smudged values: "100（5倍?）; handwriting is partly unclear"
+
+3e. COMMENT ANNOTATION SYSTEM
+    % #VALUE_ID: LEX-P{page}-V{seq}     — 4,259 unique value identifiers
+    % #FIELD_VALUE: {label}             — 4,168 field labels
+    % #HANDWRITTEN: {value}             — 1,251 handwritten value records
+    % #TODO #HANDWRITTEN: {note}        — 233 uncertain readings
+
+
+4. DOCUMENT STRUCTURE
+================================================================================
+
+4a. SECTION HIERARCHY
+    \section:       78
+    \subsection:    50
+    \subsubsection:  9
+
+4b. OTHER ENVIRONMENTS
+    center:      191 begin / 189 end (MISMATCH: 2 unclosed)
+    minipage:     99 (balanced)
+    flushright:   10
+    flushleft:     3
+    itemize:       3
+    description:   3
+    figure:        1
+    table:         1
+    picture:       1
+
+4c. FORMATTING COMMANDS
+    \textbf: 338 | \textit: 43 | \underline: 33
+    \shortstack: 613 | \makecell: 140 | \parbox: 197
+    \scriptsize: 291 | \tiny: 6
+    \texttt: 283 | \centering: 279
+    \raggedright: 75 | \RaggedRight: 3 | \arraybackslash: 60
+    \noindent: 397 | \hfill: 103 | \vfill: 47
+    \medskip: 149 | \bigskip: 20
+
+4d. PAGE STRUCTURE
+    - 132 LEXOID_PAGE_COMPLETED markers (correct for 132-page doc)
+    - 131 \newpage commands (correct: n-1 for n pages)
+    - Page content sizes: min=1 byte, max=10,266, avg=4,848
+    - No tables span across page boundaries (good for SyncTeX)
+    - No fancyhdr/pagestyle commands (no headers/footers via fancyhdr)
+
+
+5. DOMAIN-SPECIFIC PATTERNS (Pharmaceutical Batch Record)
+================================================================================
+
+5a. REPEATED TABLE TEMPLATES
+    The document uses highly repetitive table structures for:
+    - Reagent/medium inventory tables (试剂名称 & 厂家 & 货号 & 批号 & 有效期至)
+      → appears 6+ times with identical structure
+    - Equipment/instrument tables (仪器名称 & 厂家 & 型号 & 设备编号 & 校准有效期至)
+      → appears 5+ times
+    - Sample collection tables
+    - Quality control result tables
+    - Dilution scheme tables (稀释倍数 | volumes | total volume)
+
+5b. CALENDAR/MONTH GRID TABLES
+    - 13-column tables: c|*{12}{c|} (month columns)
+    - Used for monthly planning/tracking grids
+    - About 15 instances with various fixed column widths
+
+5c. SERIAL NUMBER TRACKING
+    - \texttt used 283 times for monospace serial/lot numbers
+    - Pattern: A37722025-NNNNN-TM-... (504 occurrences of A37... prefix)
+    - \shortstack{\texttt{...}\\...\\...} used 84 times for multi-line serials
+    - \makecell used 140 times for multi-line cell content (often serials)
+
+5d. CHECKMARK/CHECKBOX REPRESENTATION
+    - $\square$ (empty checkbox): 49 occurrences
+    - \checkmark (checked): 26 occurrences
+    - Used for pass/fail, yes/no, present/absent binary fields
+
+5e. MATH MODE IN SPECIFICATIONS
+    - 554 inline math expressions total
+    - $\mu$ (136x) — microliter/microgram units
+    - $\square$ (49x) — checkboxes
+    - $6.0\times10^{7}$ (11x) — cell count specifications
+    - $\geq$, $\leq$, $<$ — comparison operators in specs
+    - $300\times g$ (8x) — centrifugation parameters
+    - $-80^\circ$ — storage temperature
+
+5f. DASH PLACEHOLDERS
+    - \text{---} used 115 times as field value placeholder
+    - Represents empty/unfilled fields in the original document
+    - Must be preserved as-is during optimization
+
+
+6. ISSUES AND RISKS FOR OPTIMIZATION
+================================================================================
+
+6a. CRITICAL: center ENVIRONMENT MISMATCH
+    - 191 \begin{center} vs 189 \end{center}
+    - 2 unclosed center environments detected
+    - Deep nesting (depth=3) at lines ~18479, ~18807
+    - Must be fixed or compilation will fail
+
+6b. CRITICAL: MOJIBAKE ENCODING
+    - ALL Chinese text is double-encoded through Latin-1
+    - This will compile but produce garbled PDF output
+    - The original .tex file on disk needs encoding repair BEFORE optimization
+    - Fix command: text.encode('latin-1').decode('utf-8')
+
+6c. MODERATE: tabularx CONVERSION COMPLEXITY
+    - 174 tabularx tables need conversion to tabular
+    - 58 of these use X columns (the rest have only l/c/r/p columns)
+    - Most common width: \textwidth (156/174 = 89.7%)
+    - Column specs with >{\raggedright\arraybackslash}X need careful handling
+    - \parbox{197} inside cells adds layout complexity
+
+6d. MODERATE: SHORTSTACK/MAKECELL IN FIELDS
+    - 613 \shortstack and 140 \makecell inside fieldvalues
+    - These create multi-line content within table cells
+    - SyncTeX line-mapping may be imprecise for inner lines
+    - shortstack+texttt (84x) for serial numbers is especially tricky
+
+6e. MINOR: NaN VALUES
+    - 44 \fieldvalue{NaN} entries
+    - These are extraction failures from the OCR pipeline
+    - Should be preserved (they represent genuinely unreadable content)
+
+6f. MINOR: *{N} REPETITION SYNTAX
+    - ~40 uses of *{12}{...} in column specs
+    - The optimizer must expand these when converting tabularx → tabular
+    - Failure to account for repetition will produce wrong column count
+
+6g. MINOR: PARBOX INSIDE CELLS
+    - 197 \parbox commands, mostly with 0.45\textwidth
+    - Used for text wrapping within regular tabular cells
+    - Width calculation must account for these when converting X columns
+
+
+7. UNIQUE PATTERNS NOT COVERED BY SECTION 15 PROMPT
+================================================================================
+
+The generic prompt in Section 15 of README.md covers:
+- tabularx → tabular conversion
+- X column width calculation
+- VALUE_ID / FIELD_VALUE / HANDWRITTEN comment preservation
+- \newpage and page marker preservation
+- Basic self-checks
+
+The following patterns in THIS document are NOT specifically addressed:
+
+7a. MOJIBAKE ENCODING REPAIR
+    - The prompt assumes correct UTF-8 encoding
+    - This document has systematic double-encoding
+    - A pre-processing step or prompt addition is needed
+
+7b. NEL CHARACTER HANDLING
+    - 1,260 U+0085 (NEL) characters may confuse parsers
+    - Should be normalized to \n before processing
+
+7c. \shortstack AS CELL CONTENT WRAPPER
+    - 613 uses of \shortstack for multi-line cell content
+    - SyncTeX maps \shortstack to a single source line
+    - The prompt does not address how to handle \shortstack → individual lines
+
+7d. \makecell USAGE (140 instances)
+    - Similar to \shortstack but from makecell package
+    - Creates multi-line cells with \\ separators
+    - Not mentioned in the prompt's table conversion rules
+
+7e. CALENDAR GRID TABLES (*{12}{...})
+    - 13-column tables with *{12} repetition for month-based tracking
+    - The prompt's column width calculation examples don't cover *{N} patterns
+    - Expanding *{12}{c|} to 12 individual c| columns is needed
+
+7f. $\square$ AND \checkmark AS CHECKBOX FIELDS
+    - Binary pass/fail represented as $\square$ (unchecked) or \checkmark (checked)
+    - These are field values that need individual source lines for SyncTeX
+    - The prompt does not mention checkbox-specific handling
+
+7g. NaN AS FIELD VALUE
+    - 44 fields with literal "NaN" as value
+    - The prompt says "do not correct any field values" but NaN could be
+      misinterpreted as a processing error by the optimizer
+
+7h. \parbox INSIDE TABULAR CELLS
+    - 197 \parbox commands for text wrapping in fixed-width cells
+    - When converting tabularx → tabular, existing \parbox widths must be
+      recalculated relative to the new p{} column width, not \textwidth
+
+7i. REPEATED TABLE TEMPLATES
+    - Same table structure appears 5-6+ times (reagent lists, equipment lists)
+    - Optimizer could benefit from template-awareness to ensure consistent
+      conversion across all instances of the same template
+
+7j. \text{---} DASH PLACEHOLDERS (115 instances)
+    - Empty field representation using math-mode text command
+    - Must be preserved exactly, not converted to literal dashes
+
+7k. SIDE-BY-SIDE MINIPAGE LAYOUTS
+    - 99 minipage environments for multi-column page layouts
+    - Tables inside minipages have different effective \textwidth
+    - Column width calculation must use minipage width, not page \textwidth
+
+7l. \scriptsize\text{[打印值难以辨认]} PATTERN (72 instances)
+    - OCR-failure marker rendered in small text
+    - These are intentional Lexoid annotations for unreadable print values
+    - Must not be "cleaned up" or replaced
+
+
+8. STATISTICS SUMMARY
+================================================================================
+
+    Total characters:          651,473
+    Total lines:               25,377
+    Total pages:               132
+    Table environments:        362 (174 tabularx + 188 tabular)
+    Field values:              4,179 (\fieldvalue)
+    Handwritten values:        1,313 (\handwritten)
+    VALUE_IDs:                 4,259
+    TODO/uncertain fields:     233
+    NaN fields:                44
+    Encoding issues:           6,686 mojibake lines + 1,260 NEL chars
+    Structure issues:          2 unclosed center environments
+    Math expressions:          554
+    Section commands:          137 (78+50+9)
+    Multi-line cell wrappers:  753 (613 shortstack + 140 makecell)
+
+================================================================================
+END OF ANALYSIS
+================================================================================

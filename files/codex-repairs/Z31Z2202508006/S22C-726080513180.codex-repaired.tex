@@ -1,0 +1,6166 @@
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+\documentclass[UTF8,10pt,a4paper,fontset=fandol]{ctexart}
+\usepackage{amsmath,amssymb,graphicx,tabularx,array,multirow,enumitem,titlesec,xcolor,ragged2e,etoolbox}
+\usepackage[a4paper,top=1.6cm,bottom=1.6cm,left=1.6cm,right=1.6cm]{geometry}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.15em}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\setlist[enumerate]{leftmargin=2.6em,itemsep=0.1em,topsep=0.2em}
+\titleformat{\section}{\large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{0.7em}{0.25em}
+\titlespacing*{\subsection}{0pt}{0.55em}{0.2em}
+\titlespacing*{\subsubsection}{0pt}{0.4em}{0.15em}
+\raggedbottom
+\BeforeBeginEnvironment{tabularx}{\par\noindent}
+\newcommand{\fieldvalue}[1]{#1}
+\newcommand{\handwritten}[1]{#1}
+\newcommand{\checkboxfield}[1]{\ifstrequal{#1}{checked}{☑}{\ifstrequal{#1}{unclear}{?}{☐}}}
+\begin{document}
+
+\noindent
+\begin{minipage}{0.28\linewidth}
+\centering
+\small
+烽生康生物科技（北京）有限公司\\
+\scriptsize PHARMA LIFE EXCELLENCE BIOTECH
+\end{minipage}
+\hfill
+\begin{minipage}{0.18\linewidth}
+\centering
+\scriptsize 留生生物\\
+原件
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+\raggedright
+\small 文件编号：REC-YZ-SOP-QC-03-092-D
+\hfill
+\textcolor{red}{\scriptsize 留生生物\\变更文件:F.3}
+\end{minipage}
+
+\vspace{3.5cm}
+
+\begin{center}
+{\LARGE\bfseries 艾米迈托赛注射液}\\[1.1em]
+{\LARGE\bfseries 内控批检验记录}
+\end{center}
+
+\vspace{4.7cm}
+
+\noindent
+\hspace{7em}\textbf{产品名称：}
+\underline{\hspace{2.8em}
+% #VALUE_ID: LEX-P0001-V0001
+% #FIELD_VALUE: 产品名称
+\fieldvalue{艾米迈托赛注射液}
+\hspace{5.0em}}\\[1.8em]
+
+\noindent
+\hspace{7em}\textbf{产品批号：}
+\underline{\hspace{1.0em}
+% #VALUE_ID: LEX-P0001-V0002
+% #FIELD_VALUE: 产品批号
+% #TODO #HANDWRITTEN: A?L 22?075806; handwriting is partially illegible
+\fieldvalue{\handwritten{A?L 22?075806}}
+\hspace{5.0em}}\\[1.8em]
+
+\noindent
+\hspace{7em}\textbf{代码规格：}
+\underline{\hspace{1.0em}
+% #VALUE_ID: LEX-P0001-V0003
+% #FIELD_VALUE: 代码规格
+\fieldvalue{\textbf{C304 \quad 12ml: \ 6.0$\times 10^{7}$个细胞}}
+\hspace{1.0em}}
+
+\vfill
+
+\begin{center}
+\scriptsize 第 1 页 共 21 页
+\end{center}
+% LEXOID_PAGE_COMPLETED: 1/34
+
+\newpage
+
+\begin{center}
+\textbf{内控批检验记录审核单}
+\end{center}
+
+\noindent 文件编号：REC-YZ-SOP-QC-03-092
+
+\begin{tabular}{|p{0.08\linewidth}|p{0.66\linewidth}|p{0.20\linewidth}|}
+\hline
+序号 & 审核内容 & 审核结果 \\
+\hline
+1 & 批检验记录封面 &
+% #VALUE_ID: LEX-P0002-V0001
+% #FIELD_VALUE: 符合
+% #HANDWRITTEN: ✓
+\fieldvalue{\handwritten{\checkboxfield{checked}}} 符合\quad
+% #VALUE_ID: LEX-P0002-V0002
+% #FIELD_VALUE: 不符合
+\fieldvalue{\checkboxfield{unchecked}} 不符合
+\\
+\hline
+2 & 批检验记录中表格 &
+% #VALUE_ID: LEX-P0002-V0003
+% #FIELD_VALUE: 有
+% #HANDWRITTEN: ✓
+\fieldvalue{\handwritten{\checkboxfield{checked}}} 有\quad
+% #VALUE_ID: LEX-P0002-V0004
+% #FIELD_VALUE: 无
+\fieldvalue{\checkboxfield{unchecked}} 无
+\\
+\hline
+3 & 内控批检验记录--细胞形态检验 &
+% #VALUE_ID: LEX-P0002-V0005
+% #FIELD_VALUE: 有
+% #HANDWRITTEN: ✓
+\fieldvalue{\handwritten{\checkboxfield{checked}}} 有\quad
+% #VALUE_ID: LEX-P0002-V0006
+% #FIELD_VALUE: 无
+\fieldvalue{\checkboxfield{unchecked}} 无
+\\
+\hline
+4 & 内控批检验记录--可吸收 2，3-双氯加氢（IDO）检验 &
+% #VALUE_ID: LEX-P0002-V0007
+% #FIELD_VALUE: 有
+% #HANDWRITTEN: ✓
+\fieldvalue{\handwritten{\checkboxfield{checked}}} 有\quad
+% #VALUE_ID: LEX-P0002-V0008
+% #FIELD_VALUE: 无
+\fieldvalue{\checkboxfield{unchecked}} 无
+\\
+\hline
+5 & 内控批检验记录--成骨分化能力检验 &
+% #VALUE_ID: LEX-P0002-V0009
+% #FIELD_VALUE: 有
+% #HANDWRITTEN: ✓
+\fieldvalue{\handwritten{\checkboxfield{checked}}} 有\quad
+% #VALUE_ID: LEX-P0002-V0010
+% #FIELD_VALUE: 无
+\fieldvalue{\checkboxfield{unchecked}} 无
+\\
+\hline
+6 & 内控批检验记录--成脂分化能力检验 &
+% #VALUE_ID: LEX-P0002-V0011
+% #FIELD_VALUE: 有
+% #HANDWRITTEN: ✓
+\fieldvalue{\handwritten{\checkboxfield{checked}}} 有\quad
+% #VALUE_ID: LEX-P0002-V0012
+% #FIELD_VALUE: 无
+\fieldvalue{\checkboxfield{unchecked}} 无
+\\
+\hline
+7 & 内控批检验记录--成软骨分化能力检验 &
+% #VALUE_ID: LEX-P0002-V0013
+% #FIELD_VALUE: 有
+% #HANDWRITTEN: ✓
+\fieldvalue{\handwritten{\checkboxfield{checked}}} 有\quad
+% #VALUE_ID: LEX-P0002-V0014
+% #FIELD_VALUE: 无
+\fieldvalue{\checkboxfield{unchecked}} 无
+\\
+\hline
+8 & 内控批检验记录--细胞图片、外源病毒阳性检样品处理 &
+% #VALUE_ID: LEX-P0002-V0015
+% #FIELD_VALUE: 有
+% #HANDWRITTEN: ✓
+\fieldvalue{\handwritten{\checkboxfield{checked}}} 有\quad
+% #VALUE_ID: LEX-P0002-V0016
+% #FIELD_VALUE: 无
+\fieldvalue{\checkboxfield{unchecked}} 无
+\\
+\hline
+9 & 委托外检--细胞内、外源病毒阳性检验 &
+% #VALUE_ID: LEX-P0002-V0017
+% #FIELD_VALUE: 有
+% #HANDWRITTEN: ✓
+\fieldvalue{\handwritten{\checkboxfield{checked}}} 有\quad
+% #VALUE_ID: LEX-P0002-V0018
+% #FIELD_VALUE: 无
+\fieldvalue{\checkboxfield{unchecked}} 无
+\\
+\hline
+\end{tabular}
+
+\vspace{2mm}
+
+\begin{tabular}{|p{0.08\linewidth}|p{0.86\linewidth}|}
+\hline
+偏差 &
+本批有无偏差发生及偏差编号是否被记录\\
+&
+偏差编号：
+% #VALUE_ID: LEX-P0002-V0019
+% #FIELD_VALUE: 未发生
+% #HANDWRITTEN: ✓
+\fieldvalue{\handwritten{\checkboxfield{checked}}} 未发生\\
+&
+% #VALUE_ID: LEX-P0002-V0020
+% #FIELD_VALUE: 已发生且已记录
+\fieldvalue{\checkboxfield{unchecked}} 已发生且已记录，偏差编号：\underline{\hspace{4cm}}\\
+\hline
+\end{tabular}
+
+\begin{tabular}{|p{0.08\linewidth}|p{0.86\linewidth}|}
+\hline
+OOS/\newline
+OOT &
+本批有无 OOS/OOT 发生及 OOS/OOT 编号是否被记录\\
+&
+OOS/OOT 编号：
+% #VALUE_ID: LEX-P0002-V0021
+% #FIELD_VALUE: 未发生
+% #HANDWRITTEN: ✓
+\fieldvalue{\handwritten{\checkboxfield{checked}}} 未发生\\
+&
+% #VALUE_ID: LEX-P0002-V0022
+% #FIELD_VALUE: 已发生且已记录
+\fieldvalue{\checkboxfield{unchecked}} 已发生且已记录，OOS/OOT 编号：\underline{\hspace{4cm}}\\
+\hline
+\end{tabular}
+
+\vspace{2mm}
+
+\begin{tabular}{|p{0.08\linewidth}|p{0.86\linewidth}|}
+\hline
+\multicolumn{2}{|c|}{质量控制部审核} \\
+\hline
+质量\newline
+控制部\newline
+审核 &
+% #VALUE_ID: LEX-P0002-V0023
+% #FIELD_VALUE: 符合规定
+% #HANDWRITTEN: ✓
+\fieldvalue{\handwritten{\checkboxfield{checked}}} 符合规定\quad
+% #VALUE_ID: LEX-P0002-V0024
+% #FIELD_VALUE: 不符合规定
+\fieldvalue{\checkboxfield{unchecked}} 不符合规定，不符合原因：\underline{\hspace{3cm}}\\[-1mm]
+&
+质量控制部审核人/日期：
+% #VALUE_ID: LEX-P0002-V0025
+% #FIELD_VALUE: 质量控制部审核人
+% #TODO #HANDWRITTEN: 杨某某; 签名笔迹不清
+\fieldvalue{\handwritten{杨某某}}\quad
+% #VALUE_ID: LEX-P0002-V0026
+% #FIELD_VALUE: 日期
+% #HANDWRITTEN: 2025.10.21
+\fieldvalue{\handwritten{2025.10.21}}\\
+\cline{2-2}
+&
+% #VALUE_ID: LEX-P0002-V0027
+% #FIELD_VALUE: 符合规定
+% #HANDWRITTEN: ✓
+\fieldvalue{\handwritten{\checkboxfield{checked}}} 符合规定\quad
+% #VALUE_ID: LEX-P0002-V0028
+% #FIELD_VALUE: 不符合规定
+\fieldvalue{\checkboxfield{unchecked}} 不符合规定，不符合原因：\underline{\hspace{3cm}}\\[-1mm]
+&
+质量控制部审核人/日期：
+% #VALUE_ID: LEX-P0002-V0029
+% #FIELD_VALUE: 质量控制部审核人
+% #TODO #HANDWRITTEN: 乔某恒; 签名笔迹不清
+\fieldvalue{\handwritten{乔某恒}}\quad
+% #VALUE_ID: LEX-P0002-V0030
+% #FIELD_VALUE: 日期
+% #HANDWRITTEN: 2025.10.27
+\fieldvalue{\handwritten{2025.10.27}}\\
+\cline{2-2}
+&
+% #VALUE_ID: LEX-P0002-V0031
+% #FIELD_VALUE: 符合规定
+% #HANDWRITTEN: ✓
+\fieldvalue{\handwritten{\checkboxfield{checked}}} 符合规定\quad
+% #VALUE_ID: LEX-P0002-V0032
+% #FIELD_VALUE: 不符合规定
+\fieldvalue{\checkboxfield{unchecked}} 不符合规定，不符合原因：\underline{\hspace{3cm}}\\[-1mm]
+&
+质量控制部负责人/日期：
+% #VALUE_ID: LEX-P0002-V0033
+% #FIELD_VALUE: 质量控制部负责人
+% #TODO #HANDWRITTEN: 3H?y; 签名难以辨认
+\fieldvalue{\handwritten{3H?y}}\quad
+% #VALUE_ID: LEX-P0002-V0034
+% #FIELD_VALUE: 日期
+% #HANDWRITTEN: 2025.10.28
+\fieldvalue{\handwritten{2025.10.28}}\\
+\hline
+\end{tabular}
+
+\vspace{2mm}
+
+\begin{tabular}{|p{0.08\linewidth}|p{0.86\linewidth}|}
+\hline
+\multicolumn{2}{|c|}{QA 审核} \\
+\hline
+QA\newline
+审核 &
+% #VALUE_ID: LEX-P0002-V0035
+% #FIELD_VALUE: 符合规定
+% #HANDWRITTEN: ✓
+\fieldvalue{\handwritten{\checkboxfield{checked}}} 符合规定\quad
+% #VALUE_ID: LEX-P0002-V0036
+% #FIELD_VALUE: 不符合规定
+\fieldvalue{\checkboxfield{unchecked}} 不符合规定，不符合原因：\underline{\hspace{3cm}}\\[-1mm]
+&
+QA 审核人/日期：
+% #VALUE_ID: LEX-P0002-V0037
+% #FIELD_VALUE: QA 审核人
+% #TODO #HANDWRITTEN: 金某某; 签名笔迹不清
+\fieldvalue{\handwritten{金某某}}\quad
+% #VALUE_ID: LEX-P0002-V0038
+% #FIELD_VALUE: 日期
+% #HANDWRITTEN: 2025.10.29
+\fieldvalue{\handwritten{2025.10.29}}\\
+\cline{2-2}
+&
+% #VALUE_ID: LEX-P0002-V0039
+% #FIELD_VALUE: 符合规定
+% #HANDWRITTEN: ✓
+\fieldvalue{\handwritten{\checkboxfield{checked}}} 符合规定\quad
+% #VALUE_ID: LEX-P0002-V0040
+% #FIELD_VALUE: 不符合规定
+\fieldvalue{\checkboxfield{unchecked}} 不符合规定，不符合原因：\underline{\hspace{3cm}}\\[-1mm]
+&
+质量受权人/日期：
+% #VALUE_ID: LEX-P0002-V0041
+% #FIELD_VALUE: 质量受权人
+% #TODO #HANDWRITTEN: 郭某某; 签名笔迹不清
+\fieldvalue{\handwritten{郭某某}}\quad
+% #VALUE_ID: LEX-P0002-V0042
+% #FIELD_VALUE: 日期
+% #HANDWRITTEN: 2025.10.30
+\fieldvalue{\handwritten{2025.10.30}}\\
+\hline
+\end{tabular}
+
+\vfill
+
+\begin{center}
+第 2 页 共 21 页
+\end{center}
+% LEXOID_PAGE_COMPLETED: 2/34
+
+\newpage
+
+\begin{center}
+\textbf{艾米迈托塞注射液内控批检验记录}
+
+\smallskip
+\begin{tabular}{|p{0.16\linewidth}|p{0.31\linewidth}|p{0.16\linewidth}|p{0.27\linewidth}|}
+\hline
+\multicolumn{4}{|c|}{\textbf{细胞形态检验}}\\
+\hline
+样品名称 &
+% #VALUE_ID: LEX-P0003-V0001
+% #FIELD_VALUE: 样品名称
+\fieldvalue{艾米迈托塞注射液} &
+样品规格 &
+% #VALUE_ID: LEX-P0003-V0002
+% #FIELD_VALUE: 样品规格
+\fieldvalue{12ml：$6.0\times10^{7}$个细胞}\\
+\hline
+样品批号 &
+% #VALUE_ID: LEX-P0003-V0003
+% #FIELD_VALUE: 样品批号
+% #TODO #HANDWRITTEN: A?J?30?85000; handwriting is partially illegible
+\fieldvalue{\handwritten{A?J?30?85000}} &
+取样日期 &
+% #VALUE_ID: LEX-P0003-V0004
+% #FIELD_VALUE: 取样日期
+% #TODO #HANDWRITTEN: 2025年08月?日; final day is unclear
+\fieldvalue{\handwritten{2025年08月?日}}\\
+\hline
+\end{tabular}
+\end{center}
+
+\section{仪器设备及试剂}
+
+\subsection{仪器设备}
+
+\begin{center}
+\begin{tabular}{|p{0.22\linewidth}|p{0.17\linewidth}|p{0.20\linewidth}|p{0.20\linewidth}|p{0.20\linewidth}|}
+\hline
+仪器名称 & 厂家 & 型号 & 设备编号 & 校准有效期至\\
+\hline
+% #VALUE_ID: LEX-P0003-V0005
+% #FIELD_VALUE: 仪器名称
+\fieldvalue{生物安全柜} &
+% #VALUE_ID: LEX-P0003-V0006
+% #FIELD_VALUE: 厂家
+\fieldvalue{Thermo} &
+% #VALUE_ID: LEX-P0003-V0007
+% #FIELD_VALUE: 型号
+% #TODO #HANDWRITTEN: ?; handwriting is illegible
+\fieldvalue{\handwritten{?}} &
+% #VALUE_ID: LEX-P0003-V0008
+% #FIELD_VALUE: 设备编号
+% #TODO #HANDWRITTEN: 143?01; handwriting is partially illegible
+\fieldvalue{\handwritten{143?01}} &
+% #VALUE_ID: LEX-P0003-V0009
+% #FIELD_VALUE: 校准有效期至
+% #TODO #HANDWRITTEN: 2026.02.1?; final digit is unclear
+\fieldvalue{\handwritten{2026.02.1?}}\\
+\hline
+% #VALUE_ID: LEX-P0003-V0010
+% #FIELD_VALUE: 仪器名称
+\fieldvalue{二氧化碳培养箱} &
+% #VALUE_ID: LEX-P0003-V0011
+% #FIELD_VALUE: 厂家
+\fieldvalue{Thermo} &
+% #VALUE_ID: LEX-P0003-V0012
+% #FIELD_VALUE: 型号
+\fieldvalue{HERA cell 250i} &
+% #VALUE_ID: LEX-P0003-V0013
+% #FIELD_VALUE: 设备编号
+% #TODO #HANDWRITTEN: 143?02; handwriting is partially illegible
+\fieldvalue{\handwritten{143?02}} &
+% #VALUE_ID: LEX-P0003-V0014
+% #FIELD_VALUE: 校准有效期至
+% #TODO #HANDWRITTEN: 2026.06.23; handwriting is partially unclear
+\fieldvalue{\handwritten{2026.06.23}}\\
+\hline
+% #VALUE_ID: LEX-P0003-V0015
+% #FIELD_VALUE: 仪器名称
+\fieldvalue{倒置显微镜} &
+% #VALUE_ID: LEX-P0003-V0016
+% #FIELD_VALUE: 厂家
+\fieldvalue{Leica} &
+% #VALUE_ID: LEX-P0003-V0017
+% #FIELD_VALUE: 型号
+\fieldvalue{Leica DMi1} &
+% #VALUE_ID: LEX-P0003-V0018
+% #FIELD_VALUE: 设备编号
+% #TODO #HANDWRITTEN: 14?083?; handwriting is partially illegible
+\fieldvalue{\handwritten{14?083?}} &
+% #VALUE_ID: LEX-P0003-V0019
+% #FIELD_VALUE: 校准有效期至
+% #TODO #HANDWRITTEN: 2026.09.03; handwriting is partially unclear
+\fieldvalue{\handwritten{2026.09.03}}\\
+\hline
+% #VALUE_ID: LEX-P0003-V0020
+% #FIELD_VALUE: 仪器名称
+\fieldvalue{移液器} &
+% #VALUE_ID: LEX-P0003-V0021
+% #FIELD_VALUE: 厂家
+\fieldvalue{Eppendorf} &
+% #VALUE_ID: LEX-P0003-V0022
+% #FIELD_VALUE: 型号
+% #HANDWRITTEN: 20--200~$\mu$l
+\fieldvalue{\handwritten{20--200~$\mu$l}} &
+% #VALUE_ID: LEX-P0003-V0023
+% #FIELD_VALUE: 设备编号
+% #TODO #HANDWRITTEN: 04?11?X; handwriting is partially illegible
+\fieldvalue{\handwritten{04?11?X}} &
+% #VALUE_ID: LEX-P0003-V0024
+% #FIELD_VALUE: 校准有效期至
+% #TODO #HANDWRITTEN: 2026.01.1?; final digit is unclear
+\fieldvalue{\handwritten{2026.01.1?}}\\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{试剂耗材}
+
+\begin{center}
+\begin{tabular}{|p{0.27\linewidth}|p{0.20\linewidth}|p{0.16\linewidth}|p{0.18\linewidth}|p{0.18\linewidth}|}
+\hline
+试剂名称 & 厂家 & 货号 & 批号 & 有效期至\\
+\hline
+% #VALUE_ID: LEX-P0003-V0025
+% #FIELD_VALUE: 试剂名称
+\fieldvalue{6孔板(TC-treated)} &
+% #VALUE_ID: LEX-P0003-V0026
+% #FIELD_VALUE: 厂家
+\fieldvalue{Corning} &
+% #VALUE_ID: LEX-P0003-V0027
+% #FIELD_VALUE: 货号
+\fieldvalue{3516} &
+% #VALUE_ID: LEX-P0003-V0028
+% #FIELD_VALUE: 批号
+% #TODO #HANDWRITTEN: 13?44?0; handwriting is partially illegible
+\fieldvalue{\handwritten{13?44?0}} &
+% #VALUE_ID: LEX-P0003-V0029
+% #FIELD_VALUE: 有效期至
+% #HANDWRITTEN: 2027.07.01
+\fieldvalue{\handwritten{2027.07.01}}\\
+\hline
+\end{tabular}
+\end{center}
+
+\section{操作步骤}
+
+\begin{center}
+\begin{tabular}{|p{0.30\linewidth}|p{0.38\linewidth}|p{0.25\linewidth}|}
+\hline
+\multicolumn{3}{|c|}{溶液准备}\\
+\hline
+溶液 & 批号 & 有效期至\\
+\hline
+% #VALUE_ID: LEX-P0003-V0030
+% #FIELD_VALUE: 溶液
+\fieldvalue{MSC完全培养基} &
+% #VALUE_ID: LEX-P0003-V0031
+% #FIELD_VALUE: 批号
+% #TODO #HANDWRITTEN: S?M?B?S-01; handwriting is partially illegible
+\fieldvalue{\handwritten{S?M?B?S-01}} &
+% #VALUE_ID: LEX-P0003-V0032
+% #FIELD_VALUE: 有效期至
+% #TODO #HANDWRITTEN: 2025.07.?? / 202?年?月?日; handwriting is unclear
+\fieldvalue{\handwritten{2025.07.?? / 202?年?月?日}}\\
+\hline
+\multicolumn{3}{|c|}{细胞处理}\\
+\hline
+\multicolumn{2}{|p{0.68\linewidth}|}{%
+细胞接种：将$1\times10^{6}$ cells/ml的细胞悬液取100~$\mu$l接种至6孔板中，每孔补充MSC完全培养基2~ml，共接种3孔。每孔37℃、5\% CO$_2$二氧化碳培养箱中。%
+} &
+\begin{tabular}{p{0.95\linewidth}}
+细胞悬液接种体积\\
+% #VALUE_ID: LEX-P0003-V0033
+% #FIELD_VALUE: 细胞悬液接种体积
+% #HANDWRITTEN: 100
+\fieldvalue{\handwritten{100}}~$\mu$l\\[2pt]
+补充MSC完全培养基体积\\
+% #VALUE_ID: LEX-P0003-V0034
+% #FIELD_VALUE: 补充MSC完全培养基体积
+% #HANDWRITTEN: 2
+\fieldvalue{\handwritten{2}}~ml\\[2pt]
+培养起始时间：%
+% #VALUE_ID: LEX-P0003-V0035
+% #FIELD_VALUE: 培养起始时间（月）
+% #HANDWRITTEN: 08
+\fieldvalue{\handwritten{08}}月
+% #VALUE_ID: LEX-P0003-V0036
+% #FIELD_VALUE: 培养起始时间（日）
+% #TODO #HANDWRITTEN: ?; day is unclear
+\fieldvalue{\handwritten{?}}日
+% #VALUE_ID: LEX-P0003-V0037
+% #FIELD_VALUE: 培养起始时间（时）
+% #HANDWRITTEN: 08
+\fieldvalue{\handwritten{08}}时
+% #VALUE_ID: LEX-P0003-V0038
+% #FIELD_VALUE: 培养起始时间（分）
+% #TODO #HANDWRITTEN: ?; minute is unclear
+\fieldvalue{\handwritten{?}}分\\[2pt]
+实验人员/日期：%
+% #VALUE_ID: LEX-P0003-V0039
+% #FIELD_VALUE: 实验人员
+% #TODO #HANDWRITTEN: 张?; handwriting is partially illegible
+\fieldvalue{\handwritten{张?}} /
+% #VALUE_ID: LEX-P0003-V0040
+% #FIELD_VALUE: 实验人员日期
+% #TODO #HANDWRITTEN: 2025.08.21; handwriting is partially unclear
+\fieldvalue{\handwritten{2025.08.21}}\\[2pt]
+复核人/日期：%
+% #VALUE_ID: LEX-P0003-V0041
+% #FIELD_VALUE: 复核人
+% #TODO #HANDWRITTEN: ?; handwriting is illegible
+\fieldvalue{\handwritten{?}} /
+% #VALUE_ID: LEX-P0003-V0042
+% #FIELD_VALUE: 复核人日期
+% #TODO #HANDWRITTEN: 2025.08.23; handwriting is partially unclear
+\fieldvalue{\handwritten{2025.08.23}}
+\end{tabular}\\
+\hline
+\multicolumn{2}{|p{0.68\linewidth}|}{培养1--3天在显微镜10倍和20倍放大视野下进行拍照并留档。} &
+拍照时间：%
+% #VALUE_ID: LEX-P0003-V0043
+% #FIELD_VALUE: 拍照时间（月）
+% #HANDWRITTEN: 08
+\fieldvalue{\handwritten{08}}月
+% #VALUE_ID: LEX-P0003-V0044
+% #FIELD_VALUE: 拍照时间（日）
+% #HANDWRITTEN: 27
+\fieldvalue{\handwritten{27}}日
+% #VALUE_ID: LEX-P0003-V0045
+% #FIELD_VALUE: 拍照时间（时）
+% #HANDWRITTEN: 10
+\fieldvalue{\handwritten{10}}时
+% #VALUE_ID: LEX-P0003-V0046
+% #FIELD_VALUE: 拍照时间（分）
+% #HANDWRITTEN: 10
+\fieldvalue{\handwritten{10}}分\\
+\hline
+\multicolumn{3}{|c|}{培养图片}\\
+\hline
+\end{tabular}
+\end{center}
+
+% TODO: The visible “培养图片” section contains no image on this page.
+% LEXOID_PAGE_COMPLETED: 3/34
+
+\newpage
+
+\begin{center}
+\textbf{细胞形态学检测记录}
+\end{center}
+
+\noindent
+文件编号：
+% #VALUE_ID: LEX-P0004-V0001
+% #FIELD_VALUE: 文件编号
+\fieldvalue{REC-YZ-SOP-QC-03-092}
+
+\vspace{0.5em}
+
+\noindent
+\begin{tabular}{|p{0.46\linewidth}|p{0.46\linewidth}|}
+\hline
+\centering 10倍 &
+\centering\arraybackslash 20倍
+\\[-0.2em]
+% #VALUE_ID: LEX-P0004-V0002
+% #FIELD_VALUE: 左侧图像放大倍数
+\fieldvalue{A312220250806-形态-10X-20250827}
+&
+% #VALUE_ID: LEX-P0004-V0003
+% #FIELD_VALUE: 右侧图像放大倍数
+\fieldvalue{A312220250806-形态-20X-20250827}
+\\
+\begin{center}
+% TODO: 此处为左侧显微图像，原 PDF 未提供可用文件名。
+\fbox{\parbox[c][4.2cm][c]{0.9\linewidth}{\centering 左侧显微图像}}
+\end{center}
+&
+\begin{center}
+% TODO: 此处为右侧显微图像，原 PDF 未提供可用文件名。
+\fbox{\parbox[c][4.2cm][c]{0.9\linewidth}{\centering 右侧显微图像}}
+\end{center}
+\\
+% #VALUE_ID: LEX-P0004-V0004
+% #HANDWRITTEN: 3分钟 2025.08.7
+\handwritten{3分钟 2025.08.7}
+&
+% #VALUE_ID: LEX-P0004-V0005
+% #HANDWRITTEN: 3分钟 2025.08.7
+\handwritten{3分钟 2025.08.7}
+\\
+\hline
+\end{tabular}
+
+\vspace{0.3em}
+
+\noindent
+图片保存路径：
+% #VALUE_ID: LEX-P0004-V0006
+% #FIELD_VALUE: 图片保存路径
+% #HANDWRITTEN: /4组? 2025.08.7 - D盘 - QC检测 - 形态 - 细胞 - A312220250806? 
+\fieldvalue{\handwritten{/4组? 2025.08.7 - D盘 - QC检测 - 形态 - 细胞 - A312220250806?}}
+
+\vspace{0.3em}
+
+\begin{tabular}{|p{0.34\linewidth}|p{0.30\linewidth}|p{0.30\linewidth}|}
+\hline
+\multicolumn{3}{|c|}{质量控制}
+\\ \hline
+污染判定
+&
+% #VALUE_ID: LEX-P0004-V0007
+% #FIELD_VALUE: 污染判定--污染
+\fieldvalue{\checkboxfield{unchecked}} 污染
+&
+% #VALUE_ID: LEX-P0004-V0008
+% #FIELD_VALUE: 污染判定--未污染
+\fieldvalue{\checkboxfield{checked}} 未污染
+\\ \hline
+质量控制
+&
+% #VALUE_ID: LEX-P0004-V0009
+% #FIELD_VALUE: 质量控制--通过
+\fieldvalue{\checkboxfield{checked}} 通过
+&
+% #VALUE_ID: LEX-P0004-V0010
+% #FIELD_VALUE: 质量控制--不通过
+\fieldvalue{\checkboxfield{unchecked}} 不通过
+\\ \hline
+\multicolumn{3}{|c|}{检测结果}
+\\ \hline
+细胞形态呈长梭形，贴壁生长
+&
+% #VALUE_ID: LEX-P0004-V0011
+% #FIELD_VALUE: 细胞形态呈长梭形，贴壁生长--是
+\fieldvalue{\checkboxfield{checked}} 是
+&
+% #VALUE_ID: LEX-P0004-V0012
+% #FIELD_VALUE: 细胞形态呈长梭形，贴壁生长--否
+\fieldvalue{\checkboxfield{unchecked}} 否
+\\ \hline
+合格标准
+&
+\multicolumn{2}{l|}{长梭形，贴壁生长}
+\\ \hline
+结果判定
+&
+% #VALUE_ID: LEX-P0004-V0013
+% #FIELD_VALUE: 结果判定--合格
+\fieldvalue{\checkboxfield{checked}} 合格
+&
+% #VALUE_ID: LEX-P0004-V0014
+% #FIELD_VALUE: 结果判定--不合格
+\fieldvalue{\checkboxfield{unchecked}} 不合格
+\\ \hline
+\multicolumn{3}{|c|}{备注}
+\\ \hline
+\multicolumn{3}{|p{0.94\linewidth}|}{\rule{0pt}{1.0cm}}
+\\ \hline
+实验人/日期
+&
+% #VALUE_ID: LEX-P0004-V0015
+% #FIELD_VALUE: 实验人
+% #HANDWRITTEN: 郭淑?
+\fieldvalue{\handwritten{郭淑?}}
+&
+% #VALUE_ID: LEX-P0004-V0016
+% #FIELD_VALUE: 实验日期
+% #HANDWRITTEN: 2025.08.7
+\fieldvalue{\handwritten{2025.08.7}}
+\\ \hline
+复核人/日期
+&
+% #VALUE_ID: LEX-P0004-V0017
+% #FIELD_VALUE: 复核人
+% #HANDWRITTEN: 张如?
+\fieldvalue{\handwritten{张如?}}
+&
+% #VALUE_ID: LEX-P0004-V0018
+% #FIELD_VALUE: 复核日期
+% #HANDWRITTEN: 2025.08.7
+\fieldvalue{\handwritten{2025.08.7}}
+\\ \hline
+\end{tabular}
+
+\noindent
+% TODO: 页面底部可见页码“第4页 共21页”，属于固定页码，未作为表单值标注。
+% LEXOID_PAGE_COMPLETED: 4/34
+
+\newpage
+
+\section*{艾米近托赛注射液内控批检验记录}
+
+\noindent
+文件编码：REC-YZ-SOP-QC-03-092
+
+\begin{center}
+\begin{tabular}{|p{0.17\linewidth}|p{0.30\linewidth}|p{0.17\linewidth}|p{0.25\linewidth}|}
+\hline
+\multicolumn{4}{|c|}{\textbf{啊嗞胺 2,3-双加氧化酶（IDO）检验（1）}}\\
+\hline
+样品名称 &
+% #VALUE_ID: LEX-P0005-V0001
+% #FIELD_VALUE: 样品名称
+\fieldvalue{艾米近托赛注射液} &
+样品规格 &
+% #VALUE_ID: LEX-P0005-V0002
+% #FIELD_VALUE: 样品规格
+\fieldvalue{12ml：$6.0\times10^{7}$个细胞}\\
+\hline
+样品批号 &
+% #VALUE_ID: LEX-P0005-V0003
+% #FIELD_VALUE: 样品批号
+% #TODO #HANDWRITTEN: H?；字迹难以辨认
+\fieldvalue{\handwritten{H?}} &
+取样日期 &
+% #VALUE_ID: LEX-P0005-V0004
+% #FIELD_VALUE: 取样日期
+% #TODO #HANDWRITTEN: 2025年8月?日；日期末位难以辨认
+\fieldvalue{\handwritten{2025年8月?日}}\\
+\hline
+\end{tabular}
+\end{center}
+
+\section{仪器设备及试剂}
+
+\subsection{仪器设备}
+
+\begin{center}
+\small
+\begin{tabular}{|p{0.20\linewidth}|p{0.15\linewidth}|p{0.20\linewidth}|p{0.20\linewidth}|p{0.17\linewidth}|}
+\hline
+仪器名称 & 厂家 & 型号 & 设备编号 & 校准有效期至\\
+\hline
+生物安全柜 &
+% #VALUE_ID: LEX-P0005-V0005
+% #FIELD_VALUE: 生物安全柜厂家
+\fieldvalue{Thermo} &
+% #VALUE_ID: LEX-P0005-V0006
+% #FIELD_VALUE: 生物安全柜型号
+% #TODO #HANDWRITTEN: 1381；首位及末位字迹不清
+\fieldvalue{\handwritten{1381}} &
+% #VALUE_ID: LEX-P0005-V0007
+% #FIELD_VALUE: 生物安全柜设备编号
+% #TODO #HANDWRITTEN: 113?70；字迹难以辨认
+\fieldvalue{\handwritten{113?70}} &
+% #VALUE_ID: LEX-P0005-V0008
+% #FIELD_VALUE: 生物安全柜校准有效期至
+% #TODO #HANDWRITTEN: 2026.09.?；日期末位难以辨认
+\fieldvalue{\handwritten{2026.09.?}}\\
+\hline
+细胞显微镜 &
+% #VALUE_ID: LEX-P0005-V0009
+% #FIELD_VALUE: 细胞显微镜厂家
+\fieldvalue{莱卡} &
+% #VALUE_ID: LEX-P0005-V0010
+% #FIELD_VALUE: 细胞显微镜型号
+\fieldvalue{Leica Dmil} &
+% #VALUE_ID: LEX-P0005-V0011
+% #FIELD_VALUE: 细胞显微镜设备编号
+% #TODO #HANDWRITTEN: 114?012；字迹难以辨认
+\fieldvalue{\handwritten{114?012}} &
+% #VALUE_ID: LEX-P0005-V0012
+% #FIELD_VALUE: 细胞显微镜校准有效期至
+% #TODO #HANDWRITTEN: 2026.07.?；日期末位难以辨认
+\fieldvalue{\handwritten{2026.07.?}}\\
+\hline
+二氧化碳培养箱 &
+% #VALUE_ID: LEX-P0005-V0013
+% #FIELD_VALUE: 二氧化碳培养箱厂家
+\fieldvalue{Thermo} &
+% #VALUE_ID: LEX-P0005-V0014
+% #FIELD_VALUE: 二氧化碳培养箱型号
+\fieldvalue{HERACELL 230i} &
+% #VALUE_ID: LEX-P0005-V0015
+% #FIELD_VALUE: 二氧化碳培养箱设备编号
+% #TODO #HANDWRITTEN: 11?020；字迹难以辨认
+\fieldvalue{\handwritten{11?020}} &
+% #VALUE_ID: LEX-P0005-V0016
+% #FIELD_VALUE: 二氧化碳培养箱校准有效期至
+% #TODO #HANDWRITTEN: 2026.06.?；日期末位难以辨认
+\fieldvalue{\handwritten{2026.06.?}}\\
+\hline
+移液器 &
+% #VALUE_ID: LEX-P0005-V0017
+% #FIELD_VALUE: 移液器厂家
+\fieldvalue{Eppendorf} &
+% #VALUE_ID: LEX-P0005-V0018
+% #FIELD_VALUE: 移液器型号
+% #TODO #HANDWRITTEN: 100--1000\,\textmu l；字迹难以辨认
+\fieldvalue{\handwritten{100--1000\,\textmu l}} &
+% #VALUE_ID: LEX-P0005-V0019
+% #FIELD_VALUE: 移液器设备编号
+% #TODO #HANDWRITTEN: 868?2?；字迹难以辨认
+\fieldvalue{\handwritten{868?2?}} &
+% #VALUE_ID: LEX-P0005-V0020
+% #FIELD_VALUE: 移液器校准有效期至
+% #TODO #HANDWRITTEN: 2026.02.11；日期部分字迹不清
+\fieldvalue{\handwritten{2026.02.11}}\\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{试剂耗材}
+
+\begin{center}
+\begin{tabular}{|p{0.28\linewidth}|p{0.22\linewidth}|p{0.13\linewidth}|p{0.19\linewidth}|p{0.14\linewidth}|}
+\hline
+试剂耗材名称 & 厂家 & 货号 & 批号 & 有效期至\\
+\hline
+6孔板（TC-treated） &
+% #VALUE_ID: LEX-P0005-V0021
+% #FIELD_VALUE: 6孔板厂家
+\fieldvalue{Thermo} &
+% #VALUE_ID: LEX-P0005-V0022
+% #FIELD_VALUE: 6孔板货号
+\fieldvalue{3516} &
+% #VALUE_ID: LEX-P0005-V0023
+% #FIELD_VALUE: 6孔板批号
+% #TODO #HANDWRITTEN: 1834?；字迹难以辨认
+\fieldvalue{\handwritten{1834?}} &
+% #VALUE_ID: LEX-P0005-V0024
+% #FIELD_VALUE: 6孔板有效期至
+% #TODO #HANDWRITTEN: 2027.7.?；日期末位难以辨认
+\fieldvalue{\handwritten{2027.7.?}}\\
+\hline
+\end{tabular}
+\end{center}
+
+\section{操作步骤}
+
+\begin{center}
+\begin{tabular}{|p{0.25\linewidth}|p{0.36\linewidth}|p{0.27\linewidth}|}
+\hline
+\multicolumn{3}{|c|}{溶液准备}\\
+\hline
+溶液 & 批号 & 有效期至\\
+\hline
+MSC完全培养基 &
+% #VALUE_ID: LEX-P0005-V0025
+% #FIELD_VALUE: MSC完全培养基批号
+% #TODO #HANDWRITTEN: S?250?8?21-01；字迹难以辨认
+\fieldvalue{\handwritten{S?250?8?21-01}} &
+% #VALUE_ID: LEX-P0005-V0026
+% #FIELD_VALUE: MSC完全培养基有效期至
+% #TODO #HANDWRITTEN: 2025.10.24；原日期有涂改
+\fieldvalue{\handwritten{2025.10.24}}\\
+\hline
+细胞激活液 &
+% #VALUE_ID: LEX-P0005-V0027
+% #FIELD_VALUE: 细胞激活液批号
+% #TODO #HANDWRITTEN: S?250?8?21-01；字迹难以辨认
+\fieldvalue{\handwritten{S?250?8?21-01}} &
+% #VALUE_ID: LEX-P0005-V0028
+% #FIELD_VALUE: 细胞激活液有效期至
+% #TODO #HANDWRITTEN: 2025.02.22；字迹部分难以辨认
+\fieldvalue{\handwritten{2025.02.22}}\\
+\hline
+$20\,\mu\mathrm{g}/\mathrm{ml}$ IFN-$\gamma$工作液 &
+% #VALUE_ID: LEX-P0005-V0029
+% #FIELD_VALUE: IFN-\(\gamma\)工作液批号
+% #TODO #HANDWRITTEN: S?250?8?01-01；字迹难以辨认
+\fieldvalue{\handwritten{S?250?8?01-01}} &
+% #VALUE_ID: LEX-P0005-V0030
+% #FIELD_VALUE: IFN-\(\gamma\)工作液有效期至
+% #TODO #HANDWRITTEN: 2025.11.15；字迹部分难以辨认
+\fieldvalue{\handwritten{2025.11.15}}\\
+\hline
+\multicolumn{3}{|c|}{细胞处理}\\
+\hline
+\begin{minipage}[t]{\linewidth}
+将$1\times10^{6}$ cells/ml的细胞悬液取0.5\,ml至6孔板中，接种$2\times10^{5}$细胞/孔，作为实验组和对照组。加注1.5\,ml MSC完全培养基至终体积2\,ml。
+\end{minipage}
+&
+\begin{minipage}[t]{\linewidth}
+细胞悬液体积\quad
+% #VALUE_ID: LEX-P0005-V0031
+% #FIELD_VALUE: 细胞悬液体积
+% #HANDWRITTEN: 0.5
+\fieldvalue{\handwritten{0.5}}\quad ml\\[2pt]
+接种孔数\quad
+% #VALUE_ID: LEX-P0005-V0032
+% #FIELD_VALUE: 接种孔数
+% #HANDWRITTEN: 21
+\fieldvalue{\handwritten{21}}\quad 孔\\[2pt]
+补充MSC完全培养基体积\quad
+% #VALUE_ID: LEX-P0005-V0033
+% #FIELD_VALUE: 补充MSC完全培养基体积
+% #HANDWRITTEN: 1.5
+\fieldvalue{\handwritten{1.5}}\quad ml
+\end{minipage}
+&
+\\
+\hline
+\begin{minipage}[t]{\linewidth}
+实验组加入$5\,\mu\mathrm{l}$浓度为$20\,\mu\mathrm{g}/\mathrm{ml}$的IFN-$\gamma$，置于二氧化碳培养箱中$37^\circ\mathrm{C}$、$5\%\,\mathrm{CO}_{2}$条件下培养18--24小时。
+\end{minipage}
+&
+\begin{minipage}[t]{\linewidth}
+IFN-$\gamma$添加体积\quad\underline{\hspace{1cm}}\,\textmu l\\[2pt]
+置于培养箱时间：
+% #VALUE_ID: LEX-P0005-V0034
+% #FIELD_VALUE: 置于培养箱时间
+% #TODO #HANDWRITTEN: 2025年8月16日4时?分；时间末位难以辨认
+\fieldvalue{\handwritten{2025年8月16日4时?分}}
+\end{minipage}
+&
+\\
+\hline
+&
+\begin{minipage}[t]{\linewidth}
+实验人/日期：
+% #VALUE_ID: LEX-P0005-V0035
+% #FIELD_VALUE: 实验人
+% #TODO #HANDWRITTEN: 姓名难以辨认
+\fieldvalue{\handwritten{姓名}}\,/
+% #VALUE_ID: LEX-P0005-V0036
+% #FIELD_VALUE: 实验人日期
+% #HANDWRITTEN: 2025.08.25
+\fieldvalue{\handwritten{2025.08.25}}\\[2pt]
+复核人/日期：
+% #VALUE_ID: LEX-P0005-V0037
+% #FIELD_VALUE: 复核人
+% #TODO #HANDWRITTEN: 姓名难以辨认
+\fieldvalue{\handwritten{姓名}}\,/
+% #VALUE_ID: LEX-P0005-V0038
+% #FIELD_VALUE: 复核人日期
+% #HANDWRITTEN: 2025.08.25
+\fieldvalue{\handwritten{2025.08.25}}
+\end{minipage}
+&
+\\
+\hline
+\multicolumn{3}{|l|}{培养图片（放大倍数\quad
+% #VALUE_ID: LEX-P0005-V0039
+% #FIELD_VALUE: 培养图片放大倍数
+% #HANDWRITTEN: 10
+\fieldvalue{\handwritten{10}}\quad 倍，时间：
+% #VALUE_ID: LEX-P0005-V0040
+% #FIELD_VALUE: 培养图片时间
+% #TODO #HANDWRITTEN: 6月20日13时0分；部分字迹难以辨认
+\fieldvalue{\handwritten{6月20日13时0分}}）}\\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+第 5 页 共 21 页
+\end{center}
+% LEXOID_PAGE_COMPLETED: 5/34
+
+\newpage
+
+\begin{center}
+\textbf{实验组与对照组细胞状态记录}
+\end{center}
+
+\noindent
+文件编号：REC-YZ-SOP-QC-03-09
+
+\begin{tabular}{|p{0.16\linewidth}|p{0.38\linewidth}|p{0.38\linewidth}|}
+\hline
+ & 实验组 & 对照组\\
+\hline
+样品编号 &
+% #VALUE_ID: LEX-P0006-V0001
+% #FIELD_VALUE: 实验组样品编号
+\fieldvalue{A31Z220250806-IDO-T-10X-20250826}
+&
+% #VALUE_ID: LEX-P0006-V0002
+% #FIELD_VALUE: 对照组样品编号
+\fieldvalue{A31Z220250806-IDO-C-10X-20250826}
+\\
+\hline
+图片 &
+\begin{center}
+% #VALUE_ID: LEX-P0006-V0003
+% #FIELD_VALUE: 实验组图片标注
+% #TODO #HANDWRITTEN: 程淑 2025.08.26; handwriting partially unclear
+\fieldvalue{\handwritten{程淑\quad 2025.08.26}}
+\end{center}
+&
+\begin{center}
+% #VALUE_ID: LEX-P0006-V0004
+% #FIELD_VALUE: 对照组图片标注
+% #TODO #HANDWRITTEN: 程淑 2025.08.26; handwriting partially unclear
+\fieldvalue{\handwritten{程淑\quad 2025.08.26}}
+\end{center}
+\\
+\hline
+细胞状态描述 &
+% #VALUE_ID: LEX-P0006-V0005
+% #FIELD_VALUE: 正常长满细胞
+\fieldvalue{\checkboxfield{checked}} 正常长满细胞
+&
+% #VALUE_ID: LEX-P0006-V0006
+% #FIELD_VALUE: 未正常长满细胞
+\fieldvalue{\checkboxfield{unchecked}} 未正常长满细胞
+\\
+\hline
+污染判定 &
+% #VALUE_ID: LEX-P0006-V0007
+% #FIELD_VALUE: 污染
+\fieldvalue{\checkboxfield{unchecked}} 污染
+&
+% #VALUE_ID: LEX-P0006-V0008
+% #FIELD_VALUE: 未污染
+\fieldvalue{\checkboxfield{checked}} 未污染
+\\
+\hline
+实验结论 &
+% #VALUE_ID: LEX-P0006-V0009
+% #FIELD_VALUE: 可用于BCA检测
+\fieldvalue{\checkboxfield{checked}} 可用于BCA检测
+&
+% #VALUE_ID: LEX-P0006-V0010
+% #FIELD_VALUE: 不可用于BCA检测
+\fieldvalue{\checkboxfield{unchecked}} 不可用于BCA检测
+\\
+\hline
+\multicolumn{3}{|c|}{样品收集}\\
+\hline
+\multicolumn{3}{|p{0.92\linewidth}|}{
+吸弃实验组和对照组中的上清。加入细胞裂解液，150$\mu$L/孔，使裂解液与细胞充分接触，静置2 min，用细胞刮刀收集细胞裂解产物至1.5 mL离心管，立即检测或-80℃保存，最长保存14天。
+}\\
+\hline
+操作记录 &
+\multicolumn{2}{p{0.76\linewidth}|}{
+% #VALUE_ID: LEX-P0006-V0011
+% #FIELD_VALUE: 弃上清
+\fieldvalue{\checkboxfield{checked}} 弃上清
+
+\quad 裂解液：
+% #VALUE_ID: LEX-P0006-V0012
+% #FIELD_VALUE: 裂解液体积
+% #HANDWRITTEN: 150
+\fieldvalue{\handwritten{150}} $\mu$L/孔，静置：
+% #VALUE_ID: LEX-P0006-V0013
+% #FIELD_VALUE: 静置时间
+% #HANDWRITTEN: 2
+\fieldvalue{\handwritten{2}} min
+
+\quad
+% #VALUE_ID: LEX-P0006-V0014
+% #FIELD_VALUE: 立即检验
+\fieldvalue{\checkboxfield{unchecked}} 立即检验
+
+\quad
+% #VALUE_ID: LEX-P0006-V0015
+% #FIELD_VALUE: -80℃保存
+\fieldvalue{\checkboxfield{checked}} -80℃保存
+\quad
+% #VALUE_ID: LEX-P0006-V0016
+% #FIELD_VALUE: 保存日期
+% #TODO #HANDWRITTEN: 8月26日; handwriting partially unclear
+\fieldvalue{\handwritten{8月26日}}
+}\\
+\hline
+备注 &
+\multicolumn{2}{p{0.76\linewidth}|}{
+% #VALUE_ID: LEX-P0006-V0017
+% #FIELD_VALUE: 备注
+% #HANDWRITTEN: /
+\fieldvalue{\handwritten{/}}
+}\\
+\hline
+实验人/日期 &
+\multicolumn{2}{p{0.76\linewidth}|}{
+% #VALUE_ID: LEX-P0006-V0018
+% #FIELD_VALUE: 实验人/日期
+% #TODO #HANDWRITTEN: 程淑 2025.08.26; handwriting partially unclear
+\fieldvalue{\handwritten{程淑\quad 2025.08.26}}
+}\\
+\hline
+复核人/日期 &
+\multicolumn{2}{p{0.76\linewidth}|}{
+% #VALUE_ID: LEX-P0006-V0019
+% #FIELD_VALUE: 复核人/日期
+% #TODO #HANDWRITTEN: 赵娟 2025.08.27; handwriting partially unclear
+\fieldvalue{\handwritten{赵娟\quad 2025.08.27}}
+}\\
+\hline
+\end{tabular}
+% LEXOID_PAGE_COMPLETED: 6/34
+
+\newpage
+
+\begin{center}
+\textbf{艾米迈托赛注射液内控性检验记录}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{0.16\linewidth}|p{0.31\linewidth}|p{0.16\linewidth}|p{0.27\linewidth}|}
+\hline
+\textbf{样品名称} & 艾米迈托赛注射液 & \textbf{样品规格} & $12\mathrm{mL}:6.0\times10^{7}$个细胞 \\
+\hline
+\textbf{样品批号} &
+% #VALUE_ID: LEX-P0007-V0001
+% #FIELD_VALUE: 样品批号
+% #TODO #HANDWRITTEN: A3J220?0806; handwriting partially unclear
+\fieldvalue{\handwritten{A3J220?0806}} &
+\textbf{取样日期} &
+% #VALUE_ID: LEX-P0007-V0002
+% #FIELD_VALUE: 取样日期
+% #HANDWRITTEN: 2025年08月21日
+\fieldvalue{\handwritten{2025年08月21日}} \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{仪器设备及试剂}
+
+\subsection{仪器设备}
+
+\begin{center}
+\small
+\begin{tabular}{|p{0.23\linewidth}|p{0.18\linewidth}|p{0.21\linewidth}|p{0.19\linewidth}|p{0.19\linewidth}|}
+\hline
+\textbf{仪器名称} & \textbf{厂家} & \textbf{型号} & \textbf{设备编号} & \textbf{校准有效期至} \\
+\hline
+多功能酶标仪 & Thermo & Varioskan LUX &
+% #VALUE_ID: LEX-P0007-V0003
+% #FIELD_VALUE: 多功能酶标仪设备编号
+% #TODO #HANDWRITTEN: 143130?; handwriting unclear
+\fieldvalue{\handwritten{143130?}} &
+% #VALUE_ID: LEX-P0007-V0004
+% #FIELD_VALUE: 多功能酶标仪校准有效期至
+% #TODO #HANDWRITTEN: 202?; date partially unclear
+\fieldvalue{\handwritten{202?}} \\
+\hline
+电泳仪 & Bio-rad & PowerPacBasic &
+% #VALUE_ID: LEX-P0007-V0005
+% #FIELD_VALUE: 电泳仪设备编号
+% #HANDWRITTEN: 141311
+\fieldvalue{\handwritten{141311}} & \\
+\hline
+手式恒温器 & 杭州米欧仪器 & DKT-100 &
+% #VALUE_ID: LEX-P0007-V0006
+% #FIELD_VALUE: 手式恒温器设备编号
+% #HANDWRITTEN: 141315
+\fieldvalue{\handwritten{141315}} &
+% #VALUE_ID: LEX-P0007-V0007
+% #FIELD_VALUE: 手式恒温器校准有效期至
+% #HANDWRITTEN: 2026.06.20
+\fieldvalue{\handwritten{2026.06.20}} \\
+\hline
+迷你型半定量免疫印迹仪 & 添丽西? & MiniChemi610 &
+% #VALUE_ID: LEX-P0007-V0008
+% #FIELD_VALUE: 迷你型半定量免疫印迹仪设备编号
+% #TODO #HANDWRITTEN: 141315?; handwriting unclear
+\fieldvalue{\handwritten{141315?}} &
+% #VALUE_ID: LEX-P0007-V0009
+% #FIELD_VALUE: 迷你型半定量免疫印迹仪校准有效期至
+% #TODO #HANDWRITTEN: 202?; handwriting unclear
+\fieldvalue{\handwritten{202?}} \\
+\hline
+LED 数显恒温摇床 & 大龙兴创 & SK-0180-S &
+% #VALUE_ID: LEX-P0007-V0010
+% #FIELD_VALUE: LED数显恒温摇床设备编号
+% #HANDWRITTEN: 141318
+\fieldvalue{\handwritten{141318}} &
+% #VALUE_ID: LEX-P0007-V0011
+% #FIELD_VALUE: LED数显恒温摇床校准有效期至
+% #TODO #HANDWRITTEN: 202?; handwriting unclear
+\fieldvalue{\handwritten{202?}} \\
+\hline
+\multirow{5}{*}{移液器} & \multirow{5}{*}{Eppendorf} &
+% #VALUE_ID: LEX-P0007-V0012
+% #FIELD_VALUE: 移液器量程
+% #HANDWRITTEN: 100--1000 $\mu$L
+\fieldvalue{\handwritten{100--1000 $\mu$L}} &
+% #VALUE_ID: LEX-P0007-V0013
+% #FIELD_VALUE: 移液器设备编号
+% #TODO #HANDWRITTEN: R?0717K; handwriting unclear
+\fieldvalue{\handwritten{R?0717K}} &
+% #VALUE_ID: LEX-P0007-V0014
+% #FIELD_VALUE: 移液器校准有效期至
+% #TODO #HANDWRITTEN: 202?; handwriting unclear
+\fieldvalue{\handwritten{202?}} \\
+\cline{3-5}
+& &
+% #VALUE_ID: LEX-P0007-V0015
+% #FIELD_VALUE: 移液器量程
+% #HANDWRITTEN: 20--200 $\mu$L
+\fieldvalue{\handwritten{20--200 $\mu$L}} &
+% #VALUE_ID: LEX-P0007-V0016
+% #FIELD_VALUE: 移液器设备编号
+% #TODO #HANDWRITTEN: 042?K; handwriting unclear
+\fieldvalue{\handwritten{042?K}} &
+% #VALUE_ID: LEX-P0007-V0017
+% #FIELD_VALUE: 移液器校准有效期至
+% #TODO #HANDWRITTEN: 202?; handwriting unclear
+\fieldvalue{\handwritten{202?}} \\
+\cline{3-5}
+& &
+% #VALUE_ID: LEX-P0007-V0018
+% #FIELD_VALUE: 移液器量程
+% #HANDWRITTEN: 2--20 $\mu$L
+\fieldvalue{\handwritten{2--20 $\mu$L}} &
+% #VALUE_ID: LEX-P0007-V0019
+% #FIELD_VALUE: 移液器设备编号
+% #TODO #HANDWRITTEN: R?4717K; handwriting unclear
+\fieldvalue{\handwritten{R?4717K}} &
+% #VALUE_ID: LEX-P0007-V0020
+% #FIELD_VALUE: 移液器校准有效期至
+% #HANDWRITTEN: 2026.04.21
+\fieldvalue{\handwritten{2026.04.21}} \\
+\cline{3-5}
+& &
+% #VALUE_ID: LEX-P0007-V0021
+% #FIELD_VALUE: 移液器量程
+% #HANDWRITTEN: 0.5--5 $\mu$L
+\fieldvalue{\handwritten{0.5--5 $\mu$L}} &
+% #VALUE_ID: LEX-P0007-V0022
+% #FIELD_VALUE: 移液器设备编号
+% #TODO #HANDWRITTEN: 075?1?K; handwriting unclear
+\fieldvalue{\handwritten{075?1?K}} &
+% #VALUE_ID: LEX-P0007-V0023
+% #FIELD_VALUE: 移液器校准有效期至
+% #TODO #HANDWRITTEN: 202?; handwriting unclear
+\fieldvalue{\handwritten{202?}} \\
+\cline{3-5}
+& &
+% #VALUE_ID: LEX-P0007-V0024
+% #FIELD_VALUE: 移液器量程
+% #HANDWRITTEN: 20--200 $\mu$L
+\fieldvalue{\handwritten{20--200 $\mu$L}} &
+% #VALUE_ID: LEX-P0007-V0025
+% #FIELD_VALUE: 移液器设备编号
+% #TODO #HANDWRITTEN: 039?053; handwriting unclear
+\fieldvalue{\handwritten{039?053}} &
+% #VALUE_ID: LEX-P0007-V0026
+% #FIELD_VALUE: 移液器校准有效期至
+% #TODO #HANDWRITTEN: 202?; handwriting unclear
+\fieldvalue{\handwritten{202?}} \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{试剂}
+
+\begin{center}
+\small
+\begin{tabular}{|p{0.37\linewidth}|p{0.17\linewidth}|p{0.18\linewidth}|p{0.14\linewidth}|p{0.14\linewidth}|}
+\hline
+\textbf{试剂名称} & \textbf{厂家} & \textbf{货号} & \textbf{批号} & \textbf{有效期至} \\
+\hline
+Pierce$^{\mathrm{TM}}$ Rapid Gold BCA Protein Assay Kit
+& Thermo & A53226 &
+% #VALUE_ID: LEX-P0007-V0027
+% #FIELD_VALUE: Pierce Rapid Gold BCA Protein Assay Kit批号
+% #TODO #HANDWRITTEN: A?038?17?; handwriting unclear
+\fieldvalue{\handwritten{A?038?17?}} &
+% #VALUE_ID: LEX-P0007-V0028
+% #FIELD_VALUE: Pierce Rapid Gold BCA Protein Assay Kit有效期至
+% #HANDWRITTEN: 2026.02.24
+\fieldvalue{\handwritten{2026.02.24}} \\
+\hline
+IDO (D5J4E$^{\mathrm{TM}}$) Rabbit mAb & CST & 86630S &
+% #VALUE_ID: LEX-P0007-V0029
+% #FIELD_VALUE: IDO Rabbit mAb批号
+% #HANDWRITTEN: 8
+\fieldvalue{\handwritten{8}} &
+% #VALUE_ID: LEX-P0007-V0030
+% #FIELD_VALUE: IDO Rabbit mAb有效期至
+% #HANDWRITTEN: 2020.04
+\fieldvalue{\handwritten{2020.04}} \\
+\hline
+Alpha-tubulin (11H10) Rabbit mAb & CST & 2125S &
+% #VALUE_ID: LEX-P0007-V0031
+% #FIELD_VALUE: Alpha-tubulin Rabbit mAb批号
+% #HANDWRITTEN: 15
+\fieldvalue{\handwritten{15}} &
+% #VALUE_ID: LEX-P0007-V0032
+% #FIELD_VALUE: Alpha-tubulin Rabbit mAb有效期至
+% #HANDWRITTEN: 2020.04
+\fieldvalue{\handwritten{2020.04}} \\
+\hline
+Anti-rabbit IgG, HRP-linked Antibody & CST & 7074S &
+% #VALUE_ID: LEX-P0007-V0033
+% #FIELD_VALUE: Anti-rabbit IgG, HRP-linked Antibody批号
+% #HANDWRITTEN: 33
+\fieldvalue{\handwritten{33}} &
+% #VALUE_ID: LEX-P0007-V0034
+% #FIELD_VALUE: Anti-rabbit IgG, HRP-linked Antibody有效期至
+% #TODO #HANDWRITTEN: 202?07; handwriting unclear
+\fieldvalue{\handwritten{202?07}} \\
+\hline
+SurePAGE$^{\mathrm{TM}}$, Bis-Tris, 10--8\%, 10\% & 金斯瑞 & M000666 &
+% #VALUE_ID: LEX-P0007-V0035
+% #FIELD_VALUE: SurePAGE批号
+% #TODO #HANDWRITTEN: C?752?56; handwriting unclear
+\fieldvalue{\handwritten{C?752?56}} &
+% #VALUE_ID: LEX-P0007-V0036
+% #FIELD_VALUE: SurePAGE有效期至
+% #HANDWRITTEN: 2026.01.10
+\fieldvalue{\handwritten{2026.01.10}} \\
+\hline
+4X LDS Sample Buffer & 金斯瑞 & M00676-10 &
+% #VALUE_ID: LEX-P0007-V0037
+% #FIELD_VALUE: 4X LDS Sample Buffer批号
+% #TODO #HANDWRITTEN: C?752?50; handwriting unclear
+\fieldvalue{\handwritten{C?752?50}} &
+% #VALUE_ID: LEX-P0007-V0038
+% #FIELD_VALUE: 4X LDS Sample Buffer有效期至
+% #TODO #HANDWRITTEN: 2026.01.??; date unclear
+\fieldvalue{\handwritten{2026.01.??}} \\
+\hline
+Transfer Buffer Powder & 金斯瑞 & M00139 &
+% #VALUE_ID: LEX-P0007-V0039
+% #FIELD_VALUE: Transfer Buffer Powder批号
+% #TODO #HANDWRITTEN: C?752?40; handwriting unclear
+\fieldvalue{\handwritten{C?752?40}} &
+% #VALUE_ID: LEX-P0007-V0040
+% #FIELD_VALUE: Transfer Buffer Powder有效期至
+% #TODO #HANDWRITTEN: 2026.??.??; date unclear
+\fieldvalue{\handwritten{2026.??.??}} \\
+\hline
+预染蛋白 Marker & GenStar & M225-01 &
+% #VALUE_ID: LEX-P0007-V0041
+% #FIELD_VALUE: 预染蛋白Marker批号
+% #TODO #HANDWRITTEN: T604?; handwriting unclear
+\fieldvalue{\handwritten{T604?}} &
+% #VALUE_ID: LEX-P0007-V0042
+% #FIELD_VALUE: 预染蛋白Marker有效期至
+% #TODO #HANDWRITTEN: 202?; handwriting unclear
+\fieldvalue{\handwritten{202?}} \\
+\hline
+SuperSignal$^{\mathrm{TM}}$ West Pico PLUS
+Chemiluminescent Substrate
+& Thermo & 34580 &
+% #VALUE_ID: LEX-P0007-V0043
+% #FIELD_VALUE: SuperSignal West Pico PLUS Chemiluminescent Substrate批号
+% #HANDWRITTEN: YB3?7296
+\fieldvalue{\handwritten{YB3?7296}} &
+% #VALUE_ID: LEX-P0007-V0044
+% #FIELD_VALUE: SuperSignal West Pico PLUS Chemiluminescent Substrate有效期至
+% #HANDWRITTEN: 2026.02.24
+\fieldvalue{\handwritten{2026.02.24}} \\
+\hline
+Immun-Blot PVDF Membranes for Protein Blotting
+& BIO-RAD &
+% #VALUE_ID: LEX-P0007-V0045
+% #FIELD_VALUE: Immun-Blot PVDF Membranes for Protein Blotting货号
+% #HANDWRITTEN: 162-0177
+\fieldvalue{\handwritten{162-0177}} &
+% #VALUE_ID: LEX-P0007-V0046
+% #FIELD_VALUE: Immun-Blot PVDF Membranes for Protein Blotting批号
+% #HANDWRITTEN: 24641
+\fieldvalue{\handwritten{24641}} &
+% #VALUE_ID: LEX-P0007-V0047
+% #FIELD_VALUE: Immun-Blot PVDF Membranes for Protein Blotting有效期至
+% #HANDWRITTEN: /
+\fieldvalue{\handwritten{/}} \\
+\hline
+甲醇 & 百灵威 & 949300 &
+% #VALUE_ID: LEX-P0007-V0048
+% #FIELD_VALUE: 甲醇批号
+% #TODO #HANDWRITTEN: A?04?138; handwriting unclear
+\fieldvalue{\handwritten{A?04?138}} &
+% #VALUE_ID: LEX-P0007-V0049
+% #FIELD_VALUE: 甲醇有效期至
+% #HANDWRITTEN: 2026.04.23
+\fieldvalue{\handwritten{2026.04.23}} \\
+\hline
+1M DTT（1,4-二硫苏糖醇）溶液 & Solarbio & D1070-5mL &
+% #VALUE_ID: LEX-P0007-V0050
+% #FIELD_VALUE: 1M DTT溶液批号
+% #TODO #HANDWRITTEN: 240?0?K; handwriting unclear
+\fieldvalue{\handwritten{240?0?K}} &
+% #VALUE_ID: LEX-P0007-V0051
+% #FIELD_VALUE: 1M DTT溶液有效期至
+% #HANDWRITTEN: 2025.12.30
+\fieldvalue{\handwritten{2025.12.30}} \\
+\hline
+脱脂奶粉 & Solarbio & D8340-500g &
+% #VALUE_ID: LEX-P0007-V0052
+% #FIELD_VALUE: 脱脂奶粉批号
+% #HANDWRITTEN: 32606090
+\fieldvalue{\handwritten{32606090}} &
+% #VALUE_ID: LEX-P0007-V0053
+% #FIELD_VALUE: 脱脂奶粉有效期至
+% #HANDWRITTEN: 2026.06.07
+\fieldvalue{\handwritten{2026.06.07}} \\
+\hline
+\end{tabular}
+\end{center}
+
+% #VALUE_ID: LEX-P0007-V0054
+% #FIELD_VALUE: 表格右侧备注
+% #TODO #HANDWRITTEN: 020B; handwritten note outside table
+\fieldvalue{\handwritten{020B}}
+
+% #VALUE_ID: LEX-P0007-V0055
+% #FIELD_VALUE: 表格右侧备注
+% #TODO #HANDWRITTEN: Tubing; handwritten note outside table
+\fieldvalue{\handwritten{Tubing}}
+
+\section{操作步骤：}
+
+% TODO: The detailed operation steps continue beyond the visible portion of this page.
+% LEXOID_PAGE_COMPLETED: 7/34
+
+\newpage
+
+\begin{center}
+\textbf{溶液准备}
+\end{center}
+
+\small
+\begin{tabular}{|c|c|c|}
+\hline
+溶液 & 配制批号 & 有效期至 \\
+\hline
+电泳液 &
+% #VALUE_ID: LEX-P0008-V0001
+% #FIELD_VALUE: 电泳液配制批号
+% #TODO #HANDWRITTEN: 520?084-01; handwriting is partially unclear
+\fieldvalue{\handwritten{520?084-01}} &
+% #VALUE_ID: LEX-P0008-V0002
+% #FIELD_VALUE: 电泳液有效期至
+% #HANDWRITTEN: 2025.08.13
+\fieldvalue{\handwritten{2025.08.13}} \\
+\hline
+TBST洗液 &
+% #VALUE_ID: LEX-P0008-V0003
+% #FIELD_VALUE: TBST洗液配制批号
+% #TODO #HANDWRITTEN: 520?084-02; handwriting is partially unclear
+\fieldvalue{\handwritten{520?084-02}} &
+% #VALUE_ID: LEX-P0008-V0004
+% #FIELD_VALUE: TBST洗液有效期至
+% #HANDWRITTEN: 2025.08.13
+\fieldvalue{\handwritten{2025.08.13}} \\
+\hline
+细胞裂解液 &
+% #VALUE_ID: LEX-P0008-V0005
+% #FIELD_VALUE: 细胞裂解液配制批号
+% #TODO #HANDWRITTEN: 520?0823-01; handwriting is partially unclear
+\fieldvalue{\handwritten{520?0823-01}} &
+% #VALUE_ID: LEX-P0008-V0006
+% #FIELD_VALUE: 细胞裂解液有效期至
+% #HANDWRITTEN: 2026.02.22
+\fieldvalue{\handwritten{2026.02.22}} \\
+\hline
+IDO固件样品 &
+% #VALUE_ID: LEX-P0008-V0007
+% #FIELD_VALUE: IDO固件样品配制批号
+% #TODO #HANDWRITTEN: 520?042?-01; handwriting is partially unclear
+\fieldvalue{\handwritten{520?042?-01}} &
+% #VALUE_ID: LEX-P0008-V0008
+% #FIELD_VALUE: IDO固件样品有效期至
+% #HANDWRITTEN: 2025.10.28
+\fieldvalue{\handwritten{2025.10.28}} \\
+\hline
+\end{tabular}
+
+\vspace{2mm}
+
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{4}{|c|}{BCA 工作液配制（50:1）} \\
+\hline
+ & Pierce\textsuperscript{TM} Rapid Gold BCA Protein Assay Reagent A (ml)
+ & Pierce\textsuperscript{TM} Rapid Gold BCA Protein Assay Reagent B (ml)
+ & BCA Protein Assay 终体积（ml） \\
+\hline
+BCA 工作液配制 &
+% #VALUE_ID: LEX-P0008-V0009
+% #FIELD_VALUE: Pierce Rapid Gold BCA Protein Assay Reagent A用量
+% #HANDWRITTEN: 2
+\fieldvalue{\handwritten{2}} &
+% #VALUE_ID: LEX-P0008-V0010
+% #FIELD_VALUE: Pierce Rapid Gold BCA Protein Assay Reagent B用量
+% #HANDWRITTEN: 0.6
+\fieldvalue{\handwritten{0.6}} &
+% #VALUE_ID: LEX-P0008-V0011
+% #FIELD_VALUE: BCA Protein Assay终体积
+% #HANDWRITTEN: 0.6
+\fieldvalue{\handwritten{0.6}} \\
+\hline
+\end{tabular}
+
+\vspace{2mm}
+
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\multicolumn{5}{|c|}{电转液配制} \\
+\hline
+ & Transfer Buffer Powder（袋） & 纯化水（ml） & 无水甲醇（ml） & 终体积（ml） \\
+\hline
+电转液配制 & &
+% #VALUE_ID: LEX-P0008-V0012
+% #FIELD_VALUE: 纯化水用量
+% #HANDWRITTEN: 70
+\fieldvalue{\handwritten{70}} &
+% #VALUE_ID: LEX-P0008-V0013
+% #FIELD_VALUE: 无水甲醇用量
+% #HANDWRITTEN: 100
+\fieldvalue{\handwritten{100}} &
+% #VALUE_ID: LEX-P0008-V0014
+% #FIELD_VALUE: 电转液终体积
+% #HANDWRITTEN: 100
+\fieldvalue{\handwritten{100}} \\
+\hline
+\end{tabular}
+
+\vspace{2mm}
+
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{4}{|c|}{封闭液配制} \\
+\hline
+ & 脱脂奶粉（g） & TBST洗液（ml） & 终体积（ml） \\
+\hline
+封闭液配制 &
+% #VALUE_ID: LEX-P0008-V0015
+% #FIELD_VALUE: 脱脂奶粉用量
+% #HANDWRITTEN: 6.00
+\fieldvalue{\handwritten{6.00}} &
+% #VALUE_ID: LEX-P0008-V0016
+% #FIELD_VALUE: TBST洗液用量
+% #HANDWRITTEN: 100
+\fieldvalue{\handwritten{100}} &
+% #VALUE_ID: LEX-P0008-V0017
+% #FIELD_VALUE: 封闭液终体积
+% #HANDWRITTEN: 100
+\fieldvalue{\handwritten{100}} \\
+\hline
+\end{tabular}
+
+\vspace{2mm}
+
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\multicolumn{5}{|c|}{一抗工作液配制（1:1000）} \\
+\hline
+ & Alpha-tubulin (11H10) Rabbit mAb（μl）
+ & IDO (D5J4E\textsuperscript{TM}) Rabbit mAb（μl）
+ & 封闭液（ml） & 终体积（ml） \\
+\hline
+一抗工作液配制 &
+% #VALUE_ID: LEX-P0008-V0018
+% #FIELD_VALUE: Alpha-tubulin Rabbit mAb用量
+% #HANDWRITTEN: 30
+\fieldvalue{\handwritten{30}} &
+% #VALUE_ID: LEX-P0008-V0019
+% #FIELD_VALUE: IDO Rabbit mAb用量
+% #HANDWRITTEN: 30
+\fieldvalue{\handwritten{30}} &
+% #VALUE_ID: LEX-P0008-V0020
+% #FIELD_VALUE: 一抗工作液中封闭液用量
+% #HANDWRITTEN: 30
+\fieldvalue{\handwritten{30}} &
+% #VALUE_ID: LEX-P0008-V0021
+% #FIELD_VALUE: 一抗工作液终体积
+% #HANDWRITTEN: 30.6
+\fieldvalue{\handwritten{30.6}} \\
+\hline
+\end{tabular}
+
+\vspace{2mm}
+
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{4}{|c|}{二抗工作液配制（1:3000）} \\
+\hline
+ & Anti-rabbit IgG, HRP-linked Antibody（μl）
+ & 封闭液（ml） & 终体积（ml） \\
+\hline
+二抗工作液配制 &
+% #VALUE_ID: LEX-P0008-V0022
+% #FIELD_VALUE: Anti-rabbit IgG, HRP-linked Antibody用量
+% #HANDWRITTEN: 10
+\fieldvalue{\handwritten{10}} &
+% #VALUE_ID: LEX-P0008-V0023
+% #FIELD_VALUE: 二抗工作液中封闭液用量
+% #HANDWRITTEN: 30
+\fieldvalue{\handwritten{30}} &
+% #VALUE_ID: LEX-P0008-V0024
+% #FIELD_VALUE: 二抗工作液终体积
+% #HANDWRITTEN: 200
+\fieldvalue{\handwritten{200}} \\
+\hline
+\end{tabular}
+
+\vspace{2mm}
+
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{4}{|c|}{显影液配制} \\
+\hline
+ & SuperSignal\textsuperscript{TM} West Pico PLUS Stable Peroxide（ml）
+ & SuperSignal\textsuperscript{TM} West Pico PLUS Luminol/Enhancer（ml）
+ & 终体积（ml） \\
+\hline
+显影液配制 &
+% #VALUE_ID: LEX-P0008-V0025
+% #FIELD_VALUE: Stable Peroxide用量
+% #HANDWRITTEN: 10
+\fieldvalue{\handwritten{10}} &
+% #VALUE_ID: LEX-P0008-V0026
+% #FIELD_VALUE: Luminol/Enhancer用量
+% #HANDWRITTEN: 10
+\fieldvalue{\handwritten{10}} &
+% #VALUE_ID: LEX-P0008-V0027
+% #FIELD_VALUE: 显影液终体积
+% #HANDWRITTEN: 20
+\fieldvalue{\handwritten{20}} \\
+\hline
+\end{tabular}
+
+\vspace{2mm}
+
+\begin{tabular}{|c|c|p{0.62\linewidth}|}
+\hline
+\multicolumn{3}{|c|}{BCA 标准品配制} \\
+\hline
+标准品编号 & 浓度（$\mu$g/ml） & 配制过程 \\
+\hline
+1 & 2000 &
+取
+% #VALUE_ID: LEX-P0008-V0028
+% #FIELD_VALUE: 标准品溶液取用量
+% #HANDWRITTEN: 50
+\fieldvalue{\handwritten{50}}
+ $\mu$l 标准品溶液 \\
+\hline
+2 & 1500 &
+取
+% #VALUE_ID: LEX-P0008-V0029
+% #FIELD_VALUE: 配制标准品2时标准品1取用量
+% #HANDWRITTEN: 375
+\fieldvalue{\handwritten{375}}
+ $\mu$l 标准品1加入至
+% #VALUE_ID: LEX-P0008-V0030
+% #FIELD_VALUE: 配制标准品2时纯化水用量
+% #HANDWRITTEN: 125
+\fieldvalue{\handwritten{125}}
+ $\mu$l纯化水中，混匀 \\
+\hline
+3 & 1000 &
+取
+% #VALUE_ID: LEX-P0008-V0031
+% #FIELD_VALUE: 配制标准品3时标准品1取用量
+% #HANDWRITTEN: 250
+\fieldvalue{\handwritten{250}}
+ $\mu$l 标准品1加入至
+% #VALUE_ID: LEX-P0008-V0032
+% #FIELD_VALUE: 配制标准品3时纯化水用量
+% #HANDWRITTEN: 250
+\fieldvalue{\handwritten{250}}
+ $\mu$l纯化水中，混匀 \\
+\hline
+4 & 750 &
+取
+% #VALUE_ID: LEX-P0008-V0033
+% #FIELD_VALUE: 配制标准品4时标准品2取用量
+% #HANDWRITTEN: 150
+\fieldvalue{\handwritten{150}}
+ $\mu$l 标准品2加入至
+% #VALUE_ID: LEX-P0008-V0034
+% #FIELD_VALUE: 配制标准品4时纯化水用量
+% #HANDWRITTEN: 150
+\fieldvalue{\handwritten{150}}
+ $\mu$l纯化水中，混匀 \\
+\hline
+\end{tabular}
+
+\begin{center}
+第 8 页 共 21 页
+\end{center}
+% LEXOID_PAGE_COMPLETED: 8/34
+
+\newpage
+
+\small
+
+\begin{tabular}{|p{0.10\linewidth}|p{0.12\linewidth}|p{0.70\linewidth}|}
+\hline
+5 & 500 &
+取
+% #VALUE_ID: LEX-P0009-V0001
+% #FIELD_VALUE: 取样体积
+% #HANDWRITTEN: 50
+\fieldvalue{\handwritten{50}}
+\,\(\mu\mathrm{l}\)标准品3加入至
+% #VALUE_ID: LEX-P0009-V0002
+% #FIELD_VALUE: 加入纯化水体积
+% #HANDWRITTEN: 50
+\fieldvalue{\handwritten{50}}
+\,\(\mu\mathrm{l}\)纯化水中，混匀
+\\ \hline
+6 & 250 &
+取
+% #VALUE_ID: LEX-P0009-V0003
+% #FIELD_VALUE: 取样体积
+% #HANDWRITTEN: 50
+\fieldvalue{\handwritten{50}}
+\,\(\mu\mathrm{l}\)标准品5加入至
+% #VALUE_ID: LEX-P0009-V0004
+% #FIELD_VALUE: 加入纯化水体积
+% #HANDWRITTEN: 50
+\fieldvalue{\handwritten{50}}
+\,\(\mu\mathrm{l}\)纯化水中，混匀
+\\ \hline
+7 & 125 &
+取
+% #VALUE_ID: LEX-P0009-V0005
+% #FIELD_VALUE: 取样体积
+% #HANDWRITTEN: 50
+\fieldvalue{\handwritten{50}}
+\,\(\mu\mathrm{l}\)标准品6加入至
+% #VALUE_ID: LEX-P0009-V0006
+% #FIELD_VALUE: 加入纯化水体积
+% #HANDWRITTEN: 50
+\fieldvalue{\handwritten{50}}
+\,\(\mu\mathrm{l}\)纯化水中，混匀
+\\ \hline
+8 & 25 &
+取
+% #VALUE_ID: LEX-P0009-V0007
+% #FIELD_VALUE: 取样体积
+% #HANDWRITTEN: 50
+\fieldvalue{\handwritten{50}}
+\,\(\mu\mathrm{l}\)标准品7加入至
+% #VALUE_ID: LEX-P0009-V0008
+% #FIELD_VALUE: 加入纯化水体积
+% #HANDWRITTEN: 200
+\fieldvalue{\handwritten{200}}
+\,\(\mu\mathrm{l}\)纯化水中，混匀
+\\ \hline
+空白 & 0 &
+取
+% #VALUE_ID: LEX-P0009-V0009
+% #FIELD_VALUE: 取样体积
+% #HANDWRITTEN: 50
+\fieldvalue{\handwritten{50}}
+\,\(\mu\mathrm{l}\)纯化水
+\\ \hline
+\multicolumn{3}{|c|}{标准品稀释} \\ \hline
+样品 & 稀释倍数 & 样品体积（\(\mu\mathrm{l}\)）\quad 稀释液体积（\(\mu\mathrm{l}\)）\quad 终体积（\(\mu\mathrm{l}\)）
+\\ \hline
+对照组 &
+% #VALUE_ID: LEX-P0009-V0010
+% #FIELD_VALUE: 对照组稀释倍数
+% #HANDWRITTEN: 10
+\fieldvalue{\handwritten{10}}
+&
+% #VALUE_ID: LEX-P0009-V0011
+% #FIELD_VALUE: 对照组样品体积
+% #HANDWRITTEN: 20
+\fieldvalue{\handwritten{20}}
+\quad
+% #VALUE_ID: LEX-P0009-V0012
+% #FIELD_VALUE: 对照组稀释液体积
+% #HANDWRITTEN: 180
+\fieldvalue{\handwritten{180}}
+\quad
+% #VALUE_ID: LEX-P0009-V0013
+% #FIELD_VALUE: 对照组终体积
+% #HANDWRITTEN: 200
+\fieldvalue{\handwritten{200}}
+\\ \hline
+实验组 &
+% #VALUE_ID: LEX-P0009-V0014
+% #FIELD_VALUE: 实验组稀释倍数
+% #HANDWRITTEN: 10
+\fieldvalue{\handwritten{10}}
+&
+% #VALUE_ID: LEX-P0009-V0015
+% #FIELD_VALUE: 实验组样品体积
+% #HANDWRITTEN: 20
+\fieldvalue{\handwritten{20}}
+\quad
+% #VALUE_ID: LEX-P0009-V0016
+% #FIELD_VALUE: 实验组稀释液体积
+% #HANDWRITTEN: 180
+\fieldvalue{\handwritten{180}}
+\quad
+% #VALUE_ID: LEX-P0009-V0017
+% #FIELD_VALUE: 实验组终体积
+% #HANDWRITTEN: 200
+\fieldvalue{\handwritten{200}}
+\\ \hline
+\end{tabular}
+
+\vspace{2mm}
+
+\begin{tabular}{|p{0.48\linewidth}|p{0.44\linewidth}|}
+\hline
+将标准曲线各标准品、空白和待测样品（实验组、对照组），按 \(20\mu\mathrm{l}/孔\)分别加入到96孔板对应的孔中，各平行2孔。以上孔中加入BCA工作液 \(200\mu\mathrm{l}/孔\)。 &
+标准品、空白和待测样品上样体积
+% #VALUE_ID: LEX-P0009-V0018
+% #FIELD_VALUE: 上样体积
+% #HANDWRITTEN: 20
+\fieldvalue{\handwritten{20}}
+\,\(\mu\mathrm{l}/\)孔数：
+% #VALUE_ID: LEX-P0009-V0019
+% #FIELD_VALUE: 孔数
+% #HANDWRITTEN: 2
+\fieldvalue{\handwritten{2}}
+\,孔\\
+& BCA工作液：
+% #VALUE_ID: LEX-P0009-V0020
+% #FIELD_VALUE: BCA工作液体积
+% #HANDWRITTEN: 200
+\fieldvalue{\handwritten{200}}
+\,\(\mu\mathrm{l}/\)孔
+\\ \hline
+轻拍混匀，室温孵育5分钟。 &
+孵育时间：
+% #VALUE_ID: LEX-P0009-V0021
+% #FIELD_VALUE: 孵育时间
+% #HANDWRITTEN: 5
+\fieldvalue{\handwritten{5}}
+\,min
+\\ \hline
+读取OD值 &
+波长
+% #VALUE_ID: LEX-P0009-V0022
+% #FIELD_VALUE: 读取OD值波长
+% #HANDWRITTEN: 450
+\fieldvalue{\handwritten{450}}
+\,nm 和
+% #VALUE_ID: LEX-P0009-V0023
+% #FIELD_VALUE: 读取OD值波长
+% #HANDWRITTEN: 562
+\fieldvalue{\handwritten{562}}
+\,nm
+\\ \hline
+480nm的OD值减去562nm的OD值 &
+% #VALUE_ID: LEX-P0009-V0024
+% #FIELD_VALUE: 480nm减562nm OD值校正
+% #HANDWRITTEN: checked
+\fieldvalue{\handwritten{\checkboxfield{checked}}}\,是
+\quad
+\fieldvalue{\checkboxfield{unchecked}}\,否
+\\ \hline
+\(\mathrm{OD}_{480-562\mathrm{nm}}\)均值减去空白 \(\mathrm{OD}_{480-562\mathrm{nm}}\)均值 &
+% #VALUE_ID: LEX-P0009-V0025
+% #FIELD_VALUE: 空白校正
+% #HANDWRITTEN: checked
+\fieldvalue{\handwritten{\checkboxfield{checked}}}\,是
+\quad
+\fieldvalue{\checkboxfield{unchecked}}\,否
+\\ \hline
+标准曲线拟合方式 &
+\fieldvalue{\checkboxfield{unchecked}}\,线性回归
+\quad
+% #VALUE_ID: LEX-P0009-V0026
+% #FIELD_VALUE: 标准曲线拟合方式
+% #HANDWRITTEN: checked
+\fieldvalue{\handwritten{\checkboxfield{checked}}}\,4PL
+\\ \hline
+\end{tabular}
+
+\begin{center}
+\textbf{BCA质量控制}
+\end{center}
+
+\begin{tabular}{|p{0.48\linewidth}|p{0.44\linewidth}|}
+\hline
+线性相关系数（R平方）应$\geq 0.98$ &
+\fieldvalue{\checkboxfield{unchecked}}\,是
+\quad
+\fieldvalue{\checkboxfield{unchecked}}\,否
+\\ \hline
+实验结论 &
+% #VALUE_ID: LEX-P0009-V0030
+% #FIELD_VALUE: 实验结论
+% #HANDWRITTEN: checked
+\fieldvalue{\handwritten{\checkboxfield{checked}}}\,可用于 WB 检测
+\quad
+% #VALUE_ID: LEX-P0009-V0031
+% #FIELD_VALUE: 实验结论
+\fieldvalue{\checkboxfield{unchecked}}\,不可用于 WB 检测
+\\ \hline
+\end{tabular}
+
+\begin{center}
+\textbf{WB实验操作}
+\end{center}
+
+\begin{center}
+上样样品和阳性样品配制
+\end{center}
+
+\begin{tabular}{|p{0.30\linewidth}|p{0.20\linewidth}|p{0.20\linewidth}|p{0.16\linewidth}|}
+\hline
+组分 & 对照组 & 实验组 & 阳性样品
+\\ \hline
+蛋白含量（\(\mu\mathrm{g}/\mathrm{ml}\)） &
+% #VALUE_ID: LEX-P0009-V0032
+% #FIELD_VALUE: 对照组蛋白含量
+% #HANDWRITTEN: 264.1
+\fieldvalue{\handwritten{264.1}}
+&
+% #VALUE_ID: LEX-P0009-V0033
+% #FIELD_VALUE: 实验组蛋白含量
+% #HANDWRITTEN: 2947.3
+\fieldvalue{\handwritten{2947.3}}
+&
+% #VALUE_ID: LEX-P0009-V0034
+% #FIELD_VALUE: 阳性样品蛋白含量
+% #HANDWRITTEN: 1
+\fieldvalue{\handwritten{1}}
+\\ \hline
+4$\times$LDS Sample Buffer（\(\mu\mathrm{l}\)） &
+% #VALUE_ID: LEX-P0009-V0035
+% #FIELD_VALUE: 对照组4倍LDS Sample Buffer体积
+% #HANDWRITTEN: 3.15
+\fieldvalue{\handwritten{3.15}}
+&
+% #VALUE_ID: LEX-P0009-V0036
+% #FIELD_VALUE: 实验组4倍LDS Sample Buffer体积
+% #HANDWRITTEN: 3.75
+\fieldvalue{\handwritten{3.75}}
+&
+% #VALUE_ID: LEX-P0009-V0037
+% #FIELD_VALUE: 阳性样品4倍LDS Sample Buffer体积
+% #HANDWRITTEN: 3.75
+\fieldvalue{\handwritten{3.75}}
+\\ \hline
+1M DTT溶液（\(\mu\mathrm{l}\)） &
+% #VALUE_ID: LEX-P0009-V0038
+% #FIELD_VALUE: 对照组1M DTT溶液体积
+% #HANDWRITTEN: 0.25
+\fieldvalue{\handwritten{0.25}}
+&
+% #VALUE_ID: LEX-P0009-V0039
+% #FIELD_VALUE: 实验组1M DTT溶液体积
+% #HANDWRITTEN: 0.25
+\fieldvalue{\handwritten{0.25}}
+&
+% #VALUE_ID: LEX-P0009-V0040
+% #FIELD_VALUE: 阳性样品1M DTT溶液体积
+% #HANDWRITTEN: 0.25
+\fieldvalue{\handwritten{0.25}}
+\\ \hline
+细胞裂解液（\(\mu\mathrm{l}\)） &
+% #VALUE_ID: LEX-P0009-V0041
+% #FIELD_VALUE: 对照组细胞裂解液体积
+% #HANDWRITTEN: 9.44
+\fieldvalue{\handwritten{9.44}}
+&
+% #VALUE_ID: LEX-P0009-V0042
+% #FIELD_VALUE: 实验组细胞裂解液体积
+% #HANDWRITTEN: 8.40
+\fieldvalue{\handwritten{8.40}}
+&
+% #VALUE_ID: LEX-P0009-V0043
+% #FIELD_VALUE: 阳性样品细胞裂解液体积
+% #HANDWRITTEN: 5
+\fieldvalue{\handwritten{5}}
+\\ \hline
+总体积（\(\mu\mathrm{l}\)） &
+% #VALUE_ID: LEX-P0009-V0044
+% #FIELD_VALUE: 对照组总体积
+% #HANDWRITTEN: 15
+\fieldvalue{\handwritten{15}}
+&
+% #VALUE_ID: LEX-P0009-V0045
+% #FIELD_VALUE: 实验组总体积
+% #HANDWRITTEN: 15
+\fieldvalue{\handwritten{15}}
+&
+% #VALUE_ID: LEX-P0009-V0046
+% #FIELD_VALUE: 阳性样品总体积
+% #HANDWRITTEN: 15
+\fieldvalue{\handwritten{15}}
+\\ \hline
+\end{tabular}
+% LEXOID_PAGE_COMPLETED: 9/34
+
+\newpage
+
+\small
+\begin{tabular}{|p{0.48\linewidth}|p{0.44\linewidth}|}
+\hline
+\textbf{将配制好的上述样品和阳性样品置于蛋白质恒温器中，100\textdegree C条件下处理10分钟变性，处理完成后取出各管中，冷却至室温，瞬时离心3秒，备用。}
+&
+温度：
+% #VALUE_ID: LEX-P0010-V0001
+% #FIELD_VALUE: 温度
+% #HANDWRITTEN: 10
+\fieldvalue{\handwritten{10}} \textdegree C，
+穿背时间：
+% #VALUE_ID: LEX-P0010-V0002
+% #FIELD_VALUE: 穿背时间
+% #HANDWRITTEN: 10
+\fieldvalue{\handwritten{10}} min；
+瞬时高温：
+% #VALUE_ID: LEX-P0010-V0003
+% #FIELD_VALUE: 瞬时高温
+% #HANDWRITTEN: 20
+\fieldvalue{\handwritten{20}} 秒
+\\
+\hline
+将预制胶取出，组装到垂直电泳槽中。确保电泳槽不漏液。向内槽中加入电泳液，直至电泳液溢出至外槽，外槽液面高度需要没过预制胶下缘开口处。小心拔出预制胶上方梳子，向预制胶的其中一个泳道加入预染蛋白Marker 5--10$\mu$l，其它泳道分别加入配制好的上样品和阳性样品，各上1个泳道。加样过程应缓慢匀速，防止样品溢出。
+&
+蛋白质溶液Marker：
+% #VALUE_ID: LEX-P0010-V0004
+% #FIELD_VALUE: 蛋白质溶液Marker
+% #HANDWRITTEN: 3
+\fieldvalue{\handwritten{3}} $\mu$l/道
+
+上样样品：
+% #VALUE_ID: LEX-P0010-V0005
+% #FIELD_VALUE: 上样样品
+% #HANDWRITTEN: 4
+\fieldvalue{\handwritten{4}} $\mu$g/道
+
+阳性样品：
+% #VALUE_ID: LEX-P0010-V0006
+% #FIELD_VALUE: 阳性样品
+% #HANDWRITTEN: 4
+\fieldvalue{\handwritten{4}} ng/道
+\\
+\hline
+将电极板盖上（注意正负极颜色区分），调节电压至160V，开始电泳，待样品和Marker中的溴酚蓝染料迁移至胶底部时停止电泳。
+&
+电压调至：
+% #VALUE_ID: LEX-P0010-V0007
+% #FIELD_VALUE: 电压调至
+% #HANDWRITTEN: 160
+\fieldvalue{\handwritten{160}} V
+
+电泳时间：
+% #VALUE_ID: LEX-P0010-V0008
+% #FIELD_VALUE: 电泳时间
+% #HANDWRITTEN: 14:10--14:50
+\fieldvalue{\handwritten{14:10--14:50}}
+\\
+\hline
+将凝胶从小梳子、滤去凝胶的积层胶。将海绵垫、滤纸在电转液中浸湿，将PVDF膜预先在甲醇中浸泡30秒激活。按照海绵垫--滤纸--凝胶--PVDF膜--滤纸--海绵垫的顺序依次放置在转膜夹内（确保PVDF膜尺寸能够完全覆盖凝胶，放置过程中避免产生气泡），将夹子夹紧，盖上电极板，电压调至90V，转膜1小时。
+&
+PVDF膜预先在甲醇中浸泡
+% #VALUE_ID: LEX-P0010-V0009
+% #FIELD_VALUE: PVDF膜预先在甲醇中浸泡
+% #HANDWRITTEN: 30
+\fieldvalue{\handwritten{30}} 秒
+
+电压调至：
+% #VALUE_ID: LEX-P0010-V0010
+% #FIELD_VALUE: 电压调至
+% #HANDWRITTEN: 90
+\fieldvalue{\handwritten{90}} V
+
+转膜时间：
+% #VALUE_ID: LEX-P0010-V0011
+% #FIELD_VALUE: 转膜时间
+% #HANDWRITTEN: 16:24--16:34
+\fieldvalue{\handwritten{16:24--16:34}}
+\\
+\hline
+取出PVDF膜，终封闭液更换为20ml一抗工作液（体积可根据试剂情况调整），室温条件下摇床上（转速70rpm）封闭1小时。
+&
+封闭液体积：
+% #VALUE_ID: LEX-P0010-V0012
+% #FIELD_VALUE: 封闭液体积
+% #HANDWRITTEN: 30
+\fieldvalue{\handwritten{30}} ml
+
+摇床转速：
+% #VALUE_ID: LEX-P0010-V0013
+% #FIELD_VALUE: 摇床转速
+% #HANDWRITTEN: 70
+\fieldvalue{\handwritten{70}} rpm
+
+封闭时间：
+% #VALUE_ID: LEX-P0010-V0014
+% #FIELD_VALUE: 封闭时间
+% #HANDWRITTEN: 16:30--17:00
+\fieldvalue{\handwritten{16:30--17:00}}
+\\
+\hline
+取出PVDF膜，将封闭液更换为20ml一抗工作液（体积可根据试剂情况调整），2--8\textdegree C孵育过夜。
+&
+一抗工作液体积：
+% #VALUE_ID: LEX-P0010-V0015
+% #FIELD_VALUE: 一抗工作液体积
+% #HANDWRITTEN: 20.06
+\fieldvalue{\handwritten{20.06}} ml
+
+孵育温度：
+% #VALUE_ID: LEX-P0010-V0016
+% #FIELD_VALUE: 孵育温度
+% #HANDWRITTEN: 2--8
+\fieldvalue{\handwritten{2--8}} \textdegree C
+
+孵育时间：
+% #VALUE_ID: LEX-P0010-V0017
+% #FIELD_VALUE: 孵育时间
+% #HANDWRITTEN: 28日17时08分至29日07时22分
+\fieldvalue{\handwritten{28日17时08分至29日07时22分}}
+\\
+\hline
+用TBST洗液室温摇床上（转速70rpm）浸泡洗膜3次，每次10分钟。
+&
+洗膜时间：
+% #VALUE_ID: LEX-P0010-V0018
+% #FIELD_VALUE: 洗膜时间
+% #HANDWRITTEN: 30
+\fieldvalue{\handwritten{30}} min
+
+摇床转速：
+% #VALUE_ID: LEX-P0010-V0019
+% #FIELD_VALUE: 摇床转速
+% #HANDWRITTEN: 70
+\fieldvalue{\handwritten{70}} rpm
+
+次数：
+% #VALUE_ID: LEX-P0010-V0020
+% #FIELD_VALUE: 次数
+% #HANDWRITTEN: 4
+\fieldvalue{\handwritten{4}} 次
+\\
+\hline
+取出PVDF膜，在30ml二抗工作液（体积可根据试剂情况调整）中室温摇床上（转速70rpm）孵育1小时。
+&
+二抗工作液体积：
+% #VALUE_ID: LEX-P0010-V0021
+% #FIELD_VALUE: 二抗工作液体积
+% #HANDWRITTEN: 20.01
+\fieldvalue{\handwritten{20.01}} ml
+
+摇床转速：
+% #VALUE_ID: LEX-P0010-V0022
+% #FIELD_VALUE: 摇床转速
+% #HANDWRITTEN: 70
+\fieldvalue{\handwritten{70}} rpm
+
+封闭时间：
+% #VALUE_ID: LEX-P0010-V0023
+% #FIELD_VALUE: 封闭时间
+% #HANDWRITTEN: 10:00--11:00
+\fieldvalue{\handwritten{10:00--11:00}}
+\\
+\hline
+\end{tabular}
+
+\vspace{0.5em}
+\begin{center}
+第 10 页 共 21 页
+\end{center}
+% LEXOID_PAGE_COMPLETED: 10/34
+
+\newpage
+
+\begin{center}
+\textbf{细胞生物学实验记录}
+\end{center}
+
+\noindent
+文件代码：REC-YZ-SOP-QC-03-092-? \hfill
+\begin{tabular}{|p{0.18\linewidth}|p{0.18\linewidth}|p{0.18\linewidth}|p{0.18\linewidth}|}
+\hline
+细胞生物 & \multicolumn{1}{c|}{原} & \multicolumn{2}{c|}{受控文件}\\
+\hline
+\end{tabular}
+
+\vspace{2mm}
+
+\begin{tabular}{|p{0.50\linewidth}|p{0.42\linewidth}|}
+\hline
+用TBST洗液浸泡膜片（转速70\,rpm）漫泡洗膜3次，每次10分钟。 &
+洗膜时间：
+% #VALUE_ID: LEX-P0011-V0001
+% #FIELD_VALUE: 洗膜时间
+% #HANDWRITTEN: 10
+\fieldvalue{\handwritten{10}}\,min
+\\
+\cline{2-2}
+&
+摇床转速：
+% #VALUE_ID: LEX-P0011-V0002
+% #FIELD_VALUE: 摇床转速
+% #HANDWRITTEN: 70
+\fieldvalue{\handwritten{70}}\,rpm
+\\
+\cline{2-2}
+&
+次数：
+% #VALUE_ID: LEX-P0011-V0003
+% #FIELD_VALUE: 次数
+% #HANDWRITTEN: 2
+\fieldvalue{\handwritten{2}}\,次
+\\
+\hline
+取出PVDF膜，在显影液中温盖洗光照5分钟。 &
+显影液体积：
+% #VALUE_ID: LEX-P0011-V0004
+% #FIELD_VALUE: 显影液体积
+% #HANDWRITTEN: 20
+\fieldvalue{\handwritten{20}}\,ml
+\\
+\cline{2-2}
+&
+孵育时间：
+% #VALUE_ID: LEX-P0011-V0005
+% #FIELD_VALUE: 孵育时间
+% #HANDWRITTEN: 5
+\fieldvalue{\handwritten{5}}\,min
+\\
+\hline
+显影，设置曝光时间（30秒至1分30秒） &
+曝光时间：
+% #VALUE_ID: LEX-P0011-V0006
+% #FIELD_VALUE: 曝光时间
+% #HANDWRITTEN: 60秒
+\fieldvalue{\handwritten{60秒}}
+\\
+\hline
+数据保存路径-BCA &
+% #VALUE_ID: LEX-P0011-V0007
+% #FIELD_VALUE: 数据保存路径-BCA
+% TODO #HANDWRITTEN: /4?3?d??-D??-B?X4-100-20?5-8; handwriting unclear
+\fieldvalue{\handwritten{/4?3?d??-D??-B?X4-100-20?5-8}}
+\\
+\hline
+附件名称-BCA &
+% #VALUE_ID: LEX-P0011-V0008
+% #FIELD_VALUE: 附件名称-BCA
+% TODO #HANDWRITTEN: 20250829-IDO?; handwriting unclear
+\fieldvalue{\handwritten{20250829-IDO?}}
+\\
+\hline
+数据保存路径-WB &
+% #VALUE_ID: LEX-P0011-V0009
+% #FIELD_VALUE: 数据保存路径-WB
+% TODO #HANDWRITTEN: /4?3?d??-D??-?00-20?5-8; handwriting unclear
+\fieldvalue{\handwritten{/4?3?d??-D??-?00-20?5-8}}
+\\
+\hline
+附件名称-WB &
+% #VALUE_ID: LEX-P0011-V0010
+% #FIELD_VALUE: 附件名称-WB
+% TODO #HANDWRITTEN: 20250829-IDO?; handwriting unclear
+\fieldvalue{\handwritten{20250829-IDO?}}
+\\
+\hline
+\multicolumn{2}{|c|}{WB质量控制}\\
+\hline
+实验组和对照组样品在分子量约52kD处均有Tubulin显色条带 &
+\begin{tabular}{@{}l@{}}
+% #VALUE_ID: LEX-P0011-V0011
+% #FIELD_VALUE: 实验组和对照组样品Tubulin显色条带-是
+是：\fieldvalue{\checkboxfield{checked}}
+\quad
+% #VALUE_ID: LEX-P0011-V0012
+% #FIELD_VALUE: 实验组和对照组样品Tubulin显色条带-否
+否：\fieldvalue{\checkboxfield{unchecked}}
+\end{tabular}
+\\
+\hline
+阳性样品在分子量约40KD处有IDO显色条带 &
+\begin{tabular}{@{}l@{}}
+% #VALUE_ID: LEX-P0011-V0013
+% #FIELD_VALUE: 阳性样品IDO显色条带-是
+是：\fieldvalue{\checkboxfield{checked}}
+\quad
+% #VALUE_ID: LEX-P0011-V0014
+% #FIELD_VALUE: 阳性样品IDO显色条带-否
+否：\fieldvalue{\checkboxfield{unchecked}}
+\end{tabular}
+\\
+\hline
+质量控制判定 &
+\begin{tabular}{@{}l@{}}
+% #VALUE_ID: LEX-P0011-V0015
+% #FIELD_VALUE: 质量控制判定-符合规定
+符合规定：\fieldvalue{\checkboxfield{checked}}
+\quad
+% #VALUE_ID: LEX-P0011-V0016
+% #FIELD_VALUE: 质量控制判定-不符合规定
+不符合规定：\fieldvalue{\checkboxfield{unchecked}}
+\end{tabular}
+\\
+\hline
+\multicolumn{2}{|c|}{检测结果}\\
+\hline
+对照组约40kd处无条带，实验组约40kd处应能检测到IDO条带 &
+\begin{tabular}{@{}l@{}}
+% #VALUE_ID: LEX-P0011-V0017
+% #FIELD_VALUE: 检测结果-是
+是：\fieldvalue{\checkboxfield{checked}}
+\quad
+% #VALUE_ID: LEX-P0011-V0018
+% #FIELD_VALUE: 检测结果-否
+否：\fieldvalue{\checkboxfield{unchecked}}
+\end{tabular}
+\\
+\hline
+结果判定 &
+\begin{tabular}{@{}l@{}}
+% #VALUE_ID: LEX-P0011-V0019
+% #FIELD_VALUE: 结果判定-合格
+合格：\fieldvalue{\checkboxfield{checked}}
+\quad
+% #VALUE_ID: LEX-P0011-V0020
+% #FIELD_VALUE: 结果判定-不合格
+不合格：\fieldvalue{\checkboxfield{unchecked}}
+\end{tabular}
+\\
+\hline
+备注 &
+% #VALUE_ID: LEX-P0011-V0021
+% #FIELD_VALUE: 备注
+% TODO #HANDWRITTEN: long handwritten note; partially illegible
+\fieldvalue{\handwritten{long handwritten note}}
+\\
+\hline
+实验人/日期 &
+% #VALUE_ID: LEX-P0011-V0022
+% #FIELD_VALUE: 实验人
+% TODO #HANDWRITTEN: handwritten name; illegible
+\fieldvalue{\handwritten{handwritten name}}
+\quad
+% #VALUE_ID: LEX-P0011-V0023
+% #FIELD_VALUE: 实验日期
+% #HANDWRITTEN: 2025.08.29
+\fieldvalue{\handwritten{2025.08.29}}
+\\
+\hline
+复核人/日期 &
+% #VALUE_ID: LEX-P0011-V0024
+% #FIELD_VALUE: 复核人
+% TODO #HANDWRITTEN: handwritten name; illegible
+\fieldvalue{\handwritten{handwritten name}}
+\quad
+% #VALUE_ID: LEX-P0011-V0025
+% #FIELD_VALUE: 复核日期
+% #HANDWRITTEN: 25.8.29
+\fieldvalue{\handwritten{25.8.29}}
+\\
+\hline
+\end{tabular}
+
+\vspace{5mm}
+
+% #VALUE_ID: LEX-P0011-V0026
+% #TODO #HANDWRITTEN: 阴性对照; handwriting partially illegible
+\handwritten{阴性对照}
+
+\vspace{4mm}
+
+\noindent
+\textit{METTLER TOLEDO}
+
+\noindent
+Model: HE?N?E?02
+
+\noindent
+S/N: C22427?454
+
+\noindent
+Date:
+
+\noindent
+Time: 14:49:06
+
+\noindent
+5.69\,g
+
+\vspace{5mm}
+
+% #VALUE_ID: LEX-P0011-V0027
+% #TODO #HANDWRITTEN: handwritten signature; illegible
+\handwritten{handwritten signature}
+
+\begin{center}
+第11页 共21页
+\end{center}
+% LEXOID_PAGE_COMPLETED: 11/34
+
+\newpage
+
+\noindent\textbf{20250828-总蛋白检测}\hfill 页面 1 / 12
+
+\medskip
+\noindent 检测结果
+
+\noindent 2025/8/28 11:19:47
+
+\noindent 酶吸光度
+
+\noindent 波长: 480 nm
+
+\medskip
+\noindent 板 1
+
+\noindent 吸光值
+
+\begin{center}
+\scriptsize
+\begin{tabular}{c|*{12}{p{0.42cm}|}}
+ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\ \hline
+A & 2.4255 & 2.6318 & 0.3648 & 0.3660 & 0.5892 & 0.5906 & & & & & & \\ \hline
+B & 2.1216 & 1.9861 & 0.6729 & 0.6685 & 0.6325 & 0.6322 & & & & & & \\ \hline
+C & 1.5097 & 1.4867 & 0.6901 & 0.6689 & 0.6152 & 0.6951 & & & & & & \\ \hline
+D & 1.2180 & 1.1938 & 0.6909 & 0.??? & 0.??? & 0.??? & & & & & & \\ \hline
+E & 0.9392 & 0.9387 & 0.6440 & 0.6467 & 0.6467 & 0.6467 & & & & & & \\ \hline
+F & 0.6430 & 0.6404 & 0.4292 & 0.4325 & 0.4325 & 0.4325 & & & & & & \\ \hline
+G & 0.4963 & 0.4932 & 0.6749 & 0.6754 & 0.6754 & 0.6754 & & & & & & \\ \hline
+H & 0.3517 & 0.3511 & 0.6249 & 0.6122 & 0.6122 & 0.6122 & & & & & & \\ \hline
+\end{tabular}
+\end{center}
+
+% TODO: The well identifiers and several small printed readings in the shaded cells are illegible at the available resolution.
+
+\medskip
+\noindent 波长: 562 nm
+
+\medskip
+\noindent 板 1
+
+\noindent 吸光值
+
+\begin{center}
+\scriptsize
+\begin{tabular}{c|*{12}{p{0.42cm}|}}
+ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\ \hline
+A & 0.4388 & 0.4574 & 0.1297 & 0.1309 & 0.???? & 0.???? & & & & & & \\ \hline
+B & 0.3779 & 0.3738 & 0.1780 & 0.1780 & 0.1773 & 0.1773 & & & & & & \\ \hline
+C & 0.3026 & 0.???? & 0.1784 & 0.1784 & 0.1784 & 0.1823 & & & & & & \\ \hline
+D & 0.2577 & 0.2545 & 0.???? & 0.???? & 0.???? & 0.???? & & & & & & \\ \hline
+E & 0.2159 & 0.2157 & 0.1750 & 0.1751 & 0.1752 & 0.1752 & & & & & & \\ \hline
+F & 0.1806 & 0.???? & 0.1790 & 0.1790 & 0.1790 & 0.1790 & & & & & & \\ \hline
+G & 0.1494 & 0.1487 & 0.1790 & 0.1804 & 0.1804 & 0.1804 & & & & & & \\ \hline
+H & 0.1319 & 0.1318 & 0.1711 & 0.1704 & 0.1704 & 0.1704 & & & & & & \\ \hline
+\end{tabular}
+\end{center}
+
+% TODO: The well identifiers and several small printed readings in the shaded cells are illegible at the available resolution.
+
+% #VALUE_ID: LEX-P0012-V0001
+% #HANDWRITTEN: [illegible; blue handwritten entry, approximately ending in “8.27”]
+\handwritten{\text{[illegible; approximately ending in ``8.27'']}}
+
+% #VALUE_ID: LEX-P0012-V0002
+% #HANDWRITTEN: [illegible; blue handwritten entry, approximately containing “2018.8”]
+\handwritten{\text{[illegible; approximately containing ``2018.8'']}}
+% LEXOID_PAGE_COMPLETED: 12/34
+
+\newpage
+
+\begin{flushleft}
+\textbf{20250828-总蛋白检测}\hfill 页面 2 / 12
+\end{flushleft}
+\hrule
+
+\vspace{0.5em}
+
+\textbf{计算结果}
+
+\begin{flushleft}
+\textbf{结果}\\
+\quad 基本计算 1\\
+\quad 计算公式：减法\\
+\quad 数据源 A：吸光度 1，波长：
+% #VALUE_ID: LEX-P0013-V0001
+% #FIELD_VALUE: 数据源 A 波长
+\fieldvalue{480 nm}\\
+\quad 数据源 B：吸光度 1，波长：
+% #VALUE_ID: LEX-P0013-V0002
+% #FIELD_VALUE: 数据源 B 波长
+\fieldvalue{562 nm}
+\end{flushleft}
+
+\textbf{板 1}
+
+已计算
+
+\vspace{0.25em}
+
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{1pt}
+\renewcommand{\arraystretch}{1.45}
+\begin{tabular}{|c|*{12}{p{0.47cm}|}}
+\hline
+ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\
+\hline
+A &
+\texttt{样品0001\\1.98586} &
+\texttt{样品0001\\0.2745} &
+\texttt{样品0001\\0.23590} &
+\texttt{样品0001\\0.66325\\0.62425} &
+ & & & & & & &\\
+\hline
+B &
+\texttt{样品0002\\1.6347} &
+\texttt{样品0002\\1.6123} &
+\texttt{样品0002\\0.4940\\0.4932} &
+\texttt{样品0002\\0.4860\\0.4887} &
+ & & & & & & &\\
+\hline
+C &
+\texttt{样品0003\\1.2071} &
+\texttt{样品0003\\1.1874} &
+\texttt{样品0003\\0.491?\\0.492?} &
+\texttt{样品0003\\0.4572\\0.51286} &
+ & & & & & & &\\
+\hline
+D &
+\texttt{样品0004\\0.9004} &
+\texttt{样品0004\\0.93925} &
+\texttt{样品0004\\0.478?\\0.48317} &
+\texttt{样品0004\\0.458?\\0.48560} &
+ & & & & & & &\\
+\hline
+E &
+\texttt{样品0005\\0.9025} &
+\texttt{样品0005\\0.93925} &
+\texttt{样品0005\\0.478?\\0.483?} &
+\texttt{样品0005\\0.458?\\0.485?} &
+ & & & & & & &\\
+\hline
+F &
+\texttt{样品0006\\0.72331} &
+\texttt{样品0006\\0.72309} &
+\texttt{样品0006\\0.432?\\0.45888} &
+\texttt{样品0006\\0.432?\\0.48453} &
+ & & & & & & &\\
+\hline
+G &
+\texttt{样品0007\\0.34684} &
+\texttt{样品0007\\0.34445} &
+\texttt{样品0007\\0.447?\\0.45599} &
+\texttt{样品0007\\0.447?\\0.46053} &
+ & & & & & & &\\
+\hline
+H &
+\texttt{样品0008\\0.24985} &
+\texttt{样品0008\\0.24925} &
+\texttt{样品0008\\0.372?\\0.45372} &
+\texttt{样品0008\\0.372?\\0.44866} &
+ & & & & & & &\\
+\hline
+\end{tabular}
+\endgroup
+
+% TODO: The numerical entries in the plate table are very small in the source image; several digits are illegible and should be verified against the PDF at higher resolution.
+% LEXOID_PAGE_COMPLETED: 13/34
+
+\newpage
+
+\begin{center}
+\textbf{20250828--总蛋白检测}\hfill 页面 3 / 12
+\end{center}
+
+\noindent\rule{\linewidth}{0.4pt}
+
+\textbf{计算结果}
+
+\noindent
+X 平均，SD，CV\%1
+
+\medskip
+
+\textbf{板1}
+
+\begin{center}
+平均
+\end{center}
+
+\begin{center}
+\scriptsize
+\begin{tabular}{c|*{12}{p{0.82cm}|}}
+ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\ \hline
+A &
+\text{样品0001\\2.0300} &
+\text{空白1\\0.23508} &
+\text{A3: 0.3772E-05\\0.423?} &
+ & & & & & & & & \\ \hline
+B &
+\text{样品0002\\1.6253} &
+\text{空白2\\0.33912\\0.49283} &
+\text{A3: 0.388?\\0.48573} &
+ & & & & & & & & \\ \hline
+C &
+\text{样品0003\\1.1973} &
+\text{空白3\\0.304?\\0.48855} &
+\text{A3: 0.31722\\0.51992} &
+ & & & & & & & & \\ \hline
+D &
+\text{样品0004\\0.94975} &
+\text{空白4\\0.382?\\0.46137} &
+ & & & & & & & & & \\ \hline
+E &
+\text{样品0005\\0.72320} &
+\text{空白5\\0.378?\\0.47253} &
+\text{A3: 0.28202E-05\\0.47253} &
+ & & & & & & & & \\ \hline
+F &
+\text{样品0006\\0.47042} &
+\text{空白6\\0.342?\\0.46821} &
+\text{A3: 0.???\\0.???} &
+ & & & & & & & & \\ \hline
+G &
+\text{样品0007\\0.34564} &
+\text{空白7\\0.342?\\0.49551} &
+ & & & & & & & & & \\ \hline
+H &
+\text{样品0008\\0.24955} &
+\text{空白8\\0.???\\0.45129} &
+ & & & & & & & & & \\ \hline
+\end{tabular}
+\end{center}
+
+% TODO: Several numerical entries in the densely printed cells are not legible at the available image resolution.
+
+\medskip
+
+\textbf{SD}
+
+\begin{center}
+\scriptsize
+\begin{tabular}{c|*{12}{p{0.82cm}|}}
+ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\ \hline
+A &
+0.062801 &
+\text{1.0607E-00} &
+\text{0.0054023} &
+ & & & & & & & & \\ \hline
+B &
+0.015784 &
+\text{3.432?E-05\\0.0031002} &
+\text{0.005?\\0.00019034} &
+ & & & & & & & & \\ \hline
+C &
+0.013897 &
+\text{3.432?E-05\\0.0031002} &
+\text{0.005?\\0.0049289} &
+ & & & & & & & & \\ \hline
+D &
+0.014849 &
+\text{3.???E-05\\0.???} &
+ & & & & & & & & & \\ \hline
+E &
+0.015698 &
+\text{3.???E-05\\0.???} &
+ & & & & & & & & & \\ \hline
+F &
+0.013661 &
+\text{3.342?E-05\\0.000?} &
+ & & & & & & & & & \\ \hline
+G &
+0.019821 &
+\text{3.???E-05\\0.006741} &
+ & & & & & & & & & \\ \hline
+H &
+0.00042851 &
+\text{3.???E-05\\0.003434} &
+ & & & & & & & & & \\ \hline
+\end{tabular}
+\end{center}
+
+% TODO: The SD table continues only within the visible page region; numerous small numerical values are illegible in the source image.
+% LEXOID_PAGE_COMPLETED: 14/34
+
+\newpage
+
+\begin{center}
+\textbf{20250828-总蛋白检测}\hfill \scriptsize 页面 4 / 12
+\end{center}
+
+\noindent\scriptsize CV\%
+
+\begin{center}
+\scriptsize
+\begin{tabular}{c|*{12}{p{0.058\linewidth}|}}
+ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\ \hline
+A &
+% #VALUE_ID: LEX-P0015-V0001
+% #FIELD_VALUE: A-1
+\fieldvalue{\shortstack{\text{样品001}\\3.0936}} &
+% #VALUE_ID: LEX-P0015-V0002
+% #FIELD_VALUE: A-2
+\fieldvalue{\shortstack{\text{样品1}\\0.045511}} &
+% #VALUE_ID: LEX-P0015-V0003
+% #FIELD_VALUE: A-3
+\fieldvalue{\shortstack{\text{A3772025}\\\text{0602-112}\\0.12745}} &
+% #VALUE_ID: LEX-P0015-V0004
+% #FIELD_VALUE: A-4
+\fieldvalue{\shortstack{\text{A3772025}\\\text{0602-112}\\0.8396}} &
+ & & & & & & & \\ \hline
+B &
+% #VALUE_ID: LEX-P0015-V0005
+% #FIELD_VALUE: B-1
+\fieldvalue{\shortstack{\text{样品002}\\0.97223}} &
+% #VALUE_ID: LEX-P0015-V0006
+% #FIELD_VALUE: B-2
+\fieldvalue{\shortstack{\text{样品2}\\\text{0.004?}}} &
+% #VALUE_ID: LEX-P0015-V0007
+% #FIELD_VALUE: B-3
+\fieldvalue{\shortstack{\text{A3772025}\\\text{0602-112}\\0.61252}} &
+% #VALUE_ID: LEX-P0015-V0008
+% #FIELD_VALUE: B-4
+\fieldvalue{\shortstack{\text{A3772025}\\\text{0602-112}\\0.8396}} &
+ & & & & & & & \\ \hline
+C &
+% #VALUE_ID: LEX-P0015-V0009
+% #FIELD_VALUE: C-1
+\fieldvalue{\shortstack{\text{样品003}\\\text{0.??}}} &
+% #VALUE_ID: LEX-P0015-V0010
+% #FIELD_VALUE: C-2
+\fieldvalue{\shortstack{\text{样品3}\\\text{0.??}}} &
+% #VALUE_ID: LEX-P0015-V0011
+% #FIELD_VALUE: C-3
+\fieldvalue{\shortstack{\text{A3772025}\\\text{0602-112}\\0.82137}} &
+% #VALUE_ID: LEX-P0015-V0012
+% #FIELD_VALUE: C-4
+\fieldvalue{\shortstack{\text{A3772025}\\\text{0602-112}\\0.8396}} &
+ & & & & & & & \\ \hline
+D &
+% #VALUE_ID: LEX-P0015-V0013
+% #FIELD_VALUE: D-1
+\fieldvalue{\shortstack{\text{样品004}\\1.5834}} &
+% #VALUE_ID: LEX-P0015-V0014
+% #FIELD_VALUE: D-2
+\fieldvalue{\shortstack{\text{样品4}\\\text{0.??}}} &
+% #VALUE_ID: LEX-P0015-V0015
+% #FIELD_VALUE: D-3
+\fieldvalue{\shortstack{\text{A3772025}\\\text{0602-112}\\0.55374}} &
+ & & & & & & & & \\ \hline
+E &
+% #VALUE_ID: LEX-P0015-V0016
+% #FIELD_VALUE: E-1
+\fieldvalue{\shortstack{\text{样品005}\\0.21706}} &
+% #VALUE_ID: LEX-P0015-V0017
+% #FIELD_VALUE: E-2
+\fieldvalue{\shortstack{\text{样品5}\\\text{0.??}}} &
+% #VALUE_ID: LEX-P0015-V0018
+% #FIELD_VALUE: E-3
+\fieldvalue{\shortstack{\text{A3772025}\\\text{0602-112}\\0.27744}} &
+ & & & & & & & & \\ \hline
+F &
+% #VALUE_ID: LEX-P0015-V0019
+% #FIELD_VALUE: F-1
+\fieldvalue{\shortstack{\text{样品006}\\0.2941}} &
+% #VALUE_ID: LEX-P0015-V0020
+% #FIELD_VALUE: F-2
+\fieldvalue{\shortstack{\text{样品6}\\\text{0.??}}} &
+% #VALUE_ID: LEX-P0015-V0021
+% #FIELD_VALUE: F-3
+\fieldvalue{\shortstack{\text{A3772025}\\\text{0602-112}\\0.96100}} &
+ & & & & & & & & \\ \hline
+G &
+% #VALUE_ID: LEX-P0015-V0022
+% #FIELD_VALUE: G-1
+\fieldvalue{\shortstack{\text{样品007}\\0.48556}} &
+% #VALUE_ID: LEX-P0015-V0023
+% #FIELD_VALUE: G-2
+\fieldvalue{\shortstack{\text{样品7}\\\text{0.??}}} &
+% #VALUE_ID: LEX-P0015-V0024
+% #FIELD_VALUE: G-3
+\fieldvalue{\shortstack{\text{A3772025}\\\text{0602-112}\\0.13671}} &
+ & & & & & & & & \\ \hline
+H &
+% #VALUE_ID: LEX-P0015-V0025
+% #FIELD_VALUE: H-1
+\fieldvalue{\shortstack{\text{样品008}\\0.17171}} &
+% #VALUE_ID: LEX-P0015-V0026
+% #FIELD_VALUE: H-2
+\fieldvalue{\shortstack{\text{样品8}\\\text{0.??}}} &
+% #VALUE_ID: LEX-P0015-V0027
+% #FIELD_VALUE: H-3
+\fieldvalue{\shortstack{\text{A3772025}\\\text{0602-112}\\0.76102}} &
+ & & & & & & & & \\ \hline
+\end{tabular}
+\end{center}
+
+% TODO: Several small printed identifiers and numerical values in the populated cells are indistinct in the source image; they are represented above with best-effort transcriptions or question marks.
+% LEXOID_PAGE_COMPLETED: 15/34
+
+\newpage
+
+\begin{flushleft}
+20250828-总蛋白检测
+\end{flushleft}
+
+\textbf{计算结果}
+
+减去空白1
+
+\textbf{板1}
+
+减去空白
+
+\begin{center}
+\small
+\begin{tabular}{c|p{1.35cm}|p{1.35cm}|p{1.35cm}|p{1.35cm}|p{1.35cm}|p{1.35cm}|p{1.35cm}|p{1.35cm}|p{1.35cm}|p{1.35cm}|p{1.35cm}|p{1.35cm}}
+ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\
+\hline
+A &
+% #VALUE_ID: LEX-P0016-V0001
+% #FIELD_VALUE: A1
+\fieldvalue{样品0001\\1.7950}
+&
+% #VALUE_ID: LEX-P0016-V0002
+% #FIELD_VALUE: A2
+\fieldvalue{空白1}
+&
+% #VALUE_ID: LEX-P0016-V0003
+% #FIELD_VALUE: A3
+\fieldvalue{A312?--2025\\0.6082\\0.1874}
+&
+% #VALUE_ID: LEX-P0016-V0004
+% #FIELD_VALUE: A4
+\fieldvalue{A312?--2025\\0.??\\0.??}
+& & & & & & & &\\
+\hline
+B &
+% #VALUE_ID: LEX-P0016-V0005
+% #FIELD_VALUE: B1
+\fieldvalue{样品0002\\1.384?}
+&
+% #VALUE_ID: LEX-P0016-V0006
+% #FIELD_VALUE: B2
+\fieldvalue{A332?--2025\\0.??\\0.??}
+&
+% #VALUE_ID: LEX-P0016-V0007
+% #FIELD_VALUE: B3
+\fieldvalue{A312?--2025\\0.??\\0.??}
+&
+% #VALUE_ID: LEX-P0016-V0008
+% #FIELD_VALUE: B4
+\fieldvalue{A312?--2025\\0.??\\0.??}
+& & & & & & & &\\
+\hline
+C &
+% #VALUE_ID: LEX-P0016-V0009
+% #FIELD_VALUE: C1
+\fieldvalue{样品0003\\0.96219}
+&
+% #VALUE_ID: LEX-P0016-V0010
+% #FIELD_VALUE: C2
+\fieldvalue{A?--2025\\0.??\\0.??}
+&
+% #VALUE_ID: LEX-P0016-V0011
+% #FIELD_VALUE: C3
+\fieldvalue{A332?--2025\\0.??\\0.??}
+&
+% #VALUE_ID: LEX-P0016-V0012
+% #FIELD_VALUE: C4
+\fieldvalue{A312?--2025\\0.??\\0.??}
+& & & & & & & &\\
+\hline
+D &
+% #VALUE_ID: LEX-P0016-V0013
+% #FIELD_VALUE: D1
+\fieldvalue{样品0004\\0.71467}
+&
+% #VALUE_ID: LEX-P0016-V0014
+% #FIELD_VALUE: D2
+\fieldvalue{A?--2025\\0.??\\0.??}
+& & & & & & & & & &\\
+\hline
+E &
+% #VALUE_ID: LEX-P0016-V0015
+% #FIELD_VALUE: E1
+\fieldvalue{样品0005\\0.48812}
+&
+% #VALUE_ID: LEX-P0016-V0016
+% #FIELD_VALUE: E2
+\fieldvalue{A332?--2025\\0.??\\0.??}
+& & & & & & & & & &\\
+\hline
+F &
+% #VALUE_ID: LEX-P0016-V0017
+% #FIELD_VALUE: F1
+\fieldvalue{样品0006\\0.25384}
+&
+% #VALUE_ID: LEX-P0016-V0018
+% #FIELD_VALUE: F2
+\fieldvalue{A342?--2025\\0.??\\0.??}
+& & & & & & & & & &\\
+\hline
+G &
+% #VALUE_ID: LEX-P0016-V0019
+% #FIELD_VALUE: G1
+\fieldvalue{样品0007\\0.11056}
+&
+% #VALUE_ID: LEX-P0016-V0020
+% #FIELD_VALUE: G2
+\fieldvalue{A342?--2025\\0.??\\0.??}
+& & & & & & & & & &\\
+\hline
+H &
+% #VALUE_ID: LEX-P0016-V0021
+% #FIELD_VALUE: H1
+\fieldvalue{样品0008\\0.014466}
+&
+% #VALUE_ID: LEX-P0016-V0022
+% #FIELD_VALUE: H2
+\fieldvalue{A?--2025\\0.??\\0.??}
+& & & & & & & & & &\\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{计算结果}
+
+标准曲线拟合值（$\mu\mathrm{g}/\mathrm{ml}$）
+
+拟合类型：
+% #VALUE_ID: LEX-P0016-V0023
+% #FIELD_VALUE: 拟合类型
+\fieldvalue{4PL}
+
+浓度转换：
+% #VALUE_ID: LEX-P0016-V0024
+% #FIELD_VALUE: 浓度转换
+\fieldvalue{对数}
+
+信号转换：
+% #VALUE_ID: LEX-P0016-V0025
+% #FIELD_VALUE: 信号转换
+\fieldvalue{线性}
+
+保存曲线：
+% #VALUE_ID: LEX-P0016-V0026
+% #FIELD_VALUE: 保存曲线
+\fieldvalue{否}
+
+样本组：
+% #VALUE_ID: LEX-P0016-V0027
+% #FIELD_VALUE: 样本组
+\fieldvalue{组1}
+
+\begin{center}
+\textbf{标准曲线}
+
+% TODO: Reproduce the plotted standard-curve figure visible on this page.
+\begin{minipage}{0.82\linewidth}
+\centering
+\setlength{\unitlength}{1cm}
+\begin{picture}(10,4.2)
+\put(0.8,0.4){\line(1,0){8.6}}
+\put(0.8,0.4){\line(0,1){3.2}}
+\put(1.2,0.25){\makebox(0,0)[t]{0}}
+\put(3.0,0.25){\makebox(0,0)[t]{500}}
+\put(4.8,0.25){\makebox(0,0)[t]{1000}}
+\put(6.6,0.25){\makebox(0,0)[t]{1500}}
+\put(8.4,0.25){\makebox(0,0)[t]{2000}}
+\put(5.1,-0.15){\makebox(0,0){浓度 [$\mu\mathrm{g}/\mathrm{ml}$]}}
+\put(0.15,2.0){\rotatebox{90}{信号}}
+\put(1.25,0.55){\circle*{0.08}}
+\put(2.1,0.85){\circle*{0.08}}
+\put(3.0,1.35){\circle*{0.08}}
+\put(3.9,1.75){\circle*{0.08}}
+\put(4.8,2.15){\circle*{0.08}}
+\put(6.6,2.9){\circle*{0.08}}
+\put(8.4,3.55){\circle*{0.08}}
+\put(1.25,0.55){\line(1,1){0.85}}
+\put(2.1,0.85){\line(1,1){0.9}}
+\put(3.0,1.35){\line(1,1){0.9}}
+\put(3.9,1.75){\line(1,1){0.9}}
+\put(4.8,2.15){\line(1,1){1.8}}
+\put(6.6,2.9){\line(1,1){1.8}}
+\end{picture}
+\end{minipage}
+\end{center}
+
+\[
+y=10.1889+\frac{-0.00908124-10.1889}
+{1+(x/8763.24)^{1.04104}}
+\]
+% LEXOID_PAGE_COMPLETED: 16/34
+
+\newpage
+
+\textbf{20250228-总蛋白检测}
+
+\[
+y = d + \frac{a-d}{1+(x/c)^b}
+\]
+
+\begin{tabular}{@{}ll@{}}
+位置: & \\
+$a=$ & $-0.00908124$ \\
+$b=$ & $1.04104$ \\
+$c=$ & $8\,763.24$ \\
+$d=$ & $10.1889$ \\
+\end{tabular}
+
+\medskip
+
+$R^2$: 0.999
+
+\medskip
+
+\small
+\begin{tabular}{@{}p{0.08\linewidth}p{0.16\linewidth}p{0.17\linewidth}p{0.14\linewidth}p{0.10\linewidth}p{0.14\linewidth}p{0.15\linewidth}@{}}
+\textbf{孔} & \textbf{样本} & \textbf{浓度 [$\mu$g/ml]} & \textbf{原信号} & \textbf{CV\%} & \textbf{拟合信号} & \textbf{残差} \\
+平均 & 标准0001 & 2\,000.0 & 1.7950 & NaN & 1.7941 & 0.00086312 \\
+平均 & 标准0001 & 1\,500.0 & 1.3884 & NaN & 1.3915 & -0.0031191 \\
+平均 & 标准0002 & 1\,500.0 & 1.3884 & NaN & 1.3915 & -0.0031191 \\
+平均 & 标准0003 & 1\,000.0 & 0.96219 & NaN & 0.95484 & 0.0073549 \\
+平均 & 标准0003 & 1\,000.0 & 0.96219 & NaN & 0.95484 & 0.0073549 \\
+平均 & 标准0004 & 750.00 & 0.71467 & NaN & 0.72329 & -0.0086143 \\
+平均 & 标准0004 & 750.00 & 0.71467 & NaN & 0.72329 & -0.0086143 \\
+平均 & 标准0005 & 500.00 & 0.48812 & NaN & 0.48328 & 0.0048355 \\
+平均 & 标准0005 & 500.00 & 0.48812 & NaN & 0.48328 & 0.0048355 \\
+平均 & 标准0006 & 250.00 & 0.23534 & NaN & 0.23629 & -0.00094791 \\
+平均 & 标准0006 & 250.00 & 0.23534 & NaN & 0.23629 & -0.00094791 \\
+平均 & 标准0007 & 125.00 & 0.11056 & NaN & 0.11165 & -0.0010946 \\
+平均 & 标准0007 & 125.00 & 0.11056 & NaN & 0.11165 & -0.0010946 \\
+平均 & 标准0008 & 25.00 & 0.014466 & NaN & 0.013742 & 0.00072436 \\
+平均 & 标准0008 & 25.00 & 0.014466 & NaN & 0.013742 & 0.00072436 \\
+\end{tabular}
+\normalsize
+% LEXOID_PAGE_COMPLETED: 17/34
+
+\newpage
+
+\begin{center}
+\textbf{20250828--总蛋白检测}\hfill 页面 7 / 12
+\end{center}
+\hrule
+
+\subsection*{板 1}
+\textbf{信号}
+
+\begin{center}
+\scriptsize
+\begin{tabular}{|c|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|}
+\hline
+ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ \hline
+A &
+\shortstack[l]{样本0001\\1.7950} &
+& & &
+\shortstack[l]{A3372025\\0.602?\\0.18878} &
+& & & & & & \\ \hline
+B &
+\shortstack[l]{样本0002\\1.3884} &
+&
+\shortstack[l]{A33220240\\0.??--?\\0.255775} &
+&
+\shortstack[l]{A?\\0.??\\0.30565} &
+& & & & & & \\ \hline
+C &
+\shortstack[l]{样本0003\\0.9219} &
+&
+\shortstack[l]{A33220240\\0.??--?\\0.25347} &
+&
+\shortstack[l]{A?\\0.??\\0.28084} &
+& & & & & & \\ \hline
+D &
+\shortstack[l]{样本0004\\0.71407} &
+&
+\shortstack[l]{A?\\0.??\\0.??} &
+&
+& & & & & & & \\ \hline
+E &
+\shortstack[l]{样本0005\\0.4812} &
+&
+\shortstack[l]{A?\\0.??\\0.23745} &
+&
+& & & & & & & \\ \hline
+F &
+\shortstack[l]{样本0006\\0.23534} &
+&
+\shortstack[l]{A?\\0.??\\0.25013} &
+&
+& & & & & & & \\ \hline
+G &
+\shortstack[l]{样本0007\\0.1056} &
+&
+\shortstack[l]{A?\\0.??\\0.26042} &
+&
+& & & & & & & \\ \hline
+H &
+\shortstack[l]{样本0008\\0.014466} &
+&
+\shortstack[l]{A?\\0.??\\0.21621} &
+&
+& & & & & & & \\ \hline
+\end{tabular}
+\end{center}
+
+\vspace{1em}
+
+浓度 [$\mu\mathrm{g}/\mathrm{ml}$]
+
+\begin{center}
+\scriptsize
+\begin{tabular}{|c|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|}
+\hline
+ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ \hline
+A &
+\shortstack[l]{样本0001} &
+& & &
+\shortstack[l]{A3372025\\0.602--?\\202.39} &
+& & & & & & \\ \hline
+B &
+\shortstack[l]{样本0002\\149.63} &
+&
+\shortstack[l]{A33220240\\0.??\\171.53} &
+&
+\shortstack[l]{A?\\0.??\\264.41} &
+& & & & & & \\ \hline
+C &
+\shortstack[l]{样本0003\\100.81} &
+&
+\shortstack[l]{A33220240\\0.??\\267.24} &
+&
+\shortstack[l]{A?\\0.??\\294.73} &
+& & & & & & \\ \hline
+D &
+\shortstack[l]{样本0004\\740.88} &
+&
+\shortstack[l]{A?\\0.??\\238.97} &
+&
+& & & & & & & \\ \hline
+E &
+\shortstack[l]{样本0005\\504.96} &
+&
+\shortstack[l]{A?\\0.??\\151.17} &
+&
+& & & & & & & \\ \hline
+F &
+\shortstack[l]{样本0006\\249.05} &
+&
+\shortstack[l]{A?\\0.??\\263.88} &
+&
+& & & & & & & \\ \hline
+G &
+\shortstack[l]{样本0007\\123.90} &
+&
+\shortstack[l]{A?\\0.??\\264.22} &
+&
+& & & & & & & \\ \hline
+H &
+\shortstack[l]{样本0008\\25.763} &
+&
+\shortstack[l]{A?\\0.??\\229.87} &
+&
+& & & & & & & \\ \hline
+\end{tabular}
+\end{center}
+
+% TODO: Several small alphanumeric identifiers and intermediate numeric readings in the plate cells are illegible at the supplied page resolution.
+% LEXOID_PAGE_COMPLETED: 18/34
+
+\newpage
+
+\section{20250828--总蛋白检测}
+
+\noindent\textbf{计算结果}\\
+稀释倍数回算值（$\mu\mathrm{g}/\mathrm{ml}$）
+
+\subsection{板1：数值}
+
+\small
+\begin{tabular}{c|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}}
+ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\ \hline
+A &
+% #VALUE_ID: LEX-P0019-V0001
+% #FIELD_VALUE: A1 样本及结果
+\fieldvalue{标准0001；NaN}
+&
+&
+&
+&
+% TODO: 样本编号及数值过小，部分字符难以辨认。
+% #VALUE_ID: LEX-P0019-V0002
+% #FIELD_VALUE: A5 样本及结果
+\fieldvalue{[样本编号难以辨认]；2\,023.9}
+&
+&
+&
+&
+&
+&
+&
+\\ \hline
+B &
+% #VALUE_ID: LEX-P0019-V0003
+% #FIELD_VALUE: B1 样本及结果
+\fieldvalue{标准0002；1\,496.3}
+&
+&
+% TODO: 样本编号及数值过小，部分字符难以辨认。
+% #VALUE_ID: LEX-P0019-V0004
+% #FIELD_VALUE: B3 样本及结果
+\fieldvalue{[样本编号难以辨认]；2\,135.2}
+&
+&
+% TODO: 样本编号及数值过小，部分字符难以辨认。
+% #VALUE_ID: LEX-P0019-V0005
+% #FIELD_VALUE: B5 样本及结果
+\fieldvalue{[样本编号难以辨认]；2\,147.2}
+&
+&
+&
+&
+&
+&
+&
+\\ \hline
+C &
+% #VALUE_ID: LEX-P0019-V0006
+% #FIELD_VALUE: C1 样本及结果
+\fieldvalue{标准0003；1\,008.1}
+&
+&
+% TODO: 样本编号及数值过小，部分字符难以辨认。
+% #VALUE_ID: LEX-P0019-V0007
+% #FIELD_VALUE: C3 样本及结果
+\fieldvalue{[样本编号难以辨认]；2\,674.2}
+&
+&
+% TODO: 样本编号及数值过小，部分字符难以辨认。
+% #VALUE_ID: LEX-P0019-V0008
+% #FIELD_VALUE: C5 样本及结果
+\fieldvalue{[样本编号难以辨认]；3\,322.5}
+&
+&
+&
+&
+&
+&
+&
+\\ \hline
+D &
+% #VALUE_ID: LEX-P0019-V0009
+% #FIELD_VALUE: D1 样本及结果
+\fieldvalue{标准0004；740.88}
+&
+&
+% TODO: 样本编号及数值过小，部分字符难以辨认。
+% #VALUE_ID: LEX-P0019-V0010
+% #FIELD_VALUE: D3 样本及结果
+\fieldvalue{[样本编号难以辨认]；2\,672.4}
+&
+&
+&
+&
+&
+&
+&
+&
+&
+\\ \hline
+E &
+% #VALUE_ID: LEX-P0019-V0011
+% #FIELD_VALUE: E1 样本及结果
+\fieldvalue{标准0005；504.96}
+&
+&
+% TODO: 样本编号及数值过小，部分字符难以辨认。
+% #VALUE_ID: LEX-P0019-V0012
+% #FIELD_VALUE: E3 样本及结果
+\fieldvalue{[样本编号难以辨认]；2\,511.7}
+&
+&
+&
+&
+&
+&
+&
+&
+&
+\\ \hline
+F &
+% #VALUE_ID: LEX-P0019-V0013
+% #FIELD_VALUE: F1 样本及结果
+\fieldvalue{标准0006；249.05}
+&
+&
+% TODO: 样本编号及数值过小，部分字符难以辨认。
+% #VALUE_ID: LEX-P0019-V0014
+% #FIELD_VALUE: F3 样本及结果
+\fieldvalue{[样本编号难以辨认]；2\,638.8}
+&
+&
+&
+&
+&
+&
+&
+&
+&
+\\ \hline
+G &
+% #VALUE_ID: LEX-P0019-V0015
+% #FIELD_VALUE: G1 样本及结果
+\fieldvalue{标准0007；123.90}
+&
+&
+% TODO: 样本编号及数值过小，部分字符难以辨认。
+% #VALUE_ID: LEX-P0019-V0016
+% #FIELD_VALUE: G3 样本及结果
+\fieldvalue{[样本编号难以辨认]；2\,742.2}
+&
+&
+&
+&
+&
+&
+&
+&
+&
+\\ \hline
+H &
+% #VALUE_ID: LEX-P0019-V0017
+% #FIELD_VALUE: H1 样本及结果
+\fieldvalue{标准0008；25.763}
+&
+&
+% TODO: 样本编号及数值过小，部分字符难以辨认。
+% #VALUE_ID: LEX-P0019-V0018
+% #FIELD_VALUE: H3 样本及结果
+\fieldvalue{[样本编号难以辨认]；2\,298.7}
+&
+&
+&
+&
+&
+&
+&
+&
+&
+\\
+\end{tabular}
+\normalsize
+
+\subsection{稀释倍数}
+
+\small
+\begin{tabular}{c|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}|p{1.05cm}}
+ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\ \hline
+A &
+% #VALUE_ID: LEX-P0019-V0019
+% #FIELD_VALUE: A1 稀释倍数
+\fieldvalue{标准0001；NaN}
+&
+&
+&
+&
+% TODO: 样本编号过小，部分字符难以辨认。
+% #VALUE_ID: LEX-P0019-V0020
+% #FIELD_VALUE: A5 稀释倍数
+\fieldvalue{[样本编号难以辨认]；10.000}
+&
+&
+&
+&
+&
+&
+&
+\\ \hline
+B &
+% #VALUE_ID: LEX-P0019-V0021
+% #FIELD_VALUE: B1 稀释倍数
+\fieldvalue{标准0002；NaN}
+&
+&
+% TODO: 样本编号过小，部分字符难以辨认。
+% #VALUE_ID: LEX-P0019-V0022
+% #FIELD_VALUE: B3 稀释倍数
+\fieldvalue{[样本编号难以辨认]；10.000}
+&
+&
+% TODO: 样本编号过小，部分字符难以辨认。
+% #VALUE_ID: LEX-P0019-V0023
+% #FIELD_VALUE: B5 稀释倍数
+\fieldvalue{[样本编号难以辨认]；10.000}
+&
+&
+&
+&
+&
+&
+&
+\\ \hline
+C &
+% #VALUE_ID: LEX-P0019-V0024
+% #FIELD_VALUE: C1 稀释倍数
+\fieldvalue{标准0003；NaN}
+&
+&
+% TODO: 样本编号过小，部分字符难以辨认。
+% #VALUE_ID: LEX-P0019-V0025
+% #FIELD_VALUE: C3 稀释倍数
+\fieldvalue{[样本编号难以辨认]；10.000}
+&
+&
+% TODO: 样本编号过小，部分字符难以辨认。
+% #VALUE_ID: LEX-P0019-V0026
+% #FIELD_VALUE: C5 稀释倍数
+\fieldvalue{[样本编号难以辨认]；10.000}
+&
+&
+&
+&
+&
+&
+&
+\\ \hline
+D &
+% #VALUE_ID: LEX-P0019-V0027
+% #FIELD_VALUE: D1 稀释倍数
+\fieldvalue{标准0004；NaN}
+&
+&
+% TODO: 样本编号过小，部分字符难以辨认。
+% #VALUE_ID: LEX-P0019-V0028
+% #FIELD_VALUE: D3 稀释倍数
+\fieldvalue{[样本编号难以辨认]；10.000}
+&
+&
+&
+&
+&
+&
+&
+&
+&
+\\ \hline
+E &
+% #VALUE_ID: LEX-P0019-V0029
+% #FIELD_VALUE: E1 稀释倍数
+\fieldvalue{标准0005；NaN}
+&
+&
+% TODO: 样本编号过小，部分字符难以辨认。
+% #VALUE_ID: LEX-P0019-V0030
+% #FIELD_VALUE: E3 稀释倍数
+\fieldvalue{[样本编号难以辨认]；10.000}
+&
+&
+&
+&
+&
+&
+&
+&
+&
+\\ \hline
+F &
+% #VALUE_ID: LEX-P0019-V0031
+% #FIELD_VALUE: F1 稀释倍数
+\fieldvalue{标准0006；NaN}
+&
+&
+% TODO: 样本编号过小，部分字符难以辨认。
+% #VALUE_ID: LEX-P0019-V0032
+% #FIELD_VALUE: F3 稀释倍数
+\fieldvalue{[样本编号难以辨认]；10.000}
+&
+&
+&
+&
+&
+&
+&
+&
+&
+\\ \hline
+G &
+% #VALUE_ID: LEX-P0019-V0033
+% #FIELD_VALUE: G1 稀释倍数
+\fieldvalue{标准0007；NaN}
+&
+&
+% TODO: 样本编号过小，部分字符难以辨认。
+% #VALUE_ID: LEX-P0019-V0034
+% #FIELD_VALUE: G3 稀释倍数
+\fieldvalue{[样本编号难以辨认]；10.000}
+&
+&
+&
+&
+&
+&
+&
+&
+&
+\\ \hline
+H &
+% #VALUE_ID: LEX-P0019-V0035
+% #FIELD_VALUE: H1 稀释倍数
+\fieldvalue{标准0008；NaN}
+&
+&
+% TODO: 样本编号过小，部分字符难以辨认。
+% #VALUE_ID: LEX-P0019-V0036
+% #FIELD_VALUE: H3 稀释倍数
+\fieldvalue{[样本编号难以辨认]；10.000}
+&
+&
+&
+&
+&
+&
+&
+&
+&
+\\
+\end{tabular}
+\normalsize
+
+\subsection{汇总 1}
+
+\noindent\textbf{常规}
+
+\begin{tabular}{lll}
+板1 & A01 & 标准0001 \\
+板1 & B01 & 标准0002 \\
+板1 & C01 & 标准0003 \\
+板1 & D01 & 标准0004 \\
+板1 & E01 & 标准0005 \\
+板1 & F01 & 标准0006 \\
+板1 & G01 & 标准0007 \\
+板1 & H01 & 标准0008 \\
+\end{tabular}
+
+\medskip
+
+\begin{tabular}{ll}
+标准曲线拟合值（$\mu\mathrm{g}/\mathrm{ml}$） & 稀释倍数回算值（$\mu\mathrm{g}/\mathrm{ml}$）\\
+% #VALUE_ID: LEX-P0019-V0037
+% #FIELD_VALUE: A01 标准曲线拟合值
+\fieldvalue{NaN}
+&
+% #VALUE_ID: LEX-P0019-V0038
+% #FIELD_VALUE: A01 稀释倍数回算值
+\fieldvalue{NaN}
+\\
+% #VALUE_ID: LEX-P0019-V0039
+% #FIELD_VALUE: B01 标准曲线拟合值
+\fieldvalue{1\,496.3}
+&
+% #VALUE_ID: LEX-P0019-V0040
+% #FIELD_VALUE: B01 稀释倍数回算值
+\fieldvalue{1\,496.3}
+\\
+% #VALUE_ID: LEX-P0019-V0041
+% #FIELD_VALUE: C01 标准曲线拟合值
+\fieldvalue{1\,008.1}
+&
+% #VALUE_ID: LEX-P0019-V0042
+% #FIELD_VALUE: C01 稀释倍数回算值
+\fieldvalue{1\,008.1}
+\\
+% #VALUE_ID: LEX-P0019-V0043
+% #FIELD_VALUE: D01 标准曲线拟合值
+\fieldvalue{740.88}
+&
+% #VALUE_ID: LEX-P0019-V0044
+% #FIELD_VALUE: D01 稀释倍数回算值
+\fieldvalue{740.88}
+\\
+% #VALUE_ID: LEX-P0019-V0045
+% #FIELD_VALUE: E01 标准曲线拟合值
+\fieldvalue{504.96}
+&
+% #VALUE_ID: LEX-P0019-V0046
+% #FIELD_VALUE: E01 稀释倍数回算值
+\fieldvalue{504.96}
+\\
+% #VALUE_ID: LEX-P0019-V0047
+% #FIELD_VALUE: F01 标准曲线拟合值
+\fieldvalue{249.05}
+&
+% #VALUE_ID: LEX-P0019-V0048
+% #FIELD_VALUE: F01 稀释倍数回算值
+\fieldvalue{249.05}
+\\
+% #VALUE_ID: LEX-P0019-V0049
+% #FIELD_VALUE: G01 标准曲线拟合值
+\fieldvalue{123.90}
+&
+% #VALUE_ID: LEX-P0019-V0050
+% #FIELD_VALUE: G01 稀释倍数回算值
+\fieldvalue{123.90}
+\\
+% #VALUE_ID: LEX-P0019-V0051
+% #FIELD_VALUE: H01 标准曲线拟合值
+\fieldvalue{25.763}
+&
+% #VALUE_ID: LEX-P0019-V0052
+% #FIELD_VALUE: H01 稀释倍数回算值
+\fieldvalue{25.763}
+\end{tabular}
+% LEXOID_PAGE_COMPLETED: 19/34
+
+\newpage
+
+\section*{20250828--总蛋白检测}
+
+\begin{center}
+\small
+\begin{tabular}{p{0.11\linewidth}p{0.43\linewidth}r}
+\textbf{板} & \textbf{样品} & \textbf{结果}\\
+1 B03 & A33Z202408003-1\quad 271.53 & 2715.3\\
+& 2M-C-0001 & \\
+1 C03 & A33Z202408003-1\quad 267.24 & 2672.4\\
+& 2M-T-0001 & \\
+1 D03 & A37Z8202508002-\quad 239.97 & 2399.7\\
+& C-0001 & \\
+1 E03 & A37Z8202508002-\quad 251.17 & 2511.7\\
+& T-0001 & \\
+1 F03 & A34Z2025003006-0\quad 263.88 & 2638.8\\
+& 1-C-0001 & \\
+1 G03 & A34Z2025003006-0\quad 274.22 & 2742.2\\
+& 1-T-0001 & \\
+1 H03 & A37Z7202506002-\quad 229.87 & 2298.7\\
+& 瓶-C-0001 & \\
+1 A05 & A37Z7202506002-\quad 202.39 & 2023.9\\
+& 瓶-T-0001 & \\
+1 B05 & A31Z2022508006-\quad 264.41 & 2644.1\\
+& C-0001 & \\
+1 C05 & A31Z2022508006-\quad 294.73 & 2947.3\\
+& T-0001 &
+\end{tabular}
+\end{center}
+
+\section*{基本信息}
+
+\begin{tabular}{p{0.25\linewidth}p{0.70\linewidth}}
+用软件版本生成的报告 & SkanIt Software 7.0 DDE for Microplate Readers DDE, ver. 7.0.0.50
+\end{tabular}
+
+\section*{程序信息}
+
+\begin{tabular}{p{0.25\linewidth}p{0.70\linewidth}}
+程序名称 & 20250828--总蛋白检测\\
+方案用户 & 张磊\\
+备注选择 & C304-A33Z202408003-1\textbackslash M长期定性定量12个月\\
+& C304-A37Z8202508002\\
+& C304-A34Z2025003006-01\\
+& C309-A37Z7202506002\\
+& C304-A31Z?202508006\\
+执行方式 & SkanIt Software 6.0 for Microplate Readers DDE, ver. 7.0.0.50\\
+执行时间 & 2025/8/28 11:19:47
+\end{tabular}
+
+\section*{仪器信息}
+
+\begin{tabular}{p{0.25\linewidth}p{0.70\linewidth}}
+名称 & Varioskan LUX\\
+ESW 版本 & 1.00.38\\
+仪器软件版本 & 见\\
+序列号 & 2020-81599
+\end{tabular}
+
+\subsection*{仪器模块}
+
+\begin{tabular}{p{0.25\linewidth}p{0.70\linewidth}}
+模块的名称 & LAT 模块\\
+模块序列号 & LL2151807\\
+板适配器型号 & 96-well adapter for plate without lid\\
+板适配器编号 & 2
+\end{tabular}
+
+\begin{tabular}{p{0.25\linewidth}p{0.70\linewidth}}
+明暗背景 & 是\\
+气泡检测 & 是\\
+四倍光学器件 & 是\\
+起始光学器件 & 否\\
+分液器 & 否
+\end{tabular}
+
+\section*{程序设置}
+
+\begin{tabular}{p{0.38\linewidth}p{0.50\linewidth}}
+测量重复 & 3\\
+开启稳定延迟 & 是\\
+开始时的检查温度（$^\circ$C） & 否
+\end{tabular}
+
+\subsection*{吸光度 1}
+
+\begin{tabular}{p{0.38\linewidth}p{0.50\linewidth}}
+波长 [nm] & 480\\
+波长 [nm] & 562\\
+使用透射 & 是\\
+光程校正 & 否\\
+测量时间 [ms] & 100
+\end{tabular}
+
+\section*{运行日志}
+
+\begin{tabular}{p{0.25\linewidth}p{0.30\linewidth}p{0.38\linewidth}}
+时间 & 事件 & 信息\\
+2025/8/28 11:19:47 & 程序 & 20250828--总蛋白检测 已开始
+\end{tabular}
+% LEXOID_PAGE_COMPLETED: 20/34
+
+\newpage
+
+\section*{20250828-总蛋白检测}
+
+\begin{tabular}{@{}llll@{}}
+2025/8/28 11:19:47 & 温度 & & 22.7$^\circ$C \\
+2025/8/28 11:19:48 & 步骤 & 吸光度 1 已开始 & \\
+2025/8/28 11:19:50 & 步骤 & 吸光度 1 已结束 & 光度测定 10.211921 \\
+2025/8/28 11:20:14 & 温度 & & 22.7$^\circ$C \\
+2025/8/28 11:20:15 & 温度 & & 22.7$^\circ$C \\
+2025/8/28 11:20:23 & 程序 & 20250828-总蛋白检测 已结束 & \\
+\end{tabular}
+% LEXOID_PAGE_COMPLETED: 21/34
+
+\newpage
+
+\noindent\textbf{20250828-总蛋白检测}\hfill 页面 11 / 12
+
+\noindent
+% #VALUE_ID: LEX-P0022-V0001
+% #FIELD_VALUE: 板名
+\textbf{名称：}\fieldvalue{板1}
+\qquad
+% #VALUE_ID: LEX-P0022-V0002
+% #FIELD_VALUE: 板型规格
+\textbf{板型规格：}\fieldvalue{ANSI/SBS Standard, 96-well}
+
+\vspace{0.5em}
+
+\begin{center}
+\scriptsize
+\begin{tabular}{c|*{12}{p{0.64cm}|}}
+ &1&2&3&4&5&6&7&8&9&10&11&12\\ \hline
+A&
+% #VALUE_ID: LEX-P0022-V0003
+% #FIELD_VALUE: A1
+\fieldvalue{\shortstack{蛋白0001\\稀1\\2000 $\mu$g/ml}}&
+% #VALUE_ID: LEX-P0022-V0004
+% #FIELD_VALUE: A2
+\fieldvalue{\shortstack{蛋白0001\\稀1\\2000 $\mu$g/ml}}&
+% #VALUE_ID: LEX-P0022-V0005
+% #FIELD_VALUE: A3
+\fieldvalue{\shortstack{空白1\\空1\\1:10}}&
+% #VALUE_ID: LEX-P0022-V0006
+% #FIELD_VALUE: A4
+\fieldvalue{\shortstack{空白1\\空1\\1:10}}&
+% #VALUE_ID: LEX-P0022-V0007
+% #FIELD_VALUE: A5
+\fieldvalue{\shortstack{A3.3722025\\空1\\1:10}}&
+% #VALUE_ID: LEX-P0022-V0008
+% #FIELD_VALUE: A6
+\fieldvalue{\shortstack{A3.3722025\\空1\\1:10}}&
+&&&&&\\ \hline
+B&
+% #VALUE_ID: LEX-P0022-V0009
+% #FIELD_VALUE: B1
+\fieldvalue{\shortstack{蛋白0002\\稀1\\1500 $\mu$g/ml}}&
+% #VALUE_ID: LEX-P0022-V0010
+% #FIELD_VALUE: B2
+\fieldvalue{\shortstack{蛋白0002\\稀1\\1500 $\mu$g/ml}}&
+% #VALUE_ID: LEX-P0022-V0011
+% #FIELD_VALUE: B3
+\fieldvalue{\shortstack{A3.3220240\\空1\\1:10}}&
+% #VALUE_ID: LEX-P0022-V0012
+% #FIELD_VALUE: B4
+\fieldvalue{\shortstack{A3.3220240\\空1\\1:10}}&
+% #VALUE_ID: LEX-P0022-V0013
+% #FIELD_VALUE: B5
+\fieldvalue{\shortstack{A3.3220241\\空1\\1:10}}&
+% #VALUE_ID: LEX-P0022-V0014
+% #FIELD_VALUE: B6
+\fieldvalue{\shortstack{A3.3220241\\空1\\1:10}}&
+&&&&&\\ \hline
+C&
+% #VALUE_ID: LEX-P0022-V0015
+% #FIELD_VALUE: C1
+\fieldvalue{\shortstack{蛋白0003\\稀1\\1000 $\mu$g/ml}}&
+% #VALUE_ID: LEX-P0022-V0016
+% #FIELD_VALUE: C2
+\fieldvalue{\shortstack{蛋白0003\\稀1\\1000 $\mu$g/ml}}&
+% #VALUE_ID: LEX-P0022-V0017
+% #FIELD_VALUE: C3
+\fieldvalue{\shortstack{A3.3220242\\空1\\1:10}}&
+% #VALUE_ID: LEX-P0022-V0018
+% #FIELD_VALUE: C4
+\fieldvalue{\shortstack{A3.3220242\\空1\\1:10}}&
+% #VALUE_ID: LEX-P0022-V0019
+% #FIELD_VALUE: C5
+\fieldvalue{\shortstack{A3.3220243\\空1\\1:10}}&
+% #VALUE_ID: LEX-P0022-V0020
+% #FIELD_VALUE: C6
+\fieldvalue{\shortstack{A3.3220243\\空1\\1:10}}&
+&&&&&\\ \hline
+D&
+% #VALUE_ID: LEX-P0022-V0021
+% #FIELD_VALUE: D1
+\fieldvalue{\shortstack{蛋白0004\\稀1\\750 $\mu$g/ml}}&
+% #VALUE_ID: LEX-P0022-V0022
+% #FIELD_VALUE: D2
+\fieldvalue{\shortstack{蛋白0004\\稀1\\750 $\mu$g/ml}}&
+% #VALUE_ID: LEX-P0022-V0023
+% #FIELD_VALUE: D3
+\fieldvalue{\shortstack{A3.3220244\\空1\\1:10}}&
+% #VALUE_ID: LEX-P0022-V0024
+% #FIELD_VALUE: D4
+\fieldvalue{\shortstack{A3.3220244\\空1\\1:10}}&
+% #VALUE_ID: LEX-P0022-V0025
+% #FIELD_VALUE: D5
+\fieldvalue{\shortstack{A3.3220245\\空1\\1:10}}&
+% #VALUE_ID: LEX-P0022-V0026
+% #FIELD_VALUE: D6
+\fieldvalue{\shortstack{A3.3220245\\空1\\1:10}}&
+&&&&&\\ \hline
+E&
+% #VALUE_ID: LEX-P0022-V0027
+% #FIELD_VALUE: E1
+\fieldvalue{\shortstack{蛋白0005\\稀1\\500 $\mu$g/ml}}&
+% #VALUE_ID: LEX-P0022-V0028
+% #FIELD_VALUE: E2
+\fieldvalue{\shortstack{蛋白0005\\稀1\\500 $\mu$g/ml}}&
+% #VALUE_ID: LEX-P0022-V0029
+% #FIELD_VALUE: E3
+\fieldvalue{\shortstack{A3.3220246\\空1\\1:10}}&
+% #VALUE_ID: LEX-P0022-V0030
+% #FIELD_VALUE: E4
+\fieldvalue{\shortstack{A3.3220246\\空1\\1:10}}&
+&&&&&&&\\ \hline
+F&
+% #VALUE_ID: LEX-P0022-V0031
+% #FIELD_VALUE: F1
+\fieldvalue{\shortstack{蛋白0006\\稀1\\250 $\mu$g/ml}}&
+% #VALUE_ID: LEX-P0022-V0032
+% #FIELD_VALUE: F2
+\fieldvalue{\shortstack{蛋白0006\\稀1\\250 $\mu$g/ml}}&
+% #VALUE_ID: LEX-P0022-V0033
+% #FIELD_VALUE: F3
+\fieldvalue{\shortstack{A3.3220247\\空1\\1:10}}&
+% #VALUE_ID: LEX-P0022-V0034
+% #FIELD_VALUE: F4
+\fieldvalue{\shortstack{A3.3220247\\空1\\1:10}}&
+&&&&&&&\\ \hline
+G&
+% #VALUE_ID: LEX-P0022-V0035
+% #FIELD_VALUE: G1
+\fieldvalue{\shortstack{蛋白0007\\稀1\\125 $\mu$g/ml}}&
+% #VALUE_ID: LEX-P0022-V0036
+% #FIELD_VALUE: G2
+\fieldvalue{\shortstack{蛋白0007\\稀1\\125 $\mu$g/ml}}&
+% #VALUE_ID: LEX-P0022-V0037
+% #FIELD_VALUE: G3
+\fieldvalue{\shortstack{A3.3220248\\空1\\1:10}}&
+% #VALUE_ID: LEX-P0022-V0038
+% #FIELD_VALUE: G4
+\fieldvalue{\shortstack{A3.3220248\\空1\\1:10}}&
+&&&&&&&\\ \hline
+H&
+% #VALUE_ID: LEX-P0022-V0039
+% #FIELD_VALUE: H1
+\fieldvalue{\shortstack{蛋白0008\\稀1\\25 $\mu$g/ml}}&
+% #VALUE_ID: LEX-P0022-V0040
+% #FIELD_VALUE: H2
+\fieldvalue{\shortstack{蛋白0008\\稀1\\25 $\mu$g/ml}}&
+% #VALUE_ID: LEX-P0022-V0041
+% #FIELD_VALUE: H3
+\fieldvalue{\shortstack{A3.3220249\\空1\\1:10}}&
+% #VALUE_ID: LEX-P0022-V0042
+% #FIELD_VALUE: H4
+\fieldvalue{\shortstack{A3.3220249\\空1\\1:10}}&
+&&&&&&&\\ \hline
+\end{tabular}
+\end{center}
+
+\section*{审计跟踪}
+
+\begin{tabular}{p{2.2cm}p{11cm}}
+程序&
+% #VALUE_ID: LEX-P0022-V0043
+% #FIELD_VALUE: 程序
+\fieldvalue{20250828-总蛋白检测}\\
+已验证&
+% #VALUE_ID: LEX-P0022-V0044
+% #FIELD_VALUE: 已验证
+\fieldvalue{通过}\\
+日期&
+% #VALUE_ID: LEX-P0022-V0045
+% #FIELD_VALUE: 日期
+\fieldvalue{2025-08-28T11:19:46+08:00}\\
+修改人&
+% #VALUE_ID: LEX-P0022-V0046
+% #FIELD_VALUE: 修改人
+\fieldvalue{dinghan}\\
+详细信息&
+% #VALUE_ID: LEX-P0022-V0047
+% #FIELD_VALUE: 详细信息
+\fieldvalue{[运行开始]}\\
+注释&
+% #VALUE_ID: LEX-P0022-V0048
+% #FIELD_VALUE: 注释
+\fieldvalue{20250828-总蛋白检测}\\
+添加物&
+% #VALUE_ID: LEX-P0022-V0049
+% #FIELD_VALUE: 添加物
+\fieldvalue{168}\\
+修改&
+% #VALUE_ID: LEX-P0022-V0050
+% #FIELD_VALUE: 修改
+\fieldvalue{0}\\
+删除&
+% #VALUE_ID: LEX-P0022-V0051
+% #FIELD_VALUE: 删除
+\fieldvalue{0}\\
+\end{tabular}
+
+\vspace{0.5em}
+
+\noindent\textbf{添加的项}
+
+\begin{tabular}{r l}
+% #VALUE_ID: LEX-P0022-V0052
+% #FIELD_VALUE: 添加项数量
+\fieldvalue{1} & Session\\
+% #VALUE_ID: LEX-P0022-V0053
+% #FIELD_VALUE: 添加项数量
+\fieldvalue{1} & PlateLayout\\
+% #VALUE_ID: LEX-P0022-V0054
+% #FIELD_VALUE: 添加项数量
+\fieldvalue{1} & SampleGroup\\
+% #VALUE_ID: LEX-P0022-V0055
+% #FIELD_VALUE: 添加项数量
+\fieldvalue{19} & Sample\\
+% #VALUE_ID: LEX-P0022-V0056
+% #FIELD_VALUE: 添加项数量
+\fieldvalue{1} & Plate\\
+% #VALUE_ID: LEX-P0022-V0057
+% #FIELD_VALUE: 添加项数量
+\fieldvalue{96} & Well\\
+% #VALUE_ID: LEX-P0022-V0058
+% #FIELD_VALUE: 添加项数量
+\fieldvalue{38} & ReaderReplicate\\
+% #VALUE_ID: LEX-P0022-V0059
+% #FIELD_VALUE: 添加项数量
+\fieldvalue{1} & Protocol\\
+% #VALUE_ID: LEX-P0022-V0060
+% #FIELD_VALUE: 添加项数量
+\fieldvalue{1} & PhotometricMultiWavelengthMeasurementStep\\
+% #VALUE_ID: LEX-P0022-V0061
+% #FIELD_VALUE: 添加项数量
+\fieldvalue{1} & WellGridPoint\\
+% #VALUE_ID: LEX-P0022-V0062
+% #FIELD_VALUE: 添加项数量
+\fieldvalue{2} & PhotometricWavelength\\
+% #VALUE_ID: LEX-P0022-V0063
+% #FIELD_VALUE: 添加项数量
+\fieldvalue{1} & Instrument\\
+% #VALUE_ID: LEX-P0022-V0064
+% #FIELD_VALUE: 添加项数量
+\fieldvalue{4} & InstrumentModule\\
+% #VALUE_ID: LEX-P0022-V0065
+% #FIELD_VALUE: 添加项数量
+\fieldvalue{1} & FilterContainer\\
+\end{tabular}
+
+\vspace{0.5em}
+
+\begin{tabular}{p{2.2cm}p{11cm}}
+程序&
+% #VALUE_ID: LEX-P0022-V0066
+% #FIELD_VALUE: 程序
+\fieldvalue{20250828-总蛋白检测}\\
+已验证&
+% #VALUE_ID: LEX-P0022-V0067
+% #FIELD_VALUE: 已验证
+\fieldvalue{通过}\\
+日期&
+% #VALUE_ID: LEX-P0022-V0068
+% #FIELD_VALUE: 日期
+\fieldvalue{2025-08-28T11:19:47+08:00}\\
+详细信息&
+% #VALUE_ID: LEX-P0022-V0069
+% #FIELD_VALUE: 详细信息
+\fieldvalue{运行已开始}\\
+注释&
+% #VALUE_ID: LEX-P0022-V0070
+% #FIELD_VALUE: 注释
+\fieldvalue{运行已开始}\\
+添加物&
+% #VALUE_ID: LEX-P0022-V0071
+% #FIELD_VALUE: 添加物
+\fieldvalue{0}\\
+修改&
+% #VALUE_ID: LEX-P0022-V0072
+% #FIELD_VALUE: 修改
+\fieldvalue{0}\\
+删除&
+% #VALUE_ID: LEX-P0022-V0073
+% #FIELD_VALUE: 删除
+\fieldvalue{0}\\
+\end{tabular}
+
+\vspace{0.5em}
+
+\begin{tabular}{p{2.2cm}p{11cm}}
+程序&
+% #VALUE_ID: LEX-P0022-V0074
+% #FIELD_VALUE: 程序
+\fieldvalue{20250828-总蛋白检测}\\
+已验证&
+% #VALUE_ID: LEX-P0022-V0075
+% #FIELD_VALUE: 已验证
+\fieldvalue{通过}\\
+\end{tabular}
+
+% TODO: The audit-trail section continues beyond the bottom boundary of this page.
+% LEXOID_PAGE_COMPLETED: 22/34
+
+\newpage
+
+\section*{20250528-总蛋白检测}
+
+\begin{tabular}{@{}p{0.18\linewidth}p{0.72\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0023-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{2025-08-28T11:23:08+08:00}
+\\
+注释 &
+% #VALUE_ID: LEX-P0023-V0002
+% #FIELD_VALUE: 注释
+\fieldvalue{运行前日志}
+\\
+注释 &
+% #VALUE_ID: LEX-P0023-V0003
+% #FIELD_VALUE: 注释
+\fieldvalue{运行日志}
+\\
+添加物 &
+% #VALUE_ID: LEX-P0023-V0004
+% #FIELD_VALUE: 添加物
+\fieldvalue{0}
+\\
+修改 &
+% #VALUE_ID: LEX-P0023-V0005
+% #FIELD_VALUE: 修改
+\fieldvalue{0}
+\\
+删除 &
+% #VALUE_ID: LEX-P0023-V0006
+% #FIELD_VALUE: 删除
+\fieldvalue{0}
+\end{tabular}
+
+\vspace{1em}
+
+\begin{tabular}{@{}p{0.18\linewidth}p{0.72\linewidth}@{}}
+程序 &
+% #VALUE_ID: LEX-P0023-V0007
+% #FIELD_VALUE: 程序
+\fieldvalue{20250528-总蛋白检测}
+\\
+已验证 &
+% #VALUE_ID: LEX-P0023-V0008
+% #FIELD_VALUE: 已验证
+\fieldvalue{通过}
+\\
+日期 &
+% #VALUE_ID: LEX-P0023-V0009
+% #FIELD_VALUE: 日期
+\fieldvalue{2025-08-28T11:24:35+08:00}
+\\
+修改人 &
+% #TODO: The printed modifier value is unclear in the source image.
+% #VALUE_ID: LEX-P0023-V0010
+% #FIELD_VALUE: 修改人
+\fieldvalue{不详}
+\\
+注释 &
+% #VALUE_ID: LEX-P0023-V0011
+% #FIELD_VALUE: 注释
+\fieldvalue{已修改}
+\\
+注释 &
+% #VALUE_ID: LEX-P0023-V0012
+% #FIELD_VALUE: 注释
+\fieldvalue{已分析}
+\\
+添加物 &
+% #VALUE_ID: LEX-P0023-V0013
+% #FIELD_VALUE: 添加物
+\fieldvalue{7}
+\\
+修改 &
+% #VALUE_ID: LEX-P0023-V0014
+% #FIELD_VALUE: 修改
+\fieldvalue{2}
+\\
+删除 &
+% #VALUE_ID: LEX-P0023-V0015
+% #FIELD_VALUE: 删除
+\fieldvalue{0}
+\end{tabular}
+
+\vspace{1em}
+
+\noindent 添加的项
+
+\begin{tabular}{@{}p{0.08\linewidth}p{0.82\linewidth}@{}}
+% #VALUE_ID: LEX-P0023-V0016
+% #FIELD_VALUE: 添加的项数量
+\fieldvalue{1} &
+% #VALUE_ID: LEX-P0023-V0017
+% #FIELD_VALUE: 添加的项
+\fieldvalue{BasicCalculationStep}
+\\
+% #VALUE_ID: LEX-P0023-V0018
+% #FIELD_VALUE: 添加的项数量
+\fieldvalue{1} &
+% #VALUE_ID: LEX-P0023-V0019
+% #FIELD_VALUE: 添加的项
+\fieldvalue{AverageSDCVStep}
+\\
+% #VALUE_ID: LEX-P0023-V0020
+% #FIELD_VALUE: 添加的项数量
+\fieldvalue{1} &
+% #VALUE_ID: LEX-P0023-V0021
+% #FIELD_VALUE: 添加的项
+\fieldvalue{BlankSubtractionStep}
+\\
+% #VALUE_ID: LEX-P0023-V0022
+% #FIELD_VALUE: 添加的项数量
+\fieldvalue{1} &
+% #VALUE_ID: LEX-P0023-V0023
+% #FIELD_VALUE: 添加的项
+\fieldvalue{StandardCurveStep}
+\\
+% #VALUE_ID: LEX-P0023-V0024
+% #FIELD_VALUE: 添加的项数量
+\fieldvalue{1} &
+% #VALUE_ID: LEX-P0023-V0025
+% #FIELD_VALUE: 添加的项
+\fieldvalue{CurveFitGraphSetting}
+\\
+% #VALUE_ID: LEX-P0023-V0026
+% #FIELD_VALUE: 添加的项数量
+\fieldvalue{1} &
+% #VALUE_ID: LEX-P0023-V0027
+% #FIELD_VALUE: 添加的项
+\fieldvalue{DilutionCorrectionStep}
+\\
+% #VALUE_ID: LEX-P0023-V0028
+% #FIELD_VALUE: 添加的项数量
+\fieldvalue{1} &
+% #VALUE_ID: LEX-P0023-V0029
+% #FIELD_VALUE: 添加的项
+\fieldvalue{SummaryStep}
+\end{tabular}
+
+\vspace{1em}
+
+\noindent 修改的项
+
+\begin{tabular}{@{}p{0.08\linewidth}p{0.82\linewidth}@{}}
+% #VALUE_ID: LEX-P0023-V0030
+% #FIELD_VALUE: 修改的项数量
+\fieldvalue{1} &
+% #VALUE_ID: LEX-P0023-V0031
+% #FIELD_VALUE: 修改的项
+\fieldvalue{Session}
+\\
+% #VALUE_ID: LEX-P0023-V0032
+% #FIELD_VALUE: 修改的项数量
+\fieldvalue{1} &
+% #VALUE_ID: LEX-P0023-V0033
+% #FIELD_VALUE: 修改的项
+\fieldvalue{Protocol}
+\end{tabular}
+
+\vspace{1em}
+
+\noindent 签名信息
+
+\begin{flushright}
+% #VALUE_ID: LEX-P0023-V0034
+% #TODO #HANDWRITTEN: 邱？2025.08.28; signature is partially illegible
+\handwritten{邱？2025.08.28}
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0023-V0035
+% #TODO #HANDWRITTEN: 何？2025.08.28; signature is partially illegible
+\handwritten{何？2025.08.28}
+\end{flushright}
+% LEXOID_PAGE_COMPLETED: 23/34
+
+\newpage
+
+\begin{center}
+20250829-IDO 蛋白表达检测结果
+\end{center}
+
+\begin{figure}[ht]
+\centering
+% TODO: Insert the visible protein-expression gel image; no source filename was provided.
+\fbox{\parbox[c][0.48\textheight][c]{0.82\linewidth}{\centering Protein-expression gel image}}
+\end{figure}
+
+\begin{flushright}
+% #VALUE_ID: LEX-P0024-V0001
+% #TODO #HANDWRITTEN: [Chinese name, unclear]; handwritten character is not fully legible
+\handwritten{[Chinese name, unclear]}\quad
+% #VALUE_ID: LEX-P0024-V0002
+% #HANDWRITTEN: 2025.08.29
+\handwritten{2025.08.29}
+
+\vspace{0.5em}
+
+% #VALUE_ID: LEX-P0024-V0003
+% #TODO #HANDWRITTEN: [Chinese signature, unclear]; handwritten signature is not fully legible
+\handwritten{[Chinese signature, unclear]}\quad
+% #VALUE_ID: LEX-P0024-V0004
+% #HANDWRITTEN: 2025.08.29
+\handwritten{2025.08.29}
+
+\vspace{0.5em}
+
+% #VALUE_ID: LEX-P0024-V0005
+% #HANDWRITTEN: 01
+\handwritten{01}\quad/\quad
+% #VALUE_ID: LEX-P0024-V0006
+% #HANDWRITTEN: 01
+\handwritten{01}
+\end{flushright}
+% LEXOID_PAGE_COMPLETED: 24/34
+
+\newpage
+
+\begin{center}
+\textbf{艾米迈托妥注射液内控批检验记录}
+\end{center}
+
+\noindent
+文件编码：RC-YZ-SOP-QC-03-09-02
+
+\begin{center}
+\begin{tabular}{|p{0.18\linewidth}|p{0.30\linewidth}|p{0.18\linewidth}|p{0.24\linewidth}|}
+\hline
+\multicolumn{4}{|c|}{成骨分化能力} \\
+\hline
+样品名称 &
+% #VALUE_ID: LEX-P0025-V0001
+% #FIELD_VALUE: 样品名称
+\fieldvalue{艾米迈托妥注射液} &
+样品规格 &
+% #VALUE_ID: LEX-P0025-V0002
+% #FIELD_VALUE: 样品规格
+\fieldvalue{12ml：$6.0\times10^{7}$个细胞} \\
+\hline
+样品批号 &
+% #VALUE_ID: LEX-P0025-V0003
+% #FIELD_VALUE: 样品批号
+% #TODO #HANDWRITTEN: 202508?080?; 字迹不清
+\fieldvalue{\handwritten{202508?080?}} &
+取样日期 &
+% #VALUE_ID: LEX-P0025-V0004
+% #FIELD_VALUE: 取样日期
+% #TODO #HANDWRITTEN: 2025年08月?日; 字迹不清
+\fieldvalue{\handwritten{2025年08月?日}} \\
+\hline
+\end{tabular}
+\end{center}
+
+\section*{1. 仪器设备及试剂}
+
+\subsection*{1.1. 仪器设备}
+
+\begin{center}
+\small
+\begin{tabular}{|p{0.19\linewidth}|p{0.16\linewidth}|p{0.19\linewidth}|p{0.20\linewidth}|p{0.18\linewidth}|}
+\hline
+仪器名称 & 厂家 & 型号 & 设备编号 & 校准有效期至 \\
+\hline
+生物安全柜 & Thermo &
+% #VALUE_ID: LEX-P0025-V0005
+% #FIELD_VALUE: 生物安全柜型号
+% #TODO #HANDWRITTEN: 130? 384 159; 字迹不清
+\fieldvalue{\handwritten{130? 384 159}} &
+% #VALUE_ID: LEX-P0025-V0006
+% #FIELD_VALUE: 生物安全柜设备编号
+% #TODO #HANDWRITTEN: 170?; 字迹不清
+\fieldvalue{\handwritten{170?}} &
+% #VALUE_ID: LEX-P0025-V0007
+% #FIELD_VALUE: 生物安全柜校准有效期至
+% #TODO #HANDWRITTEN: 2027.08.?; 字迹不清
+\fieldvalue{\handwritten{2027.08.?}} \\
+\hline
+二氧化碳培养箱 & Thermo &
+% #VALUE_ID: LEX-P0025-V0008
+% #FIELD_VALUE: 二氧化碳培养箱型号
+\fieldvalue{HERA cell 250i} &
+% #VALUE_ID: LEX-P0025-V0009
+% #FIELD_VALUE: 二氧化碳培养箱设备编号
+% #TODO #HANDWRITTEN: 170003; 字迹不清
+\fieldvalue{\handwritten{170003}} &
+% #VALUE_ID: LEX-P0025-V0010
+% #FIELD_VALUE: 二氧化碳培养箱校准有效期至
+\fieldvalue{2026.06.22} \\
+\hline
+倒置显微镜 & Leica &
+% #VALUE_ID: LEX-P0025-V0011
+% #FIELD_VALUE: 倒置显微镜型号
+\fieldvalue{Leica Dmi1} &
+% #VALUE_ID: LEX-P0025-V0012
+% #FIELD_VALUE: 倒置显微镜设备编号
+% #TODO #HANDWRITTEN: 148?13; 字迹不清
+\fieldvalue{\handwritten{148?13}} &
+% #VALUE_ID: LEX-P0025-V0013
+% #FIELD_VALUE: 倒置显微镜校准有效期至
+% #TODO #HANDWRITTEN: 2027.08.14; 字迹不清
+\fieldvalue{\handwritten{2027.08.14}} \\
+\hline
+移液器 & Eppendorf &
+% #VALUE_ID: LEX-P0025-V0014
+% #FIELD_VALUE: 移液器型号
+% #TODO #HANDWRITTEN: 70--1000\,\textmu l; 字迹不清
+\fieldvalue{\handwritten{70--1000\,\textmu l}} &
+% #VALUE_ID: LEX-P0025-V0015
+% #FIELD_VALUE: 移液器设备编号
+% #TODO #HANDWRITTEN: 042?12; 字迹不清
+\fieldvalue{\handwritten{042?12}} &
+% #VALUE_ID: LEX-P0025-V0016
+% #FIELD_VALUE: 移液器校准有效期至
+% #TODO #HANDWRITTEN: 2027.08.14; 字迹不清
+\fieldvalue{\handwritten{2027.08.14}} \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{1.2. 试剂耗材}
+
+\begin{center}
+\small
+\begin{tabular}{|p{0.31\linewidth}|p{0.18\linewidth}|p{0.14\linewidth}|p{0.18\linewidth}|p{0.13\linewidth}|}
+\hline
+试剂名称 & 厂家 & 货号 & 批号 & 有效期至 \\
+\hline
+% #VALUE_ID: LEX-P0025-V0017
+% #FIELD_VALUE: 试剂名称
+\fieldvalue{2\% Alizarin Red S} &
+% #VALUE_ID: LEX-P0025-V0018
+% #FIELD_VALUE: 试剂厂家
+\fieldvalue{Sciencell} &
+% #VALUE_ID: LEX-P0025-V0019
+% #FIELD_VALUE: 试剂货号
+\fieldvalue{0223} &
+% #VALUE_ID: LEX-P0025-V0020
+% #FIELD_VALUE: 试剂批号
+% #TODO #HANDWRITTEN: 38191; 字迹不清
+\fieldvalue{\handwritten{38191}} &
+% #VALUE_ID: LEX-P0025-V0021
+% #FIELD_VALUE: 试剂有效期至
+% #TODO #HANDWRITTEN: 2025.12; 字迹不清
+\fieldvalue{\handwritten{2025.12}} \\
+\hline
+% #VALUE_ID: LEX-P0025-V0022
+% #FIELD_VALUE: 试剂名称
+\fieldvalue{40g/L 多聚甲醛（4\%组织细胞固定液）} &
+% #VALUE_ID: LEX-P0025-V0023
+% #FIELD_VALUE: 试剂厂家
+\fieldvalue{Solarbio} &
+% #VALUE_ID: LEX-P0025-V0024
+% #FIELD_VALUE: 试剂货号
+\fieldvalue{P1110-100ml} &
+% #VALUE_ID: LEX-P0025-V0025
+% #FIELD_VALUE: 试剂批号
+% #TODO #HANDWRITTEN: 250?00002; 字迹不清
+\fieldvalue{\handwritten{250?00002}} &
+% #VALUE_ID: LEX-P0025-V0026
+% #FIELD_VALUE: 试剂有效期至
+\fieldvalue{2026.03.19} \\
+\hline
+% #VALUE_ID: LEX-P0025-V0027
+% #FIELD_VALUE: 试剂名称
+\fieldvalue{PBS} &
+% #VALUE_ID: LEX-P0025-V0028
+% #FIELD_VALUE: 试剂厂家
+\fieldvalue{Vivacell} &
+% #VALUE_ID: LEX-P0025-V0029
+% #FIELD_VALUE: 试剂货号
+\fieldvalue{C3580-0500} &
+% #VALUE_ID: LEX-P0025-V0030
+% #FIELD_VALUE: 试剂批号
+% #TODO #HANDWRITTEN: 350?; 字迹不清
+\fieldvalue{\handwritten{350?}} &
+% #VALUE_ID: LEX-P0025-V0031
+% #FIELD_VALUE: 试剂有效期至
+\fieldvalue{2026.06.23} \\
+\hline
+% #VALUE_ID: LEX-P0025-V0032
+% #FIELD_VALUE: 试剂名称
+\fieldvalue{6孔板（TC-treated）} &
+% #VALUE_ID: LEX-P0025-V0033
+% #FIELD_VALUE: 试剂厂家
+\fieldvalue{Corning} &
+% #VALUE_ID: LEX-P0025-V0034
+% #FIELD_VALUE: 试剂货号
+\fieldvalue{3516} &
+% #VALUE_ID: LEX-P0025-V0035
+% #FIELD_VALUE: 试剂批号
+% #TODO #HANDWRITTEN: 183?4?; 字迹不清
+\fieldvalue{\handwritten{183?4?}} &
+% #VALUE_ID: LEX-P0025-V0036
+% #FIELD_VALUE: 试剂有效期至
+% #TODO #HANDWRITTEN: 2027.07.07; 字迹不清
+\fieldvalue{\handwritten{2027.07.07}} \\
+\hline
+\end{tabular}
+\end{center}
+
+\section*{2. 操作步骤}
+
+\begin{center}
+\begin{tabular}{|p{0.34\linewidth}|p{0.28\linewidth}|p{0.24\linewidth}|}
+\hline
+\multicolumn{3}{|c|}{溶液准备} \\
+\hline
+溶液 & 批号 & 有效期至 \\
+\hline
+MSC完全培养基 &
+% #VALUE_ID: LEX-P0025-V0037
+% #FIELD_VALUE: MSC完全培养基批号
+% #TODO #HANDWRITTEN: S?0?0?85-0; 字迹不清
+\fieldvalue{\handwritten{S?0?0?85-0}} &
+% #VALUE_ID: LEX-P0025-V0038
+% #FIELD_VALUE: MSC完全培养基有效期至
+\fieldvalue{\handwritten{2025.10.24}} \\
+\hline
+成骨完全培养基 &
+% #VALUE_ID: LEX-P0025-V0039
+% #FIELD_VALUE: 成骨完全培养基批号
+% #TODO #HANDWRITTEN: S?0?5?9?; 字迹不清
+\fieldvalue{\handwritten{S?0?5?9?}} &
+% #VALUE_ID: LEX-P0025-V0040
+% #FIELD_VALUE: 成骨完全培养基有效期至
+\fieldvalue{\handwritten{2025.09.23}} \\
+\hline
+\multicolumn{3}{|c|}{细胞处理} \\
+\hline
+\multicolumn{3}{|p{0.86\linewidth}|}{
+将 $1\times10^{6}$ cells/ml 的细胞悬液取 $100\,\mu$l 接种至 6 孔板的中，每孔补充 MSC 完全培养基 3 ml，共接种 4 孔。每孔补充成骨完全培养基 2 ml，置于 $37^\circ$C、5\%CO$_2$二氧化碳培养箱中。
+} \\
+\hline
+\multicolumn{2}{|l|}{每孔细胞悬液接种体积：
+% #VALUE_ID: LEX-P0025-V0041
+% #FIELD_VALUE: 每孔细胞悬液接种体积
+% #HANDWRITTEN: 100
+\fieldvalue{\handwritten{100}}\,\mu l，共
+% #VALUE_ID: LEX-P0025-V0042
+% #FIELD_VALUE: 接种孔数
+% #HANDWRITTEN: 4
+\fieldvalue{\handwritten{4}}孔} &
+\multicolumn{1}{l|}{} \\
+\hline
+\multicolumn{2}{|l|}{每孔 MSC 完全培养基体积
+% #VALUE_ID: LEX-P0025-V0043
+% #FIELD_VALUE: 每孔MSC完全培养基体积
+% #HANDWRITTEN: 3
+\fieldvalue{\handwritten{3}}\,ml} &
+\multicolumn{1}{l|}{} \\
+\hline
+\multicolumn{2}{|l|}{放入培养时间：
+% #VALUE_ID: LEX-P0025-V0044
+% #FIELD_VALUE: 放入培养时间年份
+% #HANDWRITTEN: 2025
+\fieldvalue{\handwritten{2025}}年
+% #VALUE_ID: LEX-P0025-V0045
+% #FIELD_VALUE: 放入培养时间月份
+% #HANDWRITTEN: 08
+\fieldvalue{\handwritten{08}}月
+% #VALUE_ID: LEX-P0025-V0046
+% #FIELD_VALUE: 放入培养时间日期
+% #HANDWRITTEN: 21
+\fieldvalue{\handwritten{21}}日} &
+\multicolumn{1}{l|}{} \\
+\hline
+\multicolumn{2}{|l|}{实验组
+% #VALUE_ID: LEX-P0025-V0047
+% #FIELD_VALUE: 实验组孔数
+% #HANDWRITTEN: 2
+\fieldvalue{\handwritten{2}}孔，对照组
+% #VALUE_ID: LEX-P0025-V0048
+% #FIELD_VALUE: 对照组孔数
+% #HANDWRITTEN: 2
+\fieldvalue{\handwritten{2}}孔} &
+\multicolumn{1}{l|}{} \\
+\hline
+实验人/日期 &
+% #VALUE_ID: LEX-P0025-V0049
+% #FIELD_VALUE: 实验人
+% #TODO #HANDWRITTEN: 杨?; 签名难以辨认
+\fieldvalue{\handwritten{杨?}} 
+% #VALUE_ID: LEX-P0025-V0050
+% #FIELD_VALUE: 实验日期
+% #HANDWRITTEN: 2025.08.25
+\fieldvalue{\handwritten{2025.08.25}} &
+\\
+\hline
+复核人/日期 &
+% #VALUE_ID: LEX-P0025-V0051
+% #FIELD_VALUE: 复核人
+% #TODO #HANDWRITTEN: 签名难以辨认
+\fieldvalue{\handwritten{签名}} 
+% #VALUE_ID: LEX-P0025-V0052
+% #FIELD_VALUE: 复核日期
+% #HANDWRITTEN: 2025.08.19
+\fieldvalue{\handwritten{2025.08.19}} &
+\\
+\hline
+换液时间：
+% #VALUE_ID: LEX-P0025-V0053
+% #FIELD_VALUE: 换液时间年份
+% #HANDWRITTEN: 2025
+\fieldvalue{\handwritten{2025}}年
+% #VALUE_ID: LEX-P0025-V0054
+% #FIELD_VALUE: 换液时间月份
+% #HANDWRITTEN: 08
+\fieldvalue{\handwritten{08}}月
+% #VALUE_ID: LEX-P0025-V0055
+% #FIELD_VALUE: 换液时间日期
+% #HANDWRITTEN: 28
+\fieldvalue{\handwritten{28}}日 &
+\multicolumn{2}{l|}{} \\
+\hline
+\end{tabular}
+\end{center}
+
+% TODO: 页面底部另有一行蓝色手写日期/记录，因字迹及字段归属不清，未能可靠辨认。
+% LEXOID_PAGE_COMPLETED: 25/34
+
+\newpage
+
+\section*{细胞生物学检测（北京）有限公司}
+\begin{center}
+\textbf{细胞生物学原件} \qquad 文件编号：REC-YZ-SOP-QC-03-09
+\end{center}
+
+\begin{tabular}{|p{0.44\linewidth}|p{0.44\linewidth}|}
+\hline
+全培养基，实验组 $2$ 孔每孔加入 $3$ ml 成骨完全培养基，对照组 $2$ 孔每孔加入 $3$ ml MSC 完全培养基
+&
+实验组
+% #VALUE_ID: LEX-P0026-V0001
+% #FIELD_VALUE: 实验组孔数
+\fieldvalue{\handwritten{2}} ml/孔；对照组
+% #VALUE_ID: LEX-P0026-V0002
+% #FIELD_VALUE: 对照组孔数
+\fieldvalue{\handwritten{3}} ml/孔，MSC 完全培养基
+\\ \hline
+基：诱导分化 28--35 天，各组取一孔（满足质量控制）进行固定和染色
+&
+实验人/日期：
+% #VALUE_ID: LEX-P0026-V0003
+% #FIELD_VALUE: 实验人/日期
+% #HANDWRITTEN: 2025-08-20
+\fieldvalue{\handwritten{2025-08-20}}
+\\ \cline{2-2}
+&
+复核人/日期：
+% #VALUE_ID: LEX-P0026-V0004
+% #FIELD_VALUE: 复核人/日期
+% #HANDWRITTEN: 2025.08.18
+\fieldvalue{\handwritten{2025.08.18}}
+\\ \hline
+染色日期
+&
+% #VALUE_ID: LEX-P0026-V0005
+% #FIELD_VALUE: 染色日期
+% #HANDWRITTEN: 2025年10月02日
+\fieldvalue{\handwritten{2025年10月02日}}
+\\ \hline
+轻柔吸弃培养基，每孔加入 $2$ ml PBS 轻柔洗涤 $2$ 次
+&
+PBS
+% #VALUE_ID: LEX-P0026-V0006
+% #FIELD_VALUE: PBS体积
+\fieldvalue{\handwritten{2}} ml/孔，洗涤
+% #VALUE_ID: LEX-P0026-V0007
+% #FIELD_VALUE: PBS洗涤次数
+\fieldvalue{\handwritten{2}} 遍
+\\ \hline
+轻柔吸弃 PBS，每孔 $2$ ml 加入 $40\textrm{g/L}$ 多聚甲醛（$4\%$ 组织细胞固定液），室温固定 15 分钟
+&
+固定液
+% #VALUE_ID: LEX-P0026-V0008
+% #FIELD_VALUE: 固定液体积
+\fieldvalue{\handwritten{2}} ml/孔，室温固定
+% #VALUE_ID: LEX-P0026-V0009
+% #FIELD_VALUE: 室温固定时间
+\fieldvalue{\handwritten{15}} min
+\\ \hline
+轻柔吸弃，每孔 $2$ ml 纯化水洗涤 3 次
+&
+纯化水
+% #VALUE_ID: LEX-P0026-V0010
+% #FIELD_VALUE: 纯化水体积
+\fieldvalue{\handwritten{2}} ml/孔，洗涤
+% #VALUE_ID: LEX-P0026-V0011
+% #FIELD_VALUE: 纯化水洗涤次数
+\fieldvalue{\handwritten{3}} 遍
+\\ \hline
+每孔加入 1 ml 2\% Alizarin Red S 进行染色，室温孵育 20--30 min
+&
+2\% Alizarin Red S 体积：
+% #VALUE_ID: LEX-P0026-V0012
+% #FIELD_VALUE: 2\% Alizarin Red S体积
+\fieldvalue{\handwritten{1}} ml/孔\\
+&
+室温孵育
+% #VALUE_ID: LEX-P0026-V0013
+% #FIELD_VALUE: 室温孵育时间
+\fieldvalue{\handwritten{25}} min
+\\ \hline
+轻柔吸弃染色液，每孔加入 $2$ ml 纯化水洗涤 3 遍
+&
+每孔加入
+% #VALUE_ID: LEX-P0026-V0014
+% #FIELD_VALUE: 纯化水洗涤体积
+\fieldvalue{\handwritten{2}} ml/孔，纯化水洗涤
+% #VALUE_ID: LEX-P0026-V0015
+% #FIELD_VALUE: 纯化水洗涤次数
+\fieldvalue{\handwritten{3}} 遍
+\\ \hline
+每孔加入 1 ml 纯化水，进行拍照并留档
+&
+% #VALUE_ID: LEX-P0026-V0016
+% #FIELD_VALUE: 拍照前纯化水体积
+\fieldvalue{\handwritten{1}} ml/孔
+\\ \hline
+\multicolumn{2}{|c|}{培养图片（放大倍数 $10$ 倍）}\\ \hline
+\begin{minipage}[t]{0.40\linewidth}
+\centering
+实验组\\[2pt]
+% #VALUE_ID: LEX-P0026-V0017
+% #FIELD_VALUE: 实验组图片编号
+\fieldvalue{A31Z220508006-成骨-T-10X-20251002}\\[4pt]
+\fbox{\rule{0pt}{3.0cm}\rule{0.90\linewidth}{0pt}}\\[-2pt]
+% #VALUE_ID: LEX-P0026-V0019
+% #FIELD_VALUE: 实验组图片签字
+% #TODO #HANDWRITTEN: [难以辨认]; 图片下方蓝色手写内容不清晰
+\fieldvalue{\handwritten{[难以辨认]}}
+\end{minipage}
+&
+\begin{minipage}[t]{0.40\linewidth}
+\centering
+对照组\\[2pt]
+% #VALUE_ID: LEX-P0026-V0018
+% #FIELD_VALUE: 对照组图片编号
+\fieldvalue{A31Z220508006-成骨-C-10X-20251002}\\[4pt]
+\fbox{\rule{0pt}{3.0cm}\rule{0.90\linewidth}{0pt}}\\[-2pt]
+% #VALUE_ID: LEX-P0026-V0020
+% #FIELD_VALUE: 对照组图片签字
+% #TODO #HANDWRITTEN: [难以辨认]; 图片下方蓝色手写内容不清晰
+\fieldvalue{\handwritten{[难以辨认]}}
+\end{minipage}
+\\ \hline
+图片保存路径
+&
+% #VALUE_ID: LEX-P0026-V0021
+% #FIELD_VALUE: 图片保存路径
+% #TODO #HANDWRITTEN: [难以辨认]; 蓝色手写路径过于模糊
+\fieldvalue{\handwritten{[难以辨认的保存路径]}}
+\\ \hline
+图片对照组明显染色结果
+&
+% #VALUE_ID: LEX-P0026-V0022
+% #FIELD_VALUE: 图片对照组明显染色结果：是
+\fieldvalue{\checkboxfield{checked}} 是
+\quad
+% #VALUE_ID: LEX-P0023
+% #FIELD_VALUE: 图片对照组明显染色结果：否
+\fieldvalue{\checkboxfield{unchecked}} 否
+\\ \hline
+细胞培养过程中，细胞未污染
+&
+% #VALUE_ID: LEX-P0026-V0024
+% #FIELD_VALUE: 细胞未污染：是
+\fieldvalue{\checkboxfield{checked}} 是
+\quad
+% #VALUE_ID: LEX-P0026-V0025
+% #FIELD_VALUE: 细胞未污染：否
+\fieldvalue{\checkboxfield{unchecked}} 否
+\\ \hline
+质量控制
+&
+% #VALUE_ID: LEX-P0026-V0026
+% #FIELD_VALUE: 质量控制：通过
+\fieldvalue{\checkboxfield{checked}} 通过
+\quad
+% #VALUE_ID: LEX-P0026-V0027
+% #FIELD_VALUE: 质量控制：不通过
+\fieldvalue{\checkboxfield{unchecked}} 不通过
+\\ \hline
+\multicolumn{2}{|c|}{检测结果}\\ \hline
+细胞具有成骨分化能力
+（可见大量红染钙结节）
+&
+% #VALUE_ID: LEX-P0026-V0028
+% #FIELD_VALUE: 细胞具有成骨分化能力：是
+\fieldvalue{\checkboxfield{checked}} 是
+\quad
+% #VALUE_ID: LEX-P0026-V0029
+% #FIELD_VALUE: 细胞具有成骨分化能力：否
+\fieldvalue{\checkboxfield{unchecked}} 否
+\\ \hline
+结果判定
+&
+% #VALUE_ID: LEX-P0026-V0030
+% #FIELD_VALUE: 结果判定：合格
+\fieldvalue{\checkboxfield{checked}} 合格
+\quad
+% #VALUE_ID: LEX-P0026-V0031
+% #FIELD_VALUE: 结果判定：不合格
+\fieldvalue{\checkboxfield{unchecked}} 不合格
+\\ \hline
+\end{tabular}
+
+\begin{center}
+第 13 页 共 21 页
+\end{center}
+% LEXOID_PAGE_COMPLETED: 26/34
+
+\newpage
+
+\begin{center}
+\textbf{铂生基生物科技（北京）有限公司}\\
+\textit{PLATINUM EXCELLENCE BIOTECH}\\[2pt]
+\begin{tabular}{p{0.18\linewidth}p{0.22\linewidth}p{0.48\linewidth}}
+\centering 铂生生物 & \centering 原件 & 文件编码：REC-YZ-SOP-QC-03-09
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{0.16\linewidth}|p{0.74\linewidth}|}
+\hline
+备注 &
+% #VALUE_ID: LEX-P0027-V0001
+% #FIELD_VALUE: 备注
+% #TODO #HANDWRITTEN: /; 蓝色手写斜线标记
+\fieldvalue{\handwritten{/}} \\
+\hline
+实验人/日期 &
+% #VALUE_ID: LEX-P0027-V0002
+% #FIELD_VALUE: 实验人
+% #TODO #HANDWRITTEN: 魏？; 手写姓名分辨率较低
+\fieldvalue{\handwritten{魏？}}\quad
+% #VALUE_ID: LEX-P0027-V0003
+% #FIELD_VALUE: 实验日期
+% #HANDWRITTEN: 2025.10.02
+\fieldvalue{\handwritten{2025.10.02}} \\
+\hline
+复核人/日期 &
+% #VALUE_ID: LEX-P0027-V0004
+% #FIELD_VALUE: 复核人
+% #TODO #HANDWRITTEN: 蒋弘兴？; 手写姓名分辨率较低
+\fieldvalue{\handwritten{蒋弘兴？}}\quad
+% #VALUE_ID: LEX-P0027-V0005
+% #FIELD_VALUE: 复核日期
+% #HANDWRITTEN: 2025.10.02
+\fieldvalue{\handwritten{2025.10.02}} \\
+\hline
+\end{tabular}
+\end{center}
+% LEXOID_PAGE_COMPLETED: 27/34
+
+\newpage
+
+\section*{艾米迈托赛注射液内控检验记录}
+
+\begin{center}
+\begin{tabular}{|p{0.16\linewidth}|p{0.32\linewidth}|p{0.16\linewidth}|p{0.24\linewidth}|}
+\hline
+\multicolumn{4}{|c|}{成效界分化能力} \\ \hline
+样品名称 &
+% #VALUE_ID: LEX-P0028-V0001
+% #FIELD_VALUE: 样品名称
+\fieldvalue{艾米迈托赛注射液} &
+样品规格 &
+% #VALUE_ID: LEX-P0028-V0002
+% #FIELD_VALUE: 样品规格
+\fieldvalue{12ml：$6.0\times10^{7}$个细胞} \\ \hline
+样品批号 &
+% #VALUE_ID: LEX-P0028-V0003
+% #FIELD_VALUE: 样品批号
+% #TODO #HANDWRITTEN: 2025?08?06; handwriting unclear
+\fieldvalue{\handwritten{2025?08?06}} &
+取样日期 &
+% #VALUE_ID: LEX-P0028-V0004
+% #FIELD_VALUE: 取样日期
+% #TODO #HANDWRITTEN: 2025年08月21日; final digits partially unclear
+\fieldvalue{\handwritten{2025年08月21日}} \\ \hline
+\end{tabular}
+\end{center}
+
+\section{仪器设备及试剂}
+
+\subsection{仪器设备}
+
+\begin{center}
+\small
+\begin{tabular}{|p{0.23\linewidth}|p{0.14\linewidth}|p{0.22\linewidth}|p{0.20\linewidth}|p{0.20\linewidth}|}
+\hline
+仪器名称 & 厂家 & 型号 & 设备编号 & 校准有效期至 \\ \hline
+生物安全柜 & 
+% #VALUE_ID: LEX-P0028-V0005
+% #FIELD_VALUE: 厂家
+\fieldvalue{Thermo} &
+% #VALUE_ID: LEX-P0028-V0006
+% #FIELD_VALUE: 型号
+% #TODO #HANDWRITTEN: ？; handwriting illegible
+\fieldvalue{\handwritten{？}} &
+% #VALUE_ID: LEX-P0028-V0007
+% #FIELD_VALUE: 设备编号
+% #TODO #HANDWRITTEN: 112?01; handwriting partially unclear
+\fieldvalue{\handwritten{112?01}} &
+% #VALUE_ID: LEX-P0028-V0008
+% #FIELD_VALUE: 校准有效期至
+% #TODO #HANDWRITTEN: 2025.08.17; handwriting partially unclear
+\fieldvalue{\handwritten{2025.08.17}} \\ \hline
+二氧化碳培养箱 &
+% #VALUE_ID: LEX-P0028-V0009
+% #FIELD_VALUE: 厂家
+\fieldvalue{Thermo} &
+% #VALUE_ID: LEX-P0028-V0010
+% #FIELD_VALUE: 型号
+\fieldvalue{HERA cell 250i} &
+% #VALUE_ID: LEX-P0028-V0011
+% #FIELD_VALUE: 设备编号
+% #TODO #HANDWRITTEN: 11/403; handwriting partially unclear
+\fieldvalue{\handwritten{11/403}} &
+% #VALUE_ID: LEX-P0028-V0012
+% #FIELD_VALUE: 校准有效期至
+% #TODO #HANDWRITTEN: 2025.08.22; handwriting partially unclear
+\fieldvalue{\handwritten{2025.08.22}} \\ \hline
+倒置显微镜 &
+% #VALUE_ID: LEX-P0028-V0013
+% #FIELD_VALUE: 厂家
+\fieldvalue{Leica} &
+% #VALUE_ID: LEX-P0028-V0014
+% #FIELD_VALUE: 型号
+\fieldvalue{Leica DMi1} &
+% #VALUE_ID: LEX-P0028-V0015
+% #FIELD_VALUE: 设备编号
+% #TODO #HANDWRITTEN: 14/813; handwriting partially unclear
+\fieldvalue{\handwritten{14/813}} &
+% #VALUE_ID: LEX-P0028-V0016
+% #FIELD_VALUE: 校准有效期至
+% #TODO #HANDWRITTEN: 2025.08.??; final digits unclear
+\fieldvalue{\handwritten{2025.08.??}} \\ \hline
+高速冷冻离心机 &
+% #VALUE_ID: LEX-P0028-V0017
+% #FIELD_VALUE: 厂家
+\fieldvalue{Thermo} &
+% #VALUE_ID: LEX-P0028-V0018
+% #FIELD_VALUE: 型号
+\fieldvalue{ST16R} &
+% #VALUE_ID: LEX-P0028-V0019
+% #FIELD_VALUE: 设备编号
+% #TODO #HANDWRITTEN: 14/813?; handwriting partially unclear
+\fieldvalue{\handwritten{14/813?}} &
+% #VALUE_ID: LEX-P0028-V0020
+% #FIELD_VALUE: 校准有效期至
+% #TODO #HANDWRITTEN: 2025.08.19; handwriting partially unclear
+\fieldvalue{\handwritten{2025.08.19}} \\ \hline
+移液器 &
+% #VALUE_ID: LEX-P0028-V0021
+% #FIELD_VALUE: 厂家
+\fieldvalue{Eppendorf} &
+% #VALUE_ID: LEX-P0028-V0022
+% #FIELD_VALUE: 型号
+% #TODO #HANDWRITTEN: 100--1000\,\textmu l; handwriting partially unclear
+\fieldvalue{\handwritten{100--1000\,\textmu l}} &
+% #VALUE_ID: LEX-P0028-V0023
+% #FIELD_VALUE: 设备编号
+% #TODO #HANDWRITTEN: 028?8K; handwriting unclear
+\fieldvalue{\handwritten{028?8K}} &
+% #VALUE_ID: LEX-P0028-V0024
+% #FIELD_VALUE: 校准有效期至
+% #TODO #HANDWRITTEN: 2025.05.11; handwriting partially unclear
+\fieldvalue{\handwritten{2025.05.11}} \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{试剂}
+
+\begin{center}
+\small
+\begin{tabular}{|p{0.28\linewidth}|p{0.15\linewidth}|p{0.20\linewidth}|p{0.17\linewidth}|p{0.18\linewidth}|}
+\hline
+试剂名称 & 厂家 & 货号 & 批号 & 有效期至 \\ \hline
+Alcian blue straining kit &
+% #VALUE_ID: LEX-P0028-V0025
+% #FIELD_VALUE: 厂家
+\fieldvalue{Sciencell} &
+% #VALUE_ID: LEX-P0028-V0026
+% #FIELD_VALUE: 货号
+\fieldvalue{8378} &
+% #VALUE_ID: LEX-P0028-V0027
+% #FIELD_VALUE: 批号
+% #TODO #HANDWRITTEN: 231?90; handwriting partially unclear
+\fieldvalue{\handwritten{231?90}} &
+% #VALUE_ID: LEX-P0028-V0028
+% #FIELD_VALUE: 有效期至
+% #TODO #HANDWRITTEN: 202?; handwriting unclear
+\fieldvalue{\handwritten{202?}} \\ \hline
+碘--甲苯胺 &
+% #VALUE_ID: LEX-P0028-V0029
+% #FIELD_VALUE: 厂家
+\fieldvalue{阿拉丁} &
+% #VALUE_ID: LEX-P0028-V0030
+% #FIELD_VALUE: 货号
+\fieldvalue{X103350-500ML} &
+% #VALUE_ID: LEX-P0028-V0031
+% #FIELD_VALUE: 批号
+% #TODO #HANDWRITTEN: 24?/?; handwriting unclear
+\fieldvalue{\handwritten{24?/?}} &
+% #VALUE_ID: LEX-P0028-V0032
+% #FIELD_VALUE: 有效期至
+% #TODO #HANDWRITTEN: 2026.03.30; handwriting partially unclear
+\fieldvalue{\handwritten{2026.03.30}} \\ \hline
+无水乙醇 &
+% #VALUE_ID: LEX-P0028-V0033
+% #FIELD_VALUE: 厂家
+\fieldvalue{国药} &
+% #VALUE_ID: LEX-P0028-V0034
+% #FIELD_VALUE: 货号
+\fieldvalue{10009218} &
+% #VALUE_ID: LEX-P0028-V0035
+% #FIELD_VALUE: 批号
+% #TODO #HANDWRITTEN: 201?/?; handwriting unclear
+\fieldvalue{\handwritten{201?/?}} &
+% #VALUE_ID: LEX-P0028-V0036
+% #FIELD_VALUE: 有效期至
+% #TODO #HANDWRITTEN: 202?; handwriting unclear
+\fieldvalue{\handwritten{202?}} \\ \hline
+中性红染液 &
+% #VALUE_ID: LEX-P0028-V0037
+% #FIELD_VALUE: 厂家
+\fieldvalue{Solarbio} &
+% #VALUE_ID: LEX-P0028-V0038
+% #FIELD_VALUE: 货号
+\fieldvalue{G8590-100ml} &
+% #VALUE_ID: LEX-P0028-V0039
+% #FIELD_VALUE: 批号
+% #TODO #HANDWRITTEN: 250?0006; handwriting partially unclear
+\fieldvalue{\handwritten{250?0006}} &
+% #VALUE_ID: LEX-P0028-V0040
+% #FIELD_VALUE: 有效期至
+\fieldvalue{\handwritten{2027.07.23}} \\ \hline
+40g/L多聚甲醛（4\%组织细胞固定液） &
+% #VALUE_ID: LEX-P0028-V0041
+% #FIELD_VALUE: 厂家
+\fieldvalue{Solarbio} &
+% #VALUE_ID: LEX-P0028-V0042
+% #FIELD_VALUE: 货号
+\fieldvalue{P1110-100ml} &
+% #VALUE_ID: LEX-P0028-V0043
+% #FIELD_VALUE: 批号
+% #TODO #HANDWRITTEN: 2500002; handwriting partially unclear
+\fieldvalue{\handwritten{2500002}} &
+% #VALUE_ID: LEX-P0028-V0044
+% #FIELD_VALUE: 有效期至
+% #TODO #HANDWRITTEN: 2026.??19; date partially obscured
+\fieldvalue{\handwritten{2026.??19}} \\ \hline
+\end{tabular}
+\end{center}
+
+\section{操作步骤}
+
+\begin{center}
+\small
+\begin{tabular}{|p{0.29\linewidth}|p{0.35\linewidth}|p{0.28\linewidth}|}
+\hline
+\multicolumn{3}{|c|}{溶液准备} \\ \hline
+溶液 & 配制批号 & 有效期至 \\ \hline
+MSC完全培养基 &
+% #VALUE_ID: LEX-P0028-V0045
+% #FIELD_VALUE: 配制批号
+% #TODO #HANDWRITTEN: 2025.08?; handwriting partially unclear
+\fieldvalue{\handwritten{2025.08?}} &
+% #VALUE_ID: LEX-P0028-V0046
+% #FIELD_VALUE: 有效期至
+\fieldvalue{\handwritten{2025.10.24}} \\ \hline
+成软骨完全培养基 &
+% #VALUE_ID: LEX-P0028-V0047
+% #FIELD_VALUE: 配制批号
+% #TODO #HANDWRITTEN: 2025.07?; handwriting partially unclear
+\fieldvalue{\handwritten{2025.07?}} &
+% #VALUE_ID: LEX-P0028-V0048
+% #FIELD_VALUE: 有效期至
+\fieldvalue{\handwritten{2025.09.25}} \\ \hline
+\multicolumn{3}{|c|}{细胞处理} \\ \hline
+\multicolumn{3}{|p{0.92\linewidth}|}{
+吸取1\,ml活细胞密度为$1\times10^{6}$ cells/ml细胞悬液至15\,ml离心管中，各2管，300$\times g$离心5分钟。取其中1管离心培养基上清，加入1\,ml成软骨完全培养基，作为实验组。余下1管作为对照组，均置入37℃、5\%CO$_2$二氧化碳培养箱中培养。
+} \\ \hline
+取细胞悬液 &
+% #VALUE_ID: LEX-P0028-V0049
+% #FIELD_VALUE: 取细胞悬液体积
+% #HANDWRITTEN: 1
+\fieldvalue{\handwritten{1}}\,ml &
+% #VALUE_ID: LEX-P0028-V0050
+% #FIELD_VALUE: 离心管数量
+% #HANDWRITTEN: 2
+\fieldvalue{\handwritten{2}}\,管 \\ \hline
+离心 &
+% #VALUE_ID: LEX-P0028-V0051
+% #FIELD_VALUE: 离心力
+% #HANDWRITTEN: 300
+\fieldvalue{\handwritten{300}}\,g &
+% #VALUE_ID: LEX-P0028-V0052
+% #FIELD_VALUE: 离心时间
+% #HANDWRITTEN: 5
+\fieldvalue{\handwritten{5}}\,min \\ \hline
+成软骨完全培养基 &
+% #VALUE_ID: LEX-P0028-V0053
+% #FIELD_VALUE: 培养基体积
+% #TODO #HANDWRITTEN: 1; handwriting partially unclear
+\fieldvalue{\handwritten{1}}\,ml &
+放入培养时间：%
+% #VALUE_ID: LEX-P0028-V0054
+% #FIELD_VALUE: 放入培养时间
+% #TODO #HANDWRITTEN: 2025年08月21日; handwriting partially unclear
+\fieldvalue{\handwritten{2025年08月21日}} \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+第15页 共21页
+\end{center}
+% LEXOID_PAGE_COMPLETED: 28/34
+
+\newpage
+
+\begin{center}
+\textbf{（细胞生物学实验记录表）}
+\end{center}
+
+\noindent
+\begin{tabular}{|p{0.20\linewidth}|p{0.25\linewidth}|p{0.20\linewidth}|p{0.25\linewidth}|}
+\hline
+\multicolumn{2}{|c|}{\textbf{检生物}} &
+\multicolumn{2}{c|}{文件编码：REC-YZ-SOP-QC-03-02-02} \\ \hline
+\multicolumn{2}{|c|}{%
+% #VALUE_ID: LEX-P0029-V0001
+% #FIELD_VALUE: 文件类型
+\fieldvalue{\handwritten{原件}}%
+} &
+实验人/日期 &
+% #VALUE_ID: LEX-P0029-V0002
+% #FIELD_VALUE: 实验人
+% #TODO #HANDWRITTEN: 张??; 签名笔迹不清
+\fieldvalue{\handwritten{张??}}%
+\quad
+% #VALUE_ID: LEX-P0029-V0003
+% #FIELD_VALUE: 实验日期
+% #TODO #HANDWRITTEN: 2025.08.24?; 日期笔迹不清
+\fieldvalue{\handwritten{2025.08.24?}}%
+\\ \cline{3-4}
+\multicolumn{2}{|c|}{养。作为第1次换液，分化第0天。持续诱导浸泡，21--28天后固定。}
+&
+复核人/日期 &
+% #VALUE_ID: LEX-P0029-V0004
+% #FIELD_VALUE: 复核人
+% #TODO #HANDWRITTEN: 赵??; 签名笔迹不清
+\fieldvalue{\handwritten{赵??}}%
+\quad
+% #VALUE_ID: LEX-P0029-V0005
+% #FIELD_VALUE: 复核日期
+% #TODO #HANDWRITTEN: 2025.08.24?; 日期笔迹不清
+\fieldvalue{\handwritten{2025.08.24?}}%
+\\ \hline
+\multicolumn{4}{|c|}{换液人员/时间} \\ \hline
+\begin{tabular}{c}第1次换液\\[2pt]
+% #VALUE_ID: LEX-P0029-V0006
+% #FIELD_VALUE: 第1次换液人员
+% #TODO #HANDWRITTEN: 张??; 笔迹不清
+\fieldvalue{\handwritten{张??}}\\
+% #VALUE_ID: LEX-P0029-V0007
+% #FIELD_VALUE: 第1次换液日期
+% #TODO #HANDWRITTEN: 2025.08.28?; 笔迹不清
+\fieldvalue{\handwritten{2025.08.28?}}
+\end{tabular}
+&
+\begin{tabular}{c}第3次换液\\[2pt]
+% #VALUE_ID: LEX-P0020-V0008
+% #FIELD_VALUE: 第3次换液人员
+% #TODO #HANDWRITTEN: 张??; 笔迹不清
+\fieldvalue{\handwritten{张??}}\\
+% #VALUE_ID: LEX-P0029-V0009
+% #FIELD_VALUE: 第3次换液日期
+% #TODO #HANDWRITTEN: 2025.09.01?; 笔迹不清
+\fieldvalue{\handwritten{2025.09.01?}}
+\end{tabular}
+&
+\begin{tabular}{c}第4次换液\\[2pt]
+% #VALUE_ID: LEX-P0029-V0010
+% #FIELD_VALUE: 第4次换液人员
+% #TODO #HANDWRITTEN: 张??; 笔迹不清
+\fieldvalue{\handwritten{张??}}\\
+% #VALUE_ID: LEX-P0029-V0011
+% #FIELD_VALUE: 第4次换液日期
+% #TODO #HANDWRITTEN: 2025.09.07?; 笔迹不清
+\fieldvalue{\handwritten{2025.09.07?}}
+\end{tabular}
+&
+\begin{tabular}{c}第5次换液\\[2pt]
+% #VALUE_ID: LEX-P0029-V0012
+% #FIELD_VALUE: 第5次换液人员
+% #TODO #HANDWRITTEN: 张??; 笔迹不清
+\fieldvalue{\handwritten{张??}}\\
+% #VALUE_ID: LEX-P0029-V0013
+% #FIELD_VALUE: 第5次换液日期
+% #TODO #HANDWRITTEN: 2025.09.??; 笔迹不清
+\fieldvalue{\handwritten{2025.09.??}}
+\end{tabular}
+\\ \hline
+\begin{tabular}{c}第6次换液\\[2pt]
+% #VALUE_ID: LEX-P0029-V0014
+% #FIELD_VALUE: 第6次换液人员
+% #TODO #HANDWRITTEN: 张??; 笔迹不清
+\fieldvalue{\handwritten{张??}}\\
+% #VALUE_ID: LEX-P0029-V0015
+% #FIELD_VALUE: 第6次换液日期
+% #TODO #HANDWRITTEN: 2025.09.??; 笔迹不清
+\fieldvalue{\handwritten{2025.09.??}}
+\end{tabular}
+&
+\begin{tabular}{c}第7次换液\\[2pt]
+% #VALUE_ID: LEX-P0029-V0016
+% #FIELD_VALUE: 第7次换液人员
+% #TODO #HANDWRITTEN: 张??; 笔迹不清
+\fieldvalue{\handwritten{张??}}\\
+% #VALUE_ID: LEX-P0029-V0017
+% #FIELD_VALUE: 第7次换液日期
+% #TODO #HANDWRITTEN: 2025.09.31?; 笔迹不清
+\fieldvalue{\handwritten{2025.09.31?}}
+\end{tabular}
+&
+\begin{tabular}{c}第8次换液\\[2pt]
+% #VALUE_ID: LEX-P0029-V0018
+% #FIELD_VALUE: 第8次换液人员
+% #TODO #HANDWRITTEN: 张??; 笔迹不清
+\fieldvalue{\handwritten{张??}}\\
+% #VALUE_ID: LEX-P0029-V0019
+% #FIELD_VALUE: 第8次换液日期
+% #TODO #HANDWRITTEN: 2025.09.??; 笔迹不清
+\fieldvalue{\handwritten{2025.09.??}}
+\end{tabular}
+&
+\begin{tabular}{c}第9次换液\\[2pt]
+% #VALUE_ID: LEX-P0029-V0020
+% #FIELD_VALUE: 第9次换液人员
+% #TODO #HANDWRITTEN: 张??; 笔迹不清
+\fieldvalue{\handwritten{张??}}\\
+% #VALUE_ID: LEX-P0029-V0021
+% #FIELD_VALUE: 第9次换液日期
+% #TODO #HANDWRITTEN: 2025.09.??; 笔迹不清
+\fieldvalue{\handwritten{2025.09.??}}
+\end{tabular}
+\\ \hline
+\multicolumn{4}{|l|}{封存观察日期：
+% #VALUE_ID: LEX-P0029-V0022
+% #FIELD_VALUE: 封存观察日期
+% #TODO #HANDWRITTEN: 2025年10月4日; 日期笔迹部分不清
+\fieldvalue{\handwritten{2025年10月4日}}}
+\\ \hline
+\multicolumn{4}{|l|}{染色日期：
+% #VALUE_ID: LEX-P0029-V0023
+% #FIELD_VALUE: 染色日期
+% #TODO #HANDWRITTEN: 2025年10月4日; 日期笔迹不清
+\fieldvalue{\handwritten{2025年10月4日}}}
+\\ \hline
+\multicolumn{2}{|l|}{浸泡二甲苯，洗2次，5分钟/次。} &
+\multicolumn{2}{l|}{%
+% #VALUE_ID: LEX-P0029-V0024
+% #FIELD_VALUE: 二甲苯浸泡时间
+% #HANDWRITTEN: 5
+\fieldvalue{\handwritten{5}} min/次，洗涤
+% #VALUE_ID: LEX-P0029-V0025
+% #FIELD_VALUE: 二甲苯洗涤次数
+% #HANDWRITTEN: 2
+\fieldvalue{\handwritten{2}} 遍}
+\\ \hline
+\multicolumn{2}{|l|}{浸泡无水乙醇，洗2次，5分钟/次。} &
+\multicolumn{2}{l|}{%
+% #VALUE_ID: LEX-P0029-V0026
+% #FIELD_VALUE: 无水乙醇浸泡时间
+% #HANDWRITTEN: 5
+\fieldvalue{\handwritten{5}} min/次，洗涤
+% #VALUE_ID: LEX-P0029-V0027
+% #FIELD_VALUE: 无水乙醇洗涤次数
+% #HANDWRITTEN: 2
+\fieldvalue{\handwritten{2}} 遍}
+\\ \hline
+\multicolumn{2}{|l|}{浸泡纯化水，洗2次，5分钟/次。} &
+\multicolumn{2}{l|}{%
+% #VALUE_ID: LEX-P0029-V0028
+% #FIELD_VALUE: 纯化水浸泡时间
+% #HANDWRITTEN: 5
+\fieldvalue{\handwritten{5}} min/次，洗涤
+% #VALUE_ID: LEX-P0029-V0029
+% #FIELD_VALUE: 纯化水洗涤次数
+% #HANDWRITTEN: 2
+\fieldvalue{\handwritten{2}} 遍}
+\\ \hline
+\multicolumn{2}{|l|}{组织切片滴加 Alcian Blue Solution 染色 30--60min} &
+\multicolumn{2}{l|}{室温留置
+% #VALUE_ID: LEX-P0029-V0030
+% #FIELD_VALUE: 室温留置时间
+% #HANDWRITTEN: 60
+\fieldvalue{\handwritten{60}} min}
+\\ \hline
+\multicolumn{2}{|l|}{浸泡纯化水，洗2次，5分钟/次。} &
+\multicolumn{2}{l|}{%
+% #VALUE_ID: LEX-P0029-V0031
+% #FIELD_VALUE: 纯化水浸泡时间
+% #HANDWRITTEN: 5
+\fieldvalue{\handwritten{5}} min/次，洗涤
+% #VALUE_ID: LEX-P0029-V0032
+% #FIELD_VALUE: 纯化水洗涤次数
+% #HANDWRITTEN: 2
+\fieldvalue{\handwritten{2}} 遍}
+\\ \hline
+\multicolumn{2}{|l|}{浸泡无水乙醇，洗2次，5分钟/次。} &
+\multicolumn{2}{l|}{%
+% #VALUE_ID: LEX-P0029-V0033
+% #FIELD_VALUE: 无水乙醇浸泡时间
+% #HANDWRITTEN: 5
+\fieldvalue{\handwritten{5}} min/次，洗涤
+% #VALUE_ID: LEX-P0029-V0034
+% #FIELD_VALUE: 无水乙醇洗涤次数
+% #HANDWRITTEN: 2
+\fieldvalue{\handwritten{2}} 遍}
+\\ \hline
+\multicolumn{2}{|l|}{浸泡二甲苯，洗2次，5分钟/次。} &
+\multicolumn{2}{l|}{%
+% #VALUE_ID: LEX-P0029-V0035
+% #FIELD_VALUE: 二甲苯浸泡时间
+% #HANDWRITTEN: 5
+\fieldvalue{\handwritten{5}} min/次，洗涤
+% #VALUE_ID: LEX-P0029-V0036
+% #FIELD_VALUE: 二甲苯洗涤次数
+% #HANDWRITTEN: 2
+\fieldvalue{\handwritten{2}} 遍}
+\\ \hline
+\multicolumn{2}{|l|}{滴加中性树脂封片，盖上盖玻片封片5 min。} &
+\multicolumn{2}{l|}{%
+% #VALUE_ID: LEX-P0029-V0037
+% #FIELD_VALUE: 树脂封片时间
+% #HANDWRITTEN: 5
+\fieldvalue{\handwritten{5}} min}
+\\ \hline
+\end{tabular}
+
+\medskip
+
+\begin{center}
+\textbf{培养图片（放大倍数：}
+% #VALUE_ID: LEX-P0029-V0038
+% #FIELD_VALUE: 放大倍数
+% #TODO #HANDWRITTEN: 4倍; 笔迹不清
+\fieldvalue{\handwritten{4}} 倍\textbf{）}
+\end{center}
+
+\noindent
+\begin{tabular}{|p{0.47\linewidth}|p{0.47\linewidth}|}
+\hline
+实验组 & 对照组 \\ \hline
+\centering A31Z2202508006--软骨--4X-T-20251024
+% TODO: 插入本页可见的实验组培养图片
+&
+\centering A31Z2202508006--软骨--4X-C-20251024
+% TODO: 插入本页可见的对照组培养图片
+\\[5.0cm] \hline
+\multicolumn{1}{|c|}{%
+% #VALUE_ID: LEX-P0029-V0039
+% #HANDWRITTEN: 瑕点(?) 2025.10.24
+% #TODO #HANDWRITTEN: 瑕点(?) 2025.10.24; 图片下方批注难以辨认
+\handwritten{瑕点(?)\ 2025.10.24}}
+&
+\multicolumn{1}{c|}{%
+% #VALUE_ID: LEX-P0029-V0040
+% #HANDWRITTEN: 染色(?) 2025.10.24
+% #TODO #HANDWRITTEN: 染色(?) 2025.10.24; 图片下方批注难以辨认
+\handwritten{染色(?)\ 2025.10.24}}
+\\ \hline
+图片保存路径 &
+% #VALUE_ID: LEX-P0029-V0041
+% #HANDWRITTEN: 14708/1/15/10A/（...）/2025/...
+% #TODO #HANDWRITTEN: 14708/1/15/10A/(...) /2025/...; 路径字迹严重不清
+\handwritten{14708/1/15/10A/(...) /2025/...}
+\\ \hline
+\end{tabular}
+
+\medskip
+
+\begin{tabular}{|p{0.48\linewidth}|p{0.20\linewidth}|p{0.20\linewidth}|}
+\hline
+\multicolumn{3}{|c|}{质量控制} \\ \hline
+阴性对照组无明显组织结构 &
+是\ 
+% #VALUE_ID: LEX-P0029-V0042
+% #FIELD_VALUE: 阴性对照组判定--是
+\fieldvalue{\checkboxfield{checked}} &
+否\ 
+% #VALUE_ID: LEX-P0029-V0043
+% #FIELD_VALUE: 阴性对照组判定--否
+\fieldvalue{\checkboxfield{unchecked}}
+\\ \hline
+污染判定 &
+污染\ 
+% #VALUE_ID: LEX-P0029-V0044
+% #FIELD_VALUE: 污染判定--污染
+\fieldvalue{\checkboxfield{unchecked}} &
+未污染\ 
+% #VALUE_ID: LEX-P0029-V0045
+% #FIELD_VALUE: 污染判定--未污染
+\fieldvalue{\checkboxfield{checked}}
+\\ \hline
+质量控制判定 &
+通过\ 
+% #VALUE_ID: LEX-P0029-V0046
+% #FIELD_VALUE: 质量控制判定--通过
+\fieldvalue{\checkboxfield{checked}} &
+不通过\ 
+% #VALUE_ID: LEX-P0029-V0047
+% #FIELD_VALUE: 质量控制判定--不通过
+\fieldvalue{\checkboxfield{unchecked}}
+\\ \hline
+\end{tabular}
+
+\begin{center}
+检测结果
+\end{center}
+
+% TODO: 本页表单在“检测结果”处结束，后续内容位于下一页。
+% LEXOID_PAGE_COMPLETED: 29/34
+
+\newpage
+
+\begin{center}
+\small
+铂华生物科技（北京）有限公司\hfill
+\textbf{原件}\hfill
+文件编号：REC-YZ-SOP-QC-03-092-d
+\hfill \textcolor{red}{受控文件}
+
+\vspace{0.3em}
+
+\begin{tabular}{|p{3.2cm}|p{10.8cm}|}
+\hline
+实验组细胞具有或被软骨分化能力
+（可见蓝色海绵状组织结构）
+&
+\begin{tabular}{@{}p{5cm}p{5cm}@{}}
+% #VALUE_ID: LEX-P0030-V0001
+% #FIELD_VALUE: 实验组细胞具有或被软骨分化能力—是
+% #HANDWRITTEN: ✓
+是\quad \fieldvalue{\handwritten{\checkboxfield{checked}}}
+&
+% #VALUE_ID: LEX-P0030-V0002
+% #FIELD_VALUE: 实验组细胞具有或被软骨分化能力—否
+否\quad \fieldvalue{\checkboxfield{unchecked}}
+\end{tabular}
+\\
+\hline
+合格标准
+&
+具有或被软骨分化能力
+\\
+\hline
+结果判定
+&
+\begin{tabular}{@{}p{5cm}p{5cm}@{}}
+% #VALUE_ID: LEX-P0030-V0003
+% #FIELD_VALUE: 结果判定—合格
+% #HANDWRITTEN: ✓
+合格\quad \fieldvalue{\handwritten{\checkboxfield{checked}}}
+&
+% #VALUE_ID: LEX-P0030-V0004
+% #FIELD_VALUE: 结果判定—不合格
+不合格\quad \fieldvalue{\checkboxfield{unchecked}}
+\end{tabular}
+\\
+\hline
+备注
+&
+% #VALUE_ID: LEX-P0030-V0005
+% #FIELD_VALUE: 备注
+% #TODO #HANDWRITTEN: ／；蓝色斜线笔迹，具体含义不明确
+\fieldvalue{\handwritten{／}}
+\\
+\hline
+实验人/日期
+&
+% #VALUE_ID: LEX-P0030-V0006
+% #FIELD_VALUE: 实验人
+% #TODO #HANDWRITTEN: 贾敏；姓名笔迹不清
+\fieldvalue{\handwritten{贾敏}}
+\qquad
+% #VALUE_ID: LEX-P0030-V0007
+% #FIELD_VALUE: 日期
+% #HANDWRITTEN: 2015.10.04
+\fieldvalue{\handwritten{2015.10.04}}
+\\
+\hline
+复核人/日期
+&
+% #VALUE_ID: LEX-P0030-V0008
+% #FIELD_VALUE: 复核人
+% #TODO #HANDWRITTEN: 姚；姓名笔迹不清，末字无法辨认
+\fieldvalue{\handwritten{姚}}
+\qquad
+% #VALUE_ID: LEX-P0030-V0009
+% #FIELD_VALUE: 日期
+% #HANDWRITTEN: 2015.10.20
+\fieldvalue{\handwritten{2015.10.20}}
+\\
+\hline
+\end{tabular}
+
+\vfill
+
+第17页 共21页
+\end{center}
+% LEXOID_PAGE_COMPLETED: 30/34
+
+\newpage
+
+\begin{center}
+\textbf{艾米近托普注射液内控批检验记录}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{0.16\linewidth}|p{0.30\linewidth}|p{0.16\linewidth}|p{0.28\linewidth}|}
+\hline
+\multicolumn{4}{|c|}{\textbf{成脂分化能力}}\\
+\hline
+样品名称 &
+\fieldvalue{艾米近托普注射液} &
+样品规格 &
+\fieldvalue{12ml：$6.0\times10^{7}$个细胞}\\
+\hline
+样品批号 &
+% #VALUE_ID: LEX-P0031-V0001
+% #FIELD_VALUE: 样品批号
+% #TODO #HANDWRITTEN: 约为 3D?2025-08; 字迹不清
+\fieldvalue{\handwritten{3D?2025-08}} &
+取样日期 &
+% #VALUE_ID: LEX-P0031-V0002
+% #FIELD_VALUE: 取样日期
+% #HANDWRITTEN: 2025年08月20日
+\fieldvalue{\handwritten{2025年08月20日}}\\
+\hline
+\end{tabular}
+\end{center}
+
+\section{仪器设备及试剂}
+
+\subsection{仪器设备}
+
+\begin{center}
+\begin{tabular}{|p{0.20\linewidth}|p{0.17\linewidth}|p{0.22\linewidth}|p{0.20\linewidth}|p{0.18\linewidth}|}
+\hline
+仪器名称 & 厂家 & 型号 & 设备编号 & 校准有效期至\\
+\hline
+\fieldvalue{生物安全柜} &
+\fieldvalue{Thermo} &
+% #VALUE_ID: LEX-P0031-V0003
+% #FIELD_VALUE: 生物安全柜型号
+% #TODO #HANDWRITTEN: 赛默飞 1384; 字迹部分不清
+\fieldvalue{\handwritten{赛默飞 1384}} &
+% #VALUE_ID: LEX-P0031-V0004
+% #FIELD_VALUE: 生物安全柜设备编号
+% #TODO #HANDWRITTEN: 11?271; 字迹不清
+\fieldvalue{\handwritten{11?271}} &
+% #VALUE_ID: LEX-P0031-V0005
+% #FIELD_VALUE: 生物安全柜校准有效期至
+% #HANDWRITTEN: 2026.02.07
+\fieldvalue{\handwritten{2026.02.07}}\\
+\hline
+\fieldvalue{二氧化碳培养箱} &
+\fieldvalue{Thermo} &
+\fieldvalue{HERA cell 250i} &
+% #VALUE_ID: LEX-P0031-V0006
+% #FIELD_VALUE: 二氧化碳培养箱设备编号
+% #TODO #HANDWRITTEN: 11/6?3; 字迹不清
+\fieldvalue{\handwritten{11/6?3}} &
+% #VALUE_ID: LEX-P0031-V0007
+% #FIELD_VALUE: 二氧化碳培养箱校准有效期至
+% #HANDWRITTEN: 2026.06.02
+\fieldvalue{\handwritten{2026.06.02}}\\
+\hline
+\fieldvalue{倒置显微镜} &
+\fieldvalue{Leica} &
+\fieldvalue{Leica Dmi} &
+% #VALUE_ID: LEX-P0031-V0008
+% #FIELD_VALUE: 倒置显微镜设备编号
+% #TODO #HANDWRITTEN: 140?39; 字迹不清
+\fieldvalue{\handwritten{140?39}} &
+% #VALUE_ID: LEX-P0031-V0009
+% #FIELD_VALUE: 倒置显微镜校准有效期至
+% #HANDWRITTEN: 2026.08.24
+\fieldvalue{\handwritten{2026.08.24}}\\
+\hline
+\fieldvalue{移液器} &
+\fieldvalue{Eppendorf} &
+% #VALUE_ID: LEX-P0031-V0010
+% #FIELD_VALUE: 移液器型号
+% #HANDWRITTEN: 70--200 $\mu$l
+\fieldvalue{\handwritten{70--200 $\mu$l$}} &
+% #VALUE_ID: LEX-P0031-V0011
+% #FIELD_VALUE: 移液器设备编号
+% #TODO #HANDWRITTEN: 04?11K; 字迹不清
+\fieldvalue{\handwritten{04?11K}} &
+% #VALUE_ID: LEX-P0031-V0012
+% #FIELD_VALUE: 移液器校准有效期至
+% #HANDWRITTEN: 2026.04.11
+\fieldvalue{\handwritten{2026.04.11}}\\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{试剂}
+
+\begin{center}
+\begin{tabular}{|p{0.28\linewidth}|p{0.22\linewidth}|p{0.18\linewidth}|p{0.17\linewidth}|p{0.12\linewidth}|}
+\hline
+试剂名称 & 厂家 & 货号 & 批号 & 有效期至\\
+\hline
+\fieldvalue{Oil Red O Staining Kit} &
+\fieldvalue{Sciencell} &
+\fieldvalue{0843} &
+% #VALUE_ID: LEX-P0031-V0013
+% #FIELD_VALUE: Oil Red O Staining Kit批号
+% #HANDWRITTEN: 346?1
+\fieldvalue{\handwritten{346?1}} &
+% #VALUE_ID: LEX-P0031-V0014
+% #FIELD_VALUE: Oil Red O Staining Kit有效期至
+% #TODO #HANDWRITTEN: ✓; 手写标记未形成日期
+\fieldvalue{\handwritten{\checkboxfield{unclear}}}\\
+\hline
+\fieldvalue{PBS} &
+\fieldvalue{Vivacell} &
+\fieldvalue{C3580-0500} &
+% #VALUE_ID: LEX-P0031-V0015
+% #FIELD_VALUE: PBS批号
+% #TODO #HANDWRITTEN: 242?4/16; 字迹不清
+\fieldvalue{\handwritten{242?4/16}} &
+% #VALUE_ID: LEX-P0031-V0016
+% #FIELD_VALUE: PBS有效期至
+% #HANDWRITTEN: 2026.09.23
+\fieldvalue{\handwritten{2026.09.23}}\\
+\hline
+\end{tabular}
+\end{center}
+
+\section{操作步骤}
+
+\begin{center}
+\begin{tabular}{|p{0.30\linewidth}|p{0.34\linewidth}|p{0.28\linewidth}|}
+\hline
+\multicolumn{3}{|c|}{溶液准备}\\
+\hline
+溶液 & 批号 & 有效期至\\
+\hline
+MSC完全培养基 &
+% #VALUE_ID: LEX-P0031-V0017
+% #FIELD_VALUE: MSC完全培养基批号
+% #TODO #HANDWRITTEN: 9?202?03-1; 字迹不清
+\fieldvalue{\handwritten{9?202?03-1}} &
+% #VALUE_ID: LEX-P0031-V0018
+% #FIELD_VALUE: MSC完全培养基有效期至
+% #HANDWRITTEN: 2025.10.24
+\fieldvalue{\handwritten{2025.10.24}}\\
+\hline
+成脂完全培养基 &
+% #VALUE_ID: LEX-P0031-V0019
+% #FIELD_VALUE: 成脂完全培养基批号
+% #TODO #HANDWRITTEN: 9?2025-07; 字迹不清
+\fieldvalue{\handwritten{9?2025-07}} &
+% #VALUE_ID: LEX-P0031-V0020
+% #FIELD_VALUE: 成脂完全培养基有效期至
+% #TODO #HANDWRITTEN: 2025.08.??; 日期部分不清
+\fieldvalue{\handwritten{2025.08.??}}\\
+\hline
+\multicolumn{3}{|c|}{细胞处理}\\
+\hline
+\multicolumn{2}{|p{0.64\linewidth}|}{
+将 $1\times10^{6}$ cells/ml 的细胞悬液取 $100\,\mu l$ 接种至 6 孔板的中，每孔补充 MSC 完全培养基 3 ml，共接种 4 孔，置于 $37^\circ$C、5\%二氧化碳培养箱中
+} &
+每孔细胞悬液液体积
+% #VALUE_ID: LEX-P0031-V0021
+% #FIELD_VALUE: 每孔细胞悬液液体积
+% #HANDWRITTEN: 100
+\fieldvalue{\handwritten{100}}\,\mu l，共
+% #VALUE_ID: LEX-P0031-V0022
+% #FIELD_VALUE: 接种孔数
+% #HANDWRITTEN: 4
+\fieldvalue{\handwritten{4}}孔\\
+\cline{3-3}
+& &
+补充MSC完全培养基体积
+% #VALUE_ID: LEX-P0031-V0023
+% #FIELD_VALUE: 补充MSC完全培养基体积
+% #HANDWRITTEN: 3
+\fieldvalue{\handwritten{3}}\,ml\\
+\cline{3-3}
+& &
+放入培养时间：
+% #VALUE_ID: LEX-P0031-V0024
+% #FIELD_VALUE: 放入培养时间
+% #TODO #HANDWRITTEN: 2025年08月25日; 日期部分不清
+\fieldvalue{\handwritten{2025年08月25日}}\\
+\cline{3-3}
+& &
+实验人/日期
+% #VALUE_ID: LEX-P0031-V0025
+% #FIELD_VALUE: 实验人/日期
+% #TODO #HANDWRITTEN: 姚?，2025.08.26; 姓名及日期部分不清
+\fieldvalue{\handwritten{姚?，2025.08.26}}\\
+\cline{3-3}
+& &
+复核人/日期
+% #VALUE_ID: LEX-P0031-V0026
+% #FIELD_VALUE: 复核人/日期
+% #TODO #HANDWRITTEN: 姚?，2025.08.27; 姓名及日期部分不清
+\fieldvalue{\handwritten{姚?，2025.08.27}}\\
+\hline
+\multicolumn{2}{|p{0.64\linewidth}|}{
+细胞培养 3 天，取实验组和对照组内的 MSC 完全培养基，实验组 2 孔每孔加入 3 ml 成脂完全培养基
+} &
+每 1 次换液时间：
+% #VALUE_ID: LEX-P0031-V0027
+% #FIELD_VALUE: 第1次换液时间
+% #HANDWRITTEN: 2025年08月28日
+\fieldvalue{\handwritten{2025年08月28日}}\\
+\cline{3-3}
+& &
+实验组
+% #VALUE_ID: LEX-P0031-V0028
+% #FIELD_VALUE: 实验组孔数
+% #HANDWRITTEN: 2
+\fieldvalue{\handwritten{2}}孔，对照组
+% #VALUE_ID: LEX-P0031-V0029
+% #FIELD_VALUE: 对照组孔数
+% #HANDWRITTEN: 2
+\fieldvalue{\handwritten{2}}孔\\
+\hline
+\end{tabular}
+\end{center}
+
+% TODO: 页面右侧表格外还有两处蓝色手写批量/体积备注，因字迹及其对应字段不明确，未纳入表格。
+% TODO: 本页内容在下一页继续。
+% LEXOID_PAGE_COMPLETED: 31/34
+
+\newpage
+
+\begin{center}
+\textbf{细胞培养及染色记录}
+\end{center}
+
+\noindent
+\begin{tabular}{|p{0.18\linewidth}|p{0.30\linewidth}|p{0.18\linewidth}|p{0.25\linewidth}|}
+\hline
+文件名称 & 铂生物 & 文件编码 & REC-YZ-SOP-OC-03-002 \\ \hline
+原件/复印件 & 原件 & 实验人/日期 &
+% #VALUE_ID: LEX-P0032-V0001
+% #FIELD_VALUE: 实验人
+% #TODO #HANDWRITTEN: 张某某; 姓名笔迹不清
+\fieldvalue{\handwritten{张某某}}\\
+&&&
+% #VALUE_ID: LEX-P0032-V0002
+% #FIELD_VALUE: 实验日期
+% #TODO #HANDWRITTEN: 2025.8.28; 日期末位笔迹不清
+\fieldvalue{\handwritten{2025.8.28}}\\ \hline
+\multicolumn{2}{|l|}{备注：对照组2孔每孔加入3 ml MSC完全培养基。}&&\\
+\multicolumn{2}{|l|}{诱导分化14--21天后，各取一孔（满足质量控制）进行固定和染色。}
+& 复核人/日期 &
+% #VALUE_ID: LEX-P0032-V0003
+% #FIELD_VALUE: 复核人
+% #TODO #HANDWRITTEN: 赵某某; 姓名笔迹不清
+\fieldvalue{\handwritten{赵某某}}\\
+&&&
+% #VALUE_ID: LEX-P0032-V0004
+% #FIELD_VALUE: 复核日期
+% #TODO #HANDWRITTEN: 2025.8.28; 日期笔迹不清
+\fieldvalue{\handwritten{2025.8.28}}\\ \hline
+\end{tabular}
+
+\vspace{2pt}
+
+\begin{center}
+\begin{tabular}{|p{0.18\linewidth}|p{0.13\linewidth}|p{0.13\linewidth}|p{0.13\linewidth}|p{0.13\linewidth}|p{0.13\linewidth}|p{0.13\linewidth}|}
+\hline
+\multicolumn{7}{|c|}{换液人员/时间}\\ \hline
+& 第2次换液 & 第3次换液 & 第4次换液 & 第5次换液 & 第6次换液 & 第7次换液 \\ \hline
+人员/日期 &
+% #VALUE_ID: LEX-P0032-V0005
+% #FIELD_VALUE: 第2次换液人员
+% #TODO #HANDWRITTEN: 张某某; 笔迹不清
+\fieldvalue{\handwritten{张某某}}\newline
+% #VALUE_ID: LEX-P0032-V0006
+% #FIELD_VALUE: 第2次换液日期
+% #TODO #HANDWRITTEN: 2025-9-5; 日期笔迹不清
+\fieldvalue{\handwritten{2025-9-5}}
+&
+% #VALUE_ID: LEX-P0032-V0007
+% #FIELD_VALUE: 第3次换液人员
+% #TODO #HANDWRITTEN: 张某某; 笔迹不清
+\fieldvalue{\handwritten{张某某}}\newline
+% #VALUE_ID: LEX-P0032-V0008
+% #FIELD_VALUE: 第3次换液日期
+% #TODO #HANDWRITTEN: 2025-9-9; 日期笔迹不清
+\fieldvalue{\handwritten{2025-9-9}}
+&
+% #VALUE_ID: LEX-P0032-V0009
+% #FIELD_VALUE: 第4次换液人员
+% #TODO #HANDWRITTEN: 张某某; 笔迹不清
+\fieldvalue{\handwritten{张某某}}\newline
+% #VALUE_ID: LEX-P0032-V0010
+% #FIELD_VALUE: 第4次换液日期
+% #TODO #HANDWRITTEN: 2025-9-9; 日期笔迹不清
+\fieldvalue{\handwritten{2025-9-9}}
+&
+% #VALUE_ID: LEX-P0032-V0011
+% #FIELD_VALUE: 第5次换液人员
+% #TODO #HANDWRITTEN: 张某某; 笔迹不清
+\fieldvalue{\handwritten{张某某}}\newline
+% #VALUE_ID: LEX-P0032-V0012
+% #FIELD_VALUE: 第5次换液日期
+% #TODO #HANDWRITTEN: 2025-9-12; 日期笔迹不清
+\fieldvalue{\handwritten{2025-9-12}}
+& & \\ \hline
+\end{tabular}
+\end{center}
+
+\noindent
+\begin{tabular}{|p{0.44\linewidth}|p{0.48\linewidth}|}
+\hline
+染色日期 &
+% #VALUE_ID: LEX-P0032-V0013
+% #FIELD_VALUE: 染色日期
+% #HANDWRITTEN: 2025年09月16日
+\fieldvalue{\handwritten{2025年09月16日}}\\ \hline
+油红O工作液配制：取3 ml Oil red O stock与2 ml纯化水混合，使用0.22 um滤过后备用。&
+纯化水：
+% #VALUE_ID: LEX-P0032-V0014
+% #FIELD_VALUE: 纯化水体积
+% #HANDWRITTEN: 2
+\fieldvalue{\handwritten{2}}\ ml\\ \hline
+轻柔吸弃培养基，每孔加入2 ml PBS洗涤细胞2遍。&
+PBS：
+% #VALUE_ID: LEX-P0032-V0015
+% #FIELD_VALUE: PBS体积
+% #HANDWRITTEN: 2
+\fieldvalue{\handwritten{2}}\ ml/孔，洗涤
+% #VALUE_ID: LEX-P0032-V0016
+% #FIELD_VALUE: PBS洗涤次数
+% #HANDWRITTEN: 2
+\fieldvalue{\handwritten{2}}\ 遍\\ \hline
+轻柔吸弃PBS，每孔2 ml加入Fixative固定15--20 min。&
+Fixative
+% #VALUE_ID: LEX-P0032-V0017
+% #FIELD_VALUE: Fixative体积
+% #HANDWRITTEN: 2
+\fieldvalue{\handwritten{2}}\ ml/孔，室温固定
+% #VALUE_ID: LEX-P0032-V0018
+% #FIELD_VALUE: 室温固定时间
+% #HANDWRITTEN: 40
+\fieldvalue{\handwritten{40}}\ min\\ \hline
+轻柔吸弃Fixative，每孔2 ml纯化水洗3遍。&
+纯化水
+% #VALUE_ID: LEX-P0032-V0019
+% #FIELD_VALUE: 纯化水体积
+% #HANDWRITTEN: 1
+\fieldvalue{\handwritten{1}}\ ml/孔，洗涤
+% #VALUE_ID: LEX-P0032-V0020
+% #FIELD_VALUE: 纯化水洗涤次数
+% #HANDWRITTEN: 3
+\fieldvalue{\handwritten{3}}\ 遍\\ \hline
+每孔2 ml加入油红O工作液进行染色，室温静置15--30 min。&
+油红O工作液体积：
+% #VALUE_ID: LEX-P0032-V0021
+% #FIELD_VALUE: 油红O工作液体积
+% #HANDWRITTEN: 2
+\fieldvalue{\handwritten{2}}\ ml/孔\\
+& 室温静置
+% #VALUE_ID: LEX-P0032-V0022
+% #FIELD_VALUE: 室温静置时间
+% #HANDWRITTEN: 20
+\fieldvalue{\handwritten{20}}\ min\\ \hline
+轻柔吸弃染色液，每孔加入2 ml纯化水洗3遍。&
+% #VALUE_ID: LEX-P0032-V0023
+% #FIELD_VALUE: 染色液体积
+% #HANDWRITTEN: 2
+\fieldvalue{\handwritten{2}}\ ml/孔纯化水，洗涤
+% #VALUE_ID: LEX-P0032-V0024
+% #FIELD_VALUE: 染色后洗涤次数
+% #HANDWRITTEN: 3
+\fieldvalue{\handwritten{3}}\ 遍\\ \hline
+每孔加1 ml纯化水，进行拍照并留档。&
+\underline{\hspace{3cm}}\ ml/孔\\ \hline
+\end{tabular}
+
+\vspace{2pt}
+
+\begin{center}
+\begin{tabular}{|p{0.48\linewidth}|p{0.48\linewidth}|}
+\hline
+实验组 & 对照组 \\ \hline
+A3Z122202508006--成脂-T-40X-20250916 &
+A3Z122202508006--成脂-C-40X-20250916 \\[2pt]
+% TODO: 页面中的实验组显微照片无可用文件名。
+\fbox{\parbox[c][3.0cm][c]{0.88\linewidth}{\centering 实验组显微照片}} &
+% TODO: 页面中的对照组显微照片无可用文件名。
+\fbox{\parbox[c][3.0cm][c]{0.88\linewidth}{\centering 对照组显微照片}} \\[2pt]
+% #VALUE_ID: LEX-P0032-V0025
+% #FIELD_VALUE: 实验组照片下方记录
+% #TODO #HANDWRITTEN: 2025/9/16; 下方蓝色笔迹部分难以辨认
+\fieldvalue{\handwritten{2025/9/16}} &
+% #VALUE_ID: LEX-P0032-V0026
+% #FIELD_VALUE: 对照组照片下方记录
+% #TODO #HANDWRITTEN: 2025/9/16; 下方蓝色笔迹部分难以辨认
+\fieldvalue{\handwritten{2025/9/16}} \\ \hline
+\multicolumn{2}{|l|}{图片保存路径：
+% #VALUE_ID: LEX-P0032-V0027
+% #FIELD_VALUE: 图片保存路径
+% #TODO #HANDWRITTEN: /2025/9/16/…; 路径及后续文字笔迹不清
+\fieldvalue{\handwritten{/2025/9/16/…}}} \\ \hline
+\multicolumn{2}{|l|}{细胞培养过程中，细胞未污染\quad 是\ 
+% #VALUE_ID: LEX-P0032-V0028
+% #FIELD_VALUE: 细胞未污染--是
+\fieldvalue{\checkboxfield{checked}}\quad 否\ 
+% #VALUE_ID: LEX-P0032-V0029
+% #FIELD_VALUE: 细胞未污染--否
+\fieldvalue{\checkboxfield{unchecked}}} \\ \hline
+\multicolumn{2}{|l|}{阴性对照组无明显橙红脂肪滴，或只有小液滴\quad 是\ 
+% #VALUE_ID: LEX-P0032-V0030
+% #FIELD_VALUE: 阴性对照组无明显橙红脂肪滴--是
+\fieldvalue{\checkboxfield{checked}}\quad 否\ 
+% #VALUE_ID: LEX-P0032-V0031
+% #FIELD_VALUE: 阴性对照组无明显橙红脂肪滴--否
+\fieldvalue{\checkboxfield{unchecked}}} \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+第 19 页 共 21 页
+\end{center}
+% LEXOID_PAGE_COMPLETED: 32/34
+
+\newpage
+
+\begin{center}
+\small
+铂星生物科技（北京）有限公司\\
+\textit{PLATINUM LIFE SCIENCE}\\[2pt]
+\begin{tabular}{|c|c|}
+\hline
+宿主生物 & \textbf{原件}\\
+\hline
+\end{tabular}
+\qquad
+文件编号：REC-YZ-SOP-QC-03-09-03-03
+\end{center}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{|p{0.43\linewidth}|p{0.47\linewidth}|}
+\hline
+\multicolumn{2}{|c|}{质量控制\hspace{3em}
+% #VALUE_ID: LEX-P0033-V0001
+% #FIELD_VALUE: 质量控制--通过
+% #HANDWRITTEN: ✓
+\fieldvalue{\handwritten{\checkboxfield{checked}}} 通过\hspace{3em}
+% #VALUE_ID: LEX-P0033-V0002
+% #FIELD_VALUE: 质量控制--不通过
+\fieldvalue{\checkboxfield{unchecked}} 不通过}\\
+\hline
+\multicolumn{2}{|c|}{\cellcolor[gray]{0.8}检测结果}\\
+\hline
+细胞具有成脂分化能力
+（可见橙红色脂肪滴）
+&
+% #VALUE_ID: LEX-P0033-V0003
+% #FIELD_VALUE: 细胞具有成脂分化能力--是
+% #HANDWRITTEN: ✓
+\fieldvalue{\handwritten{\checkboxfield{checked}}} 是\hspace{3em}
+% #VALUE_ID: LEX-P0033-V0004
+% #FIELD_VALUE: 细胞具有成脂分化能力--否
+\fieldvalue{\checkboxfield{unchecked}} 否
+\\
+\hline
+结果判定
+&
+% #VALUE_ID: LEX-P0033-V0005
+% #FIELD_VALUE: 结果判定--合格
+% #HANDWRITTEN: ✓
+\fieldvalue{\handwritten{\checkboxfield{checked}}} 合格\hspace{3em}
+% #VALUE_ID: LEX-P0033-V0006
+% #FIELD_VALUE: 结果判定--不合格
+\fieldvalue{\checkboxfield{unchecked}} 不合格
+\\
+\hline
+备注
+&
+% #VALUE_ID: LEX-P0033-V0007
+% #HANDWRITTEN: /
+\handwritten{/}
+\\
+\hline
+实验人/日期
+&
+% #VALUE_ID: LEX-P0033-V0008
+% #FIELD_VALUE: 实验人
+% #HANDWRITTEN: 姚虹
+\fieldvalue{\handwritten{姚虹}}
+\hspace{2em}
+% #VALUE_ID: LEX-P0033-V0009
+% #FIELD_VALUE: 实验日期
+% #HANDWRITTEN: 2025.9.16
+\fieldvalue{\handwritten{2025.9.16}}
+\\
+\hline
+复核人/日期
+&
+% #VALUE_ID: LEX-P0033-V0010
+% #FIELD_VALUE: 复核人
+% #HANDWRITTEN: 张某
+\fieldvalue{\handwritten{张某}}
+\hspace{2em}
+% #VALUE_ID: LEX-P0033-V0011
+% #FIELD_VALUE: 复核日期
+% #HANDWRITTEN: 2025.9.16
+\fieldvalue{\handwritten{2025.9.16}}
+\\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+第 20 页 共 21 页
+\end{center}
+% LEXOID_PAGE_COMPLETED: 33/34
+
+\newpage
+
+\begin{center}
+\textbf{艾米迈托赛注射液内控检验记录}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{0.16\linewidth}|p{0.30\linewidth}|p{0.16\linewidth}|p{0.30\linewidth}|}
+\hline
+\multicolumn{4}{|c|}{细胞内、外源病毒因子检查样品处理}\\
+\hline
+样品名称 &
+% #VALUE_ID: LEX-P0034-V0001
+% #FIELD_VALUE: 样品名称
+\fieldvalue{艾米迈托赛注射液} &
+样品规格 &
+% #VALUE_ID: LEX-P0034-V0002
+% #FIELD_VALUE: 样品规格
+\fieldvalue{12ml：$6.0\times10^{7}$个细胞}\\
+\hline
+样品批号 &
+% #VALUE_ID: LEX-P0034-V0003
+% #FIELD_VALUE: 样品批号
+% #TODO #HANDWRITTEN: A?2?202?b; handwriting unclear
+\fieldvalue{\handwritten{A?2?202?b}} &
+取样日期 &
+% #VALUE_ID: LEX-P0034-V0004
+% #FIELD_VALUE: 取样日期
+% #TODO #HANDWRITTEN: 2025年08月?日; final digit unclear
+\fieldvalue{\handwritten{2025年08月?日}}\\
+\hline
+\end{tabular}
+\end{center}
+
+\section*{1.\quad 仪器设备及试剂：}
+
+\subsection*{1.1.\quad 仪器设备：}
+
+\begin{center}
+\small
+\begin{tabular}{|p{0.19\linewidth}|p{0.13\linewidth}|p{0.14\linewidth}|p{0.17\linewidth}|p{0.18\linewidth}|p{0.12\linewidth}|}
+\hline
+仪器名称 & 厂家 & 型号 & 设备编号 & 校准有效期至 & 状态是否完好\\
+\hline
+% #VALUE_ID: LEX-P0034-V0005
+% #FIELD_VALUE: 仪器名称
+\fieldvalue{生物安全柜} &
+% #VALUE_ID: LEX-P0034-V0006
+% #FIELD_VALUE: 厂家
+\fieldvalue{Thermo} &
+% #VALUE_ID: LEX-P0034-V0007
+% #FIELD_VALUE: 型号
+% #TODO #HANDWRITTEN: 1384; handwriting unclear
+\fieldvalue{\handwritten{1384}} &
+% #VALUE_ID: LEX-P0034-V0008
+% #FIELD_VALUE: 设备编号
+% #TODO #HANDWRITTEN: 145?0; handwriting unclear
+\fieldvalue{\handwritten{145?0}} &
+% #VALUE_ID: LEX-P0034-V0009
+% #FIELD_VALUE: 校准有效期至
+% #TODO #HANDWRITTEN: 2026-?4?; handwriting unclear
+\fieldvalue{\handwritten{2026-?4?}} &
+是
+% #VALUE_ID: LEX-P0034-V0010
+% #FIELD_VALUE: 是
+% #HANDWRITTEN: ✓
+\fieldvalue{\handwritten{\checkboxfield{checked}}}
+否
+% #VALUE_ID: LEX-P0034-V0011
+% #FIELD_VALUE: 否
+\fieldvalue{\checkboxfield{unchecked}}\\
+\hline
+% #VALUE_ID: LEX-P0034-V0012
+% #FIELD_VALUE: 仪器名称
+\fieldvalue{微量冷冻离心机} &
+% #VALUE_ID: LEX-P0034-V0013
+% #FIELD_VALUE: 厂家
+\fieldvalue{Thermo} &
+% #VALUE_ID: LEX-P0034-V0014
+% #FIELD_VALUE: 型号
+\fieldvalue{Micro17R} &
+% #VALUE_ID: LEX-P0034-V0015
+% #FIELD_VALUE: 设备编号
+% #TODO #HANDWRITTEN: 14?04; handwriting unclear
+\fieldvalue{\handwritten{14?04}} &
+% #VALUE_ID: LEX-P0034-V0016
+% #FIELD_VALUE: 校准有效期至
+\fieldvalue{\handwritten{2027-05-14}} &
+是
+% #VALUE_ID: LEX-P0034-V0017
+% #FIELD_VALUE: 是
+% #HANDWRITTEN: ✓
+\fieldvalue{\handwritten{\checkboxfield{checked}}}
+否
+% #VALUE_ID: LEX-P0034-V0018
+% #FIELD_VALUE: 否
+\fieldvalue{\checkboxfield{unchecked}}\\
+\hline
+\end{tabular}
+\end{center}
+
+\section*{2.\quad 操作步骤：}
+
+\begin{center}
+\begin{tabular}{|p{0.47\linewidth}|p{0.47\linewidth}|}
+\hline
+\multicolumn{2}{|c|}{实验操作}\\
+\hline
+用灭菌剪刀剪开细胞收获物倒入50 ml离心管，用移液器量取体积，根据生产检溶液密度，确定细胞收获物的细胞总数要$>$4$\times10^{7}$个细胞，封口膜封好离心管，300$\times g$离心5分钟弃上清，细胞沉淀用8 ml三级生物反应上清液重悬，用封口膜封好后装入无菌袋内。 &
+房间编号：
+% #VALUE_ID: LEX-P0034-V0019
+% #FIELD_VALUE: 房间编号
+% #HANDWRITTEN: 250
+\fieldvalue{\handwritten{250}}\\
+&
+细胞收获物体积：
+% #VALUE_ID: LEX-P0034-V0020
+% #FIELD_VALUE: 细胞收获物体积
+% #HANDWRITTEN: 4
+\fieldvalue{\handwritten{4}} ml\\
+&
+离心
+% #VALUE_ID: LEX-P0034-V0021
+% #FIELD_VALUE: 离心速度
+% #HANDWRITTEN: 200
+\fieldvalue{\handwritten{200}} $\times g$，时间
+% #VALUE_ID: LEX-P0034-V0022
+% #FIELD_VALUE: 离心时间
+% #HANDWRITTEN: 5
+\fieldvalue{\handwritten{5}} 分钟\\
+&
+三级生物反应液置上清液：
+% #VALUE_ID: LEX-P0034-V0023
+% #FIELD_VALUE: 三级生物反应液置上清液体积
+% #HANDWRITTEN: 8
+\fieldvalue{\handwritten{8}} ml\\
+\hline
+\multicolumn{2}{|c|}{备注\quad
+% #VALUE_ID: LEX-P0034-V0024
+% #FIELD_VALUE: 备注
+% #HANDWRITTEN: /
+\fieldvalue{\handwritten{/}}}\\
+\hline
+实验人/日期 &
+% #VALUE_ID: LEX-P0034-V0025
+% #FIELD_VALUE: 实验人
+% #TODO #HANDWRITTEN: [签名]; handwriting illegible
+\fieldvalue{\handwritten{[签名]}}
+\quad
+% #VALUE_ID: LEX-P0034-V0026
+% #FIELD_VALUE: 实验日期
+% #HANDWRITTEN: 2025-08-25
+\fieldvalue{\handwritten{2025-08-25}}\\
+\hline
+复核人/日期 &
+% #VALUE_ID: LEX-P0034-V0027
+% #FIELD_VALUE: 复核人
+% #TODO #HANDWRITTEN: [签名]; handwriting illegible
+\fieldvalue{\handwritten{[签名]}}
+\quad
+% #VALUE_ID: LEX-P0034-V0028
+% #FIELD_VALUE: 复核日期
+% #HANDWRITTEN: 2025-08-25
+\fieldvalue{\handwritten{2025-08-25}}\\
+\hline
+\end{tabular}
+\end{center}
+
+\end{document}
+% LEXOID_PAGE_COMPLETED: 34/34

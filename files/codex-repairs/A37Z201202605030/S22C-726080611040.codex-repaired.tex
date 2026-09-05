@@ -1,0 +1,8324 @@
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+\documentclass[UTF8,10pt,a4paper,fontset=fandol]{ctexart}
+\usepackage{amsmath,amssymb,graphicx,tabularx,array,multirow,enumitem,titlesec,xcolor,ragged2e,etoolbox}
+\usepackage[a4paper,top=1.6cm,bottom=1.6cm,left=1.6cm,right=1.6cm]{geometry}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.15em}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\setlist[enumerate]{leftmargin=2.6em,itemsep=0.1em,topsep=0.2em}
+\titleformat{\section}{\large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{0.7em}{0.25em}
+\titlespacing*{\subsection}{0pt}{0.55em}{0.2em}
+\titlespacing*{\subsubsection}{0pt}{0.4em}{0.15em}
+\raggedbottom
+\BeforeBeginEnvironment{tabularx}{\par\noindent}
+\newcommand{\fieldvalue}[1]{#1}
+\newcommand{\handwritten}[1]{#1}
+\newcommand{\checkboxfield}[1]{\ifstrequal{#1}{checked}{☑}{\ifstrequal{#1}{unclear}{?}{☐}}}
+\begin{document}
+
+\begin{center}
+\textbf{永水性滤器使用记录}
+\end{center}
+
+\begin{center}
+\small
+文件编码：REC-YZ-SMP-PD-02-012-01 \qquad 版本号：2.0
+\end{center}
+
+% #VALUE_ID: LEX-P0001-V0001
+% #HANDWRITTEN: 郑如（不确定）
+\handwritten{郑如（不确定）}
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{|>{\RaggedRight\arraybackslash}p{2.8cm}|X|
+>{\RaggedRight\arraybackslash}p{2.8cm}|X|}
+\hline
+过滤器进厂批号 &
+\rule{0pt}{1.3em} &
+过滤器序列号 &
+% #VALUE_ID: LEX-P0001-V0002
+% #FIELD_VALUE: 过滤器序列号（第一项）
+% #TODO #HANDWRITTEN: A?-2；字迹较模糊
+\fieldvalue{\handwritten{A?-2}} \quad
+% #VALUE_ID: LEX-P0001-V0003
+% #FIELD_VALUE: 过滤器序列号（第二项）
+% #TODO #HANDWRITTEN: A?-?；字迹较模糊
+\fieldvalue{\handwritten{A?-?}} \quad
+% #VALUE_ID: LEX-P0001-V0004
+% #FIELD_VALUE: 过滤器序列号（第三项）
+% #TODO #HANDWRITTEN: B?-?；字迹较模糊
+\fieldvalue{\handwritten{B?-?}}
+\\ \hline
+使用前灭菌批号 & & 是否在有效期 &
+% #VALUE_ID: LEX-P0001-V0005
+% #FIELD_VALUE: 是否在有效期
+\fieldvalue{是}\ \ $\Box$否
+\\ \hline
+测试设备 &
+% #VALUE_ID: LEX-P0001-V0006
+% #FIELD_VALUE: 测试设备
+\fieldvalue{\checkmark\ 完整性测试仪}\quad $\Box$其他
+&
+设备编号 &
+% #VALUE_ID: LEX-P0001-V0007
+% #FIELD_VALUE: 设备编号
+\fieldvalue{\checkmark\ 1122307}\quad $\Box$其他
+\\ \hline
+\multirow{3}{*}{过滤产品名称} &
+\multicolumn{3}{X|}{
+$\Box$1\%人白蛋白冲液\quad
+$\Box$2\%人白蛋白冲液\quad
+$\Box$干细胞冻存液
+}\\
+& \multicolumn{3}{X|}{
+$\Box$氯凝胶\quad $\Box$完全培养基\quad $\Box$10\%DMSO
+}\\
+& \multicolumn{3}{X|}{
+$\Box$0.9\%氯化钠溶液\quad
+% #VALUE_ID: LEX-P0001-V0008
+% #FIELD_VALUE: 过滤产品名称（其他）
+% #TODO #HANDWRITTEN: 2hL/??；字迹不清
+\fieldvalue{\checkmark\ 其他：\handwritten{2hL/??}}
+}\\ \hline
+过滤产品批号 &
+\multicolumn{3}{X|}{
+% #VALUE_ID: LEX-P0001-V0009
+% #FIELD_VALUE: 过滤产品批号
+% #HANDWRITTEN: A3?220/20260.5030
+\fieldvalue{\handwritten{A3?220/20260.5030}}
+}\\ \hline
+\multirow{3}{*}{测试程序} &
+\multicolumn{3}{X|}{
+$\Box$C02BBSLENA1P\quad
+$\Box$L05SSSLENA1P\quad
+$\Box$C02BBSHMNA1P
+}\\
+& \multicolumn{3}{X|}{
+$\Box$L10SSSLENA1P\quad
+$\Box$L02SSSLENA1P\quad
+$\Box$L05SSSHMNA1P
+}\\
+& \multicolumn{3}{X|}{
+% #VALUE_ID: LEX-P0001-V0010
+% #FIELD_VALUE: 测试程序（其他）
+% #HANDWRITTEN: SFMES-2025
+\fieldvalue{\checkmark\ 其他：\handwritten{SFMES-2025}}
+}\\ \hline
+\multirow{3}{*}{测试前清洗} &
+\begin{tabular}{l}
+清洗介质：% #VALUE_ID: LEX-P0001-V0011
+% #FIELD_VALUE: 测试前清洗（左列清洗介质）
+\fieldvalue{\checkmark\ 纯化水}\\
+$\Box$0.5M NaOH\\
+开始时间：
+% #VALUE_ID: LEX-P0001-V0014
+% #FIELD_VALUE: 左列开始时间
+% #HANDWRITTEN: 09:44
+\fieldvalue{\handwritten{09:44}}\\
+结束时间：
+% #VALUE_ID: LEX-P0001-V0015
+% #FIELD_VALUE: 左列结束时间
+% #HANDWRITTEN: 09:46
+\fieldvalue{\handwritten{09:46}}
+\end{tabular}
+&
+\begin{tabular}{l}
+清洗介质：% #VALUE_ID: LEX-P0001-V0012
+% #FIELD_VALUE: 测试前清洗（中列清洗介质）
+\fieldvalue{\checkmark\ 纯化水}\\
+$\Box$0.5M NaOH\\
+开始时间：
+% #VALUE_ID: LEX-P0001-V0016
+% #FIELD_VALUE: 中列开始时间
+% #HANDWRITTEN: 09:50
+\fieldvalue{\handwritten{09:50}}\\
+结束时间：
+% #VALUE_ID: LEX-P0001-V0017
+% #FIELD_VALUE: 中列结束时间
+% #HANDWRITTEN: 09:52
+\fieldvalue{\handwritten{09:52}}
+\end{tabular}
+&
+\begin{tabular}{l}
+清洗介质：% #VALUE_ID: LEX-P0001-V0013
+% #FIELD_VALUE: 测试前清洗（右列清洗介质）
+\fieldvalue{\checkmark\ 纯化水}\\
+$\Box$0.5M NaOH\\
+开始时间：
+% #VALUE_ID: LEX-P0001-V0018
+% #FIELD_VALUE: 右列开始时间
+% #HANDWRITTEN: 10:15
+\fieldvalue{\handwritten{10:15}}\\
+结束时间：
+% #VALUE_ID: LEX-P0001-V0019
+% #FIELD_VALUE: 右列结束时间
+% #HANDWRITTEN: 10:17
+\fieldvalue{\handwritten{10:17}}
+\end{tabular}
+\\ \hline
+测试结果 &
+\begin{tabular}{l}
+% #VALUE_ID: LEX-P0001-V0020
+% #FIELD_VALUE: 左列测试结果
+\fieldvalue{\checkmark\ 通过}\\
+实际示点值：
+% #VALUE_ID: LEX-P0001-V0021
+% #FIELD_VALUE: 左列实际示点值
+% #HANDWRITTEN: 4650
+\fieldvalue{\handwritten{4650}}\ \mathrm{mbar}
+\end{tabular}
+&
+\begin{tabular}{l}
+% #VALUE_ID: LEX-P0001-V0022
+% #FIELD_VALUE: 中列测试结果
+\fieldvalue{\checkmark\ 通过}\\
+实际示点值：
+% #VALUE_ID: LEX-P0001-V0023
+% #FIELD_VALUE: 中列实际示点值
+% #HANDWRITTEN: 4700
+\fieldvalue{\handwritten{4700}}\ \mathrm{mbar}
+\end{tabular}
+&
+\begin{tabular}{l}
+% #VALUE_ID: LEX-P0001-V0024
+% #FIELD_VALUE: 右列测试结果
+\fieldvalue{\checkmark\ 通过}\\
+实际示点值：
+% #VALUE_ID: LEX-P0001-V0025
+% #FIELD_VALUE: 右列实际示点值
+% #HANDWRITTEN: 4800
+\fieldvalue{\handwritten{4800}}\ \mathrm{mbar}
+\end{tabular}
+\\ \hline
+测试人/日期 &
+% #VALUE_ID: LEX-P0001-V0026
+% #FIELD_VALUE: 左列测试人
+% #TODO #HANDWRITTEN: 李??；签名难以辨认
+\fieldvalue{\handwritten{李??}}\newline
+% #VALUE_ID: LEX-P0001-V0027
+% #FIELD_VALUE: 左列测试日期
+% #HANDWRITTEN: 2026.06.07
+\fieldvalue{\handwritten{2026.06.07}}
+&
+% #VALUE_ID: LEX-P0001-V0028
+% #FIELD_VALUE: 中列测试人
+% #TODO #HANDWRITTEN: 李??；签名难以辨认
+\fieldvalue{\handwritten{李??}}\newline
+% #VALUE_ID: LEX-P0001-V0029
+% #FIELD_VALUE: 中列测试日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}}
+&
+% #VALUE_ID: LEX-P0001-V0030
+% #FIELD_VALUE: 右列测试人
+% #TODO #HANDWRITTEN: 李??；签名难以辨认
+\fieldvalue{\handwritten{李??}}\newline
+% #VALUE_ID: LEX-P0001-V0031
+% #FIELD_VALUE: 右列测试日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}}
+\\ \hline
+复核人/日期 &
+% #VALUE_ID: LEX-P0001-V0032
+% #FIELD_VALUE: 左列复核人
+% #TODO #HANDWRITTEN: 李??；签名难以辨认
+\fieldvalue{\handwritten{李??}}\newline
+% #VALUE_ID: LEX-P0001-V0033
+% #FIELD_VALUE: 左列复核日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}}
+&
+% #VALUE_ID: LEX-P0001-V0034
+% #FIELD_VALUE: 中列复核人
+% #TODO #HANDWRITTEN: 李??；签名难以辨认
+\fieldvalue{\handwritten{李??}}\newline
+% #VALUE_ID: LEX-P0001-V0035
+% #FIELD_VALUE: 中列复核日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}}
+&
+% #VALUE_ID: LEX-P0001-V0036
+% #FIELD_VALUE: 右列复核人
+% #TODO #HANDWRITTEN: 李??；签名难以辨认
+\fieldvalue{\handwritten{李??}}\newline
+% #VALUE_ID: LEX-P0001-V0037
+% #FIELD_VALUE: 右列复核日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}}
+\\ \hline
+备注 &
+\multicolumn{3}{X|}{}\\ \hline
+\end{tabularx}
+\end{center}
+
+\begin{center}
+\small 第 1 页 共 1 页
+\end{center}
+
+\noindent
+\scriptsize 打印人：武其芳，打印时间：2026-06-01 15:46:50
+
+% LEXOID_PAGE_COMPLETED: 1/47
+
+\newpage
+
+\begin{center}
+\textbf{永永性滤器使用验证记录}
+\end{center}
+
+\noindent
+文档编码：REC-YZ-SMP-PD-02-01-2-01\hfill 版本号：2.0
+
+\begin{tabularx}{\textwidth}{|p{0.18\textwidth}|X|p{0.18\textwidth}|X|}
+\hline
+过滤器进/出口编号 & & 过滤器序列号 &
+% #VALUE_ID: LEX-P0002-V0001
+% #FIELD_VALUE: 过滤器序列号1
+% #TODO #HANDWRITTEN: A?-1; handwriting unclear
+\fieldvalue{\handwritten{A?-1}}\quad
+% #VALUE_ID: LEX-P0002-V0002
+% #FIELD_VALUE: 过滤器序列号2
+% #TODO #HANDWRITTEN: B?-1; handwriting unclear
+\fieldvalue{\handwritten{B?-1}}\quad
+% #VALUE_ID: LEX-P0002-V0003
+% #FIELD_VALUE: 过滤器序列号3
+% #TODO #HANDWRITTEN: A2-1; handwriting unclear
+\fieldvalue{\handwritten{A2-1}}
+\\ \cline{3-4}
+使用前灭菌批号 & & 是否在有效期内 &
+% #VALUE_ID: LEX-P0002-V0004
+% #FIELD_VALUE: 是否在有效期内
+% #HANDWRITTEN: 是
+\fieldvalue{\handwritten{是}}\quad
+% #VALUE_ID: LEX-P0002-V0005
+% #FIELD_VALUE: 过滤器序列号4
+% #TODO #HANDWRITTEN: B?-2; handwriting unclear
+\fieldvalue{\handwritten{B?-2}}\quad
+% #VALUE_ID: LEX-P0002-V0006
+% #FIELD_VALUE: 过滤器序列号5
+% #TODO #HANDWRITTEN: A?-2; handwriting unclear
+\fieldvalue{\handwritten{A?-2}}\quad
+% #VALUE_ID: LEX-P0002-V0007
+% #FIELD_VALUE: 过滤器序列号6
+% #TODO #HANDWRITTEN: A2-?; handwriting unclear
+\fieldvalue{\handwritten{A2-?}}
+\\ \hline
+测试设备 &
+% #VALUE_ID: LEX-P0002-V0008
+% #FIELD_VALUE: 测试设备
+% #HANDWRITTEN: ✓
+\fieldvalue{\handwritten{✓}}\ 灭菌器测试仪\quad
+% #VALUE_ID: LEX-P0002-V0009
+% #FIELD_VALUE: 其他测试设备
+% #HANDWRITTEN: ✓
+\fieldvalue{\handwritten{✓}}\ 其他
+&
+设备编号 &
+% #VALUE_ID: LEX-P0002-V0010
+% #FIELD_VALUE: 设备编号
+1122307
+\\ \hline
+\multicolumn{1}{|l|}{过滤产品名称} &
+\multicolumn{3}{X|}{
+$\square$1\%人自缓冲液\quad $\square$2\%人自缓冲液\quad $\square$干细胞冻存液\\
+$\square$缓解液\quad $\square$完全培养基\quad $\square$10\%DMSO\\
+$\square$0.9\%氯化钠溶液\quad
+% #VALUE_ID: LEX-P0002-V0011
+% #FIELD_VALUE: 其他过滤产品
+% #HANDWRITTEN: ✓
+\fieldvalue{\handwritten{✓}}\ 其他：
+% #VALUE_ID: LEX-P0002-V0012
+% #FIELD_VALUE: 其他过滤产品名称
+% #TODO #HANDWRITTEN: 2M(s) HeFe; handwriting unclear
+\fieldvalue{\handwritten{2M(s) HeFe}}
+}\\ \hline
+过滤产品批号 &
+\multicolumn{3}{X|}{
+% #VALUE_ID: LEX-P0002-V0013
+% #FIELD_VALUE: 过滤产品批号
+% #HANDWRITTEN: A3?220?202605030
+\fieldvalue{\handwritten{A3?220?202605030}}
+}\\ \hline
+\multirow{4}{*}{测试程序} &
+\multicolumn{3}{X|}{
+$\square$C02BBSLENA1P\quad $\square$L05SSSLENA1P\quad $\square$C02BBSHMNA1P\\
+$\square$L10SSSLENA1P\quad $\square$L20SSSLENA1P\quad $\square$L05SSSHMNA1P\\
+% #VALUE_ID: LEX-P0002-V0014
+% #FIELD_VALUE: 其他测试程序
+% #HANDWRITTEN: ✓
+\fieldvalue{\handwritten{✓}}\ 其他：
+% #VALUE_ID: LEX-P0002-V0015
+% #FIELD_VALUE: 其他测试程序名称
+% #HANDWRITTEN: SMPET-2225
+\fieldvalue{\handwritten{SMPET-2225}}
+}\\ \hline
+\multirow{9}{*}{测试前清洗} &
+\multicolumn{1}{X|}{清洗介质：$\square$纯化水\\
+$\square$0.5M NaOH\\
+开始时间：\rule{1.5cm}{0.4pt}\\
+结束时间：\rule{1.5cm}{0.4pt}} &
+\multicolumn{1}{X|}{清洗介质：$\square$纯化水\\
+$\square$0.5M NaOH\\
+开始时间：
+% #VALUE_ID: LEX-P0002-V0016
+% #FIELD_VALUE: 第一组开始时间
+% #HANDWRITTEN: 10:30
+\fieldvalue{\handwritten{10:30}}\\
+结束时间：\rule{1.5cm}{0.4pt}} &
+清洗介质：$\square$纯化水\newline
+$\square$0.5M NaOH\newline
+开始时间：
+% #VALUE_ID: LEX-P0002-V0017
+% #FIELD_VALUE: 第二组开始时间
+% #HANDWRITTEN: 10:46
+\fieldvalue{\handwritten{10:46}}\newline
+结束时间：
+% #VALUE_ID: LEX-P0002-V0018
+% #FIELD_VALUE: 第二组结束时间
+% #HANDWRITTEN: 10:47
+\fieldvalue{\handwritten{10:47}}
+\\ \cline{2-4}
+&
+\multicolumn{1}{X|}{清洗介质：$\square$纯化水\\
+$\square$0.5M NaOH\\
+开始时间：\rule{1.5cm}{0.4pt}\\
+结束时间：\rule{1.5cm}{0.4pt}} &
+\multicolumn{1}{X|}{清洗介质：$\square$纯化水\\
+$\square$0.5M NaOH\\
+开始时间：\rule{1.5cm}{0.4pt}\\
+结束时间：\rule{1.5cm}{0.4pt}} &
+清洗介质：$\square$纯化水\newline
+$\square$0.5M NaOH\newline
+开始时间：
+% #VALUE_ID: LEX-P0002-V0019
+% #FIELD_VALUE: 第三组开始时间
+% #HANDWRITTEN: 10:01
+\fieldvalue{\handwritten{10:01}}\newline
+结束时间：
+% #VALUE_ID: LEX-P0002-V0020
+% #FIELD_VALUE: 第三组结束时间
+% #HANDWRITTEN: 10:02
+\fieldvalue{\handwritten{10:02}}
+\\ \cline{2-4}
+&
+\multicolumn{1}{X|}{清洗介质：$\square$纯化水\\
+$\square$0.5M NaOH\\
+开始时间：\rule{1.5cm}{0.4pt}\\
+结束时间：\rule{1.5cm}{0.4pt}} &
+\multicolumn{1}{X|}{清洗介质：$\square$纯化水\\
+$\square$0.5M NaOH\\
+开始时间：\rule{1.5cm}{0.4pt}\\
+结束时间：\rule{1.5cm}{0.4pt}} &
+清洗介质：$\square$纯化水\newline
+$\square$0.5M NaOH\newline
+开始时间：\rule{1.5cm}{0.4pt}\newline
+结束时间：\rule{1.5cm}{0.4pt}
+\\ \hline
+测试结果 &
+\multicolumn{1}{X|}{$\square$通过，实际泄点值：
+% #VALUE_ID: LEX-P0002-V0021
+% #FIELD_VALUE: 第一组实际泄点值
+% #HANDWRITTEN: 4700
+\fieldvalue{\handwritten{4700}}\ mbar\\
+$\square$失败，失败原因：} &
+\multicolumn{1}{X|}{$\square$通过，实际泄点值：\rule{1.2cm}{0.4pt}\ mbar\\
+$\square$失败，失败原因：
+% #VALUE_ID: LEX-P0002-V0022
+% #FIELD_VALUE: 第二组失败原因
+% #TODO #HANDWRITTEN: 过滤器完整性测试异常; handwriting unclear
+\fieldvalue{\handwritten{过滤器完整性测试异常}}} &
+$\square$通过，实际泄点值：
+% #VALUE_ID: LEX-P0002-V0023
+% #FIELD_VALUE: 第三组实际泄点值
+% #HANDWRITTEN: 4000
+\fieldvalue{\handwritten{4000}}\ mbar\newline
+$\square$失败，失败原因：
+\\ \hline
+测试人/日期 &
+\multicolumn{1}{X|}{
+% #VALUE_ID: LEX-P0002-V0024
+% #FIELD_VALUE: 第一组测试日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}}} &
+\multicolumn{1}{X|}{
+% #VALUE_ID: LEX-P0002-V0025
+% #FIELD_VALUE: 第二组测试日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}}} &
+% #VALUE_ID: LEX-P0002-V0026
+% #FIELD_VALUE: 第三组测试日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}}
+\\ \hline
+复核人/日期 &
+\multicolumn{1}{X|}{
+% #VALUE_ID: LEX-P0002-V0027
+% #FIELD_VALUE: 第一组复核人
+% #TODO #HANDWRITTEN: 姓名难辨; handwritten signature unclear
+\fieldvalue{\handwritten{姓名难辨}}\quad
+% #VALUE_ID: LEX-P0002-V0028
+% #FIELD_VALUE: 第一组复核日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}}} &
+\multicolumn{1}{X|}{
+% #VALUE_ID: LEX-P0002-V0029
+% #FIELD_VALUE: 第二组复核人
+% #TODO #HANDWRITTEN: 姓名难辨; handwritten signature unclear
+\fieldvalue{\handwritten{姓名难辨}}\quad
+% #VALUE_ID: LEX-P0002-V0030
+% #FIELD_VALUE: 第二组复核日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}}} &
+% #VALUE_ID: LEX-P0002-V0031
+% #FIELD_VALUE: 第三组复核人
+% #TODO #HANDWRITTEN: 姓名难辨; handwritten signature unclear
+\fieldvalue{\handwritten{姓名难辨}}\quad
+% #VALUE_ID: LEX-P0002-V0032
+% #FIELD_VALUE: 第三组复核日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}}
+\\ \hline
+备注 &
+\multicolumn{3}{X|}{
+% #VALUE_ID: LEX-P0002-V0033
+% #FIELD_VALUE: 备注
+% #TODO #HANDWRITTEN: A2-2、A2-1及其他备注内容难辨; handwriting overlaps the row
+\fieldvalue{\handwritten{A2-2、A2-1及其他备注内容难辨}}
+}\\ \hline
+\end{tabularx}
+
+\begin{center}
+第1页 共1页
+\end{center}
+
+打印人：武志鹏；打印时间：2026-06-03 15:46:50
+
+% #VALUE_ID: LEX-P0002-V0034
+% #HANDWRITTEN: 2/47
+\handwritten{2/47}
+% LEXOID_PAGE_COMPLETED: 2/47
+
+\newpage
+
+\section*{永术性滤器使用记录}
+
+\noindent
+文件编码：REC-YZ-SMP-PD-02-012-01\qquad 版本号：2.0
+
+\begin{tabularx}{\textwidth}{|p{2.5cm}|X|p{2.5cm}|X|}
+\hline
+过滤器进厂批号 & & 过滤器序列号 &
+% #VALUE_ID: LEX-P0003-V0001
+% #FIELD_VALUE: 过滤器序列号
+% #HANDWRITTEN: B?-2-1；B?-2-2；B?-2-4
+\fieldvalue{\handwritten{B?-2-1；B?-2-2；B?-2-4}}\\
+\hline
+使用前灭菌批号 & & 是否在效期内 &
+% #VALUE_ID: LEX-P0003-V0002
+% #FIELD_VALUE: 是否在效期内
+\fieldvalue{是}\\
+\hline
+测试设备 &
+% #VALUE_ID: LEX-P0003-V0003
+% #FIELD_VALUE: 测试设备
+\fieldvalue{1122307} &
+设备编号 &
+% #VALUE_ID: LEX-P0003-V0004
+% #FIELD_VALUE: 测试设备--其他
+\fieldvalue{其他}\\
+\hline
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{|p{2.5cm}|X|}
+\hline
+过滤产品名称 &
+\begin{minipage}[t]{\linewidth}
+$\square$ 1\%人自缓冲液\quad $\square$ 2\%人自缓冲液\quad $\square$ 牛细胞冻存液\\
+$\square$ 磷酸液\quad $\square$ 完全培养基\quad $\square$ 10\%DMSO\\
+$\square$ 0.9\%氯化钠溶液\\
+% #VALUE_ID: LEX-P0003-V0005
+% #FIELD_VALUE: 过滤产品名称--其他
+% #HANDWRITTEN: NaCl/PE
+\fieldvalue{\handwritten{其他：NaCl/PE}}
+\end{minipage}\\
+\hline
+过滤产品批号 &
+% #VALUE_ID: LEX-P0003-V0006
+% #FIELD_VALUE: 过滤产品批号
+% #HANDWRITTEN: A32220/202605030
+\fieldvalue{\handwritten{A32220/202605030}}\\
+\hline
+测试程序 &
+\begin{minipage}[t]{\linewidth}
+$\square$ C02BBSLENA1P\quad $\square$ L05SSSLENA1P\quad $\square$ C02BBSHMNA1P\\
+$\square$ L10SSSLENA1P\quad $\square$ L20SSSLENA1P\quad $\square$ L05SSSHMNA1P\\
+% #VALUE_ID: LEX-P0003-V0007
+% #FIELD_VALUE: 测试程序--其他
+% #HANDWRITTEN: SMPES-2025
+\fieldvalue{\handwritten{其他：SMPES-2025}}
+\end{minipage}\\
+\hline
+\end{tabularx}
+
+\subsection*{测试前清洗}
+
+\small
+\begin{tabularx}{\textwidth}{|p{2.5cm}|X|X|X|}
+\hline
+& 第一次清洗 & 第二次清洗 & 第三次清洗\\
+\hline
+清洗前清洗 &
+\begin{minipage}[t]{\linewidth}
+% #VALUE_ID: LEX-P0003-V0008
+% #FIELD_VALUE: 第一次清洗--清洗介质
+\fieldvalue{纯化水}\\
+$\square$0.5M NaOH\\
+开始时间：
+% #VALUE_ID: LEX-P0003-V0017
+% #FIELD_VALUE: 第一次清洗--开始时间
+% #HANDWRITTEN: 11:11
+\fieldvalue{\handwritten{11:11}}\\
+结束时间：
+% #VALUE_ID: LEX-P0003-V0018
+% #FIELD_VALUE: 第一次清洗--结束时间
+% #HANDWRITTEN: ??:16
+\fieldvalue{\handwritten{??:16}}
+\end{minipage}
+&
+\begin{minipage}[t]{\linewidth}
+% #VALUE_ID: LEX-P0003-V0009
+% #FIELD_VALUE: 第二次清洗--清洗介质
+\fieldvalue{纯化水}\\
+$\square$0.5M NaOH\\
+开始时间：
+% #VALUE_ID: LEX-P0009-V0019
+% #FIELD_VALUE: 第二次清洗--开始时间
+% #HANDWRITTEN: ??:23
+\fieldvalue{\handwritten{??:23}}\\
+结束时间：
+% #VALUE_ID: LEX-P0003-V0020
+% #FIELD_VALUE: 第二次清洗--结束时间
+% #HANDWRITTEN: ??:27
+\fieldvalue{\handwritten{??:27}}
+\end{minipage}
+&
+\begin{minipage}[t]{\linewidth}
+% #VALUE_ID: LEX-P0003-V0010
+% #FIELD_VALUE: 第三次清洗--清洗介质
+\fieldvalue{纯化水}\\
+$\square$0.5M NaOH\\
+开始时间：
+% #VALUE_ID: LEX-P0003-V0021
+% #FIELD_VALUE: 第三次清洗--开始时间
+% #HANDWRITTEN: ??:34
+\fieldvalue{\handwritten{??:34}}\\
+结束时间：
+% #VALUE_ID: LEX-P0003-V0022
+% #FIELD_VALUE: 第三次清洗--结束时间
+% #HANDWRITTEN: ??:36
+\fieldvalue{\handwritten{??:36}}
+\end{minipage}\\
+\hline
+清洗中间 &
+\begin{minipage}[t]{\linewidth}
+% #VALUE_ID: LEX-P0003-V0011
+% #FIELD_VALUE: 清洗中间--第一次清洗介质
+\fieldvalue{纯化水}\\
+开始时间：\underline{\hspace{1cm}}\\
+结束时间：\underline{\hspace{1cm}}
+\end{minipage}
+&
+\begin{minipage}[t]{\linewidth}
+% #VALUE_ID: LEX-P0003-V0012
+% #FIELD_VALUE: 清洗中间--第二次清洗介质
+\fieldvalue{纯化水}\\
+开始时间：\underline{\hspace{1cm}}\\
+结束时间：\underline{\hspace{1cm}}
+\end{minipage}
+&
+\begin{minipage}[t]{\linewidth}
+% #VALUE_ID: LEX-P0003-V0013
+% #FIELD_VALUE: 清洗中间--第三次清洗介质
+\fieldvalue{纯化水}\\
+开始时间：\underline{\hspace{1cm}}\\
+结束时间：\underline{\hspace{1cm}}
+\end{minipage}\\
+\hline
+清洗后 &
+\begin{minipage}[t]{\linewidth}
+% #VALUE_ID: LEX-P0003-V0014
+% #FIELD_VALUE: 清洗后--第一次清洗介质
+\fieldvalue{纯化水}\\
+开始时间：\underline{\hspace{1cm}}\\
+结束时间：\underline{\hspace{1cm}}
+\end{minipage}
+&
+\begin{minipage}[t]{\linewidth}
+% #VALUE_ID: LEX-P0003-V0015
+% #FIELD_VALUE: 清洗后--第二次清洗介质
+\fieldvalue{纯化水}\\
+开始时间：
+% #VALUE_ID: LEX-P0003-V0023
+% #FIELD_VALUE: 清洗后--第二次清洗开始时间
+% #HANDWRITTEN: 不清晰
+\fieldvalue{\handwritten{不清晰}}\\
+结束时间：\underline{\hspace{1cm}}
+\end{minipage}
+&
+\begin{minipage}[t]{\linewidth}
+% #VALUE_ID: LEX-P0003-V0016
+% #FIELD_VALUE: 清洗后--第三次清洗介质
+\fieldvalue{纯化水}\\
+开始时间：
+% #VALUE_ID: LEX-P0003-V0024
+% #FIELD_VALUE: 清洗后--第三次清洗开始时间
+% #HANDWRITTEN: 不清晰
+\fieldvalue{\handwritten{不清晰}}\\
+结束时间：\underline{\hspace{1cm}}
+\end{minipage}\\
+\hline
+\end{tabularx}
+
+\subsection*{测试结果}
+
+\begin{tabularx}{\textwidth}{|p{2.5cm}|X|X|X|}
+\hline
+& 第一次 & 第二次 & 第三次\\
+\hline
+测试结果 &
+\begin{minipage}[t]{\linewidth}
+% #VALUE_ID: LEX-P0003-V0025
+% #FIELD_VALUE: 第一次测试结果
+\fieldvalue{通过}\\
+实际滤点值：\underline{\hspace{1cm}} mbar\\
+失败，失败原因：\\
+% #VALUE_ID: LEX-P0003-V0029
+% #FIELD_VALUE: 第一次测试失败原因
+% #HANDWRITTEN: 滤芯密封圈漏气
+\fieldvalue{\handwritten{滤芯密封圈漏气}}
+\end{minipage}
+&
+\begin{minipage}[t]{\linewidth}
+% #VALUE_ID: LEX-P0003-V0026
+% #FIELD_VALUE: 第二次测试结果
+\fieldvalue{通过}\\
+实际滤点值：
+% #VALUE_ID: LEX-P0003-V0028
+% #FIELD_VALUE: 第二次测试实际滤点值
+% #HANDWRITTEN: 4800
+\fieldvalue{\handwritten{4800}} mbar\\
+失败，失败原因：\underline{\hspace{1.5cm}}
+\end{minipage}
+&
+\begin{minipage}[t]{\linewidth}
+% #VALUE_ID: LEX-P0003-V0027
+% #FIELD_VALUE: 第三次测试结果
+\fieldvalue{通过}\\
+实际滤点值：\underline{\hspace{1cm}} mbar\\
+失败，失败原因：\\
+% #VALUE_ID: LEX-P0003-V0030
+% #FIELD_VALUE: 第三次测试失败原因
+% #HANDWRITTEN: 滤芯密封圈漏气
+\fieldvalue{\handwritten{滤芯密封圈漏气}}
+\end{minipage}\\
+\hline
+测试人/日期 &
+% #VALUE_ID: LEX-P0003-V0031
+% #FIELD_VALUE: 第一次测试人/日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}} &
+% #VALUE_ID: LEX-P0003-V0032
+% #FIELD_VALUE: 第二次测试人/日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}} &
+% #VALUE_ID: LEX-P0003-V0033
+% #FIELD_VALUE: 第三次测试人/日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}}\\
+\hline
+复核人/日期 &
+% #VALUE_ID: LEX-P0003-V0034
+% #FIELD_VALUE: 第一次复核人/日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}} &
+% #VALUE_ID: LEX-P0003-V0035
+% #FIELD_VALUE: 第二次复核人/日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}} &
+% #VALUE_ID: LEX-P0003-V0036
+% #FIELD_VALUE: 第三次复核人/日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}}\\
+\hline
+备注 &
+\multicolumn{3}{l|}{
+% #VALUE_ID: LEX-P0003-V0037
+% #FIELD_VALUE: 备注
+% #HANDWRITTEN: 见记录，异常情况已处理
+\fieldvalue{\handwritten{见记录，异常情况已处理}}}\\
+\hline
+\end{tabularx}
+
+\normalsize
+\begin{center}
+第1页 共1页
+\end{center}
+
+% #VALUE_ID: LEX-P0003-V0038
+% #HANDWRITTEN: 3/47
+\handwritten{3/47}
+% LEXOID_PAGE_COMPLETED: 3/47
+
+\newpage
+
+\begin{center}
+\textbf{永杰性滤器使用检验记录}
+\end{center}
+
+\noindent
+文件编码：REC-YZ-SMP-PD-02-12-01 \hfill 版本号：2.0
+
+\begin{tabularx}{\textwidth}{|p{2.5cm}|X|p{2.5cm}|X|}
+\hline
+过滤器进厂批号
+&
+% TODO: 蓝色斜线疑似填写痕迹，无法确认是否为有效值。
+{}
+&
+过滤器序列号
+&
+% #VALUE_ID: LEX-P0004-V0001
+% #FIELD_VALUE: 过滤器序列号
+% #TODO #HANDWRITTEN: B?-1、B?-2、B?-4；B?-?、B?-?、A?-?; 字迹不清
+\fieldvalue{\handwritten{B?-1、B?-2、B?-4；B?-?、B?-?、A?-?}}
+\\
+\hline
+使用前灭菌批号
+&
+% TODO: 蓝色斜线疑似填写痕迹，无法确认是否为有效值。
+{}
+&
+是否在有效期内
+&
+% #VALUE_ID: LEX-P0004-V0002
+% #FIELD_VALUE: 是否在有效期内
+\fieldvalue{是}
+\\
+\hline
+\multirow{2}{*}{测试设备}
+&
+$\square$完整性测试仪\quad
+$\square$其他
+&
+设备编号
+&
+% #VALUE_ID: LEX-P0004-V0003
+% #FIELD_VALUE: 测试设备
+\fieldvalue{完整性测试仪}
+\\
+\cline{3-4}
+&
+&
+&
+% #VALUE_ID: LEX-P0004-V0004
+% #FIELD_VALUE: 设备编号
+\fieldvalue{1122307}
+\\
+\hline
+\multirow{5}{*}{过滤产品名称}
+&
+$\square$1\%人血浆\quad
+$\square$2\%人血清\quad
+$\square$干细胞冻存液
+&
+&
+\\
+&
+$\square$缓冲液\quad
+$\square$完全培养基\quad
+$\square$10\%DMSO
+&
+&
+\\
+&
+$\square$0.9\%氯化钠溶液
+&
+&
+\\
+&
+% #VALUE_ID: LEX-P0004-V0005
+% #FIELD_VALUE: 过滤产品名称--其他
+\fieldvalue{\handwritten{2ml/sample}}
+&
+&
+\\
+\hline
+过滤产品批号
+&
+% #VALUE_ID: LEX-P0004-V0006
+% #FIELD_VALUE: 过滤产品批号
+% #HANDWRITTEN: A320 20260530
+\fieldvalue{\handwritten{A320 20260530}}
+&
+&
+\\
+\hline
+\multirow{4}{*}{测试程序}
+&
+$\square$C02BBSLENA1P\quad
+$\square$L05SSSLENA1P\quad
+$\square$C02BB SHMNA1P
+&
+&
+\\
+&
+$\square$L10SSSLENA1P\quad
+$\square$L20SSSLENA1P\quad
+$\square$L05SSSHMNA1P
+&
+&
+\\
+&
+% #VALUE_ID: LEX-P0004-V0007
+% #FIELD_VALUE: 测试程序--其他
+% #HANDWRITTEN: SFM/ES-22?5
+\fieldvalue{\handwritten{SFM/ES-22?5}}
+&
+&
+\\
+\hline
+\multirow{9}{*}{测试前清洗}
+&
+润洗介质：$\square$纯化水
+&
+润洗介质：$\square$纯化水
+&
+润洗介质：$\square$纯化水
+\\
+&
+$\square$0.5M NaOH
+&
+$\square$0.5M NaOH
+&
+$\square$0.5M NaOH
+\\
+&
+开始时间：
+% #VALUE_ID: LEX-P0004-V0008
+% #FIELD_VALUE: 第一组清洗开始时间
+% #HANDWRITTEN: 12:32
+\fieldvalue{\handwritten{12:32}}；
+结束时间：
+% #VALUE_ID: LEX-P0004-V0009
+% #FIELD_VALUE: 第一组清洗结束时间
+% #HANDWRITTEN: 13:24
+\fieldvalue{\handwritten{13:24}}
+&
+开始时间：
+% #VALUE_ID: LEX-P0004-V0010
+% #FIELD_VALUE: 第二组清洗开始时间
+% #HANDWRITTEN: 13:41
+\fieldvalue{\handwritten{13:41}}；
+结束时间：
+% #VALUE_ID: LEX-P0004-V0011
+% #FIELD_VALUE: 第二组清洗结束时间
+% #HANDWRITTEN: 14:42
+\fieldvalue{\handwritten{14:42}}
+&
+开始时间：
+% #VALUE_ID: LEX-P0004-V0012
+% #FIELD_VALUE: 第三组清洗开始时间
+% #HANDWRITTEN: 12:49
+\fieldvalue{\handwritten{12:49}}；
+结束时间：
+% #VALUE_ID: LEX-P0004-V0013
+% #FIELD_VALUE: 第三组清洗结束时间
+% #HANDWRITTEN: 14:00
+\fieldvalue{\handwritten{14:00}}
+\\
+\cline{2-4}
+&
+润洗介质：$\square$纯化水
+&
+润洗介质：$\square$纯化水
+&
+润洗介质：$\square$纯化水
+\\
+&
+$\square$0.5M NaOH
+&
+$\square$0.5M NaOH
+&
+$\square$0.5M NaOH
+\\
+&
+开始时间：\underline{\hspace{1cm}}；
+结束时间：\underline{\hspace{1cm}}
+&
+开始时间：\underline{\hspace{1cm}}；
+结束时间：\underline{\hspace{1cm}}
+&
+开始时间：\underline{\hspace{1cm}}；
+结束时间：\underline{\hspace{1cm}}
+\\
+\cline{2-4}
+&
+润洗介质：$\square$纯化水
+&
+润洗介质：$\square$纯化水
+&
+润洗介质：$\square$纯化水
+\\
+&
+$\square$0.5M NaOH
+&
+$\square$0.5M NaOH
+&
+$\square$0.5M NaOH
+\\
+&
+开始时间：\underline{\hspace{1cm}}；
+结束时间：\underline{\hspace{1cm}}
+&
+开始时间：\underline{\hspace{1cm}}；
+结束时间：\underline{\hspace{1cm}}
+&
+开始时间：\underline{\hspace{1cm}}；
+结束时间：\underline{\hspace{1cm}}
+\\
+\hline
+\multirow{2}{*}{测试结果}
+&
+$\square$通过，实际滤点值：
+% #VALUE_ID: LEX-P0004-V0014
+% #FIELD_VALUE: 第一组实际滤点值
+% #HANDWRITTEN: 4650
+\fieldvalue{\handwritten{4650}}\ \mathrm{mbar}
+&
+$\square$通过，实际滤点值：
+% #VALUE_ID: LEX-P0004-V0015
+% #FIELD_VALUE: 第二组实际滤点值
+% #HANDWRITTEN: 4600
+\fieldvalue{\handwritten{4600}}\ \mathrm{mbar}
+&
+$\square$通过，实际滤点值：
+% #VALUE_ID: LEX-P0004-V0016
+% #FIELD_VALUE: 第三组实际滤点值
+% #HANDWRITTEN: 4500
+\fieldvalue{\handwritten{4500}}\ \mathrm{mbar}
+\\
+&
+$\square$失败，失败原因：\underline{\hspace{2cm}}
+&
+$\square$失败，失败原因：\underline{\hspace{2cm}}
+&
+$\square$失败，失败原因：\underline{\hspace{2cm}}
+\\
+\hline
+测试人/日期
+&
+% #VALUE_ID: LEX-P0004-V0017
+% #FIELD_VALUE: 第一组测试人
+% #TODO #HANDWRITTEN: 高斌; 姓名字迹不清
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{高斌}}\quad
+% #VALUE_ID: LEX-P0004-V0018
+% #FIELD_VALUE: 第一组测试日期
+\fieldvalue{\handwritten{2026.06.08}}
+&
+% #VALUE_ID: LEX-P0004-V0019
+% #FIELD_VALUE: 第二组测试人
+% #TODO #HANDWRITTEN: 高斌; 姓名字迹不清
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{高斌}}\quad
+% #VALUE_ID: LEX-P0004-V0020
+% #FIELD_VALUE: 第二组测试日期
+\fieldvalue{\handwritten{2026.06.08}}
+&
+% #VALUE_ID: LEX-P0004-V0021
+% #FIELD_VALUE: 第三组测试人
+% #TODO #HANDWRITTEN: 高斌; 姓名字迹不清
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{高斌}}\quad
+% #VALUE_ID: LEX-P0004-V0022
+% #FIELD_VALUE: 第三组测试日期
+\fieldvalue{\handwritten{2026.06.08}}
+\\
+\hline
+复核人/日期
+&
+% #VALUE_ID: LEX-P0004-V0023
+% #FIELD_VALUE: 第一组复核人
+% #TODO #HANDWRITTEN: 赵艳; 姓名字迹不清
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{赵艳}}\quad
+% #VALUE_ID: LEX-P0004-V0024
+% #FIELD_VALUE: 第一组复核日期
+\fieldvalue{\handwritten{2026.06.08}}
+&
+% #VALUE_ID: LEX-P0004-V0025
+% #FIELD_VALUE: 第二组复核人
+% #TODO #HANDWRITTEN: 赵艳; 姓名字迹不清
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{赵艳}}\quad
+% #VALUE_ID: LEX-P0004-V0026
+% #FIELD_VALUE: 第二组复核日期
+\fieldvalue{\handwritten{2026.06.08}}
+&
+% #VALUE_ID: LEX-P0004-V0027
+% #FIELD_VALUE: 第三组复核人
+% #TODO #HANDWRITTEN: 赵艳; 姓名字迹不清
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{赵艳}}\quad
+% #VALUE_ID: LEX-P0004-V0028
+% #FIELD_VALUE: 第三组复核日期
+\fieldvalue{\handwritten{2026.06.08}}
+\\
+\hline
+备注：
+&
+\multicolumn{3}{l|}{}
+\\
+\hline
+\end{tabularx}
+
+\vfill
+
+\begin{center}
+第 1 页 共 1 页
+
+打印人：张志慧，打印时间：2026-06-01 15:46:50
+\end{center}
+% LEXOID_PAGE_COMPLETED: 4/47
+
+\newpage
+
+\begin{center}
+\textbf{永永性滤器使用记录}
+\end{center}
+
+\begin{tabularx}{\textwidth}{|p{0.18\textwidth}|X|p{0.18\textwidth}|X|}
+\hline
+过滤器进厂批号 &
+\multicolumn{1}{l|}{\phantom{填写}} &
+过滤器序列号 &
+\begin{tabular}[t]{@{}l@{}}
+% #VALUE_ID: LEX-P0005-V0001
+% #FIELD_VALUE: 过滤器序列号（第1项）
+% #HANDWRITTEN: B1? A? B2?
+\fieldvalue{\handwritten{B1? A? B2?}}\\
+% #VALUE_ID: LEX-P0005-V0002
+% #FIELD_VALUE: 过滤器序列号（第2项）
+% #HANDWRITTEN: B? A6? B?
+\fieldvalue{\handwritten{B? A6? B?}}\\
+% #VALUE_ID: LEX-P0005-V0003
+% #FIELD_VALUE: 过滤器序列号（第3项）
+% #HANDWRITTEN: B? A? B?
+\fieldvalue{\handwritten{B? A? B?}}
+\end{tabular}
+\\ \hline
+使用前灭菌批号 & \phantom{填写} &
+是否在有效期内 &
+% #VALUE_ID: LEX-P0005-V0004
+% #FIELD_VALUE: 是否在有效期内
+\fieldvalue{\checkmark 是}\quad $\square$ 否
+\\ \hline
+测试设备 &
+\begin{tabular}[t]{@{}l@{}}
+% #VALUE_ID: LEX-P0005-V0005
+% #FIELD_VALUE: 测试设备
+\fieldvalue{\checkmark 完整性测试仪}\\
+% #VALUE_ID: LEX-P0005-V0006
+% #FIELD_VALUE: 测试设备其他选项
+\fieldvalue{\checkmark 其他}
+\end{tabular}
+&
+设备编号 &
+\begin{tabular}[t]{@{}l@{}}
+$\square$ 1122307\\
+% #VALUE_ID: LEX-P0005-V0007
+% #FIELD_VALUE: 设备编号其他选项
+\fieldvalue{\checkmark 其他}
+\end{tabular}
+\\ \hline
+过滤产品名称 &
+\multicolumn{3}{l|}{
+\begin{tabular}[t]{@{}llll@{}}
+$\square$1\%人自缓冲液 & $\square$2\%人自缓冲液 & $\square$干细胞冻存液 & $\square$乳糖溶液\\
+$\square$裂解液 & $\square$完全培养基 & $\square$10\%DMSO & $\square$0.9\%氯化钠溶液\\
+% #VALUE_ID: LEX-P0005-V0008
+% #FIELD_VALUE: 过滤产品名称其他选项
+\fieldvalue{\checkmark 其他}\quad
+% #VALUE_ID: LEX-P0005-V0009
+% #FIELD_VALUE: 过滤产品名称
+% #HANDWRITTEN: 2ml/...
+\fieldvalue{\handwritten{2ml/...}}
+\end{tabular}}
+\\ \hline
+过滤产品批号 &
+\multicolumn{3}{l|}{
+% #VALUE_ID: LEX-P0005-V0010
+% #FIELD_VALUE: 过滤产品批号
+% #HANDWRITTEN: A32?202605030
+\fieldvalue{\handwritten{A32?202605030}}}
+\\ \hline
+测试程序 &
+\multicolumn{3}{l|}{
+\begin{tabular}[t]{@{}llll@{}}
+$\square$C02BBSLENA1P & $\square$L05SSSLENA1P & $\square$C02BBSHMNA1P\\
+$\square$L05SSSLENA1P & $\square$L05SSSLENA1P & $\square$L05SSSHMNA1P\\
+% #VALUE_ID: LEX-P0005-V0011
+% #FIELD_VALUE: 测试程序其他选项
+\fieldvalue{\checkmark 其他}\quad
+% #VALUE_ID: LEX-P0005-V0012
+% #FIELD_VALUE: 测试程序
+% #HANDWRITTEN: SMPES-2025
+\fieldvalue{\handwritten{SMPES-2025}}
+\end{tabular}}
+\\ \hline
+\multirow{4}{*}{测试前清洗} &
+\begin{tabular}[t]{@{}l@{}}
+清洗介质：% #VALUE_ID: LEX-P0005-V0013
+% #FIELD_VALUE: 第1列清洗介质
+\fieldvalue{\checkmark 纯化水}\\
+$\square$0.5M NaOH\\
+开始时间：
+% #VALUE_ID: LEX-P0005-V0015
+% #FIELD_VALUE: 第1列开始时间
+% #HANDWRITTEN: 14:19
+\fieldvalue{\handwritten{14:19}}\\
+结束时间：
+% #VALUE_ID: LEX-P0005-V0016
+% #FIELD_VALUE: 第1列结束时间
+% #HANDWRITTEN: 14:20
+\fieldvalue{\handwritten{14:20}}
+\end{tabular}
+&
+\begin{tabular}[t]{@{}l@{}}
+清洗介质：% #VALUE_ID: LEX-P0005-V0014
+% #FIELD_VALUE: 第2列清洗介质
+\fieldvalue{\checkmark 纯化水}\\
+$\square$0.5M NaOH\\
+开始时间：
+% #VALUE_ID: LEX-P0005-V0017
+% #FIELD_VALUE: 第2列开始时间
+% #HANDWRITTEN: 14:31
+\fieldvalue{\handwritten{14:31}}\\
+结束时间：
+% #VALUE_ID: LEX-P0005-V0018
+% #FIELD_VALUE: 第2列结束时间
+% #HANDWRITTEN: 14:38
+\fieldvalue{\handwritten{14:38}}
+\end{tabular}
+&
+\begin{tabular}[t]{@{}l@{}}
+清洗介质：% #VALUE_ID: LEX-P0005-V0019
+% #FIELD_VALUE: 第3列清洗介质
+\fieldvalue{\checkmark 纯化水}\\
+$\square$0.5M NaOH\\
+开始时间：
+% #VALUE_ID: LEX-P0005-V0020
+% #FIELD_VALUE: 第3列开始时间
+% #HANDWRITTEN: 15:36
+\fieldvalue{\handwritten{15:36}}\\
+结束时间：
+% #VALUE_ID: LEX-P0005-V0021
+% #FIELD_VALUE: 第3列结束时间
+% #HANDWRITTEN: 15:37
+\fieldvalue{\handwritten{15:37}}
+\end{tabular}
+\\ \cline{2-4}
+&
+\begin{tabular}[t]{@{}l@{}}
+清洗介质：$\square$纯化水\\
+$\square$0.5M NaOH\\
+开始时间：\underline{\hspace{1cm}}\\
+结束时间：\underline{\hspace{1cm}}
+\end{tabular}
+&
+\begin{tabular}[t]{@{}l@{}}
+清洗介质：$\square$纯化水\\
+$\square$0.5M NaOH\\
+开始时间：\underline{\hspace{1cm}}\\
+结束时间：\underline{\hspace{1cm}}
+\end{tabular}
+&
+\begin{tabular}[t]{@{}l@{}}
+清洗介质：$\square$纯化水\\
+$\square$0.5M NaOH\\
+开始时间：\underline{\hspace{1cm}}\\
+结束时间：\underline{\hspace{1cm}}
+\end{tabular}
+\\ \cline{2-4}
+&
+\begin{tabular}[t]{@{}l@{}}
+清洗介质：$\square$纯化水\\
+$\square$0.5M NaOH\\
+开始时间：\underline{\hspace{1cm}}\\
+结束时间：\underline{\hspace{1cm}}
+\end{tabular}
+&
+\begin{tabular}[t]{@{}l@{}}
+清洗介质：$\square$纯化水\\
+$\square$0.5M NaOH\\
+开始时间：\underline{\hspace{1cm}}\\
+结束时间：\underline{\hspace{1cm}}
+\end{tabular}
+&
+\begin{tabular}[t]{@{}l@{}}
+清洗介质：$\square$纯化水\\
+$\square$0.5M NaOH\\
+开始时间：\underline{\hspace{1cm}}\\
+结束时间：\underline{\hspace{1cm}}
+\end{tabular}
+\\ \cline{2-4}
+&
+\begin{tabular}[t]{@{}l@{}}
+清洗介质：$\square$纯化水\\
+$\square$0.5M NaOH\\
+开始时间：\underline{\hspace{1cm}}\\
+结束时间：\underline{\hspace{1cm}}
+\end{tabular}
+&
+\begin{tabular}[t]{@{}l@{}}
+清洗介质：$\square$纯化水\\
+$\square$0.5M NaOH\\
+开始时间：\underline{\hspace{1cm}}\\
+结束时间：\underline{\hspace{1cm}}
+\end{tabular}
+&
+\begin{tabular}[t]{@{}l@{}}
+清洗介质：$\square$纯化水\\
+$\square$0.5M NaOH\\
+开始时间：\underline{\hspace{1cm}}\\
+结束时间：\underline{\hspace{1cm}}
+\end{tabular}
+\\ \hline
+测试结果 &
+\begin{tabular}[t]{@{}l@{}}
+% #VALUE_ID: LEX-P0005-V0022
+% #FIELD_VALUE: 第1列测试结果
+\fieldvalue{\checkmark 通过，实际示点值：}\\
+% #VALUE_ID: LEX-P0005-V0025
+% #FIELD_VALUE: 第1列实际示点值
+% #HANDWRITTEN: 4650
+\fieldvalue{\handwritten{4650}}\,mbar\\
+$\square$失败，失败原因：\underline{\hspace{1cm}}
+\end{tabular}
+&
+\begin{tabular}[t]{@{}l@{}}
+% #VALUE_ID: LEX-P0005-V0023
+% #FIELD_VALUE: 第2列测试结果
+\fieldvalue{\checkmark 通过，实际示点值：}\\
+% #VALUE_ID: LEX-P0005-V0026
+% #FIELD_VALUE: 第2列实际示点值
+% #HANDWRITTEN: 4650
+\fieldvalue{\handwritten{4650}}\,mbar\\
+$\square$失败，失败原因：\underline{\hspace{1cm}}
+\end{tabular}
+&
+\begin{tabular}[t]{@{}l@{}}
+% #VALUE_ID: LEX-P0005-V0024
+% #FIELD_VALUE: 第3列测试结果
+\fieldvalue{\checkmark 通过，实际示点值：}\\
+% #VALUE_ID: LEX-P0005-V0027
+% #FIELD_VALUE: 第3列实际示点值
+% #HANDWRITTEN: 4700
+\fieldvalue{\handwritten{4700}}\,mbar\\
+$\square$失败，失败原因：\underline{\hspace{1cm}}
+\end{tabular}
+\\ \hline
+测试人/日期 &
+\begin{tabular}[t]{@{}l@{}}
+% #VALUE_ID: LEX-P0005-V0028
+% #FIELD_VALUE: 第1列测试人
+% #HANDWRITTEN: [签名，难辨]
+\fieldvalue{\handwritten{[签名，难辨]}}\\
+% #VALUE_ID: LEX-P0005-V0029
+% #FIELD_VALUE: 第1列测试日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}}
+\end{tabular}
+&
+\begin{tabular}[t]{@{}l@{}}
+% #VALUE_ID: LEX-P0005-V0030
+% #FIELD_VALUE: 第2列测试人
+% #HANDWRITTEN: [签名，难辨]
+\fieldvalue{\handwritten{[签名，难辨]}}\\
+% #VALUE_ID: LEX-P0005-V0031
+% #FIELD_VALUE: 第2列测试日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}}
+\end{tabular}
+&
+\begin{tabular}[t]{@{}l@{}}
+% #VALUE_ID: LEX-P0005-V0032
+% #FIELD_VALUE: 第3列测试人
+% #HANDWRITTEN: [签名，难辨]
+\fieldvalue{\handwritten{[签名，难辨]}}\\
+% #VALUE_ID: LEX-P0005-V0033
+% #FIELD_VALUE: 第3列测试日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}}
+\end{tabular}
+\\ \hline
+复核人/日期 &
+\begin{tabular}[t]{@{}l@{}}
+% #VALUE_ID: LEX-P0005-V0034
+% #FIELD_VALUE: 第1列复核人
+% #HANDWRITTEN: [签名，难辨]
+\fieldvalue{\handwritten{[签名，难辨]}}\\
+% #VALUE_ID: LEX-P0005-V0035
+% #FIELD_VALUE: 第1列复核日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}}
+\end{tabular}
+&
+\begin{tabular}[t]{@{}l@{}}
+% #VALUE_ID: LEX-P0005-V0036
+% #FIELD_VALUE: 第2列复核人
+% #HANDWRITTEN: [签名，难辨]
+\fieldvalue{\handwritten{[签名，难辨]}}\\
+% #VALUE_ID: LEX-P0005-V0037
+% #FIELD_VALUE: 第2列复核日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}}
+\end{tabular}
+&
+\begin{tabular}[t]{@{}l@{}}
+% #VALUE_ID: LEX-P0005-V0038
+% #FIELD_VALUE: 第3列复核人
+% #HANDWRITTEN: [签名，难辨]
+\fieldvalue{\handwritten{[签名，难辨]}}\\
+% #VALUE_ID: LEX-P0005-V0039
+% #FIELD_VALUE: 第3列复核日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}}
+\end{tabular}
+\\ \hline
+备注 & \multicolumn{3}{l|}{}
+\\ \hline
+\end{tabularx}
+
+\begin{center}
+第1页 共1页
+\end{center}
+
+% #VALUE_ID: LEX-P0005-V0040
+% #HANDWRITTEN: 5/47
+\handwritten{5/47}
+% LEXOID_PAGE_COMPLETED: 5/47
+
+\newpage
+
+\begin{center}
+\textbf{永水性滤器使用记录}
+\end{center}
+
+\noindent
+\begin{tabular}{|p{0.18\linewidth}|p{0.27\linewidth}|p{0.18\linewidth}|p{0.27\linewidth}|}
+\hline
+过滤器进厂批号 & & 过滤器序列号 &
+% #VALUE_ID: LEX-P0006-V0001
+% #FIELD_VALUE: 过滤器序列号
+% #TODO #HANDWRITTEN: [illegible]; blue handwritten serial number has several unclear characters
+\fieldvalue{\handwritten{[illegible]}}\\
+\hline
+使用前灭菌批号 &
+% #VALUE_ID: LEX-P0006-V0002
+% #FIELD_VALUE: 使用前灭菌批号
+% #TODO #HANDWRITTEN: [illegible]; handwritten batch number is partially obscured
+\fieldvalue{\handwritten{[illegible]}}
+&
+是否在有效期 &
+% #VALUE_ID: LEX-P0006-V0003
+% #FIELD_VALUE: 是否在有效期
+\fieldvalue{\checkboxfield{checked}} 是\quad
+\fieldvalue{\checkboxfield{unchecked}} 否\\
+\hline
+测试设备 &
+% #VALUE_ID: LEX-P0006-V0004
+% #FIELD_VALUE: 测试设备--完整性测试仪
+\fieldvalue{\checkboxfield{checked}} 完整性测试仪\quad
+% #VALUE_ID: LEX-P0006-V0005
+% #FIELD_VALUE: 测试设备--其他
+\fieldvalue{\checkboxfield{unchecked}} 其他
+&
+设备编号 &
+% #VALUE_ID: LEX-P0006-V0006
+% #FIELD_VALUE: 设备编号--1122307
+\fieldvalue{\checkboxfield{checked}} 1122307\quad
+% #VALUE_ID: LEX-P0006-V0007
+% #FIELD_VALUE: 设备编号--其他
+\fieldvalue{\checkboxfield{unchecked}} 其他\\
+\hline
+\multicolumn{4}{|l|}{过滤产品名称}\\
+\hline
+\multicolumn{4}{|l|}{
+% #VALUE_ID: LEX-P0006-V0008
+% #FIELD_VALUE: 过滤产品名称--1\%人自凝神液
+\fieldvalue{\checkboxfield{unchecked}} 1\%人自凝神液\quad
+% #VALUE_ID: LEX-P0006-V0009
+% #FIELD_VALUE: 过滤产品名称--2\%人自凝神液
+\fieldvalue{\checkboxfield{unchecked}} 2\%人自凝神液\quad
+% #VALUE_ID: LEX-P0006-V0010
+% #FIELD_VALUE: 过滤产品名称--干细胞冻存液
+\fieldvalue{\checkboxfield{unchecked}} 干细胞冻存液}\\
+\multicolumn{4}{|l|}{
+% #VALUE_ID: LEX-P0006-V0011
+% #FIELD_VALUE: 过滤产品名称--蛋白凝胶
+\fieldvalue{\checkboxfield{unchecked}} 蛋白凝胶\quad
+% #VALUE_ID: LEX-P0006-V0012
+% #FIELD_VALUE: 过滤产品名称--完全培养基
+\fieldvalue{\checkboxfield{unchecked}} 完全培养基\quad
+% #VALUE_ID: LEX-P0006-V0013
+% #FIELD_VALUE: 过滤产品名称--10\%DMSO
+\fieldvalue{\checkboxfield{unchecked}} 10\%DMSO}\\
+\multicolumn{4}{|l|}{
+% #VALUE_ID: LEX-P0006-V0014
+% #FIELD_VALUE: 过滤产品名称--0.9\%氯化钠溶液
+\fieldvalue{\checkboxfield{unchecked}} 0.9\%氯化钠溶液\quad
+% #VALUE_ID: LEX-P0006-V0015
+% #FIELD_VALUE: 过滤产品名称--其他
+\fieldvalue{\checkboxfield{checked}} 其他：
+% #VALUE_ID: LEX-P0006-V0016
+% #FIELD_VALUE: 过滤产品名称--其他内容
+% #TODO #HANDWRITTEN: 2?hasafe; handwritten product name is unclear
+\fieldvalue{\handwritten{2?hasafe}}}\\
+\hline
+过滤产品批号 &
+\multicolumn{3}{l|}{
+% #VALUE_ID: LEX-P0006-V0017
+% #FIELD_VALUE: 过滤产品批号
+% #HANDWRITTEN: A3720/20260530
+\fieldvalue{\handwritten{A3720/20260530}}}\\
+\hline
+测试程序 &
+\multicolumn{3}{l|}{
+% #VALUE_ID: LEX-P0006-V0018
+% #FIELD_VALUE: 测试程序--C02BBSLENA1P
+\fieldvalue{\checkboxfield{unchecked}} C02BBSLENA1P\quad
+% #VALUE_ID: LEX-P0006-V0019
+% #FIELD_VALUE: 测试程序--L0SSSLENA1P
+\fieldvalue{\checkboxfield{unchecked}} L0SSSLENA1P\quad
+% #VALUE_ID: LEX-P0006-V0020
+% #FIELD_VALUE: 测试程序--C02BSSHMNA1P
+\fieldvalue{\checkboxfield{unchecked}} C02BSSHMNA1P}\\
+\multicolumn{4}{|l|}{
+% #VALUE_ID: LEX-P0006-V0021
+% #FIELD_VALUE: 测试程序--L0SSSLENA1P
+\fieldvalue{\checkboxfield{unchecked}} L0SSSLENA1P\quad
+% #VALUE_ID: LEX-P0006-V0022
+% #FIELD_VALUE: 测试程序--L0SSSLHMNA1P
+\fieldvalue{\checkboxfield{unchecked}} L0SSSLHMNA1P\quad
+% #VALUE_ID: LEX-P0006-V0023
+% #FIELD_VALUE: 测试程序--其他
+\fieldvalue{\checkboxfield{checked}} 其他：
+% #VALUE_ID: LEX-P0006-V0024
+% #FIELD_VALUE: 测试程序--其他内容
+% #TODO #HANDWRITTEN: SFM?S?2S; handwritten procedure code is unclear
+\fieldvalue{\handwritten{SFM?S?2S}}}\\
+\hline
+\multicolumn{4}{|c|}{测试前清洗}\\
+\hline
+测试前清洗 &
+\begin{tabular}{l}
+清洗介质：
+% #VALUE_ID: LEX-P0006-V0025
+% #FIELD_VALUE: 测试前清洗第1列--纯化水
+\fieldvalue{\checkboxfield{checked}}纯化水\\
+% #VALUE_ID: LEX-P0006-V0026
+% #FIELD_VALUE: 测试前清洗第1列--0.5M NaOH
+\fieldvalue{\checkboxfield{unchecked}}0.5MNaOH\\
+开始时间：
+% #VALUE_ID: LEX-P0006-V0027
+% #FIELD_VALUE: 测试前清洗第1列--开始时间
+% #HANDWRITTEN: 08:37
+\fieldvalue{\handwritten{08:37}}\\
+结束时间：
+% #VALUE_ID: LEX-P0006-V0028
+% #FIELD_VALUE: 测试前清洗第1列--结束时间
+% #HANDWRITTEN: 08:?? 
+\fieldvalue{\handwritten{08:??}}
+\end{tabular}
+&
+\begin{tabular}{l}
+清洗介质：
+% #VALUE_ID: LEX-P000029
+% #FIELD_VALUE: 测试前清洗第2列--纯化水
+\fieldvalue{\checkboxfield{checked}}纯化水\\
+% #VALUE_ID: LEX-P0006-V0030
+% #FIELD_VALUE: 测试前清洗第2列--0.5M NaOH
+\fieldvalue{\checkboxfield{unchecked}}0.5MNaOH\\
+开始时间：
+% #VALUE_ID: LEX-P0006-V0031
+% #FIELD_VALUE: 测试前清洗第2列--开始时间
+% #HANDWRITTEN: 10:17
+\fieldvalue{\handwritten{10:17}}\\
+结束时间：
+% #VALUE_ID: LEX-P0006-V0032
+% #FIELD_VALUE: 测试前清洗第2列--结束时间
+% #HANDWRITTEN: 10:17
+\fieldvalue{\handwritten{10:17}}
+\end{tabular}
+&
+\begin{tabular}{l}
+清洗介质：
+% #VALUE_ID: LEX-P0006-V0033
+% #FIELD_VALUE: 测试前清洗第3列--纯化水
+\fieldvalue{\checkboxfield{checked}}纯化水\\
+% #VALUE_ID: LEX-P0006-V0034
+% #FIELD_VALUE: 测试前清洗第3列--0.5M NaOH
+\fieldvalue{\checkboxfield{unchecked}}0.5MNaOH\\
+开始时间：
+% #VALUE_ID: LEX-P0006-V0035
+% #FIELD_VALUE: 测试前清洗第3列--开始时间
+% #HANDWRITTEN: 10:31
+\fieldvalue{\handwritten{10:31}}\\
+结束时间：
+% #VALUE_ID: LEX-P0006-V0036
+% #FIELD_VALUE: 测试前清洗第3列--结束时间
+% #HANDWRITTEN: 10:32
+\fieldvalue{\handwritten{10:32}}
+\end{tabular}\\
+\hline
+\multicolumn{4}{|c|}{其余清洗介质及时间栏均未填写；本页表格内容至此结束。}\\
+\hline
+测试结果 &
+\begin{tabular}{l}
+% #VALUE_ID: LEX-P0006-V0037
+% #FIELD_VALUE: 测试结果第1列--通过
+\fieldvalue{\checkboxfield{checked}}通过，实际示点值：
+% #VALUE_ID: LEX-P0006-V0038
+% #FIELD_VALUE: 测试结果第1列--实际示点值
+% #HANDWRITTEN: 4600
+\fieldvalue{\handwritten{4600}}\,mbar\\
+% #VALUE_ID: LEX-P0006-V0039
+% #FIELD_VALUE: 测试结果第1列--失败
+\fieldvalue{\checkboxfield{unchecked}}失败，失败原因：
+\end{tabular}
+&
+\begin{tabular}{l}
+% #VALUE_ID: LEX-P0006-V0040
+% #FIELD_VALUE: 测试结果第2列--通过
+\fieldvalue{\checkboxfield{checked}}通过，实际示点值：
+% #VALUE_ID: LEX-P0006-V0041
+% #FIELD_VALUE: 测试结果第2列--实际示点值
+% #HANDWRITTEN: 4650
+\fieldvalue{\handwritten{4650}}\,mbar\\
+% #VALUE_ID: LEX-P0006-V0042
+% #FIELD_VALUE: 测试结果第2列--失败
+\fieldvalue{\checkboxfield{unchecked}}失败，失败原因：
+\end{tabular}
+&
+\begin{tabular}{l}
+% #VALUE_ID: LEX-P0006-V0043
+% #FIELD_VALUE: 测试结果第3列--通过
+\fieldvalue{\checkboxfield{checked}}通过，实际示点值：
+% #VALUE_ID: LEX-P0006-V0044
+% #FIELD_VALUE: 测试结果第3列--实际示点值
+% #HANDWRITTEN: 4600
+\fieldvalue{\handwritten{4600}}\,mbar\\
+% #VALUE_ID: LEX-P0006-V0045
+% #FIELD_VALUE: 测试结果第3列--失败
+\fieldvalue{\checkboxfield{unchecked}}失败，失败原因：
+\end{tabular}\\
+\hline
+测试人/日期 &
+% #VALUE_ID: LEX-P0006-V0046
+% #FIELD_VALUE: 测试人第1列
+% #HANDWRITTEN: [illegible]
+\fieldvalue{\handwritten{[illegible]}} /
+% #VALUE_ID: LEX-P0006-V0047
+% #FIELD_VALUE: 测试日期第1列
+% #HANDWRITTEN: 2026.06.09
+\fieldvalue{\handwritten{2026.06.09}}
+&
+% #VALUE_ID: LEX-P0006-V0048
+% #FIELD_VALUE: 测试人第2列
+% #HANDWRITTEN: [illegible]
+\fieldvalue{\handwritten{[illegible]}} /
+% #VALUE_ID: LEX-P0006-V0049
+% #FIELD_VALUE: 测试日期第2列
+% #HANDWRITTEN: 2026.06.10
+\fieldvalue{\handwritten{2026.06.10}}
+&
+% #VALUE_ID: LEX-P0006-V0050
+% #FIELD_VALUE: 测试人第3列
+% #HANDWRITTEN: [illegible]
+\fieldvalue{\handwritten{[illegible]}} /
+% #VALUE_ID: LEX-P0006-V0051
+% #FIELD_VALUE: 测试日期第3列
+% #HANDWRITTEN: 2026.06.10
+\fieldvalue{\handwritten{2026.06.10}}\\
+\hline
+复核人/日期 &
+% #VALUE_ID: LEX-P0006-V0052
+% #FIELD_VALUE: 复核人第1列
+% #HANDWRITTEN: [illegible]
+\fieldvalue{\handwritten{[illegible]}} /
+% #VALUE_ID: LEX-P0006-V0053
+% #FIELD_VALUE: 复核日期第1列
+% #HANDWRITTEN: 2026.06.09
+\fieldvalue{\handwritten{2026.06.09}}
+&
+% #VALUE_ID: LEX-P0006-V0054
+% #FIELD_VALUE: 复核人第2列
+% #HANDWRITTEN: [illegible]
+\fieldvalue{\handwritten{[illegible]}} /
+% #VALUE_ID: LEX-P0006-V0055
+% #FIELD_VALUE: 复核日期第2列
+% #HANDWRITTEN: 2024.06.10
+\fieldvalue{\handwritten{2024.06.10}}
+&
+% #VALUE_ID: LEX-P0006-V0056
+% #FIELD_VALUE: 复核人第3列
+% #HANDWRITTEN: [illegible]
+\fieldvalue{\handwritten{[illegible]}} /
+% #VALUE_ID: LEX-P0006-V0057
+% #FIELD_VALUE: 复核日期第3列
+% #HANDWRITTEN: 2024.06.10
+\fieldvalue{\handwritten{2024.06.10}}\\
+\hline
+备注 &
+\multicolumn{3}{l|}{
+% #VALUE_ID: LEX-P0006-V0058
+% #FIELD_VALUE: 备注
+% #HANDWRITTEN: /
+\fieldvalue{\handwritten{/}}}\\
+\hline
+\end{tabular}
+
+\begin{center}
+第 1 页 共 1 页
+\end{center}
+
+% #VALUE_ID: LEX-P0006-V0059
+% #HANDWRITTEN: 6/47
+\handwritten{6/47}
+% LEXOID_PAGE_COMPLETED: 6/47
+
+\newpage
+
+\section*{永米性滤器使用记录}
+
+\noindent
+文件编码：REC-YZ-SMP-PD-02-012-01 \qquad 版本号：2.0
+
+\begin{tabular}{|p{0.18\linewidth}|p{0.30\linewidth}|p{0.18\linewidth}|p{0.30\linewidth}|}
+\hline
+过滤器进厂批号 &
+% #VALUE_ID: LEX-P0007-V0001
+% #FIELD_VALUE: 过滤器进厂批号
+% #HANDWRITTEN: 2024.06.10
+\fieldvalue{\handwritten{2024.06.10}} &
+过滤器序列号 &
+% #VALUE_ID: LEX-P0007-V0002
+% #FIELD_VALUE: 过滤器序列号
+% #HANDWRITTEN: AF1-MA-BP1 / AA4-4
+\fieldvalue{\handwritten{AF1-MA-BP1 / AA4-4}} \\
+\hline
+使用前灭菌批号 & &
+是否在有效期内 &
+% #VALUE_ID: LEX-P0007-V0003
+% #FIELD_VALUE: 是否在有效期内—是
+\fieldvalue{\handwritten{\checkboxfield{checked}}} 是 \quad
+% #VALUE_ID: LEX-P0007-V0004
+% #FIELD_VALUE: 是否在有效期内—否
+\fieldvalue{\checkboxfield{unchecked}} 否 \\
+\hline
+测试设备 &
+% #VALUE_ID: LEX-P0007-V0005
+% #FIELD_VALUE: 测试设备—完整性测试仪
+\fieldvalue{\checkboxfield{unchecked}} 完整性测试仪 \quad
+% #VALUE_ID: LEX-P0007-V0006
+% #FIELD_VALUE: 测试设备—其他
+\fieldvalue{\checkboxfield{unchecked}} 其他 &
+设备编号 &
+% #VALUE_ID: LEX-P0007-V0007
+% #FIELD_VALUE: 设备编号—122307
+\fieldvalue{\handwritten{\checkboxfield{checked}}} 122307 \quad
+% #VALUE_ID: LEX-P0007-V0008
+% #FIELD_VALUE: 设备编号—其他
+\fieldvalue{\checkboxfield{unchecked}} 其他 \\
+\hline
+\multicolumn{4}{|l|}{过滤产品名称：} \\
+\hline
+\multicolumn{4}{|l|}{
+% #VALUE_ID: LEX-P0007-V0009
+% #FIELD_VALUE: 过滤产品名称—1\%人血清冲液
+\fieldvalue{\checkboxfield{unchecked}} 1\%人自凝冲液 \quad
+% #VALUE_ID: LEX-P0007-V0010
+% #FIELD_VALUE: 过滤产品名称—2\%人自凝冲液
+\fieldvalue{\checkboxfield{unchecked}} 2\%人自凝冲液 \quad
+% #VALUE_ID: LEX-P0007-V0011
+% #FIELD_VALUE: 细胞滤液
+\fieldvalue{\checkboxfield{unchecked}} 细胞滤液 \\
+% #VALUE_ID: LEX-P0007-V0012
+% #FIELD_VALUE: 过滤产品名称—生理盐水
+\fieldvalue{\checkboxfield{unchecked}} 生理盐水 \quad
+% #VALUE_ID: LEX-P0007-V0013
+% #FIELD_VALUE: 过滤产品名称—完全培养基
+\fieldvalue{\checkboxfield{unchecked}} 完全培养基 \quad
+% #VALUE_ID: LEX-P0007-V0014
+% #FIELD_VALUE: 过滤产品名称—10\%DMSO
+\fieldvalue{\checkboxfield{unchecked}} 10\%DMSO \\
+% #VALUE_ID: LEX-P0007-V0015
+% #FIELD_VALUE: 过滤产品名称—0.9\%氯化钠溶液
+\fieldvalue{\checkboxfield{unchecked}} 0.9\%氯化钠溶液 \quad
+% #VALUE_ID: LEX-P0007-V0016
+% #FIELD_VALUE: 过滤产品名称—其他
+% #HANDWRITTEN: zhush e ye
+\fieldvalue{\handwritten{\checkboxfield{checked}\;zhush e ye}} 其他
+} \\
+\hline
+过滤产品批号 &
+% #VALUE_ID: LEX-P0007-V0017
+% #FIELD_VALUE: 过滤产品批号
+% #HANDWRITTEN: A372201 20260530
+\fieldvalue{\handwritten{A372201\ 20260530}} &
+\multicolumn{2}{l|}{} \\
+\hline
+\multicolumn{4}{|l|}{测试程序：} \\
+\hline
+\multicolumn{4}{|l|}{
+% #VALUE_ID: LEX-P0007-V0018
+% #FIELD_VALUE: 测试程序—C02BBSLENA1P
+\fieldvalue{\checkboxfield{unchecked}} C02BBSLENA1P \quad
+% #VALUE_ID: LEX-P0007-V0019
+% #FIELD_VALUE: 测试程序—L05SSSLENA1P
+\fieldvalue{\checkboxfield{unchecked}} L05SSSLENA1P \quad
+% #VALUE_ID: LEX-P0007-V0020
+% #FIELD_VALUE: 测试程序—C02BBSHMNA1P
+\fieldvalue{\checkboxfield{unchecked}} C02BBSHMNA1P \\
+% #VALUE_ID: LEX-P0007-V0021
+% #FIELD_VALUE: 测试程序—L10SSSLENA1P
+\fieldvalue{\checkboxfield{unchecked}} L10SSSLENA1P \quad
+% #VALUE_ID: LEX-P0007-V0022
+% #FIELD_VALUE: 测试程序—L02SSSLENA1P
+\fieldvalue{\checkboxfield{unchecked}} L02SSSLENA1P \quad
+% #VALUE_ID: LEX-P0007-V0023
+% #FIELD_VALUE: 测试程序—L05SSSHMNA1P
+\fieldvalue{\checkboxfield{unchecked}} L05SSSHMNA1P \\
+% #VALUE_ID: LEX-P0007-V0024
+% #FIELD_VALUE: 测试程序—其他
+% #HANDWRITTEN: S4MPZS-2025
+\fieldvalue{\handwritten{\checkboxfield{checked}\;S4MPZS-2025}} 其他
+} \\
+\hline
+\end{tabular}
+
+\medskip
+
+\noindent
+\begin{tabular}{|p{0.18\linewidth}|p{0.25\linewidth}|p{0.25\linewidth}|p{0.25\linewidth}|}
+\hline
+\multirow{3}{*}{测试前润洗}
+&
+润洗介质：
+% #VALUE_ID: LEX-P0007-V0025
+% #FIELD_VALUE: 第一组第一格—润洗介质
+\fieldvalue{\handwritten{\checkboxfield{checked}}}纯化水
+
+% #VALUE_ID: LEX-P0007-V0026
+% #FIELD_VALUE: 第一组第一格—0.5M NaOH
+\fieldvalue{\checkboxfield{unchecked}}0.5MNaOH
+
+开始时间：
+% #VALUE_ID: LEX-P0007-V0027
+% #FIELD_VALUE: 第一组第一格—开始时间
+% #HANDWRITTEN: 10:48
+\fieldvalue{\handwritten{10:48}}
+
+结束时间：
+% #VALUE_ID: LEX-P0007-V0028
+% #FIELD_VALUE: 第一组第一格—结束时间
+% #HANDWRITTEN: 12:48
+\fieldvalue{\handwritten{12:48}}
+&
+润洗介质：
+% #VALUE_ID: LEX-P0007-V0029
+% #FIELD_VALUE: 第一组第二格—润洗介质
+\fieldvalue{\handwritten{\checkboxfield{checked}}}纯化水
+
+% #VALUE_ID: LEX-P0007-V0030
+% #FIELD_VALUE: 第一组第二格—0.5M NaOH
+\fieldvalue{\checkboxfield{unchecked}}0.5MNaOH
+
+开始时间：
+% #VALUE_ID: LEX-P0007-V0031
+% #FIELD_VALUE: 第一组第二格—开始时间
+% #HANDWRITTEN: 11:02
+\fieldvalue{\handwritten{11:02}}
+
+结束时间：
+% #VALUE_ID: LEX-P0007-V0032
+% #FIELD_VALUE: 第一组第二格—结束时间
+% #HANDWRITTEN: 11:02
+\fieldvalue{\handwritten{11:02}}
+&
+润洗介质：
+% #VALUE_ID: LEX-P0007-V0033
+% #FIELD_VALUE: 第一组第三格—润洗介质
+\fieldvalue{\checkboxfield{unchecked}}纯化水
+
+% #VALUE_ID: LEX-P0007-V0034
+% #FIELD_VALUE: 第一组第三格—0.5M NaOH
+\fieldvalue{\checkboxfield{unchecked}}0.5MNaOH
+
+开始时间：\underline{\hspace{1cm}}
+
+结束时间：\underline{\hspace{1cm}}
+\\
+\cline{2-4}
+&
+润洗介质：
+% #VALUE_ID: LEX-P0007-V0035
+% #FIELD_VALUE: 第二组第一格—润洗介质
+\fieldvalue{\handwritten{\checkboxfield{checked}}}纯化水
+
+% #VALUE_ID: LEX-P0007-V0036
+% #FIELD_VALUE: 第二组第一格—0.5M NaOH
+\fieldvalue{\checkboxfield{unchecked}}0.5MNaOH
+
+开始时间：
+% #VALUE_ID: LEX-P0007-V0037
+% #FIELD_VALUE: 第二组第一格—开始时间
+% #HANDWRITTEN: 10:??
+\fieldvalue{\handwritten{10:??}}
+
+结束时间：\underline{\hspace{1cm}}
+&
+润洗介质：
+% #VALUE_ID: LEX-P0007-V0038
+% #FIELD_VALUE: 第二组第二格—润洗介质
+\fieldvalue{\handwritten{\checkboxfield{checked}}}纯化水
+
+% #VALUE_ID: LEX-P0007-V0039
+% #FIELD_VALUE: 第二组第二格—0.5M NaOH
+\fieldvalue{\checkboxfield{unchecked}}0.5MNaOH
+
+开始时间：
+% #VALUE_ID: LEX-P0007-V0040
+% #FIELD_VALUE: 第二组第二格—开始时间
+% #HANDWRITTEN: 11:??
+\fieldvalue{\handwritten{11:??}}
+
+结束时间：\underline{\hspace{1cm}}
+&
+润洗介质：
+% #VALUE_ID: LEX-P0007-V0041
+% #FIELD_VALUE: 第二组第三格—润洗介质
+\fieldvalue{\handwritten{\checkboxfield{checked}}}纯化水
+
+% #VALUE_ID: LEX-P0007-V0042
+% #FIELD_VALUE: 第二组第三格—0.5M NaOH
+\fieldvalue{\checkboxfield{unchecked}}0.5MNaOH
+
+开始时间：\underline{\hspace{1cm}}
+
+结束时间：\underline{\hspace{1cm}}
+\\
+\cline{2-4}
+&
+润洗介质：
+% #VALUE_ID: LEX-P0007-V0043
+% #FIELD_VALUE: 第三组第一格—润洗介质
+\fieldvalue{\handwritten{\checkboxfield{checked}}}纯化水
+
+% #VALUE_ID: LEX-P0007-V0044
+% #FIELD_VALUE: 第三组第一格—0.5M NaOH
+\fieldvalue{\checkboxfield{unchecked}}0.5MNaOH
+
+开始时间：
+% #VALUE_ID: LEX-P0007-V0045
+% #FIELD_VALUE: 第三组第一格—开始时间
+% #HANDWRITTEN: 10:??
+\fieldvalue{\handwritten{10:??}}
+
+结束时间：\underline{\hspace{1cm}}
+&
+润洗介质：
+% #VALUE_ID: LEX-P0007-V0046
+% #FIELD_VALUE: 第三组第二格—润洗介质
+\fieldvalue{\handwritten{\checkboxfield{checked}}}纯化水
+
+% #VALUE_ID: LEX-P0007-V0047
+% #FIELD_VALUE: 第三组第二格—0.5M NaOH
+\fieldvalue{\checkboxfield{unchecked}}0.5MNaOH
+
+开始时间：\underline{\hspace{1cm}}
+
+结束时间：\underline{\hspace{1cm}}
+&
+润洗介质：
+% #VALUE_ID: LEX-P0007-V0048
+% #FIELD_VALUE: 第三组第三格—润洗介质
+\fieldvalue{\handwritten{\checkboxfield{checked}}}纯化水
+
+% #VALUE_ID: LEX-P0007-V0049
+% #FIELD_VALUE: 第三组第三格—0.5M NaOH
+\fieldvalue{\checkboxfield{unchecked}}0.5MNaOH
+
+开始时间：
+% #VALUE_ID: LEX-P0007-V0050
+% #FIELD_VALUE: 第三组第三格—开始时间
+% #HANDWRITTEN: 10:??
+\fieldvalue{\handwritten{10:??}}
+
+结束时间：\underline{\hspace{1cm}}
+\\
+\hline
+测试结果
+&
+% #VALUE_ID: LEX-P0007-V0051
+% #FIELD_VALUE: 第一组测试结果—通过
+\fieldvalue{\handwritten{\checkboxfield{checked}}}通过，实际滤点值：
+% #VALUE_ID: LEX-P0007-V0052
+% #FIELD_VALUE: 第一组实际滤点值
+% #HANDWRITTEN: 4700
+\fieldvalue{\handwritten{4700}}\ \mathrm{mbar}
+
+% #VALUE_ID: LEX-P0007-V0053
+% #FIELD_VALUE: 第一组测试结果—失败
+\fieldvalue{\checkboxfield{unchecked}}失败，失败原因：\underline{\hspace{1cm}}
+&
+% #VALUE_ID: LEX-P0007-V0054
+% #FIELD_VALUE: 第二组测试结果—通过
+\fieldvalue{\handwritten{\checkboxfield{checked}}}通过，实际滤点值：
+% #VALUE_ID: LEX-P0007-V0055
+% #FIELD_VALUE: 第二组实际滤点值
+% #HANDWRITTEN: 4800
+\fieldvalue{\handwritten{4800}}\ \mathrm{mbar}
+
+% #VALUE_ID: LEX-P0007-V0056
+% #FIELD_VALUE: 第二组测试结果—失败
+\fieldvalue{\checkboxfield{unchecked}}失败，失败原因：\underline{\hspace{1cm}}
+&
+% #VALUE_ID: LEX-P0007-V0057
+% #FIELD_VALUE: 第三组测试结果—通过
+\fieldvalue{\checkboxfield{unchecked}}通过，实际滤点值：\underline{\hspace{1cm}}\ \mathrm{mbar}
+
+% #VALUE_ID: LEX-P0007-V0058
+% #FIELD_VALUE: 第三组测试结果—失败
+\fieldvalue{\checkboxfield{unchecked}}失败，失败原因：\underline{\hspace{1cm}}
+\\
+\hline
+测试人/日期
+&
+% #VALUE_ID: LEX-P0007-V0059
+% #FIELD_VALUE: 第一组测试人/日期
+% #HANDWRITTEN: 刘海玲 2024.06.10
+\fieldvalue{\handwritten{刘海玲\ 2024.06.10}}
+&
+% #VALUE_ID: LEX-P0007-V0060
+% #FIELD_VALUE: 第二组测试人/日期
+% #HANDWRITTEN: 刘海玲 2024.06.10
+\fieldvalue{\handwritten{刘海玲\ 2024.06.10}}
+&
+\\
+\hline
+复核人/日期
+&
+% #VALUE_ID: LEX-P0007-V0061
+% #FIELD_VALUE: 第一组复核人/日期
+% #HANDWRITTEN: 张海霞 2024.06.10
+\fieldvalue{\handwritten{张海霞\ 2024.06.10}}
+&
+% #VALUE_ID: LEX-P0007-V0062
+% #FIELD_VALUE: 第二组复核人/日期
+% #HANDWRITTEN: 张海霞 2024.06.10
+\fieldvalue{\handwritten{张海霞\ 2024.06.10}}
+&
+\\
+\hline
+备注 &
+% #VALUE_ID: LEX-P0007-V0063
+% #FIELD_VALUE: 备注
+% #HANDWRITTEN: /
+\fieldvalue{\handwritten{/}} &
+\multicolumn{2}{l|}{} \\
+\hline
+\end{tabular}
+
+\bigskip
+
+\noindent 第1页 共1页
+
+\medskip
+
+\noindent 打印人：武志勇，打印时间：2026-06-01 15:46:50
+
+\noindent
+% #VALUE_ID: LEX-P0007-V0064
+% #FIELD_VALUE: 页边手写标记
+% #HANDWRITTEN: 7/47
+\fieldvalue{\handwritten{7/47}}
+% LEXOID_PAGE_COMPLETED: 7/47
+
+\newpage
+
+\section*{PALL Patlronic Flowstar IV 流量结果}
+
+\begin{tabular}{@{}p{0.24\linewidth}p{0.68\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0008-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 09:44:18}
+\\
+页码 &
+% #VALUE_ID: LEX-P0008-V0002
+% #FIELD_VALUE: 页码
+\fieldvalue{1 of 2}
+\\
+序列号 &
+% #VALUE_ID: LEX-P0008-V0003
+% #FIELD_VALUE: 序列号
+\fieldvalue{238074?4133}
+\\
+版本 &
+% #VALUE_ID: LEX-P0008-V0004
+% #FIELD_VALUE: 版本
+\fieldvalue{2.0}
+\\
+测试方案 &
+% #VALUE_ID: LEX-P0008-V0005
+% #FIELD_VALUE: 测试方案
+\fieldvalue{S-FMS?E-2225}
+\\
+测试模式 &
+% #VALUE_ID: LEX-P0008-V0006
+% #FIELD_VALUE: 测试模式
+\fieldvalue{Q2}
+\\
+操作员 &
+% #VALUE_ID: LEX-P0008-V0007
+% #FIELD_VALUE: 操作员
+\fieldvalue{Shinyzhou}
+\\
+地点 &
+% #VALUE_ID: LEX-P0008-V0008
+% #FIELD_VALUE: 地点
+\fieldvalue{Zhangzhou}
+\\
+仪器名称 &
+% #VALUE_ID: LEX-P0008-V0009
+% #FIELD_VALUE: 仪器名称
+\fieldvalue{Flowstar IV}
+\\
+测试气体 &
+% #VALUE_ID: LEX-P0008-V0010
+% #FIELD_VALUE: 测试气体
+\fieldvalue{Air}
+\\
+阀状态 &
+% #VALUE_ID: LEX-P0008-V0011
+% #FIELD_VALUE: 阀状态
+\fieldvalue{Shut}
+\\
+最小压力 &
+% #VALUE_ID: LEX-P0008-V0012
+% #FIELD_VALUE: 最小压力
+\fieldvalue{4500 mbar}
+\\
+最大压力 &
+% #VALUE_ID: LEX-P0008-V0013
+% #FIELD_VALUE: 最大压力
+\fieldvalue{7000 mbar}
+\\
+测试结束时间 &
+% #VALUE_ID: LEX-P0008-V0014
+% #FIELD_VALUE: 测试结束时间
+\fieldvalue{8/Jun/2026 09:53:41}
+\end{tabular}
+
+\vspace{1em}
+
+\noindent\textbf{注释}
+
+% #VALUE_ID: LEX-P0008-V0015
+% #FIELD_VALUE: 注释
+% #HANDWRITTEN: （签名，难以辨认）
+\fieldvalue{\handwritten{（签名，难以辨认）}}
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0008-V0016
+% #HANDWRITTEN: 测试日期 2026/06/10
+\handwritten{测试日期 2026/06/10}
+
+% #VALUE_ID: LEX-P0008-V0017
+% #HANDWRITTEN: （签名，难以辨认）
+\handwritten{（签名，难以辨认）}
+
+\section*{PALL Patlronic Flowstar IV 流量结果}
+
+\begin{tabular}{@{}p{0.24\linewidth}p{0.68\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0008-V0018
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 09:44:18}
+\\
+页码 &
+% #VALUE_ID: LEX-P0008-V0019
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2}
+\end{tabular}
+
+\vspace{1em}
+
+\noindent
+\begin{minipage}{0.72\linewidth}
+\centering
+\begin{tikzpicture}
+\draw (0,0) rectangle (9,5);
+\draw[->] (0.4,0.4) -- (8.6,0.4);
+\draw[->] (0.4,0.4) -- (0.4,4.6);
+\node[anchor=east] at (0.35,4.6) {流量差值 (mbar/min)};
+\node[anchor=north] at (4.5,0.05) {时间 (mbar)};
+\node[anchor=east] at (0.35,0.4) {0};
+\node[anchor=east] at (0.35,1.75) {450};
+\node[anchor=east] at (0.35,3.05) {900};
+\node[anchor=east] at (0.35,4.35) {1800};
+\node[anchor=north] at (2.0,0.25) {1800};
+\node[anchor=north] at (3.6,0.25) {2700};
+\node[anchor=north] at (5.0,0.25) {3600};
+\node[anchor=north] at (6.4,0.25) {4500};
+\node[anchor=north] at (7.8,0.25) {5400};
+\node[anchor=north] at (8.55,0.25) {9000};
+\draw[dashed] (5.3,0.4) -- (5.3,4.5);
+\draw (5.3,0.4) .. controls (5.4,0.5) and (5.7,1.4) .. (6.0,2.4)
+      .. controls (6.3,3.2) and (6.7,3.3) .. (7.2,3.35);
+\end{tikzpicture}
+\end{minipage}
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0008-V0020
+% #HANDWRITTEN: 测试日期 2026/06/10
+\handwritten{测试日期 2026/06/10}
+
+% #VALUE_ID: LEX-P0008-V0021
+% #HANDWRITTEN: 84
+\handwritten{84}
+
+% TODO: The graph and several small axis annotations are partially obscured by page rotation and low resolution.
+% LEXOID_PAGE_COMPLETED: 8/47
+
+\newpage
+
+\section{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.30\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0009-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 10:00:41}
+\\
+页码 &
+% #VALUE_ID: LEX-P0009-V0002
+% #FIELD_VALUE: 页码
+\fieldvalue{1 of 2}
+\\
+流量测试编号 &
+% #VALUE_ID: LEX-P0009-V0003
+% #FIELD_VALUE: 流量测试编号
+\fieldvalue{FPS04LGR/22/11}
+\\
+序列号 &
+% #VALUE_ID: LEX-P0009-V0004
+% #FIELD_VALUE: 序列号
+\fieldvalue{298804744143}
+\\
+测试介质 &
+% #VALUE_ID: LEX-P0009-V0005
+% #FIELD_VALUE: 测试介质
+\fieldvalue{Air}
+\\
+测试温度 &
+% #VALUE_ID: LEX-P0009-V0006
+% #FIELD_VALUE: 测试温度
+\fieldvalue{22\textdegree C}
+\\
+测试气体 &
+% #VALUE_ID: LEX-P0009-V0007
+% #FIELD_VALUE: 测试气体
+\fieldvalue{Nitrogen}
+\\
+生产日期 &
+% #VALUE_ID: LEX-P0009-V0008
+% #FIELD_VALUE: 生产日期
+\fieldvalue{2/May/2026}
+\\
+过滤器型号 &
+% #VALUE_ID: LEX-P0009-V0009
+% #FIELD_VALUE: 过滤器型号
+\fieldvalue{A3220120259030}
+\\
+过滤器编号 &
+% #VALUE_ID: LEX-P0009-V0010
+% #FIELD_VALUE: 过滤器编号
+\fieldvalue{SFWPS-225}
+\\
+过滤器材质 &
+% #VALUE_ID: LEX-P0009-V0011
+% #FIELD_VALUE: 过滤器材质
+\fieldvalue{Silicon}
+\\
+测试压力 &
+% #VALUE_ID: LEX-P0009-V0012
+% #FIELD_VALUE: 测试压力
+\fieldvalue{Air}
+\\
+最低测试压力 &
+% #VALUE_ID: LEX-P0009-V0013
+% #FIELD_VALUE: 最低测试压力
+\fieldvalue{1000 mbar}
+\\
+最大测试压力 &
+% #VALUE_ID: LEX-P0009-V0014
+% #FIELD_VALUE: 最大测试压力
+\fieldvalue{3500 mbar}
+\\
+最终测试压力 &
+% #VALUE_ID: LEX-P0009-V0015
+% #FIELD_VALUE: 最终测试压力
+\fieldvalue{7000 mbar}
+\end{tabular}
+
+\subsection{结果}
+
+\begin{tabular}{@{}p{0.42\linewidth}p{0.50\linewidth}@{}}
+过滤器完整性测试 &
+% #VALUE_ID: LEX-P0009-V0016
+% #FIELD_VALUE: 过滤器完整性测试
+\fieldvalue{4700 mbar}
+\\
+扩散流量 &
+% #VALUE_ID: LEX-P0009-V0017
+% #FIELD_VALUE: 扩散流量
+\fieldvalue{4.700 mbar}
+\\
+测试时间 &
+% #VALUE_ID: LEX-P0009-V0018
+% #FIELD_VALUE: 测试时间
+\fieldvalue{8/Jun/2026 10:00:03}
+\\
+\end{tabular}
+
+% #VALUE_ID: LEX-P0009-V0019
+% #HANDWRITTEN: 过滤器 2026.06.10
+\handwritten{过滤器 2026.06.10}
+
+\begin{tabular}{@{}p{0.30\linewidth}p{0.62\linewidth}@{}}
+签名 &
+% #VALUE_ID: LEX-P0009-V0020
+% #FIELD_VALUE: 签名
+% #HANDWRITTEN: （签名，难以辨认）
+\fieldvalue{\handwritten{（签名，难以辨认）}}
+\\
+日期 &
+% #VALUE_ID: LEX-P0009-V0021
+% #FIELD_VALUE: 日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}}
+\end{tabular}
+
+\section{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.30\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0009-V0022
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 10:00:41}
+\\
+页码 &
+% #VALUE_ID: LEX-P0009-V0023
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2}
+\end{tabular}
+
+\subsection{压力保持曲线}
+
+\begin{center}
+% TODO: The visible plot is reproduced schematically; the original graph contains a pressure-hold curve.
+\begin{picture}(11,5.5)
+\put(1,0.5){\vector(1,0){9}}
+\put(1,0.5){\vector(0,1){4.2}}
+\put(0.05,4.7){\makebox(0,0)[l]{大气压差 (mbar/min)}}
+\put(4.0,0.05){\makebox(0,0)[c]{时间 (秒)}}
+\put(0.75,0.35){\makebox(0,0)[r]{0}}
+\put(0.75,2.55){\makebox(0,0)[r]{450}}
+\put(0.75,4.65){\makebox(0,0)[r]{900}}
+\put(1.0,0.2){\makebox(0,0)[c]{1400}}
+\put(3.2,0.2){\makebox(0,0)[c]{1600}}
+\put(5.3,0.2){\makebox(0,0)[c]{1800}}
+\put(7.3,0.2){\makebox(0,0)[c]{5200}}
+\put(9.4,0.2){\makebox(0,0)[c]{7000}}
+\end{picture}
+\end{center}
+
+% #VALUE_ID: LEX-P0009-V0024
+% #HANDWRITTEN: 过滤器 2026.06.10
+\handwritten{过滤器 2026.06.10}
+
+% #VALUE_ID: LEX-P0009-V0025
+% #HANDWRITTEN: 9/4
+\handwritten{9/4}
+% LEXOID_PAGE_COMPLETED: 9/47
+
+\newpage
+
+\section*{PALL Patrolronic FlowStart IV 流量站结果}
+
+\begin{tabular}{@{}p{0.25\linewidth}p{0.65\linewidth}@{}}
+日期 & 
+% #VALUE_ID: LEX-P0010-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 10:16:42} \\
+页码 &
+% #VALUE_ID: LEX-P0010-V0002
+% #FIELD_VALUE: 页码
+\fieldvalue{1 of 2} \\
+项目号 &
+% #VALUE_ID: LEX-P0010-V0003
+% #FIELD_VALUE: 项目号
+\fieldvalue{FFS0?LGR/2/2/1} \\
+条码 &
+% #VALUE_ID: LEX-P0010-V0004
+% #FIELD_VALUE: 条码
+\fieldvalue{23880744-4435} \\
+功能 &
+% #VALUE_ID: LEX-P0010-V0005
+% #FIELD_VALUE: 功能
+\fieldvalue{泵} \\
+仪器号 &
+% #VALUE_ID: LEX-P0010-V0006
+% #FIELD_VALUE: 仪器号
+\fieldvalue{S?F?EPS-2225} \\
+条件 &
+% #VALUE_ID: LEX-P0010-V0007
+% #FIELD_VALUE: 条件
+\fieldvalue{02} \\
+温度 &
+% #VALUE_ID: LEX-P0010-V0008
+% #FIELD_VALUE: 温度
+\fieldvalue{${}^{\circ}\mathrm{C}$} \\
+介质 &
+% #VALUE_ID: LEX-P0010-V0009
+% #FIELD_VALUE: 介质
+\fieldvalue{Symphor?l} \\
+产品名称 &
+% #VALUE_ID: LEX-P0010-V0010
+% #FIELD_VALUE: 产品名称
+\fieldvalue{Zhuselve} \\
+序列号 &
+% #VALUE_ID: LEX-P0010-V0011
+% #FIELD_VALUE: 序列号
+\fieldvalue{A?272020?5030} \\
+立方流量测量号 &
+% #VALUE_ID: LEX-P0010-V0012
+% #FIELD_VALUE: 立方流量测量号
+\fieldvalue{S?F?EPS-2225} \\
+\end{tabular}
+
+\vspace{1em}
+
+\begin{tabular}{@{}p{0.25\linewidth}p{0.65\linewidth}@{}}
+测量范围 &
+% #VALUE_ID: LEX-P0010-V0013
+% #FIELD_VALUE: 测量范围
+\fieldvalue{空气} \\
+测量次数 &
+% #VALUE_ID: LEX-P0010-V0014
+% #FIELD_VALUE: 测量次数
+\fieldvalue{1} \\
+测量大气压 &
+% #VALUE_ID: LEX-P0010-V0015
+% #FIELD_VALUE: 测量大气压
+\fieldvalue{1000\ \mathrm{mbar}} \\
+最高大气压 &
+% #VALUE_ID: LEX-P0010-V0016
+% #FIELD_VALUE: 最高大气压
+\fieldvalue{4500\ \mathrm{mbar}} \\
+最低大气压 &
+% #VALUE_ID: LEX-P0010-V0017
+% #FIELD_VALUE: 最低大气压
+\fieldvalue{7000\ \mathrm{mbar}} \\
+\end{tabular}
+
+\vspace{1em}
+
+\subsection*{结果}
+
+\begin{tabular}{@{}p{0.25\linewidth}p{0.65\linewidth}@{}}
+结果 &
+% #VALUE_ID: LEX-P0010-V0018
+% #FIELD_VALUE: 结果
+\fieldvalue{通过} \\
+测试压力范围 &
+% #VALUE_ID: LEX-P0010-V0019
+% #FIELD_VALUE: 测试压力范围
+\fieldvalue{4800\ \mathrm{mbar}} \\
+测量日期 &
+% #VALUE_ID: LEX-P0010-V0020
+% #FIELD_VALUE: 测量日期
+\fieldvalue{8/Jun/2026 10:26:24} \\
+\end{tabular}
+
+\vspace{1em}
+
+\subsection*{注释}
+
+\begin{enumerate}
+\item 签名：
+
+% #VALUE_ID: LEX-P0010-V0021
+% #FIELD_VALUE: 签名
+% #HANDWRITTEN: [签名]
+\fieldvalue{\handwritten{[签名]}}
+
+日期：
+
+% #VALUE_ID: LEX-P0010-V0022
+% #FIELD_VALUE: 日期
+% #HANDWRITTEN: 20.06.08
+\fieldvalue{\handwritten{20.06.08}}
+\end{enumerate}
+
+% TODO: 页面中部可见一处蓝色手写中文批注及日期，字迹难以辨认。
+% #VALUE_ID: LEX-P0010-V0023
+% #HANDWRITTEN: [中文批注]，字迹难以辨认
+\handwritten{[中文批注]}
+
+% #VALUE_ID: LEX-P0010-V0024
+% #HANDWRITTEN: 2026.06.16
+\handwritten{2026.06.16}
+
+\newpage
+
+\section*{PALL Patrolronic FlowStart IV 流量站结果}
+
+\begin{tabular}{@{}p{0.25\linewidth}p{0.65\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0010-V0025
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 10:16:42} \\
+页码 &
+% #VALUE_ID: LEX-P0010-V0026
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2} \\
+\end{tabular}
+
+\vspace{1em}
+
+\begin{center}
+\begin{picture}(300,190)
+\put(35,20){\vector(1,0){245}}
+\put(35,20){\vector(0,1){145}}
+\put(35,8){\makebox(0,0)[t]{压力（mbar）}}
+\put(5,90){\rotatebox{90}{\makebox(0,0){大气流量（mbar/min）}}}
+
+\put(32,16){\makebox(0,0)[r]{0}}
+\put(85,16){\makebox(0,0){1400}}
+\put(125,16){\makebox(0,0){1800}}
+\put(160,16){\makebox(0,0){2000}}
+\put(205,16){\makebox(0,0){3600}}
+\put(265,16){\makebox(0,0){7000}}
+
+\put(29,20){\makebox(0,0)[r]{0}}
+\put(29,92){\makebox(0,0)[r]{900}}
+\put(29,128){\makebox(0,0)[r]{1350}}
+\put(29,164){\makebox(0,0)[r]{1800}}
+
+\put(35,20){\line(1,0){245}}
+\put(35,20){\line(0,1){145}}
+\put(35,165){\line(1,0){245}}
+\put(280,20){\line(0,1){145}}
+
+% TODO: 曲线仅以低分辨率图像可见，以下为可编辑的近似表示。
+\qbezier(35,20)(145,20)(160,22)
+\qbezier(160,22)(170,28)(174,58)
+\qbezier(174,58)(180,78)(205,82)
+\qbezier(205,82)(235,84)(280,84)
+\end{picture}
+\end{center}
+
+% #VALUE_ID: LEX-P0010-V0027
+% #HANDWRITTEN: 2026.06.16
+\handwritten{2026.06.16}
+
+% TODO: 图表右下方另有一处蓝色手写数字，无法可靠辨认。
+% #VALUE_ID: LEX-P0010-V0028
+% #HANDWRITTEN: [数字]，字迹难以辨认
+\handwritten{[数字]}
+% LEXOID_PAGE_COMPLETED: 10/47
+
+\newpage
+
+\begin{minipage}[t]{0.47\linewidth}
+\textbf{PALL \quad Paltronic FlowStart IV 测试结果}
+
+\begin{tabular}{@{}p{0.42\linewidth}p{0.52\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0011-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 10:31:57} \\
+
+页码 &
+% #VALUE_ID: LEX-P0011-V0002
+% #FIELD_VALUE: 页码
+\fieldvalue{1 of 2} \\
+
+功能（Result number） &
+% #VALUE_ID: LEX-P0011-V0003
+% #FIELD_VALUE: 功能（Result number）
+\fieldvalue{FFSOLAGR/22/1/1} \\
+
+测试品编号 &
+% #VALUE_ID: LEX-P0011-V0004
+% #FIELD_VALUE: 测试品编号
+\fieldvalue{398804744136} \\
+
+测试介质 &
+% #VALUE_ID: LEX-P0011-V0005
+% #FIELD_VALUE: 测试介质
+\fieldvalue{CO2} \\
+
+生产区域 &
+% #VALUE_ID: LEX-P0011-V0006
+% #FIELD_VALUE: 生产区域
+\fieldvalue{Shiyingyuan} \\
+
+产品名称 &
+% #VALUE_ID: LEX-P0011-V0007
+% #FIELD_VALUE: 产品名称
+% TODO: Value is partially unclear in the source image.
+\fieldvalue{2?} \\
+
+生产批号 &
+% #VALUE_ID: LEX-P0011-V0008
+% #FIELD_VALUE: 生产批号
+% TODO: Value is illegible in the source image.
+\fieldvalue{?} \\
+
+过站编号 &
+% #VALUE_ID: LEX-P0011-V0009
+% #FIELD_VALUE: 过站编号
+\fieldvalue{S?FWS-2225} \\
+
+测试温度 &
+% #VALUE_ID: LEX-P0011-V0010
+% #FIELD_VALUE: 测试温度
+\fieldvalue{24 degC} \\
+
+测试气体 &
+% #VALUE_ID: LEX-P0011-V0011
+% #FIELD_VALUE: 测试气体
+\fieldvalue{Air} \\
+
+最小流量 &
+% #VALUE_ID: LEX-P0011-V0012
+% #FIELD_VALUE: 最小流量
+\fieldvalue{4800 mbar} \\
+
+最大流量 &
+% #VALUE_ID: LEX-P0011-V0013
+% #FIELD_VALUE: 最大流量
+\fieldvalue{7000 mbar}
+\end{tabular}
+
+\vspace{1em}
+
+\textbf{注意}
+
+\begin{enumerate}
+\item 接头
+
+测试流量：
+% #VALUE_ID: LEX-P0011-V0014
+% #FIELD_VALUE: 测试流量
+\fieldvalue{通过}
+
+测试压力范围：
+% #VALUE_ID: LEX-P0011-V0015
+% #FIELD_VALUE: 测试压力范围
+\fieldvalue{4700 mbar}
+
+测试完成时间：
+% #VALUE_ID: LEX-P0011-V0016
+% #FIELD_VALUE: 测试完成时间
+\fieldvalue{8/Jun/2026 10:14:20}
+\end{enumerate}
+
+% #VALUE_ID: LEX-P0011-V0017
+% #FIELD_VALUE: 备注中的手写日期
+% #HANDWRITTEN: 测试日期2026.06.08
+\fieldvalue{\handwritten{测试日期2026.06.08}}
+
+% #VALUE_ID: LEX-P0011-V0018
+% #HANDWRITTEN: 测试日期2026.06.10
+\handwritten{测试日期2026.06.10}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.47\linewidth}
+\textbf{PALL \quad Paltronic FlowStart IV 测试结果}
+
+\begin{tabular}{@{}p{0.38\linewidth}p{0.55\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0011-V0019
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 10:31:57} \\
+
+页码 &
+% #VALUE_ID: LEX-P0011-V0020
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2}
+\end{tabular}
+
+\vspace{1em}
+
+\begin{center}
+\begin{picture}(210,180)
+\put(20,20){\line(1,0){170}}
+\put(20,20){\line(0,1){150}}
+\put(20,170){\line(1,0){170}}
+\put(190,20){\line(0,1){150}}
+\put(20,20){\makebox(0,0)[r]{0}}
+\put(190,20){\makebox(0,0)[l]{7000}}
+\put(20,170){\makebox(0,0)[r]{1900}}
+\put(80,20){\makebox(0,0)[t]{1100}}
+\put(115,20){\makebox(0,0)[t]{2800}}
+\put(140,20){\makebox(0,0)[t]{4000}}
+\put(165,20){\makebox(0,0)[t]{5600}}
+\put(190,20){\makebox(0,0)[t]{7000}}
+\put(5,95){\rotatebox{90}{流量（mbar/min）}}
+\put(105,5){\makebox(0,0)[t]{时间（秒）}}
+\end{picture}
+\end{center}
+
+% #VALUE_ID: LEX-P0011-V0021
+% #HANDWRITTEN: 测试日期2026.06.10
+\handwritten{测试日期2026.06.10}
+
+% #TODO #HANDWRITTEN: 11?6?; handwriting is unclear
+% #VALUE_ID: LEX-P0011-V0022
+\handwritten{11?6?}
+
+\end{minipage}
+% LEXOID_PAGE_COMPLETED: 11/47
+
+\newpage
+
+\begin{center}
+\textbf{PALL \quad Paltronic Flowstar IV / 流量站结果}
+\end{center}
+
+\begin{tabular}{@{}p{0.22\linewidth}p{0.28\linewidth}p{0.22\linewidth}p{0.28\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0012-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{18/Jun/2026 10:47:16}
+&
+页码 &
+% #VALUE_ID: LEX-P0012-V0002
+% #FIELD_VALUE: 页码
+\fieldvalue{1 of 2}
+\\[2pt]
+序列号 &
+% #VALUE_ID: LEX-P0012-V0003
+% #FIELD_VALUE: 序列号
+\fieldvalue{FF-S04LGR / 227/1}
+&
+设备号 &
+% #VALUE_ID: LEX-P0012-V0004
+% #FIELD_VALUE: 设备号
+\fieldvalue{238?802?}
+\\[2pt]
+流量计类型 &
+% #VALUE_ID: LEX-P0012-V0005
+% #FIELD_VALUE: 流量计类型
+\fieldvalue{Paltronic Flowstar IV}
+&
+软件版本 &
+% #VALUE_ID: LEX-P0012-V0006
+% #FIELD_VALUE: 软件版本
+\fieldvalue{---}
+\end{tabular}
+
+\vspace{1em}
+
+\begin{tabular}{@{}p{0.25\linewidth}p{0.25\linewidth}p{0.25\linewidth}p{0.25\linewidth}@{}}
+操作员 &
+% #VALUE_ID: LEX-P0012-V0007
+% #FIELD_VALUE: 操作员
+\fieldvalue{-}
+&
+操作区 &
+% #VALUE_ID: LEX-P0012-V0008
+% #FIELD_VALUE: 操作区
+\fieldvalue{C}
+\\[2pt]
+生产商 &
+% #VALUE_ID: LEX-P0012-V0009
+% #FIELD_VALUE: 生产商
+\fieldvalue{Shiyingzhou}
+&
+型号 &
+% #VALUE_ID: LEX-P0012-V0010
+% #FIELD_VALUE: 型号
+\fieldvalue{Zh?sl?ove}
+\\[2pt]
+序列号 &
+% #VALUE_ID: LEX-P0012-V0011
+% #FIELD_VALUE: 序列号
+\fieldvalue{A327702206?9050}
+&
+软件版本 &
+% #VALUE_ID: LEX-P0012-V0012
+% #FIELD_VALUE: 软件版本
+\fieldvalue{FS?ES-2225}
+\\[2pt]
+测量介质 &
+% #VALUE_ID: LEX-P0012-V0013
+% #FIELD_VALUE: 测量介质
+\fieldvalue{Air}
+&
+最大流量 &
+% #VALUE_ID: LEX-P0012-V0014
+% #FIELD_VALUE: 最大流量
+\fieldvalue{1000?}
+\\[2pt]
+最大压力 &
+% #VALUE_ID: LEX-P0012-V0015
+% #FIELD_VALUE: 最大压力
+\fieldvalue{4500 mbar}
+&
+最小压力 &
+% #VALUE_ID: LEX-P0012-V0016
+% #FIELD_VALUE: 最小压力
+\fieldvalue{7000 mbar}
+\end{tabular}
+
+\vspace{1em}
+
+\begin{tabular}{@{}p{0.30\linewidth}p{0.35\linewidth}p{0.35\linewidth}@{}}
+事件 & 数值 & 单位 \\
+\hline
+失效压力 &
+% #VALUE_ID: LEX-P0012-V0017
+% #FIELD_VALUE: 失效压力
+\fieldvalue{4200}
+&
+mbar
+\\
+实际流量 &
+% #VALUE_ID: LEX-P0012-V0018
+% #FIELD_VALUE: 实际流量
+\fieldvalue{1200}
+&
+mbar
+\\
+测量开始时间 &
+% #VALUE_ID: LEX-P0012-V0019
+% #FIELD_VALUE: 测量开始时间
+\fieldvalue{8/Jun/2026 10:55:58}
+&
+\end{tabular}
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0012-V0020
+% #HANDWRITTEN: [签字] 2026/06/16
+\handwritten{[签字] 2026/06/16}
+
+\vspace{1em}
+
+\begin{center}
+\textbf{PALL \quad Paltronic Flowstar IV / 流量站结果}
+
+\begin{tabular}{@{}p{0.20\linewidth}p{0.30\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0012-V0021
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 10:47:16}
+\\
+页码 &
+% #VALUE_ID: LEX-P0012-V0022
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2}
+\end{tabular}
+\end{center}
+
+\vspace{0.5em}
+
+\begin{center}
+\begin{picture}(280,145)
+\put(25,15){\framebox(220,115){}}
+\put(8,125){\makebox(45,10)[l]{\scriptsize 流量 (mbar/min)}}
+\put(18,12){\makebox(20,10)[r]{\scriptsize 0}}
+\put(12,47){\makebox(25,10)[r]{\scriptsize 450}}
+\put(12,80){\makebox(25,10)[r]{\scriptsize 900}}
+\put(8,113){\makebox(30,10)[r]{\scriptsize 1350}}
+\put(237,12){\makebox(25,10)[l]{\scriptsize 1800}}
+\put(25,0){\makebox(40,10)[l]{\scriptsize 0}}
+\put(83,0){\makebox(40,10)[l]{\scriptsize 450}}
+\put(140,0){\makebox(40,10)[l]{\scriptsize 900}}
+\put(190,0){\makebox(50,10)[l]{\scriptsize 1350}}
+\put(235,0){\makebox(40,10)[l]{\scriptsize 1800}}
+\put(25,2){\line(1,0){220}}
+\put(25,15){\line(0,1){115}}
+\put(25,15){\line(1,0){220}}
+\put(25,15){\line(1,0){220}}
+\put(120,29){\line(1,1){12}}
+\put(132,40){\line(1,2){8}}
+\put(140,56){\line(1,1){7}}
+\put(147,63){\line(1,3){5}}
+\put(152,78){\line(1,0){7}}
+\end{picture}
+\end{center}
+
+% #VALUE_ID: LEX-P0012-V0023
+% #HANDWRITTEN: 12/47
+\handwritten{12/47}
+
+\vspace{0.5em}
+
+% #VALUE_ID: LEX-P0012-V0024
+% #HANDWRITTEN: 2026/06/10
+\handwritten{2026/06/10}
+
+\vspace{1em}
+
+注释
+
+1.\ 签名：
+
+% #VALUE_ID: LEX-P0012-V0025
+% #HANDWRITTEN: 2026.06.08
+\handwritten{2026.06.08}
+
+% TODO: Several printed report values are partially illegible in the source image and have been transcribed with question marks.
+% LEXOID_PAGE_COMPLETED: 12/47
+
+\newpage
+
+\section*{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.30\linewidth}p{0.60\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0013-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 11:02:24}
+\\[2pt]
+项目 &
+% #VALUE_ID: LEX-P0013-V0002
+% #FIELD_VALUE: 项目
+\fieldvalue{FS04IGR/2.2\,$\mu$m}
+\\[2pt]
+序号 &
+% #VALUE_ID: LEX-P0013-V0003
+% #FIELD_VALUE: 序号
+\fieldvalue{23880244138}
+\\[2pt]
+测试程序 &
+% #VALUE_ID: LEX-P0013-V0004
+% #FIELD_VALUE: 测试程序
+\fieldvalue{SFME-S-2225}
+\\[2pt]
+测试结果 &
+% #VALUE_ID: LEX-P0013-V0005
+% #FIELD_VALUE: 测试结果
+\fieldvalue{Q2}
+\\[2pt]
+测试模式 &
+% #VALUE_ID: LEX-P0013-V0006
+% #FIELD_VALUE: 测试模式
+\fieldvalue{C}
+\\[2pt]
+流量方式 &
+% #VALUE_ID: LEX-P0013-V0007
+% #FIELD_VALUE: 流量方式
+\fieldvalue{Shut/Flow}
+\\[2pt]
+产品编号 &
+% #VALUE_ID: LEX-P0013-V0008
+% #FIELD_VALUE: 产品编号
+\fieldvalue{A3272022069050}
+\\[2pt]
+产品名称 &
+% #VALUE_ID: LEX-P0013-V0009
+% #FIELD_VALUE: 产品名称
+\fieldvalue{SFME-S-2225}
+\\[2pt]
+过滤器类型 &
+% #VALUE_ID: LEX-P0013-V0010
+% #FIELD_VALUE: 过滤器类型
+\fieldvalue{Air}
+\\[2pt]
+测试流量 &
+% #VALUE_ID: LEX-P0013-V0011
+% #FIELD_VALUE: 测试流量
+\fieldvalue{1.100}
+\\[2pt]
+测试压力 &
+% #VALUE_ID: LEX-P0013-V0012
+% #FIELD_VALUE: 测试压力
+\fieldvalue{4500 mbar}
+\\[2pt]
+最大压力 &
+% #VALUE_ID: LEX-P0013-V0013
+% #FIELD_VALUE: 最大压力
+\fieldvalue{7000 mbar}
+\end{tabular}
+
+\vspace{1em}
+
+% TODO: Blue handwritten annotation between the two report sections is partially illegible.
+% #VALUE_ID: LEX-P0013-V0014
+% #HANDWRITTEN: 2?外观? 2026.06.10
+\handwritten{2?外观? 2026.06.10}
+
+\section*{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.30\linewidth}p{0.60\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0013-V0015
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 11:02:24}
+\\[2pt]
+页码 &
+% #VALUE_ID: LEX-P0013-V0016
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2}
+\end{tabular}
+
+\vspace{0.75em}
+
+\noindent
+\begin{minipage}{0.82\linewidth}
+\centering
+\setlength{\fboxsep}{6pt}
+\fbox{%
+\begin{minipage}{0.84\linewidth}
+\centering
+\textbf{大气流量 (mbar/min)}
+
+\vspace{0.3em}
+
+\begin{tabular}{c|c}
+\begin{minipage}[c][4.2cm][c]{0.10\linewidth}
+\centering
+\rotatebox{90}{大气流量 (mbar/min)}
+\end{minipage}
+&
+\begin{minipage}[c][4.2cm][c]{0.72\linewidth}
+\centering
+\begin{picture}(230,120)
+\put(15,10){\line(1,0){195}}
+\put(15,10){\line(0,1){100}}
+\put(15,35){\line(1,0){195}}
+\put(15,60){\line(1,0){195}}
+\put(15,85){\line(1,0){195}}
+\put(15,110){\line(1,0){195}}
+\put(15,10){\line(0,1){5}}
+\put(65,10){\line(0,1){5}}
+\put(115,10){\line(0,1){5}}
+\put(165,10){\line(0,1){5}}
+\put(210,10){\line(0,1){5}}
+\put(15,10){\makebox(0,0)[t]{0}}
+\put(65,10){\makebox(0,0)[t]{1800}}
+\put(115,10){\makebox(0,0)[t]{2700}}
+\put(165,10){\makebox(0,0)[t]{5400}}
+\put(210,10){\makebox(0,0)[t]{7200}}
+\put(9,10){\makebox(0,0)[r]{0}}
+\put(9,35){\makebox(0,0)[r]{450}}
+\put(9,60){\makebox(0,0)[r]{900}}
+\put(9,85){\makebox(0,0)[r]{1350}}
+\put(9,110){\makebox(0,0)[r]{1800}}
+\put(15,110){\line(1,0){150}}
+\put(165,110){\line(0,-1){65}}
+\put(165,45){\qbezier(165,45)(165,25)(190,18)}
+\end{picture}
+
+\vspace{-0.2em}
+
+压力 (mbar)
+\end{minipage}
+\end{tabular}
+\end{minipage}}
+\end{minipage}
+
+\vspace{0.5em}
+
+% TODO: Blue handwritten annotation beside the graph is partially illegible.
+% #VALUE_ID: LEX-P0013-V0017
+% #HANDWRITTEN: 外观? 2026.06.10
+\handwritten{外观? 2026.06.10}
+
+\vspace{1em}
+
+\textbf{注释}
+
+\begin{enumerate}
+\item 签名：\underline{\hspace{5cm}}
+
+% TODO: The printed reference text below the signature line is low-resolution.
+\item
+\textit{B42-B?A?34-A25-A26}
+\end{enumerate}
+
+% TODO: Blue handwritten signature/date at the bottom is partially illegible.
+% #VALUE_ID: LEX-P0013-V0018
+% #HANDWRITTEN: handwritten signature
+\handwritten{handwritten signature}
+
+% #VALUE_ID: LEX-P0013-V0019
+% #HANDWRITTEN: 2026/06/09
+\handwritten{2026/06/09}
+
+\vspace{0.5em}
+
+% #VALUE_ID: LEX-P0013-V0020
+% #HANDWRITTEN: 1347
+\handwritten{1347}
+% LEXOID_PAGE_COMPLETED: 13/47
+
+\newpage
+
+\section*{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.22\linewidth}p{0.68\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0014-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 11:15:14}
+\\
+工号 &
+% #VALUE_ID: LEX-P0014-V0002
+% #FIELD_VALUE: 工号
+\fieldvalue{102}
+\\
+设备序列号 &
+% #VALUE_ID: LEX-P0014-V0003
+% #FIELD_VALUE: 设备序列号
+\fieldvalue{FS40?LGR / 22?1T}
+\\
+测试程序 &
+% #VALUE_ID: LEX-P0014-V0004
+% #FIELD_VALUE: 测试程序
+\fieldvalue{238804?4139}
+\\
+测试类型 &
+% #VALUE_ID: LEX-P0014-V0005
+% #FIELD_VALUE: 测试类型
+\fieldvalue{S?FPS-2225}
+\\
+测试模式 &
+% #VALUE_ID: LEX-P0014-V0006
+% #FIELD_VALUE: 测试模式
+\fieldvalue{Q2}
+\\
+测试介质 &
+% #VALUE_ID: LEX-P0014-V0007
+% #FIELD_VALUE: 测试介质
+\fieldvalue{Synthetic nitrogen}
+\\
+产品名称 &
+% #VALUE_ID: LEX-P0014-V0008
+% #FIELD_VALUE: 产品名称
+\fieldvalue{2?hinge}
+\\
+产品批号 &
+% #VALUE_ID: LEX-P0014-V0009
+% #FIELD_VALUE: 产品批号
+\fieldvalue{A?327?202605030}
+\\
+测试面积 &
+% #VALUE_ID: LEX-P0014-V0010
+% #FIELD_VALUE: 测试面积
+\fieldvalue{FS?PS-2225}
+\\
+测试流量 &
+% #VALUE_ID: LEX-P0014-V0011
+% #FIELD_VALUE: 测试流量
+\fieldvalue{5\ \mathrm{L/min}}
+\\
+测试压力 &
+% #VALUE_ID: LEX-P0014-V0012
+% #FIELD_VALUE: 测试压力
+\fieldvalue{1000}
+\\
+最小压力 &
+% #VALUE_ID: LEX-P0014-V0013
+% #FIELD_VALUE: 最小压力
+\fieldvalue{4500\ \mathrm{mbar}}
+\\
+结果 &
+% #VALUE_ID: LEX-P0014-V0014
+% #FIELD_VALUE: 结果
+\fieldvalue{7000\ \mathrm{mbar}}
+\end{tabular}
+
+\vspace{1em}
+
+% TODO: The following handwritten annotation is partially illegible.
+% #VALUE_ID: LEX-P0014-V0015
+% #HANDWRITTEN: [signature] 2026.06.08
+\handwritten{[signature]\ 2026.06.08}
+
+% TODO: The following handwritten annotation is partially illegible.
+% #VALUE_ID: LEX-P0014-V0016
+% #HANDWRITTEN: [name] 2026/6/10
+\handwritten{[name]\ 2026/6/10}
+
+\section*{Palltronic Flowstar IV 测试结果}
+
+\begin{flushright}
+% #VALUE_ID: LEX-P0014-V0017
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 11:15:14}
+\qquad
+% #VALUE_ID: LEX-P0014-V0018
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2}
+\end{flushright}
+
+\begin{center}
+\setlength{\fboxsep}{6pt}
+\fbox{%
+\begin{minipage}{0.70\linewidth}
+\centering
+\textit{Palltronic Flowstar IV 测试曲线}
+
+\vspace{0.5em}
+
+\begin{tabular}{c|c}
+\multicolumn{2}{c}{压力（mbar）}\\
+1800 & \\
+1350 & \\
+900 & \\
+450 & \\
+0 & \\
+\hline
+0 & 1400 \quad 2800 \quad 4200 \quad 5600 \quad 7000
+\end{tabular}
+
+\vspace{0.5em}
+
+流量（mbar）
+
+\vspace{0.5em}
+% TODO: Reproduce the visible plotted test curve here.
+\end{minipage}%
+}
+\end{center}
+
+% TODO: The following handwritten annotation is partially illegible.
+% #VALUE_ID: LEX-P0014-V0019
+% #HANDWRITTEN: [name] 2026/6/10
+\handwritten{[name]\ 2026/6/10}
+
+% TODO: The following handwritten entry is illegible.
+% #VALUE_ID: LEX-P0014-V0020
+% #HANDWRITTEN: H?9
+\handwritten{H?9}
+% LEXOID_PAGE_COMPLETED: 14/47
+
+\newpage
+
+\begin{center}
+\textbf{Palltronic FlowStar IV 测试结果}
+\end{center}
+
+\begin{tabular}{@{}p{0.30\linewidth}p{0.58\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0015-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 11:24:30}
+\\
+页码 &
+% #VALUE_ID: LEX-P0015-V0002
+% #FIELD_VALUE: 页码
+\fieldvalue{1 of 2}
+\\
+Serial number &
+% #VALUE_ID: LEX-P0015-V0003
+% #FIELD_VALUE: Serial number
+\fieldvalue{FTS04LGR/2-?1T}
+\\
+% TODO: Serial-number text is partially unclear in the scan.
+设备编号 &
+% #VALUE_ID: LEX-P0015-V0004
+% #FIELD_VALUE: 设备编号
+\fieldvalue{2308047-44140}
+\\
+功能 &
+% #VALUE_ID: LEX-P0015-V0005
+% #FIELD_VALUE: 功能
+\fieldvalue{2}
+\\
+测试模式 &
+% #VALUE_ID: LEX-P0015-V0006
+% #FIELD_VALUE: 测试模式
+\fieldvalue{Shuyeng?}
+\\
+测试液体 &
+% #VALUE_ID: LEX-P0015-V0007
+% #FIELD_VALUE: 测试液体
+\fieldvalue{Air}
+\\
+产品名称 &
+% #VALUE_ID: LEX-P0015-V0008
+% #FIELD_VALUE: 产品名称
+\fieldvalue{Shui}
+\\
+产品编号 &
+% #VALUE_ID: LEX-P0015-V0009
+% #FIELD_VALUE: 产品编号
+\fieldvalue{S?M?EP5-2225}
+\\
+生产批号 &
+% #VALUE_ID: LEX-P0015-V0010
+% #FIELD_VALUE: 生产批号
+\fieldvalue{1:000}
+\\
+过滤器序列号 &
+% #VALUE_ID: LEX-P0015-V0011
+% #FIELD_VALUE: 过滤器序列号
+\fieldvalue{4500 mbar}
+\\
+最大压力 &
+% #VALUE_ID: LEX-P0015-V0012
+% #FIELD_VALUE: 最大压力
+\fieldvalue{>7000 mbar}
+\end{tabular}
+
+\vspace{1em}
+
+\begin{tabular}{@{}p{0.30\linewidth}p{0.58\linewidth}@{}}
+测试结果 &
+% #VALUE_ID: LEX-P0015-V0013
+% #FIELD_VALUE: 测试结果
+\fieldvalue{通过}
+\\
+检验压力 &
+% #VALUE_ID: LEX-P0015-V0014
+% #FIELD_VALUE: 检验压力
+\fieldvalue{4800 mbar}
+\\
+测试时间 &
+% #VALUE_ID: LEX-P0015-V0015
+% #FIELD_VALUE: 测试时间
+\fieldvalue{8/Jun/2026 11:34:22}
+\\
+签名 &
+% #VALUE_ID: LEX-P0015-V0016
+% #FIELD_VALUE: 签名
+% #HANDWRITTEN: [签名]
+\fieldvalue{\handwritten{[签名]}}
+\\
+日期 &
+% #VALUE_ID: LEX-P0015-V0017
+% #FIELD_VALUE: 日期
+% #HANDWRITTEN: 2026.06.07
+\fieldvalue{\handwritten{2026.06.07}}
+\end{tabular}
+
+\vspace{1em}
+
+\begin{center}
+\textbf{Palltronic FlowStar IV 测试结果}
+\end{center}
+
+\begin{tabular}{@{}p{0.30\linewidth}p{0.58\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0015-V0018
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 11:24:30}
+\\
+页码 &
+% #VALUE_ID: LEX-P0015-V0019
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2}
+\end{tabular}
+
+\vspace{1em}
+
+\begin{center}
+\begin{tikzpicture}[x=0.9cm,y=0.9cm]
+\draw (0,0) rectangle (7,5);
+\draw[->] (0,0) -- (7.3,0) node[right] {流量 (mbar/min)};
+\draw[->] (0,0) -- (0,5.3) node[above] {压力 (mbar)};
+\draw (0,0) -- (0,5);
+\draw (0,0) .. controls (5.4,0) and (5.6,0.1) .. (5.8,1.1)
+      .. controls (6.0,2.0) and (6.2,2.2) .. (6.5,2.3);
+\node[below] at (0,0) {0};
+\node[below] at (1.5,0) {1000};
+\node[below] at (3,0) {2800};
+\node[below] at (4.5,0) {4200};
+\node[below] at (6,0) {5600};
+\node[below] at (7,0) {7000};
+\node[left] at (0,0.5) {450};
+\node[left] at (0,2.5) {900};
+\node[left] at (0,4.3) {1350};
+\node[left] at (0,5) {1800};
+\end{tikzpicture}
+\end{center}
+
+\vspace{0.5em}
+
+% #VALUE_ID: LEX-P0015-V0020
+% #HANDWRITTEN: 赵俊杰 2026.06.10
+\handwritten{赵俊杰 2026.06.10}
+
+% #VALUE_ID: LEX-P0015-V0021
+% #HANDWRITTEN: [蓝色手写标记，疑似“L4”]
+\handwritten{[蓝色手写标记，疑似 ``L4'']}
+
+% TODO: The graph and report continue beyond this page. Only the visible portion is represented.
+% LEXOID_PAGE_COMPLETED: 15/47
+
+\newpage
+
+\section*{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0016-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 11:35:01}
+\\
+页码 &
+% #VALUE_ID: LEX-P0016-V0002
+% #FIELD_VALUE: 页码
+\fieldvalue{1 of 2}
+\\
+Serial/Result number &
+% #VALUE_ID: LEX-P0016-V0003
+% #FIELD_VALUE: Serial/Result number
+\fieldvalue{238804741411}
+\\
+测量程序 &
+% #VALUE_ID: LEX-P0016-V0004
+% #FIELD_VALUE: 测量程序
+\fieldvalue{S-F?ES-225}
+\\
+测量项目 &
+% #VALUE_ID: LEX-P0016-V0005
+% #FIELD_VALUE: 测量项目
+\fieldvalue{QZ}
+\\
+测量设备 &
+% #VALUE_ID: LEX-P0016-V0006
+% #FIELD_VALUE: 测量设备
+\fieldvalue{Shiyonghou}
+\\
+气体 &
+% #VALUE_ID: LEX-P0016-V0007
+% #FIELD_VALUE: 气体
+\fieldvalue{N2}
+\\
+设备编号 &
+% #VALUE_ID: LEX-P0016-V0008
+% #FIELD_VALUE: 设备编号
+\fieldvalue{A?Z?720?2050300}
+\\
+过滤器编号 &
+% #VALUE_ID: LEX-P0016-V0009
+% #FIELD_VALUE: 过滤器编号
+\fieldvalue{SFM?ES-225}
+\\
+测试压力 &
+% #VALUE_ID: LEX-P0016-V0010
+% #FIELD_VALUE: 测试压力
+\fieldvalue{2 bar}
+\\
+测试温度 &
+% #VALUE_ID: LEX-P0016-V0011
+% #FIELD_VALUE: 测试温度
+\fieldvalue{Shui}
+\\
+最小压力 &
+% #VALUE_ID: LEX-P0016-V0012
+% #FIELD_VALUE: 最小压力
+\fieldvalue{1000 mbar}
+\\
+最大压力 &
+% #VALUE_ID: LEX-P0016-V0013
+% #FIELD_VALUE: 最大压力
+\fieldvalue{4500 mbar}
+\\
+测试压力上限 &
+% #VALUE_ID: LEX-P0016-V0014
+% #FIELD_VALUE: 测试压力上限
+\fieldvalue{7000 mbar}
+\end{tabular}
+
+\vspace{0.5em}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+结果 &
+% #VALUE_ID: LEX-P0016-V0015
+% #FIELD_VALUE: 结果
+\fieldvalue{合格}
+\\
+测试开始时间 &
+% #VALUE_ID: LEX-P0016-V0016
+% #FIELD_VALUE: 测试开始时间
+\fieldvalue{8/Jun/2026 11:37:43}
+\end{tabular}
+
+\vspace{0.5em}
+
+\noindent 注释
+
+\begin{tabular}{@{}p{0.12\linewidth}p{0.78\linewidth}@{}}
+1. 签名 &
+% #VALUE_ID: LEX-P0016-V0017
+% #FIELD_VALUE: 签名
+% #TODO #HANDWRITTEN: [签名]; handwritten signature is not legible
+\fieldvalue{\handwritten{[签名]}}
+\\
+日期 &
+% #VALUE_ID: LEX-P0016-V0018
+% #FIELD_VALUE: 日期
+% #HANDWRITTEN: 2026.6.8
+\fieldvalue{\handwritten{2026.6.8}}
+\end{tabular}
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0016-V0019
+% #HANDWRITTEN: 2026.06.16
+\handwritten{2026.06.16}
+
+\section*{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0016-V0020
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 11:35:01}
+\\
+页码 &
+% #VALUE_ID: LEX-P0016-V0021
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2}
+\end{tabular}
+
+\vspace{0.5em}
+
+\begin{center}
+\begin{tikzpicture}[x=0.9cm,y=0.9cm]
+  \draw (0,0) rectangle (8,5);
+  \draw[->] (0,0) -- (8.4,0)
+    node[right]{压力（mbar）};
+  \draw[->] (0,0) -- (0,5.4)
+    node[above]{气泡点压力（mbar/min）};
+
+  \foreach \x/\lab in {0/0,2/1400,4/2800,6/3500,8/7000}
+    \draw (\x,0.08) -- (\x,-0.08)
+      node[below]{\scriptsize \lab};
+
+  \foreach \y/\lab in {0/450,1.3/900,2.6/1350,5/1800}
+    \draw (0.08,\y) -- (-0.08,\y)
+      node[left]{\scriptsize \lab};
+
+  \draw[thick]
+    plot[smooth] coordinates {
+      (4.3,0.15)
+      (4.5,0.35)
+      (4.7,0.7)
+      (4.9,1.3)
+      (5.1,1.9)
+      (5.3,2.3)
+      (5.6,2.55)
+    };
+\end{tikzpicture}
+\end{center}
+
+% #VALUE_ID: LEX-P0016-V0022
+% #HANDWRITTEN: 16/4
+\handwritten{16/4}
+
+% #VALUE_ID: LEX-P0016-V0023
+% #HANDWRITTEN: 2026.06.16
+\handwritten{2026.06.16}
+% LEXOID_PAGE_COMPLETED: 16/47
+
+\newpage
+
+\noindent
+\begin{minipage}[t]{0.47\linewidth}
+\centering
+\textbf{PALL Palltronic Flowstar IV 测试结果}
+
+\medskip
+\begin{tabular}{@{}p{0.30\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0017-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/1/2026 13:24:38}
+\\[2pt]
+序号 &
+% #VALUE_ID: LEX-P0017-V0002
+% #FIELD_VALUE: 序号
+\fieldvalue{FFS04LSG? 2/2NIT}
+\\[2pt]
+产品号 &
+% #VALUE_ID: LEX-P0017-V0003
+% #FIELD_VALUE: 产品号
+\fieldvalue{2308074-4142}
+\\[2pt]
+功能 &
+% #VALUE_ID: LEX-P0017-V0004
+% #FIELD_VALUE: 功能
+\fieldvalue{SMPES-5225}
+\\[2pt]
+测试编号 &
+% #VALUE_ID: LEX-P0017-V0005
+% #FIELD_VALUE: 测试编号
+\fieldvalue{SMPES-5225}
+\\[2pt]
+产品名称 &
+% #VALUE_ID: LEX-P0017-V0006
+% #FIELD_VALUE: 产品名称
+\fieldvalue{SMPES-5225}
+\\[2pt]
+产品型号 &
+% #VALUE_ID: LEX-P0017-V0007
+% #FIELD_VALUE: 产品型号
+\fieldvalue{SMPES-5225}
+\\[2pt]
+产品材质 &
+% #VALUE_ID: LEX-P0017-V0008
+% #FIELD_VALUE: 产品材质
+\fieldvalue{S/??}
+\\[2pt]
+额定压力 &
+% #VALUE_ID: LEX-P0017-V0009
+% #FIELD_VALUE: 额定压力
+\fieldvalue{1000}
+\\[2pt]
+测试压力 &
+% #VALUE_ID: LEX-P0017-V0010
+% #FIELD_VALUE: 测试压力
+\fieldvalue{4350\ mbar}
+\\[2pt]
+设定压力 &
+% #VALUE_ID: LEX-P0017-V0011
+% #FIELD_VALUE: 设定压力
+\fieldvalue{1000\ mbar}
+\end{tabular}
+
+\medskip
+\begin{tabular}{@{}p{0.30\linewidth}p{0.62\linewidth}@{}}
+测试气体 &
+% #VALUE_ID: LEX-P0017-V0012
+% #FIELD_VALUE: 测试气体
+\fieldvalue{空气}
+\\[2pt]
+测试压力 &
+% #VALUE_ID: LEX-P0017-V0013
+% #FIELD_VALUE: 测试压力
+\fieldvalue{4650\ mbar}
+\\[2pt]
+测量完成时间 &
+% #VALUE_ID: LEX-P0017-V0014
+% #FIELD_VALUE: 测量完成时间
+\fieldvalue{8/1/2026 13:42:21}
+\end{tabular}
+
+\medskip
+\textbf{注意}
+
+\begin{enumerate}
+\item 签名
+
+% #VALUE_ID: LEX-P0017-V0015
+% #FIELD_VALUE: 签名
+% #HANDWRITTEN: [签名]
+\fieldvalue{\handwritten{[签名]}}
+\end{enumerate}
+
+% #VALUE_ID: LEX-P0017-V0016
+% #FIELD_VALUE: 手写日期
+% #TODO #HANDWRITTEN: 2026.06.10; preceding Chinese characters are unclear
+\fieldvalue{\handwritten{[发货?] 2026.06.10}}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.47\linewidth}
+\centering
+\textbf{PALL Palltronic Flowstar IV 测试结果}
+
+\medskip
+\begin{tabular}{@{}p{0.30\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0017-V0017
+% #FIELD_VALUE: 日期
+\fieldvalue{8/1/2026 13:24:38}
+\\[2pt]
+页码 &
+2 of 2
+\end{tabular}
+
+\medskip
+% TODO: Reproduce the visible pressure-versus-flow graph; no source filename is available.
+\fbox{\parbox[c][0.48\textheight][c]{0.92\linewidth}{\centering
+\textit{图表：气体流量与压力曲线}\\[4pt]
+纵轴：气体流量（mbar/min）\\
+横轴：压力（mbar）\\[8pt]
+曲线由高压区近似垂直下降后趋于平缓
+}}
+
+\medskip
+% #VALUE_ID: LEX-P0017-V0018
+% #FIELD_VALUE: 图表手写日期
+% #TODO #HANDWRITTEN: 2026.06.10; preceding Chinese characters are unclear
+\fieldvalue{\handwritten{[发货?] 2026.06.10}}
+
+\medskip
+% #VALUE_ID: LEX-P0017-V0019
+% #FIELD_VALUE: 图表手写数值
+% #TODO #HANDWRITTEN: 17 46?; handwriting is unclear
+\fieldvalue{\handwritten{17 46?}}
+\end{minipage}
+% LEXOID_PAGE_COMPLETED: 17/47
+
+\newpage
+
+\section{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.24\linewidth}p{0.68\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0018-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 3:42:03}
+\\
+页号 &
+% #VALUE_ID: LEX-P0018-V0002
+% #FIELD_VALUE: 页号
+\fieldvalue{1 of 1}
+\\
+报告编号 &
+% #VALUE_ID: LEX-P0018-V0003
+% #FIELD_VALUE: 报告编号
+\fieldvalue{\texttt{FFS04LC2 / R?1}}
+\\
+测试设备 &
+% #VALUE_ID: LEX-P0018-V0004
+% #FIELD_VALUE: 测试设备
+\fieldvalue{\texttt{298? / 4413}}
+\\
+测试气体 &
+% #VALUE_ID: LEX-P0018-V0005
+% #FIELD_VALUE: 测试气体
+\fieldvalue{Air}
+\\
+测试程序 &
+% #VALUE_ID: LEX-P0018-V0006
+% #FIELD_VALUE: 测试程序
+\fieldvalue{\texttt{S-MPES-2225}}
+\\
+测试结果 &
+% #VALUE_ID: LEX-P0018-V0007
+% #FIELD_VALUE: 测试结果
+\fieldvalue{OK}
+\\
+测试压力 &
+% #VALUE_ID: LEX-P0018-V0008
+% #FIELD_VALUE: 测试压力
+\fieldvalue{1000}
+\\
+测试流量 &
+% #VALUE_ID: LEX-P0018-V0009
+% #FIELD_VALUE: 测试流量
+\fieldvalue{2500\ mbar}
+\\
+测试限值 &
+% #VALUE_ID: LEX-P0018-V0010
+% #FIELD_VALUE: 测试限值
+\fieldvalue{2000\ mbar}
+\\
+\end{tabular}
+
+% TODO: The report-number and test-equipment values are partially obscured or low-resolution in the source image.
+
+\medskip
+\noindent\textbf{备注}
+
+\begin{tabular}{@{}p{0.24\linewidth}p{0.68\linewidth}@{}}
+测试介质 &
+% #VALUE_ID: LEX-P0018-V0011
+% #FIELD_VALUE: 测试介质
+\fieldvalue{Air}
+\\
+测试持续时间 &
+% #VALUE_ID: LEX-P0018-V0012
+% #FIELD_VALUE: 测试持续时间
+\fieldvalue{8/Jun/2026 3:31:14}
+\\
+\end{tabular}
+
+\medskip
+\noindent\textbf{1.\ 签名}
+
+% #VALUE_ID: LEX-P0018-V0013
+% #FIELD_VALUE: 签名
+% #HANDWRITTEN: [签名，难以辨认]
+\fieldvalue{\handwritten{[签名，难以辨认]}}
+
+% #VALUE_ID: LEX-P0018-V0014
+% #HANDWRITTEN: 2026.06.10
+\handwritten{2026.06.10}
+
+\bigskip
+\section{测试曲线}
+
+\begin{center}
+\begin{minipage}{0.86\linewidth}
+\centering
+\textbf{Palltronic Flowstar IV 测试结果}
+
+\vspace{0.5em}
+\begin{tabular}{@{}ll@{}}
+日期：&
+% #VALUE_ID: LEX-P0018-V0015
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 3:42:03}
+\\
+页码：&
+% #VALUE_ID: LEX-P0018-V0016
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2}
+\\
+\end{tabular}
+
+\vspace{1em}
+% TODO: Reproduce the visible test graph; no source filename is available.
+\fbox{\parbox[c][0.34\textheight][c]{0.92\linewidth}{\centering
+\textit{测试曲线图}\\[0.5em]
+纵轴：气流流量（mbar/min），范围约为 $0$--$1800$\\
+横轴：时间（msec），范围约为 $0$--$7000$\\[0.5em]
+曲线在约 $4200$--$4600\ \mathrm{msec}$ 处出现明显变化。
+}}
+
+\vspace{0.5em}
+% #VALUE_ID: LEX-P0018-V0017
+% #HANDWRITTEN: 1677
+\handwritten{1677}
+
+\end{minipage}
+\end{center}
+
+% #VALUE_ID: LEX-P0018-V0018
+% #HANDWRITTEN: 2026.06.10
+\handwritten{2026.06.10}
+% LEXOID_PAGE_COMPLETED: 18/47
+
+\newpage
+
+\section{Paltronic Flowstar IV 流量站结果}
+
+\begin{tabular}{@{}p{0.22\linewidth}p{0.68\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0019-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 14:00:12}
+\\
+编号 &
+% #VALUE_ID: LEX-P0019-V0002
+% #FIELD_VALUE: 编号
+\fieldvalue{FF504LG / 2/1T}
+\\
+客户 &
+% #VALUE_ID: LEX-P0019-V0003
+% #FIELD_VALUE: 客户
+\fieldvalue{BP}
+\\
+Serial number &
+% #VALUE_ID: LEX-P0019-V0004
+% #FIELD_VALUE: Serial number
+\fieldvalue{2}
+\\
+测试程序 &
+% #VALUE_ID: LEX-P0019-V0005
+% #FIELD_VALUE: 测试程序
+\fieldvalue{SAMPES-2225}
+\\
+测试介质 &
+% #VALUE_ID: LEX-P0019-V0006
+% #FIELD_VALUE: 测试介质
+\fieldvalue{C}
+\\
+生产区间 &
+% #VALUE_ID: LEX-P0019-V0007
+% #FIELD_VALUE: 生产区间
+\fieldvalue{0}
+\\
+仪器编号 &
+% #VALUE_ID: LEX-P0019-V0008
+% #FIELD_VALUE: 仪器编号
+\fieldvalue{A3720102005090}
+\\
+流量范围 &
+% #VALUE_ID: LEX-P0019-V0009
+% #FIELD_VALUE: 流量范围
+\fieldvalue{SAMPES-2225}
+\\
+测试气体 &
+% #VALUE_ID: LEX-P0019-V0010
+% #FIELD_VALUE: 测试气体
+\fieldvalue{air}
+\\
+最小流量 &
+% #VALUE_ID: LEX-P0019-V0011
+% #FIELD_VALUE: 最小流量
+\fieldvalue{1.000}
+\\
+最大流量 &
+% #VALUE_ID: LEX-P0019-V0012
+% #FIELD_VALUE: 最大流量
+\fieldvalue{4500 mbar}
+\\
+最大压力 &
+% #VALUE_ID: LEX-P0019-V0013
+% #FIELD_VALUE: 最大压力
+\fieldvalue{2000 mbar}
+\\
+\end{tabular}
+
+\vspace{1em}
+
+\begin{tabular}{@{}p{0.22\linewidth}p{0.68\linewidth}@{}}
+结果 &
+% #VALUE_ID: LEX-P0019-V0014
+% #FIELD_VALUE: 结果
+\fieldvalue{通过}
+\\
+压力范围 &
+% #VALUE_ID: LEX-P0019-V0015
+% #FIELD_VALUE: 压力范围
+\fieldvalue{2--4500 mbar}
+\\
+测量流量时间 &
+% #VALUE_ID: LEX-P0019-V0016
+% #FIELD_VALUE: 测量流量时间
+\fieldvalue{8/Jun/2026 14:09:34}
+\\
+\end{tabular}
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0019-V0017
+% #FIELD_VALUE: 签名
+% #HANDWRITTEN: [signature]
+\fieldvalue{\handwritten{[signature]}}
+
+% #VALUE_ID: LEX-P0019-V0018
+% #HANDWRITTEN: 2026.06.10
+\handwritten{2026.06.10}
+
+\vfill
+
+\section{Paltronic Flowstar IV 流量站结果}
+
+\begin{tabular}{@{}p{0.22\linewidth}p{0.68\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0019-V0019
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 16:40:12}
+\\
+编号 &
+% #VALUE_ID: LEX-P0019-V0020
+% #FIELD_VALUE: 编号
+\fieldvalue{2:1}
+\\
+\end{tabular}
+
+\vspace{1em}
+
+\noindent
+\textbf{流量曲线}
+
+\begin{center}
+\setlength{\fboxsep}{6pt}
+\fbox{%
+\begin{minipage}{0.82\linewidth}
+\small
+\begin{center}
+流量（mbar/min）\\[0.3em]
+\begin{tabular}{c@{\hspace{1.5em}}c@{\hspace{1.5em}}c@{\hspace{1.5em}}c}
+0 & 450 & 900 & 1350 \quad 1800
+\end{tabular}
+
+\vspace{1em}
+\hrule
+\vspace{0.5em}
+
+\hspace*{0.05\linewidth}
+\begin{tabular}{c@{\hspace{2em}}c@{\hspace{2em}}c@{\hspace{2em}}c}
+0 & 1400 & 2800 & 4200 \quad 5600
+\end{tabular}\\[-0.2em]
+时间（msec）
+\end{center}
+
+% TODO: The plotted curve is visible on the page but is not reproduced here.
+\end{minipage}%
+}
+\end{center}
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0019-V0021
+% #HANDWRITTEN: 19 47
+\handwritten{19 47}
+
+% #VALUE_ID: LEX-P0019-V0022
+% #HANDWRITTEN: 2026.06.10
+\handwritten{2026.06.10}
+
+% #VALUE_ID: LEX-P0019-V0023
+% #FIELD_VALUE: 结果
+% #HANDWRITTEN: 合格
+\fieldvalue{\handwritten{合格}}
+
+\noindent
+\textbf{注释}
+
+\begin{enumerate}
+\item 签名
+\end{enumerate}
+
+% TODO: Additional small printed identifiers and the handwritten signature at the lower-left margin are partially illegible in the source image.
+% LEXOID_PAGE_COMPLETED: 19/47
+
+\newpage
+
+\section{Paltronic Flowstar IV 流量结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0020-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 16:20:37}
+\\
+项目号 &
+% #VALUE_ID: LEX-P0020-V0002
+% #FIELD_VALUE: 项目号
+\fieldvalue{1.0 FS0A?CR / 2.21}
+\\
+序号 &
+% #VALUE_ID: LEX-P0020-V0003
+% #FIELD_VALUE: 序号
+\fieldvalue{288?}
+\\
+版本 &
+% #VALUE_ID: LEX-P0020-V0004
+% #FIELD_VALUE: 版本
+\fieldvalue{2.8?}
+\\
+设备号 &
+% #VALUE_ID: LEX-P0020-V0005
+% #FIELD_VALUE: 设备号
+\fieldvalue{SFM?S-2225}
+\\
+操作员 &
+% #VALUE_ID: LEX-P0020-V0006
+% #FIELD_VALUE: 操作员
+\fieldvalue{QZ}
+\\
+工作介质 &
+% #VALUE_ID: LEX-P0020-V0007
+% #FIELD_VALUE: 工作介质
+\fieldvalue{Syn?}
+\\
+产品型号 &
+% #VALUE_ID: LEX-P0020-V0008
+% #FIELD_VALUE: 产品型号
+\fieldvalue{2H5Valve}
+\\
+产品编号 &
+% #VALUE_ID: LEX-P0020-V0009
+% #FIELD_VALUE: 产品编号
+\fieldvalue{A?}
+\\
+软件版本 &
+% #VALUE_ID: LEX-P0020-V0010
+% #FIELD_VALUE: 软件版本
+\fieldvalue{SFM?S-2225}
+\\
+校验气体 &
+% #VALUE_ID: LEX-P0020-V0011
+% #FIELD_VALUE: 校验气体
+\fieldvalue{Air}
+\\
+压力 &
+% #VALUE_ID: LEX-P0020-V0012
+% #FIELD_VALUE: 压力
+\fieldvalue{4500 mbar}
+\\
+压力 &
+% #VALUE_ID: LEX-P0020-V0013
+% #FIELD_VALUE: 压力
+\fieldvalue{7000 mbar}
+\\
+\end{tabular}
+
+\vspace{1em}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+工作范围 &
+% #VALUE_ID: LEX-P0020-V0014
+% #FIELD_VALUE: 工作范围
+\fieldvalue{通过}
+\\
+气压范围 &
+% #VALUE_ID: LEX-P0020-V0015
+% #FIELD_VALUE: 气压范围
+\fieldvalue{通过}
+\\
+测试压力 &
+% #VALUE_ID: LEX-P0020-V0016
+% #FIELD_VALUE: 测试压力
+\fieldvalue{4500 mbar}
+\\
+流量范围 &
+% #VALUE_ID: LEX-P0020-V0017
+% #FIELD_VALUE: 流量范围
+\fieldvalue{8/Jun/2026 14:29:36}
+\\
+\end{tabular}
+
+\vspace{1em}
+
+\textbf{注释}
+
+\begin{enumerate}
+\item 整备
+\end{enumerate}
+
+% #VALUE_ID: LEX-P0020-V0018
+% #HANDWRITTEN: 测试校准 2026.06.10
+\handwritten{测试校准 2026.06.10}
+
+\vfill
+
+\section{Paltronic Flowstar IV 流量结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0020-V0019
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 14:20:37}
+\\
+分辨率 &
+% #VALUE_ID: LEX-P0020-V0020
+% #FIELD_VALUE: 分辨率
+\fieldvalue{2.81?}
+\\
+\end{tabular}
+
+\vspace{1em}
+
+% TODO: Reproduce the visible flow-rate graph; the source figure filename is unavailable.
+\begin{center}
+\fbox{\parbox{0.82\linewidth}{\centering
+\textit{流量图（图形内容见原页面）}\\[1em]
+纵轴：流量（mbar/min）\\
+横轴：时间（s）
+}}
+\end{center}
+
+% #VALUE_ID: LEX-P0020-V0021
+% #HANDWRITTEN: 20.67
+\handwritten{20.67}
+
+% #VALUE_ID: LEX-P0020-V0022
+% #HANDWRITTEN: 测试校准 2026.06.10
+\handwritten{测试校准 2026.06.10}
+% LEXOID_PAGE_COMPLETED: 20/47
+
+\newpage
+
+\section{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0021-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 14:38:20} \\
+
+项目 No. &
+% #VALUE_ID: LEX-P0021-V0002
+% #FIELD_VALUE: 项目 No.
+\fieldvalue{2} \\
+
+仪器 Serial Number &
+% #VALUE_ID: LEX-P0021-V0003
+% #FIELD_VALUE: 仪器 Serial Number
+\fieldvalue{FS?AL?R / 2/??T} \\
+
+型号 &
+% #VALUE_ID: LEX-P0021-V0004
+% #FIELD_VALUE: 型号
+\fieldvalue{???} \\
+
+测试者 &
+% #VALUE_ID: LEX-P0021-V0005
+% #FIELD_VALUE: 测试者
+\fieldvalue{???} \\
+
+测试类型 &
+% #VALUE_ID: LEX-P0021-V0006
+% #FIELD_VALUE: 测试类型
+\fieldvalue{C2} \\
+
+工作区域 &
+% #VALUE_ID: LEX-P0021-V0007
+% #FIELD_VALUE: 工作区域
+\fieldvalue{Shihyanglou} \\
+
+过滤器序列号 &
+% #VALUE_ID: LEX-P0021-V0008
+% #FIELD_VALUE: 过滤器序列号
+\fieldvalue{2/??} \\
+
+产品编号 &
+% #VALUE_ID: LEX-P0021-V0009
+% #FIELD_VALUE: 产品编号
+\fieldvalue{A?Z?201?020?5030} \\
+
+气路序列号 &
+% #VALUE_ID: LEX-P0021-V0010
+% #FIELD_VALUE: 气路序列号
+\fieldvalue{STW?ES-225} \\
+
+测试液体 &
+% #VALUE_ID: LEX-P0021-V0011
+% #FIELD_VALUE: 测试液体
+\fieldvalue{Shui} \\
+
+测试流量 &
+% #VALUE_ID: LEX-P0021-V0012
+% #FIELD_VALUE: 测试流量
+\fieldvalue{1:4000} \\
+
+最大允许压力 &
+% #VALUE_ID: LEX-P0021-V0013
+% #FIELD_VALUE: 最大允许压力
+\fieldvalue{1:450 mbar} \\
+
+最小允许压力 &
+% #VALUE_ID: LEX-P0021-V0014
+% #FIELD_VALUE: 最小允许压力
+\fieldvalue{1:3000 mbar}
+\end{tabular}
+
+% TODO: Several printed report values are low-resolution and require verification against the source PDF.
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+测试结果 &
+% #VALUE_ID: LEX-P0021-V0015
+% #FIELD_VALUE: 测试结果
+\fieldvalue{通过} \\
+
+总流量限制 &
+% #VALUE_ID: LEX-P0021-V0016
+% #FIELD_VALUE: 总流量限制
+\fieldvalue{4650 mbar} \\
+
+测试时间 &
+% #VALUE_ID: LEX-P0021-V0017
+% #FIELD_VALUE: 测试时间
+\fieldvalue{8/Jun/2026 14:42:42}
+\end{tabular}
+
+\begin{flushleft}
+1.\ 签名:\quad
+% #VALUE_ID: LEX-P0021-V0018
+% #FIELD_VALUE: 签名
+% #HANDWRITTEN: [签名] 2026.06.08
+\fieldvalue{\handwritten{[签名] 2026.06.08}}
+\end{flushleft}
+
+% #VALUE_ID: LEX-P0021-V0019
+% #HANDWRITTEN: 测试于 2026.06.10
+\handwritten{测试于 2026.06.10}
+
+\section{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0021-V0020
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 14:38:20} \\
+
+项目 No. &
+% #VALUE_ID: LEX-P0021-V0021
+% #FIELD_VALUE: 项目 No.
+\fieldvalue{2}
+\end{tabular}
+
+\begin{center}
+\begin{tabular}{|p{0.78\linewidth}|}
+\hline
+\centering
+\begin{picture}(260,170)
+% TODO: Recreate the visible pressure-flow graph; the graph is a scanned figure without an available filename.
+\put(20,20){\line(1,0){220}}
+\put(20,20){\line(0,1){135}}
+\put(20,155){\makebox(0,0)[l]{压力范围 (mbar/min)}}
+\put(125,8){\makebox(0,0){流量 (L/min)}}
+\end{picture}
+\\
+\hline
+\end{tabular}
+\end{center}
+
+% #VALUE_ID: LEX-P0021-V0022
+% #HANDWRITTEN: 测试于 2026.06.10
+\handwritten{测试于 2026.06.10}
+
+% #VALUE_ID: LEX-P0021-V0023
+% #HANDWRITTEN: 21/47
+\handwritten{21/47}
+% LEXOID_PAGE_COMPLETED: 21/47
+
+\newpage
+
+\section*{PALL Paltronic Flowstar IV 流量结果}
+
+\begin{tabular}{@{}p{0.24\linewidth}p{0.70\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0022-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 16:37:18}
+\\
+型号 &
+% #VALUE_ID: LEX-P0022-V0002
+% #FIELD_VALUE: 型号
+\fieldvalue{FF50AGR/2.2?T}
+\\
+序号 &
+% #VALUE_ID: LEX-P0022-V0003
+% #FIELD_VALUE: 序号
+\fieldvalue{23880244149}
+\\
+测试程序 &
+% #VALUE_ID: LEX-P0022-V0004
+% #FIELD_VALUE: 测试程序
+\fieldvalue{SW/FPS-225}
+\\
+流量单位 &
+% #VALUE_ID: LEX-P0022-V0005
+% #FIELD_VALUE: 流量单位
+\fieldvalue{Q}
+\\
+压力单位 &
+% #VALUE_ID: LEX-P0022-V0006
+% #FIELD_VALUE: 压力单位
+\fieldvalue{C}
+\\
+气体 &
+% #VALUE_ID: LEX-P0022-V0007
+% #FIELD_VALUE: 气体
+\fieldvalue{Shuanglong}
+\\
+产品名称 &
+% #VALUE_ID: LEX-P0022-V0008
+% #FIELD_VALUE: 产品名称
+\fieldvalue{A3T?}
+\\
+产品编号 &
+% #VALUE_ID: LEX-P0022-V0009
+% #FIELD_VALUE: 产品编号
+\fieldvalue{A3T20220605030}
+\\
+产品型号 &
+% #VALUE_ID: LEX-P0022-V0010
+% #FIELD_VALUE: 产品型号
+\fieldvalue{SW/FPS-225}
+\\
+流量单位 &
+% #VALUE_ID: LEX-P0022-V0011
+% #FIELD_VALUE: 流量单位
+\fieldvalue{Air}
+\\
+流量上限 &
+% #VALUE_ID: LEX-P0022-V0012
+% #FIELD_VALUE: 流量上限
+\fieldvalue{1.1000}
+\\
+流量下限 &
+% #VALUE_ID: LEX-P0022-V0013
+% #FIELD_VALUE: 流量下限
+\fieldvalue{0.0500}
+\\
+最大压力 &
+% #VALUE_ID: LEX-P0022-V0014
+% #FIELD_VALUE: 最大压力
+\fieldvalue{7000 mbar}
+\\
+结果 &
+% #VALUE_ID: LEX-P0022-V0015
+% #FIELD_VALUE: 结果
+\fieldvalue{通过}
+\\
+测试压力 &
+% #VALUE_ID: LEX-P0022-V0016
+% #FIELD_VALUE: 测试压力
+\fieldvalue{4700 mbar}
+\\
+测试日期 &
+% #VALUE_ID: LEX-P0022-V0017
+% #FIELD_VALUE: 测试日期
+\fieldvalue{8/Jun/2026 15:45:00}
+\\
+\end{tabular}
+
+\vspace{1em}
+
+备注：1. 签字
+
+% #VALUE_ID: LEX-P0022-V0018
+% #FIELD_VALUE: 签字
+% #TODO #HANDWRITTEN: 签名；字迹难以辨认
+\fieldvalue{\handwritten{签名}}
+
+% #VALUE_ID: LEX-P0022-V0019
+% #FIELD_VALUE: 签字日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}}
+
+% #VALUE_ID: LEX-P0022-V0020
+% #HANDWRITTEN: 2.压力 2016.06.10
+\handwritten{2.压力 2016.06.10}
+
+\section*{PALL Paltronic Flowstar IV 流量结果}
+
+\begin{tabular}{@{}p{0.24\linewidth}p{0.70\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0022-V0021
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 16:37:18}
+\\
+页码 &
+% #VALUE_ID: LEX-P0022-V0022
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2}
+\\
+\end{tabular}
+
+\vspace{1em}
+
+% TODO: Graph visible on this page; reproduce the plotted curve and axis labels if graphical extraction is required.
+\begin{center}
+\fbox{\parbox[c][0.34\textheight][c]{0.82\linewidth}{\centering
+\textit{流量压力曲线图}\\[0.5em]
+\textit{（图形占位符）}
+}}
+\end{center}
+
+% #VALUE_ID: LEX-P0022-V0023
+% #HANDWRITTEN: 2016.06.10
+\handwritten{2016.06.10}
+
+% #VALUE_ID: LEX-P0022-V0024
+% #HANDWRITTEN: 226?
+\handwritten{226?}
+% LEXOID_PAGE_COMPLETED: 22/47
+
+\newpage
+
+\section*{Palltronic FlowStar IV 测试结果}
+
+\subsection*{测试信息}
+
+\begin{tabular}{@{}p{0.27\linewidth}p{0.63\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0023-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{9/10/2026 18:39:32}
+\\
+页码 &
+% #VALUE_ID: LEX-P0023-V0002
+% #FIELD_VALUE: 页码
+\fieldvalue{1 of 2}
+\\
+Serial number &
+% #VALUE_ID: LEX-P0023-V0003
+% #FIELD_VALUE: Serial number
+\fieldvalue{FFS04LGK/22/1IT}
+\\
+测试编号 &
+% #VALUE_ID: LEX-P0023-V0004
+% #FIELD_VALUE: 测试编号
+\fieldvalue{238008744-4157}
+\\
+设备型号 &
+% #VALUE_ID: LEX-P0023-V0005
+% #FIELD_VALUE: 设备型号
+\fieldvalue{LX}
+\\
+生产厂家 &
+% #VALUE_ID: LEX-P0023-V0006
+% #FIELD_VALUE: 生产厂家
+\fieldvalue{C}
+\\
+生产日期 &
+% #VALUE_ID: LEX-P0023-V0007
+% #FIELD_VALUE: 生产日期
+\fieldvalue{Shyonghou}
+\\
+产品名称 &
+% #VALUE_ID: LEX-P0023-V0008
+% #FIELD_VALUE: 产品名称
+\fieldvalue{2hus?ave}
+\\
+产品型号 &
+% #VALUE_ID: LEX-P0023-V0009
+% #FIELD_VALUE: 产品型号
+\fieldvalue{A372202?0206050}
+\\
+过滤器编号 &
+% #VALUE_ID: LEX-P0023-V0010
+% #FIELD_VALUE: 过滤器编号
+\fieldvalue{SMPFES-2225}
+\\
+测试流速 &
+% #VALUE_ID: LEX-P0023-V0011
+% #FIELD_VALUE: 测试流速
+\fieldvalue{5 slm}
+\\
+测试压力 &
+% #VALUE_ID: LEX-P0023-V0012
+% #FIELD_VALUE: 测试压力
+\fieldvalue{1.000}
+\\
+压力范围 &
+% #VALUE_ID: LEX-P0023-V0013
+% #FIELD_VALUE: 压力范围
+\fieldvalue{1.500 mbar}
+\\
+最大压力 &
+% #VALUE_ID: LEX-P0023-V0014
+% #FIELD_VALUE: 最大压力
+\fieldvalue{7000 mbar}
+\end{tabular}
+
+\subsection*{注释}
+
+\begin{tabular}{@{}p{0.27\linewidth}p{0.63\linewidth}@{}}
+1.\ 姓名 &
+% #VALUE_ID: LEX-P0023-V0015
+% #FIELD_VALUE: 姓名
+% #TODO #HANDWRITTEN: B?4-?; handwriting is unclear
+\fieldvalue{\handwritten{B?4-?}}
+\\
+检测起始时间 &
+% #VALUE_ID: LEX-P0023-V0016
+% #FIELD_VALUE: 检测起始时间
+\fieldvalue{9/10/2026 18:49:04}
+\\
+测试压力范围 &
+% #VALUE_ID: LEX-P0023-V0017
+% #FIELD_VALUE: 测试压力范围
+\fieldvalue{4600 mbar}
+\end{tabular}
+
+% #VALUE_ID: LEX-P0023-V0018
+% #HANDWRITTEN: 2026.06.60
+\handwritten{2026.06.60}
+
+\bigskip
+
+\section*{Palltronic FlowStar IV 测试结果}
+
+\subsection*{测试图表}
+
+\begin{tabular}{@{}p{0.27\linewidth}p{0.63\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0023-V0019
+% #FIELD_VALUE: 日期
+\fieldvalue{9/10/2026 18:39:32}
+\\
+页码 &
+% #VALUE_ID: LEX-P0023-V0020
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2}
+\end{tabular}
+
+\begin{center}
+\fbox{\begin{minipage}[c][0.36\textheight][c]{0.78\linewidth}
+\centering
+% TODO: Reproduce the visible test graph, including the pressure--flow curve,
+% vertical axis markings (approximately 450, 900, 1350, and 1800 mbar/min),
+% and horizontal axis markings (approximately 0, 1000, 2000, 4200, 5600, and
+% 7000 mbar). The original figure has no available filename.
+\textit{测试曲线图}\\[1em]
+纵轴：流量（mbar/min）\\
+横轴：压力（mbar）
+\end{minipage}}
+\end{center}
+
+% #VALUE_ID: LEX-P0023-V0021
+% #HANDWRITTEN: 2026.06.60
+\handwritten{2026.06.60}
+
+% #VALUE_ID: LEX-P0023-V0022
+% #HANDWRITTEN: 2347
+\handwritten{2347}
+% LEXOID_PAGE_COMPLETED: 23/47
+
+\newpage
+
+\section{Paltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.23\linewidth}p{0.67\linewidth}@{}}
+日期 & 
+% #VALUE_ID: LEX-P0024-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{10/Jun/2026 10:19:03} \\[2pt]
+编号 &
+% #VALUE_ID: LEX-P0024-V0002
+% #FIELD_VALUE: 编号
+\fieldvalue{FFSO4SLGK-12/2?1?} \\[2pt]
+序号 &
+% #VALUE_ID: LEX-P0024-V0003
+% #FIELD_VALUE: 序号
+\fieldvalue{238?B?44161} \\[2pt]
+测试员 &
+% #VALUE_ID: LEX-P0024-V0004
+% #FIELD_VALUE: 测试员
+\fieldvalue{} \\[2pt]
+测量温度 &
+% #VALUE_ID: LEX-P0024-V0005
+% #FIELD_VALUE: 测量温度
+\fieldvalue{23?} \\[2pt]
+流体 &
+% #VALUE_ID: LEX-P0024-V0006
+% #FIELD_VALUE: 流体
+\fieldvalue{LNG} \\[2pt]
+生产厂家 &
+% #VALUE_ID: LEX-P0024-V0007
+% #FIELD_VALUE: 生产厂家
+\fieldvalue{Shinyoung} \\[2pt]
+产品名称 &
+% #VALUE_ID: LEX-P0024-V0008
+% #FIELD_VALUE: 产品名称
+\fieldvalue{} \\[2pt]
+产品编号 &
+% #VALUE_ID: LEX-P0024-V0009
+% #FIELD_VALUE: 产品编号
+\fieldvalue{} \\[2pt]
+设备编号 &
+% #VALUE_ID: LEX-P0024-V0010
+% #FIELD_VALUE: 设备编号
+\fieldvalue{5PMPFS-2225} \\[2pt]
+过滤器型号 &
+% #VALUE_ID: LEX-P0024-V0011
+% #FIELD_VALUE: 过滤器型号
+\fieldvalue{SMU} \\[2pt]
+过滤器序列号 &
+% #VALUE_ID: LEX-P0024-V0012
+% #FIELD_VALUE: 过滤器序列号
+\fieldvalue{1000} \\[2pt]
+测试介质 &
+% #VALUE_ID: LEX-P0024-V0013
+% #FIELD_VALUE: 测试介质
+\fieldvalue{Air} \\[2pt]
+测试流量 &
+% #VALUE_ID: LEX-P0024-V0014
+% #FIELD_VALUE: 测试流量
+\fieldvalue{1000} \\[2pt]
+测试压力 &
+% #VALUE_ID: LEX-P0024-V0015
+% #FIELD_VALUE: 测试压力
+\fieldvalue{4650 mbar} \\[2pt]
+最大压力 &
+% #VALUE_ID: LEX-P0024-V0016
+% #FIELD_VALUE: 最大压力
+\fieldvalue{7000 mbar}
+\end{tabular}
+
+\bigskip
+
+\begin{tabular}{@{}p{0.23\linewidth}p{0.67\linewidth}@{}}
+结果 &
+% #VALUE_ID: LEX-P0024-V0017
+% #FIELD_VALUE: 结果
+\fieldvalue{通过} \\[2pt]
+测试压力 &
+% #VALUE_ID: LEX-P0024-V0018
+% #FIELD_VALUE: 测试压力
+\fieldvalue{4650 mbar} \\[2pt]
+测试完成时间 &
+% #VALUE_ID: LEX-P0024-V0019
+% #FIELD_VALUE: 测试完成时间
+\fieldvalue{10/Jun/2026 10:28:26} \\[2pt]
+备注 & \\[2pt]
+签名 &
+% #VALUE_ID: LEX-P0024-V0020
+% #FIELD_VALUE: 签名
+% #HANDWRITTEN: [签名]
+\fieldvalue{\handwritten{[签名]}}
+\end{tabular}
+
+% #VALUE_ID: LEX-P0024-V0021
+% #HANDWRITTEN: 通过 2026/06/10
+\handwritten{通过 2026/06/10}
+
+\bigskip
+\hrule
+\bigskip
+
+\section{Paltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.20\linewidth}p{0.68\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0024-V0022
+% #FIELD_VALUE: 日期
+\fieldvalue{10/Jun/2026 10:19:03} \\[2pt]
+页码 & 2 of 2
+\end{tabular}
+
+\bigskip
+
+\begin{center}
+\begin{picture}(280,150)
+\put(20,15){\framebox(230,125){}}
+\put(5,135){\makebox(35,10)[l]{流量 (mbar/min)}}
+\put(100,0){\makebox(80,10)[c]{压力 (mbar)}}
+\put(17,10){\makebox(15,10)[r]{0}}
+\put(8,55){\makebox(25,10)[r]{450}}
+\put(8,85){\makebox(25,10)[r]{900}}
+\put(5,112){\makebox(28,10)[r]{1350}}
+\put(5,137){\makebox(28,10)[r]{1800}}
+\put(55,5){\makebox(35,10)[c]{1400}}
+\put(105,5){\makebox(35,10)[c]{2200}}
+\put(155,5){\makebox(35,10)[c]{2600}}
+\put(205,5){\makebox(35,10)[c]{3200}}
+\put(220,100){\line(0,-1){30}}
+\put(225,68){\line(1,-1){15}}
+\end{picture}
+\end{center}
+
+% #VALUE_ID: LEX-P0024-V0023
+% #HANDWRITTEN: 2467
+\handwritten{2467}
+
+% #VALUE_ID: LEX-P0024-V0024
+% #HANDWRITTEN: 通过 2026/06/10
+\handwritten{通过 2026/06/10}
+
+% TODO: Several alphanumeric printed identifiers and the signature are partially
+% illegible in the scanned image and should be checked against the source PDF.
+% LEXOID_PAGE_COMPLETED: 24/47
+
+\newpage
+
+\section{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.24\linewidth}p{0.70\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0025-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{10/Jun/2026 10:33:18} \\[2pt]
+页码 &
+% #VALUE_ID: LEX-P0025-V0002
+% #FIELD_VALUE: 页码
+\fieldvalue{1 of 2} \\[2pt]
+型号 &
+% #VALUE_ID: LEX-P0025-V0003
+% #FIELD_VALUE: 型号
+\fieldvalue{FS-504LG-R 22/1 L} \\[2pt]
+功能 &
+% #VALUE_ID: LEX-P0025-V0004
+% #FIELD_VALUE: 功能
+\fieldvalue{Flowstar function number} \\[2pt]
+客户 &
+% #VALUE_ID: LEX-P0025-V0005
+% #FIELD_VALUE: 客户
+\fieldvalue{SH} \\[2pt]
+序号 &
+% #VALUE_ID: LEX-P0025-V0006
+% #FIELD_VALUE: 序号
+\fieldvalue{SFMPES-2225} \\[2pt]
+软件版本 &
+% #VALUE_ID: LEX-P0025-V0007
+% #FIELD_VALUE: 软件版本
+\fieldvalue{1.XX} \\[2pt]
+生产区域 &
+% #VALUE_ID: LEX-P0025-V0008
+% #FIELD_VALUE: 生产区域
+\fieldvalue{C:\Moving\...} \\[2pt]
+产品名称 &
+% #VALUE_ID: LEX-P0025-V0009
+% #FIELD_VALUE: 产品名称
+\fieldvalue{AZ...} \\[2pt]
+产品编号 &
+% #VALUE_ID: LEX-P0025-V0010
+% #FIELD_VALUE: 产品编号
+\fieldvalue{...} \\[2pt]
+过程编号 &
+% #VALUE_ID: LEX-P0025-V0011
+% #FIELD_VALUE: 过程编号
+\fieldvalue{SFMPES-2225} \\[2pt]
+过滤器序列号 &
+% #VALUE_ID: LEX-P0025-V0012
+% #FIELD_VALUE: 过滤器序列号
+\fieldvalue{SFMPES-2225} \\[2pt]
+过滤器型号 &
+% #VALUE_ID: LEX-P0025-V0013
+% #FIELD_VALUE: 过滤器型号
+\fieldvalue{5\,\textmu m} \\[2pt]
+测试气体 &
+% #VALUE_ID: LEX-P0025-V0014
+% #FIELD_VALUE: 测试气体
+\fieldvalue{Air} \\[2pt]
+测试流量 &
+% #VALUE_ID: LEX-P0025-V0015
+% #FIELD_VALUE: 测试流量
+\fieldvalue{1500} \\[2pt]
+测试压差 &
+% #VALUE_ID: LEX-P0025-V0016
+% #FIELD_VALUE: 测试压差
+\fieldvalue{45\,mbar} \\[2pt]
+最大测试压力 &
+% #VALUE_ID: LEX-P0025-V0017
+% #FIELD_VALUE: 最大测试压力
+\fieldvalue{7000\,mbar}
+\end{tabular}
+
+\vspace{1em}
+
+\begin{tabular}{@{}p{0.30\linewidth}p{0.64\linewidth}@{}}
+测试结果 &
+% #VALUE_ID: LEX-P0025-V0018
+% #FIELD_VALUE: 测试结果
+\fieldvalue{通过} \\[2pt]
+初始过滤器压差 &
+% #VALUE_ID: LEX-P0025-V0019
+% #FIELD_VALUE: 初始过滤器压差
+\fieldvalue{4600\,mbar} \\[2pt]
+测试终止压力 &
+% #VALUE_ID: LEX-P0025-V0020
+% #FIELD_VALUE: 测试终止压力
+\fieldvalue{4000\,mbar} \\[2pt]
+测试完成时间 &
+% #VALUE_ID: LEX-P0025-V0021
+% #FIELD_VALUE: 测试完成时间
+\fieldvalue{10/Jun/2026 10:42:40}
+\end{tabular}
+
+\vspace{1em}
+
+注释：
+
+\begin{enumerate}
+\item 签名：%
+% #VALUE_ID: LEX-P0025-V0022
+% #FIELD_VALUE: 签名
+% TODO #HANDWRITTEN: illegible; blue handwritten signature and date
+\fieldvalue{\handwritten{[illegible] 2026.06.10}}
+\end{enumerate}
+
+\vspace{2em}
+
+\section{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.24\linewidth}p{0.70\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0025-V0023
+% #FIELD_VALUE: 日期
+\fieldvalue{10/Jun/2026 10:33:18} \\[2pt]
+页码 &
+% #VALUE_ID: LEX-P0025-V0024
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2}
+\end{tabular}
+
+\vspace{1em}
+
+\begin{center}
+\setlength{\unitlength}{1mm}
+\begin{picture}(125,78)
+  \put(12,8){\vector(1,0){105}}
+  \put(12,8){\vector(0,1){62}}
+  \put(12,3){\makebox(0,0)[c]{时间（s）}}
+  \put(2,38){\rotatebox{90}{\makebox(0,0)[c]{空气流量（mbar/min）}}}
+  \put(10,8){\makebox(0,0)[r]{0}}
+  \put(10,29){\makebox(0,0)[r]{450}}
+  \put(10,50){\makebox(0,0)[r]{900}}
+  \put(10,70){\makebox(0,0)[r]{1350}}
+  \put(10,76){\makebox(0,0)[r]{1800}}
+  \put(30,6){\makebox(0,0)[c]{1400}}
+  \put(53,6){\makebox(0,0)[c]{1200}}
+  \put(76,6){\makebox(0,0)[c]{1200}}
+  \put(99,6){\makebox(0,0)[c]{1400}}
+  \put(117,6){\makebox(0,0)[c]{1700}}
+  % Approximate visible test curve.
+  \qbezier(12,8)(65,8)(79,9)
+  \qbezier(79,9)(84,10)(86,22)
+  \qbezier(86,22)(88,38)(90,54)
+  \qbezier(90,54)(91,62)(93,68)
+\end{picture}
+\end{center}
+
+% #VALUE_ID: LEX-P0025-V0025
+% #HANDWRITTEN: illegible
+\handwritten{[illegible blue handwritten note]}
+
+% TODO: The lower blue handwritten annotation is partially illegible in the source image.
+% #VALUE_ID: LEX-P0025-V0026
+% #HANDWRITTEN: illegible
+\handwritten{[illegible blue handwritten annotation]}
+% LEXOID_PAGE_COMPLETED: 25/47
+
+\newpage
+
+\section*{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0026-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{10/Jun/2026 10:50:16}
+\\
+工单号 &
+% #VALUE_ID: LEX-P0026-V0002
+% #FIELD_VALUE: 工单号
+\fieldvalue{102}
+\\
+FlowStar result number &
+% #VALUE_ID: LEX-P0026-V0003
+% #FIELD_VALUE: FlowStar result number
+\fieldvalue{F-S04LC? / 22?T}
+\\
+设备号 &
+% #VALUE_ID: LEX-P0026-V0004
+% #FIELD_VALUE: 设备号
+\fieldvalue{280804?4163}
+\\
+型号 &
+% #VALUE_ID: LEX-P0026-V0005
+% #FIELD_VALUE: 型号
+\fieldvalue{Air}
+\\
+测试介质 &
+% #VALUE_ID: LEX-P0026-V0006
+% #FIELD_VALUE: 测试介质
+\fieldvalue{SFMEPS-225}
+\\
+压力单位 &
+% #VALUE_ID: LEX-P0026-V0007
+% #FIELD_VALUE: 压力单位
+\fieldvalue{kPa}
+\\
+温度单位 &
+% #VALUE_ID: LEX-P0026-V0008
+% #FIELD_VALUE: 温度单位
+\fieldvalue{C}
+\\
+测试方式 &
+% #VALUE_ID: LEX-P0026-V0009
+% #FIELD_VALUE: 测试方式
+\fieldvalue{Syringe flow}
+\\
+测试气体 &
+% #VALUE_ID: LEX-P0026-V0010
+% #FIELD_VALUE: 测试气体
+\fieldvalue{Nitrogen}
+\\
+测试压力 &
+% #VALUE_ID: LEX-P0026-V0011
+% #FIELD_VALUE: 测试压力
+\fieldvalue{2 bar}
+\\
+环境温度 &
+% #VALUE_ID: LEX-P0026-V0012
+% #FIELD_VALUE: 环境温度
+\fieldvalue{23\textdegree C}
+\end{tabular}
+
+\vspace{1em}
+
+\begin{tabular}{@{}p{0.42\linewidth}p{0.48\linewidth}@{}}
+测试范围设定值 &
+% #VALUE_ID: LEX-P0026-V0013
+% #FIELD_VALUE: 测试范围设定值
+\fieldvalue{4700 mbar}
+\\
+测试压力 &
+% #VALUE_ID: LEX-P0026-V0014
+% #FIELD_VALUE: 测试压力
+\fieldvalue{4200 mbar}
+\\
+测试时间 &
+% #VALUE_ID: LEX-P0026-V0015
+% #FIELD_VALUE: 测试时间
+\fieldvalue{10/Jun/2026 10:50:37}
+\end{tabular}
+
+\vspace{1em}
+
+\noindent\textbf{备注}
+
+\begin{enumerate}
+\item 签名
+
+% TODO: Handwritten signature is present but not legible.
+% #VALUE_ID: LEX-P0026-V0016
+% #FIELD_VALUE: 签名
+% #TODO #HANDWRITTEN: illegible; handwritten signature
+\fieldvalue{\handwritten{illegible}}
+\end{enumerate}
+
+% #VALUE_ID: LEX-P0026-V0017
+% #HANDWRITTEN: 检测结果 2026/06/10
+\handwritten{检测结果 2026/06/10}
+
+\section*{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.18\linewidth}p{0.70\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0026-V0018
+% #FIELD_VALUE: 日期
+\fieldvalue{10/Jun/2026 10:50:16}
+\\
+页码 &
+% #VALUE_ID: LEX-P0026-V0019
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2}
+\end{tabular}
+
+\vspace{1em}
+
+\begin{center}
+\begin{tikzpicture}
+\draw[gray] (0,0) rectangle (0.82\linewidth,5cm);
+\draw[->] (0,0) -- (0.82\linewidth,0)
+  node[midway,below=3pt]{压力（mbar）};
+\draw[->] (0,0) -- (0,5cm)
+  node[midway,left=12pt,rotate=90]{大气流量（mbar/min）};
+
+\node[below] at (0.08\linewidth,0) {\scriptsize 1400};
+\node[below] at (0.25\linewidth,0) {\scriptsize 2800};
+\node[below] at (0.43\linewidth,0) {\scriptsize 4200};
+\node[below] at (0.60\linewidth,0) {\scriptsize 5600};
+\node[below] at (0.77\linewidth,0) {\scriptsize 7000};
+
+\node[left] at (0,0) {\scriptsize 0};
+\node[left] at (0,1.25cm) {\scriptsize 450};
+\node[left] at (0,2.5cm) {\scriptsize 900};
+\node[left] at (0,3.75cm) {\scriptsize 1350};
+\node[left] at (0,5cm) {\scriptsize 1800};
+
+\draw[dashed] (0.51\linewidth,0) -- (0.51\linewidth,5cm);
+\draw[thick]
+(0.51\linewidth,0.25cm)
+.. controls (0.54\linewidth,0.25cm) and (0.55\linewidth,0.35cm)
+.. (0.56\linewidth,1.0cm)
+.. controls (0.58\linewidth,1.55cm) and (0.60\linewidth,1.7cm)
+.. (0.62\linewidth,1.75cm);
+\end{tikzpicture}
+\end{center}
+
+% #VALUE_ID: LEX-P0026-V0020
+% #HANDWRITTEN: 2647
+\handwritten{2647}
+
+% #VALUE_ID: LEX-P0026-V0021
+% #HANDWRITTEN: 2026/06/10
+\handwritten{2026/06/10}
+
+% TODO: The graph and handwritten annotations continue to the page boundary.
+% LEXOID_PAGE_COMPLETED: 26/47
+
+\newpage
+
+\section*{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.27\linewidth}p{0.63\linewidth}@{}}
+日期时间 &
+% #VALUE_ID: LEX-P0027-V0001
+% #FIELD_VALUE: 日期时间
+\fieldvalue{10/Jun/2026 11:30:45}
+\\
+页码 &
+% #VALUE_ID: LEX-P0027-V0002
+% #FIELD_VALUE: 页码
+\fieldvalue{1 of 2}
+\\
+测试号 &
+% #VALUE_ID: LEX-P0027-V0003
+% #FIELD_VALUE: 测试号
+\fieldvalue{FS-040}
+\\
+Serial/instrument number &
+% #VALUE_ID: LEX-P0027-V0004
+% #FIELD_VALUE: Serial/instrument number
+\fieldvalue{22880794414}
+\\
+测试程序 &
+% #VALUE_ID: LEX-P0027-V0005
+% #FIELD_VALUE: 测试程序
+\fieldvalue{Palltronic Flowstar IV}
+\\
+测试结果 &
+% #VALUE_ID: LEX-P0027-V0006
+% #FIELD_VALUE: 测试结果
+\fieldvalue{Passed}
+\\
+测试气体 &
+% #VALUE_ID: LEX-P0027-V0007
+% #FIELD_VALUE: 测试气体
+\fieldvalue{Air}
+\\
+测试压力 &
+% #VALUE_ID: LEX-P0027-V0008
+% #FIELD_VALUE: 测试压力
+\fieldvalue{1000 mbar}
+\\
+最大测试压力 &
+% #VALUE_ID: LEX-P0027-V0009
+% #FIELD_VALUE: 最大测试压力
+\fieldvalue{4500 mbar}
+\\
+最大压力 &
+% #VALUE_ID: LEX-P0027-V0010
+% #FIELD_VALUE: 最大压力
+\fieldvalue{7000 mbar}
+\\
+结果 &
+% #VALUE_ID: LEX-P0027-V0011
+% #FIELD_VALUE: 结果
+\fieldvalue{通过（泄漏率：4.8000 mbar）}
+\\
+测试开始时间 &
+% #VALUE_ID: LEX-P0027-V0012
+% #FIELD_VALUE: 测试开始时间
+\fieldvalue{10/Jun/2026 11:43:38}
+\\
+注释 &
+% #VALUE_ID: LEX-P0027-V0013
+% #FIELD_VALUE: 注释
+% #TODO #HANDWRITTEN: a（签名）2026.06.10; handwriting is partially unclear
+\fieldvalue{\handwritten{a（签名）2026.06.10}}
+\end{tabular}
+
+\vspace{1em}
+
+\section*{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.27\linewidth}p{0.63\linewidth}@{}}
+日期时间 &
+% #VALUE_ID: LEX-P0027-V0014
+% #FIELD_VALUE: 日期时间
+\fieldvalue{10/Jun/2026 11:30:45}
+\\
+页码 &
+% #VALUE_ID: LEX-P0027-V0015
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2}
+\end{tabular}
+
+\vspace{1em}
+
+\begin{center}
+\setlength{\unitlength}{1mm}
+\begin{picture}(105,65)
+  \put(12,8){\framebox(88,52){}}
+  \put(12,8){\vector(1,0){88}}
+  \put(12,8){\vector(0,1){52}}
+  \put(48,2){\makebox(0,0){时间（秒）}}
+  \put(3,38){\rotatebox{90}{\makebox(0,0){压力变化（mbar/min）}}}
+  \put(12,5){\makebox(0,0){0}}
+  \put(32,5){\makebox(0,0){1{,}450}}
+  \put(52,5){\makebox(0,0){2{,}900}}
+  \put(72,5){\makebox(0,0){4{,}350}}
+  \put(96,5){\makebox(0,0){7{,}000}}
+  \put(8,8){\makebox(0,0){0}}
+  \put(8,25){\makebox(0,0){450}}
+  \put(8,42){\makebox(0,0){900}}
+  \put(8,59){\makebox(0,0){1{,}350}}
+  \qbezier(12,8)(67,8)(76,13)
+  \qbezier(76,13)(79,18)(81,27)
+\end{picture}
+\end{center}
+
+% #VALUE_ID: LEX-P0027-V0016
+% #HANDWRITTEN: 2/4?
+\handwritten{2/4?}
+
+% #VALUE_ID: LEX-P0027-V0017
+% #HANDWRITTEN: 刘（签名）2026.06.10
+\handwritten{刘（签名）2026.06.10}
+% LEXOID_PAGE_COMPLETED: 27/47
+
+\newpage
+
+\section{Palltronic Flowstar IV 测试站结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+\textbf{日期} &
+% #VALUE_ID: LEX-P0028-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 09:44:18}
+\\
+\textbf{项目号} &
+% #VALUE_ID: LEX-P0028-V0002
+% #FIELD_VALUE: 项目号
+\fieldvalue{L012}
+\\
+\textbf{序列号} &
+% #VALUE_ID: LEX-P0028-V0003
+% #FIELD_VALUE: 序列号
+\fieldvalue{FFS604LRG / 2-?I?}
+\\
+\textbf{测试编号} &
+% #VALUE_ID: LEX-P0028-V0004
+% #FIELD_VALUE: 测试编号
+\fieldvalue{32880744-4133}
+\\
+\textbf{测试结果} &
+% #VALUE_ID: LEX-P0028-V0005
+% #FIELD_VALUE: 测试结果
+\fieldvalue{Pass}
+\\
+\textbf{测试程序} &
+% #VALUE_ID: LEX-P0028-V0006
+% #FIELD_VALUE: 测试程序
+\fieldvalue{SFMPFS-22SS}
+\\
+\textbf{生产区域} &
+% #VALUE_ID: LEX-P0028-V0007
+% #FIELD_VALUE: 生产区域
+\fieldvalue{C}
+\\
+\textbf{生产线} &
+% #VALUE_ID: LEX-P0028-V0008
+% #FIELD_VALUE: 生产线
+\fieldvalue{Shanghai}
+\\
+\textbf{过滤器名称} &
+% #VALUE_ID: LEX-P0028-V0009
+% #FIELD_VALUE: 过滤器名称
+\fieldvalue{Shu?}
+\\
+\textbf{过滤器型号} &
+% #VALUE_ID: LEX-P0028-V0010
+% #FIELD_VALUE: 过滤器型号
+\fieldvalue{A?220?20260500}
+\\
+\textbf{测试气体} &
+% #VALUE_ID: LEX-P0028-V0011
+% #FIELD_VALUE: 测试气体
+\fieldvalue{SFMPFS-22SS}
+\\
+\textbf{气体类型} &
+% #VALUE_ID: LEX-P0028-V0012
+% #FIELD_VALUE: 气体类型
+\fieldvalue{Shu?}
+\\
+\textbf{测试介质} &
+% #VALUE_ID: LEX-P0028-V0013
+% #FIELD_VALUE: 测试介质
+\fieldvalue{Air}
+\\
+\textbf{测试压力} &
+% #VALUE_ID: LEX-P0028-V0014
+% #FIELD_VALUE: 测试压力
+\fieldvalue{1000 mbar}
+\\
+\textbf{最大允许值} &
+% #VALUE_ID: LEX-P0028-V0015
+% #FIELD_VALUE: 最大允许值
+\fieldvalue{< 1500 mbar}
+\\
+\textbf{测试值} &
+% #VALUE_ID: LEX-P0028-V0016
+% #FIELD_VALUE: 测试值
+\fieldvalue{1000 mbar}
+\\
+\textbf{测试完成时间} &
+% #VALUE_ID: LEX-P0028-V0017
+% #FIELD_VALUE: 测试完成时间
+\fieldvalue{8/Jun/2026 09:53:41}
+\\
+\end{tabular}
+
+\vspace{1em}
+
+\textbf{测试结果：} 通过
+
+\vspace{1em}
+
+\textbf{1.\ 签名}
+
+% #VALUE_ID: LEX-P0028-V0018
+% #FIELD_VALUE: 签名
+% #TODO #HANDWRITTEN: [签名]; handwriting is illegible
+\fieldvalue{\handwritten{[签名]}}
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0028-V0019
+% #HANDWRITTEN: 2026.06.10
+\handwritten{2026.06.10}
+
+\section{测试曲线}
+
+\textbf{Palltronic Flowstar IV 测试站结果}
+
+\textbf{日期：}
+% #VALUE_ID: LEX-P0028-V0020
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 09:44:18}
+
+\textbf{序号：}
+% #VALUE_ID: LEX-P0028-V0021
+% #FIELD_VALUE: 序号
+\fieldvalue{2 of 2}
+
+\begin{center}
+\setlength{\fboxsep}{8pt}
+\fbox{%
+\begin{minipage}{0.82\linewidth}
+\centering
+\textbf{大气流量 (mbar/min)}
+
+\vspace{0.5em}
+\begin{tabular}{c|ccccc}
+0 & 450 & 900 & 1350 & 1800 &  \\
+\hline
+\multicolumn{6}{c}{压力 (mbar): 0 \quad 1200 \quad 2600 \quad 4200 \quad 5600 \quad 7000}
+\end{tabular}
+
+\vspace{1em}
+% TODO: Reproduce the visible test curve from the source image.
+\end{minipage}%
+}
+\end{center}
+
+% #VALUE_ID: LEX-P0028-V0022
+% #HANDWRITTEN: 2026.06.10
+\handwritten{2026.06.10}
+
+% #VALUE_ID: LEX-P0028-V0023
+% #TODO #HANDWRITTEN: 2?4?; blue handwritten notation is unclear
+\handwritten{2?4?}
+% LEXOID_PAGE_COMPLETED: 28/47
+
+\newpage
+
+\section*{Paltronic Flowstar IV 流量站结果}
+
+\begin{tabular}{@{}p{0.30\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0029-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 10:00:41}
+\\
+压力 &
+% #VALUE_ID: LEX-P0029-V0002
+% #FIELD_VALUE: 压力
+\fieldvalue{1.0 bar}
+\\
+型号 &
+% #VALUE_ID: LEX-P0029-V0003
+% #FIELD_VALUE: 型号
+\fieldvalue{FS40}
+\\
+Serial/序列号 &
+% #VALUE_ID: LEX-P0029-V0004
+% #FIELD_VALUE: Serial/序列号
+\fieldvalue{2880?414?A?2/1}
+\\
+测试介质 &
+% #VALUE_ID: LEX-P0029-V0005
+% #FIELD_VALUE: 测试介质
+\fieldvalue{水}
+\\
+测试气体 &
+% #VALUE_ID: LEX-P0029-V0006
+% #FIELD_VALUE: 测试气体
+\fieldvalue{SMPF?}
+\\
+接口类型 &
+% #VALUE_ID: LEX-P0029-V0007
+% #FIELD_VALUE: 接口类型
+\fieldvalue{Q2}
+\\
+接口尺寸 &
+% #VALUE_ID: LEX-P0029-V0008
+% #FIELD_VALUE: 接口尺寸
+\fieldvalue{C}
+\\
+转换接头 &
+% #VALUE_ID: LEX-P0029-V0009
+% #FIELD_VALUE: 转换接头
+\fieldvalue{Syringocou?}
+\\
+产品名称 &
+% #VALUE_ID: LEX-P0029-V0010
+% #FIELD_VALUE: 产品名称
+\fieldvalue{Zhustne?ve}
+\\
+产品型号 &
+% #VALUE_ID: LEX-P0029-V0011
+% #FIELD_VALUE: 产品型号
+\fieldvalue{SMPF5225}
+\\
+产品序列号 &
+% #VALUE_ID: LEX-P0029-V0012
+% #FIELD_VALUE: 产品序列号
+\fieldvalue{241220?}
+\\
+额定流量 &
+% #VALUE_ID: LEX-P0029-V0013
+% #FIELD_VALUE: 额定流量
+\fieldvalue{1000}
+\\
+测量气体 &
+% #VALUE_ID: LEX-P0029-V0014
+% #FIELD_VALUE: 测量气体
+\fieldvalue{Air}
+\\
+最大流量 &
+% #VALUE_ID: LEX-P0029-V0015
+% #FIELD_VALUE: 最大流量
+\fieldvalue{1500 mbar}
+\\
+最大压力 &
+% #VALUE_ID: LEX-P0029-V0016
+% #FIELD_VALUE: 最大压力
+\fieldvalue{7000 mbar}
+\\
+泄漏测试压力 &
+% #VALUE_ID: LEX-P0029-V0017
+% #FIELD_VALUE: 泄漏测试压力
+\fieldvalue{4700 mbar}
+\\
+泄漏测试时间 &
+% #VALUE_ID: LEX-P0029-V0018
+% #FIELD_VALUE: 泄漏测试时间
+\fieldvalue{8/Jun/2026 10:00:03}
+\\
+签名 &
+% #VALUE_ID: LEX-P0029-V0019
+% #FIELD_VALUE: 签名
+% #TODO #HANDWRITTEN: 签名; handwriting is illegible
+\fieldvalue{\handwritten{签名}}
+\end{tabular}
+
+% #VALUE_ID: LEX-P0029-V0020
+% #TODO #HANDWRITTEN: 26/06/10; handwritten date is partially unclear
+\handwritten{26/06/10}
+
+% #VALUE_ID: LEX-P0029-V0021
+% #TODO #HANDWRITTEN: 交接签名; handwritten Chinese note is unclear
+\handwritten{交接签名}
+
+\section*{Paltronic Flowstar IV 流量站结果}
+
+\begin{tabular}{@{}p{0.30\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0029-V0022
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 10:00:41}
+\\
+压力 &
+% #VALUE_ID: LEX-P0029-V0023
+% #FIELD_VALUE: 压力
+\fieldvalue{2 of 2}
+\end{tabular}
+
+\bigskip
+
+\begin{center}
+% TODO: Flow-rate graph visible on this page; reproduce the plotted curve and axis labels if a graphical reconstruction is required.
+\begin{minipage}{0.72\linewidth}
+\centering
+\textit{大气体流量 (mbar/min)}\\
+\begin{picture}(240,150)
+\put(20,10){\line(1,0){205}}
+\put(20,10){\line(0,1){125}}
+\put(20,135){\line(1,0){205}}
+\put(245,10){\line(0,1){125}}
+\put(20,10){\makebox(0,0)[r]{0}}
+\put(20,52){\makebox(0,0)[r]{450}}
+\put(20,94){\makebox(0,0)[r]{900}}
+\put(20,135){\makebox(0,0)[r]{1800}}
+\put(50,3){\makebox(0,0){1400}}
+\put(105,3){\makebox(0,0){2800}}
+\put(145,3){\makebox(0,0){3500}}
+\put(205,3){\makebox(0,0){7000}}
+\put(20,10){\line(1,0){185}}
+\put(185,10){\line(0,1){2}}
+\put(188,10){\line(1,0){3}}
+\put(191,10){\line(1,1){8}}
+\put(199,18){\line(1,4){5}}
+\put(204,38){\line(0,1){70}}
+\end{picture}
+\end{minipage}
+\end{center}
+
+% #VALUE_ID: LEX-P0029-V0024
+% #TODO #HANDWRITTEN: 2026/06/10; handwritten date is partially unclear
+\handwritten{2026/06/10}
+
+% #VALUE_ID: LEX-P0029-V0025
+% #TODO #HANDWRITTEN: 交接签名; handwritten Chinese note is unclear
+\handwritten{交接签名}
+
+% #VALUE_ID: LEX-P0029-V0026
+% #HANDWRITTEN: 2047
+\handwritten{2047}
+% LEXOID_PAGE_COMPLETED: 29/47
+
+\newpage
+
+\section{Palltronic Flowstar IV 测试结果}
+
+\begin{minipage}[t]{0.47\linewidth}
+\begin{tabular}{@{}p{0.42\linewidth}p{0.52\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0030-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 10:16:42}
+\\
+页码 &
+% #VALUE_ID: LEX-P0030-V0002
+% #FIELD_VALUE: 页码
+\fieldvalue{1 of 2}
+\\
+测试结果编号 &
+% #VALUE_ID: LEX-P0030-V0003
+% #FIELD_VALUE: 测试结果编号
+\fieldvalue{FPS04LG / 22/1T}
+\\
+序列号 &
+% #VALUE_ID: LEX-P0030-V0004
+% #FIELD_VALUE: 序列号
+\fieldvalue{388904/41435}
+\\
+测试程序 &
+% #VALUE_ID: LEX-P0030-V0005
+% #FIELD_VALUE: 测试程序
+\fieldvalue{3}
+\\
+测试步骤 &
+% #VALUE_ID: LEX-P0030-V0006
+% #FIELD_VALUE: 测试步骤
+\fieldvalue{SFPES-22S}
+\\
+介质 &
+% #VALUE_ID: LEX-P0030-V0007
+% #FIELD_VALUE: 介质
+\fieldvalue{Q2}
+\\
+测试类型 &
+% #VALUE_ID: LEX-P0030-V0008
+% #FIELD_VALUE: 测试类型
+\fieldvalue{C}
+\\
+测试气体 &
+% #VALUE_ID: LEX-P0030-V0009
+% #FIELD_VALUE: 测试气体
+\fieldvalue{Glycol}
+\\
+产品名称 &
+% #VALUE_ID: LEX-P0030-V0010
+% #FIELD_VALUE: 产品名称
+\fieldvalue{Z\textit{?}Valve}
+\\
+产品编号 &
+% #VALUE_ID: LEX-P0030-V0011
+% #FIELD_VALUE: 产品编号
+\fieldvalue{A372702205030}
+\\
+过滤器型号 &
+% #VALUE_ID: LEX-P0030-V0012
+% #FIELD_VALUE: 过滤器型号
+\fieldvalue{SFPES-22S}
+\\
+测试介质 &
+% #VALUE_ID: LEX-P0030-V0013
+% #FIELD_VALUE: 测试介质
+\fieldvalue{Air}
+\\
+流量 &
+% #VALUE_ID: LEX-P0030-V0014
+% #FIELD_VALUE: 流量
+\fieldvalue{1.000}
+\\
+测试压力 &
+% #VALUE_ID: LEX-P0030-V0015
+% #FIELD_VALUE: 测试压力
+\fieldvalue{4500 mbar}
+\\
+最低测试压力 &
+% #VALUE_ID: LEX-P0030-V0016
+% #FIELD_VALUE: 最低测试压力
+\fieldvalue{7000 mbar}
+\end{tabular}
+
+\vspace{1em}
+
+\textbf{结果}
+
+\begin{tabular}{@{}p{0.42\linewidth}p{0.52\linewidth}@{}}
+测试压力 &
+% #VALUE_ID: LEX-P0030-V0017
+% #FIELD_VALUE: 测试压力
+\fieldvalue{4800 mbar}
+\\
+测试完成时间 &
+% #VALUE_ID: LEX-P0030-V0018
+% #FIELD_VALUE: 测试完成时间
+\fieldvalue{8/Jun/2026 10:26:24}
+\\
+\end{tabular}
+
+\vspace{1em}
+
+\textbf{1.\ 签名}
+
+% #VALUE_ID: LEX-P0030-V0019
+% #FIELD_VALUE: 签名
+% #HANDWRITTEN: （手写签名）
+\fieldvalue{\handwritten{（手写签名）}}
+
+% #VALUE_ID: LEX-P0030-V0020
+% #FIELD_VALUE: 签名日期
+% #HANDWRITTEN: 20.06.10
+\fieldvalue{\handwritten{20.06.10}}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.47\linewidth}
+\section{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.38\linewidth}p{0.56\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0030-V0021
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 10:16:42}
+\\
+页码 &
+% #VALUE_ID: LEX-P0030-V0022
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2}
+\end{tabular}
+
+\vspace{1em}
+
+\begin{center}
+\begin{picture}(270,185)
+\put(35,20){\vector(1,0){210}}
+\put(35,20){\vector(0,1){145}}
+\put(45,12){\makebox(0,0)[t]{气体流量（mbar/min）}}
+\put(45,5){\makebox(0,0)[t]{压力（mbar）}}
+
+\put(32,17){\makebox(0,0)[r]{0}}
+\put(65,17){\makebox(0,0)[r]{450}}
+\put(105,17){\makebox(0,0)[r]{900}}
+\put(145,17){\makebox(0,0)[r]{1350}}
+\put(210,17){\makebox(0,0)[r]{1800}}
+
+\put(65,10){\makebox(0,0)[t]{1800}}
+\put(110,10){\makebox(0,0)[t]{2800}}
+\put(150,10){\makebox(0,0)[t]{4200}}
+\put(195,10){\makebox(0,0)[t]{5600}}
+\put(235,10){\makebox(0,0)[t]{7000}}
+
+\put(35,20){\line(1,0){175}}
+\put(210,20){\line(0,1){145}}
+\put(35,20){\line(0,1){145}}
+\put(35,165){\line(1,0){175}}
+
+% Schematic test curve visible on the page.
+\put(150,20){\bezier{80}(150,20)(152,20)(154,38)}
+\put(154,38){\bezier{80}(154,38)(160,55)(175,58)}
+\put(175,58){\bezier{80}(175,58)(188,60)(191,80)}
+\end{picture}
+\end{center}
+
+% TODO: The graph contains a plotted curve and axis annotations; the curve is represented schematically because no source figure filename is available.
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0030-V0023
+% #FIELD_VALUE: 签名
+% #HANDWRITTEN: （手写签名）
+\fieldvalue{\handwritten{（手写签名）}}
+
+% #VALUE_ID: LEX-P0030-V0024
+% #FIELD_VALUE: 签名日期
+% #HANDWRITTEN: 20.06.10
+\fieldvalue{\handwritten{20.06.10}}
+
+% #VALUE_ID: LEX-P0030-V0025
+% #HANDWRITTEN: 30/47
+\handwritten{30/47}
+\end{minipage}
+% LEXOID_PAGE_COMPLETED: 30/47
+
+\newpage
+
+\section*{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.65\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0031-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{18/Jun/2026 10:31:57}
+\\
+页码 &
+% #VALUE_ID: LEX-P0031-V0002
+% #FIELD_VALUE: 页码
+\fieldvalue{1 of 2}
+\\
+测试号 &
+% #VALUE_ID: LEX-P0031-V0003
+% #FIELD_VALUE: 测试号
+\fieldvalue{FS0041CR/2/211T}
+\\
+仪器/serial number &
+% #VALUE_ID: LEX-P0031-V0004
+% #FIELD_VALUE: 仪器/serial number
+\fieldvalue{280?8?4-4136}
+\\
+测试程序 &
+% #VALUE_ID: LEX-P0031-V0005
+% #FIELD_VALUE: 测试程序
+\fieldvalue{SFM?ES-2255}
+\\
+生产区域 &
+% #VALUE_ID: LEX-P0031-V0006
+% #FIELD_VALUE: 生产区域
+\fieldvalue{C}
+\\
+产品编号 &
+% #VALUE_ID: LEX-P0031-V0007
+% #FIELD_VALUE: 产品编号
+\fieldvalue{Shoying?ol}
+\\
+产品名称 &
+% #VALUE_ID: LEX-P0031-V0008
+% #FIELD_VALUE: 产品名称
+\fieldvalue{2?}
+\\
+产品批号 &
+% #VALUE_ID: LEX-P0031-V0009
+% #FIELD_VALUE: 产品批号
+\fieldvalue{A322?026?0530}
+\\
+过滤器序列号 &
+% #VALUE_ID: LEX-P0031-V0010
+% #FIELD_VALUE: 过滤器序列号
+\fieldvalue{SFM?ES-2255}
+\\
+过滤器材质 &
+% #VALUE_ID: LEX-P0031-V0011
+% #FIELD_VALUE: 过滤器材质
+\fieldvalue{Shui}
+\\
+泡点 &
+% #VALUE_ID: LEX-P0031-V0012
+% #FIELD_VALUE: 泡点
+\fieldvalue{1000}
+\\
+测试压力 &
+% #VALUE_ID: LEX-P0031-V0013
+% #FIELD_VALUE: 测试压力
+\fieldvalue{4500 mbar}
+\\
+最大压力 &
+% #VALUE_ID: LEX-P0031-V0014
+% #FIELD_VALUE: 最大压力
+\fieldvalue{7000 mbar}
+\end{tabular}
+
+\subsection*{测试条件}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.65\linewidth}@{}}
+测试液 &
+% #VALUE_ID: LEX-P0031-V0015
+% #FIELD_VALUE: 测试液
+\fieldvalue{水}
+\\
+过滤器润湿压力 &
+% #VALUE_ID: LEX-P0031-V0016
+% #FIELD_VALUE: 过滤器润湿压力
+\fieldvalue{4700 mbar}
+\\
+测试完成时间 &
+% #VALUE_ID: LEX-P0031-V0017
+% #FIELD_VALUE: 测试完成时间
+\fieldvalue{18/Jun/2026 10:41:20}
+\end{tabular}
+
+\subsection*{注释}
+
+1. 接受
+
+签名：
+
+% #VALUE_ID: LEX-P0031-V0018
+% #FIELD_VALUE: 签名
+% #HANDWRITTEN: [签名]; handwritten signature
+\fieldvalue{\handwritten{[签名]}}
+
+% TODO: Handwritten annotation visible between the two report portions; transcription is uncertain.
+% #VALUE_ID: LEX-P0031-V0019
+% #HANDWRITTEN: 滤器? 2026.06.10
+\handwritten{滤器? 2026.06.10}
+
+\section*{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.65\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0031-V0020
+% #FIELD_VALUE: 日期
+\fieldvalue{18/Jun/2026 10:31:57}
+\\
+页码 &
+% #VALUE_ID: LEX-P0031-V0021
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2}
+\end{tabular}
+
+\subsection*{测试曲线}
+
+% TODO: Reproduce the visible test graph; no source filename is available.
+\begin{center}
+\fbox{\parbox[c][0.32\textheight][c]{0.88\linewidth}{\centering
+测试曲线图\\[0.5em]
+纵轴：气体流量（mbar/min）\\
+横轴：压力（mbar）\\[0.5em]
+曲线由接近零值开始，在约 4700 mbar 附近陡升。
+}}
+\end{center}
+
+% #VALUE_ID: LEX-P0031-V0022
+% #HANDWRITTEN: 滤器? 2026.06.10
+\handwritten{滤器? 2026.06.10}
+
+% #VALUE_ID: LEX-P0031-V0023
+% #HANDWRITTEN: 3/4?
+\handwritten{3/4?}
+% LEXOID_PAGE_COMPLETED: 31/47
+
+\newpage
+
+\section{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.24\linewidth}p{0.68\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0032-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 10:47:16}
+\\[2pt]
+型号 &
+% #VALUE_ID: LEX-P0032-V0002
+% #FIELD_VALUE: 型号
+% #TODO: 型号字符部分模糊。
+\fieldvalue{FS050?L/R / 2?T}
+\\[2pt]
+序列号 &
+% #VALUE_ID: LEX-P0032-V0003
+% #FIELD_VALUE: 序列号
+% #TODO: 序列号字符部分模糊。
+\fieldvalue{238?41137}
+\\[2pt]
+操作者 &
+% #VALUE_ID: LEX-P0032-V0004
+% #FIELD_VALUE: 操作者
+\fieldvalue{-}
+\\[2pt]
+测试程序 &
+% #VALUE_ID: LEX-P0032-V0005
+% #FIELD_VALUE: 测试程序
+\fieldvalue{SFM?ES-225}
+\\[2pt]
+生产批次 &
+% #VALUE_ID: LEX-P0032-V0006
+% #FIELD_VALUE: 生产批次
+\fieldvalue{-}
+\\[2pt]
+生产日期 &
+% #VALUE_ID: LEX-P0032-V0007
+% #FIELD_VALUE: 生产日期
+\fieldvalue{-}
+\\[2pt]
+测试项目 &
+% #VALUE_ID: LEX-P0032-V0008
+% #FIELD_VALUE: 测试项目
+\fieldvalue{过滤器完整性}
+\\[2pt]
+过滤器编号 &
+% #VALUE_ID: LEX-P0032-V0009
+% #FIELD_VALUE: 过滤器编号
+% #TODO: 过滤器编号字符部分模糊。
+\fieldvalue{A?72?02?050?}
+\\[2pt]
+过滤器型号 &
+% #VALUE_ID: LEX-P0032-V0010
+% #FIELD_VALUE: 过滤器型号
+% #TODO: 过滤器型号字符部分模糊。
+\fieldvalue{2Z?M?}
+\\[2pt]
+测试气体 &
+% #VALUE_ID: LEX-P0032-V0011
+% #FIELD_VALUE: 测试气体
+\fieldvalue{Air}
+\\[2pt]
+测试流量 &
+% #VALUE_ID: LEX-P0032-V0012
+% #FIELD_VALUE: 测试流量
+\fieldvalue{1 mL}
+\\[2pt]
+最大压差 &
+% #VALUE_ID: LEX-P0032-V0013
+% #FIELD_VALUE: 最大压差
+\fieldvalue{4000 mbar}
+\\[2pt]
+最小压差 &
+% #VALUE_ID: LEX-P0032-V0014
+% #FIELD_VALUE: 最小压差
+\fieldvalue{4000 mbar}
+\\[2pt]
+测试开始时间 &
+% #VALUE_ID: LEX-P0032-V0015
+% #FIELD_VALUE: 测试开始时间
+\fieldvalue{8/Jun/2026 10:55:58}
+\end{tabular}
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0032-V0016
+% #HANDWRITTEN: 赵?铭
+\handwritten{赵?铭}
+\quad
+% #VALUE_ID: LEX-P0032-V0017
+% #HANDWRITTEN: 2026.06.10
+\handwritten{2026.06.10}
+
+\subsection{签名}
+
+\noindent
+签名：\ 
+% #VALUE_ID: LEX-P0032-V0018
+% #FIELD_VALUE: 签名
+% #HANDWRITTEN: 手写签名（难以辨认）
+\fieldvalue{\handwritten{手写签名（难以辨认）}}
+
+\hfill
+% #VALUE_ID: LEX-P0032-V0019
+% #HANDWRITTEN: 2026.06.08
+\handwritten{2026.06.08}
+
+\vfill
+
+\section{测试曲线}
+
+\noindent
+\textbf{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}ll@{}}
+日期 & 8/Jun/2026 10:47:16\\
+页码 & 2 of 2
+\end{tabular}
+
+\medskip
+
+\noindent
+\begin{minipage}{0.88\linewidth}
+\centering
+\fbox{\begin{minipage}{0.88\linewidth}
+\centering
+\vspace{0.4em}
+\textbf{测试曲线图}
+
+\vspace{0.5em}
+\begin{tabular}{c|ccccc}
+最大流量（mbar/min） & 1800 & & & &\\
+ & 1350 & & & &\\
+ & 900 & & & &\\
+ & 450 & & & &\\
+ & 0 & & & &\\ \hline
+ & 1400 & 2800 & 4200 & 5600 & 7000
+\end{tabular}
+
+\smallskip
+
+测试时间（秒）
+
+\medskip
+% TODO: 原图显示一条在约 4000 秒处快速下降并趋于平稳的测试曲线；此处未使用图像文件，需根据原图补绘。
+\end{minipage}}
+\end{minipage}
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0032-V0020
+% #HANDWRITTEN: 赵?铭
+\handwritten{赵?铭}
+\quad
+% #VALUE_ID: LEX-P0032-V0021
+% #HANDWRITTEN: 2026.06.10
+\handwritten{2026.06.10}
+% LEXOID_PAGE_COMPLETED: 32/47
+
+\newpage
+
+\section{Palltronic FlowStar IV 测试结果}
+
+\begin{tabular}{@{}p{0.22\linewidth}p{0.70\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0033-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 11:02:24} \\
+
+页码 &
+% #VALUE_ID: LEX-P0033-V0002
+% #FIELD_VALUE: 页码
+\fieldvalue{1 of 2} \\
+
+序号 &
+% #VALUE_ID: LEX-P0033-V0003
+% #FIELD_VALUE: 序号
+\fieldvalue{FFS04LGR6 / 2/??1} \\
+
+产品号 &
+% #VALUE_ID: LEX-P0033-V0004
+% #FIELD_VALUE: 产品号
+\fieldvalue{328087444138} \\
+
+方法 &
+% #VALUE_ID: LEX-P0033-V0005
+% #FIELD_VALUE: 方法
+\fieldvalue{SFFPFS-225} \\
+
+测试类型 &
+% #VALUE_ID: LEX-P0033-V0006
+% #FIELD_VALUE: 测试类型
+\fieldvalue{Q2} \\
+
+测试压力 &
+% #VALUE_ID: LEX-P0033-V0007
+% #FIELD_VALUE: 测试压力
+\fieldvalue{4 bar} \\
+
+生产区域 &
+% #VALUE_ID: LEX-P0033-V0008
+% #FIELD_VALUE: 生产区域
+\fieldvalue{C} \\
+
+测试气体 &
+% #VALUE_ID: LEX-P0033-V0009
+% #FIELD_VALUE: 测试气体
+\fieldvalue{Synthetic air} \\
+
+产品名称 &
+% #VALUE_ID: LEX-P0033-V0010
+% #FIELD_VALUE: 产品名称
+\fieldvalue{Zhubsave} \\
+
+产品编号 &
+% #VALUE_ID: LEX-P0033-V0011
+% #FIELD_VALUE: 产品编号
+\fieldvalue{A317Z?202605030} \\
+
+测试压力范围 &
+% #VALUE_ID: LEX-P0033-V0012
+% #FIELD_VALUE: 测试压力范围
+\fieldvalue{1000} \\
+
+测试压力 &
+% #VALUE_ID: LEX-P0033-V0013
+% #FIELD_VALUE: 测试压力
+\fieldvalue{4500 mbar} \\
+
+测试压力上限 &
+% #VALUE_ID: LEX-P0033-V0014
+% #FIELD_VALUE: 测试压力上限
+\fieldvalue{7000 mbar} \\
+\end{tabular}
+
+\subsection{结果}
+
+\begin{tabular}{@{}p{0.32\linewidth}p{0.60\linewidth}@{}}
+测试结果 &
+% #VALUE_ID: LEX-P0033-V0015
+% #FIELD_VALUE: 测试结果
+\fieldvalue{通过} \\
+
+测试开始时间 &
+% #VALUE_ID: LEX-P0033-V0016
+% #FIELD_VALUE: 测试开始时间
+\fieldvalue{8/Jun/2026 11:13:35} \\
+
+签名 &
+% #VALUE_ID: LEX-P0033-V0017
+% #FIELD_VALUE: 签名
+% #TODO #HANDWRITTEN: illegible signature; handwritten signature is unclear
+\fieldvalue{\handwritten{illegible signature}} \\
+
+签名日期 &
+% #VALUE_ID: LEX-P0033-V0018
+% #FIELD_VALUE: 签名日期
+% #HANDWRITTEN: 2016/06/08
+\fieldvalue{\handwritten{2016/06/08}} \\
+\end{tabular}
+
+% TODO: The report continues onto the second visible page shown on this physical PDF page.
+
+\section{Palltronic FlowStar IV 测试结果}
+
+\begin{tabular}{@{}p{0.22\linewidth}p{0.70\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0033-V0019
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 11:02:24} \\
+
+页码 &
+% #VALUE_ID: LEX-P0033-V0020
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2} \\
+\end{tabular}
+
+\subsection{测试曲线}
+
+\begin{center}
+\setlength{\fboxsep}{6pt}
+\fbox{%
+\begin{minipage}{0.78\linewidth}
+\centering
+\textit{气流率 [mbar/min]}
+
+\vspace{1.2cm}
+
+\begin{tabular}{c|c}
+\multicolumn{2}{c}{压力 [mbar]}\\
+0 & 7000
+\end{tabular}
+
+\vspace{0.8cm}
+
+% #VALUE_ID: LEX-P0033-V0021
+% #HANDWRITTEN: 3347
+\handwritten{3347}
+\end{minipage}%
+}
+\end{center}
+
+% #VALUE_ID: LEX-P0033-V0022
+% #HANDWRITTEN: 2016/06/10
+\handwritten{2016/06/10}
+
+% TODO: The plotted curve and axis tick labels are reproduced schematically; the original graph is visible but its exact geometry is not recoverable from the page image.
+% LEXOID_PAGE_COMPLETED: 33/47
+
+\newpage
+
+\begin{center}
+\textbf{PALL\quad Palltronic Flowstar IV 流量计结果}
+\end{center}
+
+\begin{minipage}[t]{0.48\linewidth}
+\small
+\begin{tabular}{@{}p{0.38\linewidth}p{0.56\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0034-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 11:15:14}
+\\
+序号 &
+% #VALUE_ID: LEX-P0034-V0002
+% #FIELD_VALUE: 序号
+\fieldvalue{1}
+\\
+设备序列号 &
+% #VALUE_ID: LEX-P0034-V0003
+% #FIELD_VALUE: 设备序列号
+\fieldvalue{\texttt{FSF054CK / 22?1T}}
+\\
+设备编号 &
+% #VALUE_ID: LEX-P0034-V0004
+% #FIELD_VALUE: 设备编号
+\fieldvalue{\texttt{28309844?39}}
+\\
+测试程序 &
+% #VALUE_ID: LEX-P0034-V0005
+% #FIELD_VALUE: 测试程序
+\fieldvalue{\texttt{SMPFS?-225}}
+\\
+测试气体 &
+% #VALUE_ID: LEX-P0034-V0006
+% #FIELD_VALUE: 测试气体
+\fieldvalue{Air}
+\\
+测试压力 &
+% #VALUE_ID: LEX-P0034-V0007
+% #FIELD_VALUE: 测试压力
+\fieldvalue{1000}
+\\
+测试压力单位 &
+% #VALUE_ID: LEX-P0034-V0008
+% #FIELD_VALUE: 测试压力单位
+\fieldvalue{mbar}
+\\
+测试上限 &
+% #VALUE_ID: LEX-P0034-V0009
+% #FIELD_VALUE: 测试上限
+\fieldvalue{4250}
+\\
+测试上限单位 &
+% #VALUE_ID: LEX-P0034-V0010
+% #FIELD_VALUE: 测试上限单位
+\fieldvalue{mbar}
+\\
+最大压力 &
+% #VALUE_ID: LEX-P0034-V0011
+% #FIELD_VALUE: 最大压力
+\fieldvalue{7000}
+\\
+最大压力单位 &
+% #VALUE_ID: LEX-P0034-V0012
+% #FIELD_VALUE: 最大压力单位
+\fieldvalue{mbar}
+\\
+允许最大压降 &
+% #VALUE_ID: LEX-P0034-V0013
+% #FIELD_VALUE: 允许最大压降
+\fieldvalue{4250\ \mathrm{mbar}}
+\\
+测试气体 &
+% #VALUE_ID: LEX-P0034-V0014
+% #FIELD_VALUE: 测试气体
+\fieldvalue{Air}
+\\
+测试开始时间 &
+% #VALUE_ID: LEX-P0034-V0015
+% #FIELD_VALUE: 测试开始时间
+\fieldvalue{8/Jun/2026 11:23:45}
+\\
+签名 &
+% #VALUE_ID: LEX-P0034-V0016
+% #FIELD_VALUE: 签名
+% #TODO #HANDWRITTEN: （签名，难以辨认）；手写签名
+\fieldvalue{\handwritten{（签名，难以辨认）}}
+\\
+日期 &
+% #VALUE_ID: LEX-P0034-V0017
+% #FIELD_VALUE: 日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}}
+\end{tabular}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\small
+\begin{center}
+\textbf{PALL\quad Palltronic Flowstar IV 流量计结果}
+
+\vspace{0.4em}
+日期：%
+% #VALUE_ID: LEX-P0034-V0018
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 11:15:14}
+
+页码：%
+% #VALUE_ID: LEX-P0034-V0019
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2}
+
+\vspace{1em}
+% TODO: Reproduce the visible test graph; no source image filename is available.
+\setlength{\fboxsep}{8pt}
+\fbox{\begin{minipage}{0.88\linewidth}
+\centering
+\textbf{大气体积（mbar/min）}
+
+\vspace{1em}
+\begin{tabular}{c}
+1800\\[-0.2em]
+1350\\[-0.2em]
+900\\[-0.2em]
+450\\[-0.2em]
+0
+\end{tabular}
+\hspace{1em}
+\begin{minipage}[c]{0.62\linewidth}
+\centering
+\setlength{\unitlength}{1mm}
+\begin{picture}(55,38)
+\put(0,0){\line(1,0){55}}
+\put(0,0){\line(0,1){38}}
+\put(55,0){\line(0,1){38}}
+\put(0,38){\line(1,0){55}}
+\put(7,2){\line(1,0){3}}
+\put(10,2){\line(1,0){2}}
+\put(12,3){\line(1,1){3}}
+\put(15,6){\line(1,2){2}}
+\put(17,10){\line(1,4){1}}
+\end{picture}
+
+\vspace{-1em}
+\begin{tabular}{ccccc}
+0&1800&3600&5400&7200
+\end{tabular}
+
+时间（ms）
+\end{minipage}
+\end{minipage}}
+\end{center}
+\end{minipage}
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0034-V0020
+% #HANDWRITTEN: ？？
+\handwritten{？？}\quad
+% #VALUE_ID: LEX-P0034-V0021
+% #HANDWRITTEN: 2026.06.10
+\handwritten{2026.06.10}
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0034-V0022
+% #HANDWRITTEN: 校准？？
+\handwritten{校准？？}\quad
+% #VALUE_ID: LEX-P0034-V0023
+% #HANDWRITTEN: 2026.06.10
+\handwritten{2026.06.10}
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0034-V0024
+% #HANDWRITTEN: 347
+\handwritten{347}
+% LEXOID_PAGE_COMPLETED: 34/47
+
+\newpage
+
+\section{Paultronic Flowstar IV 测试结果}
+
+\begin{small}
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0035-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 11:24:30} \\
+
+页码 &
+% #VALUE_ID: LEX-P0035-V0002
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2} \\
+
+结果/Result number &
+% #VALUE_ID: LEX-P0035-V0003
+% #FIELD_VALUE: 结果/Result number
+\fieldvalue{F?S40?G? / 2?1T} \\
+
+功能 &
+% #VALUE_ID: LEX-P0035-V0004
+% #FIELD_VALUE: 功能
+\fieldvalue{流量} \\
+
+操作员 &
+% #VALUE_ID: LEX-P0035-V0005
+% #FIELD_VALUE: 操作员
+\fieldvalue{A?} \\
+
+生产区域 &
+% #VALUE_ID: LEX-P0035-V0006
+% #FIELD_VALUE: 生产区域
+\fieldvalue{C} \\
+
+生产环境 &
+% #VALUE_ID: LEX-P0035-V0007
+% #FIELD_VALUE: 生产环境
+\fieldvalue{Shiyonglou} \\
+
+产品名称 &
+% #VALUE_ID: LEX-P0035-V0008
+% #FIELD_VALUE: 产品名称
+\fieldvalue{Z?} \\
+
+产品编号 &
+% #VALUE_ID: LEX-P0035-V0009
+% #FIELD_VALUE: 产品编号
+\fieldvalue{A3721020260530} \\
+
+产品规格 &
+% #VALUE_ID: LEX-P0035-V0010
+% #FIELD_VALUE: 产品规格
+\fieldvalue{S?MP?FS-225} \\
+
+过流器材序号 &
+% #VALUE_ID: LEX-P0035-V0011
+% #FIELD_VALUE: 过流器材序号
+\fieldvalue{Shun} \\
+
+测量单位 &
+% #VALUE_ID: LEX-P0035-V0012
+% #FIELD_VALUE: 测量单位
+\fieldvalue{4 l/min} \\
+
+测量次数 &
+% #VALUE_ID: LEX-P0035-V0013
+% #FIELD_VALUE: 测量次数
+\fieldvalue{1.000} \\
+
+最大流量 &
+% #VALUE_ID: LEX-P0035-V0014
+% #FIELD_VALUE: 最大流量
+\fieldvalue{1.500 mbar} \\
+
+最小流量 &
+% #VALUE_ID: LEX-P0035-V0015
+% #FIELD_VALUE: 最小流量
+\fieldvalue{0.700 mbar} \\
+\end{tabular}
+\end{small}
+
+\bigskip
+
+\begin{small}
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+结果 &
+% #VALUE_ID: LEX-P0035-V0016
+% #FIELD_VALUE: 结果
+\fieldvalue{通过} \\
+
+安装检查 &
+% #VALUE_ID: LEX-P0035-V0017
+% #FIELD_VALUE: 安装检查
+\fieldvalue{通过} \\
+
+泄漏检查 &
+% #VALUE_ID: LEX-P0035-V0018
+% #FIELD_VALUE: 泄漏检查
+\fieldvalue{通过} \\
+
+测试所需的时间 &
+% #VALUE_ID: LEX-P0035-V0019
+% #FIELD_VALUE: 测试所需的时间
+\fieldvalue{8/Jun/2026 11:24:32} \\
+
+签名 &
+% #VALUE_ID: LEX-P0035-V0020
+% #FIELD_VALUE: 签名
+% #HANDWRITTEN: [签名]
+\fieldvalue{\handwritten{[签名]}} \\
+
+日期 &
+% #VALUE_ID: LEX-P0035-V0021
+% #FIELD_VALUE: 日期
+% #HANDWRITTEN: 2026.06.10
+\fieldvalue{\handwritten{2026.06.10}} \\
+\end{tabular}
+\end{small}
+
+\bigskip
+
+\section{流量曲线}
+
+\begin{small}
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0035-V0022
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 11:24:30} \\
+
+页码 &
+% #VALUE_ID: LEX-P0035-V0023
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2} \\
+\end{tabular}
+\end{small}
+
+% TODO: Reproduce the visible flow-rate graph; no source filename is available.
+\begin{center}
+\fbox{\parbox[c][0.34\textheight][c]{0.78\linewidth}{\centering
+\textit{流量曲线图（原图位置）}\\[1ex]
+纵轴：空气流量（mbar/min）\\
+横轴：时间（s）}}
+\end{center}
+
+% #VALUE_ID: LEX-P0035-V0024
+% #HANDWRITTEN: [签名] 2026.06.10
+\handwritten{[签名] 2026.06.10}
+
+% #VALUE_ID: LEX-P0035-V0025
+% #HANDWRITTEN: 376?
+\handwritten{376?}
+% LEXOID_PAGE_COMPLETED: 35/47
+
+\newpage
+
+\section*{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0036-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 11:35:01}
+\\[2pt]
+页号 &
+% #VALUE_ID: LEX-P0036-V0002
+% #FIELD_VALUE: 页号
+\fieldvalue{2 of 2}
+\\[2pt]
+Sartorius number &
+% #VALUE_ID: LEX-P0036-V0003
+% #FIELD_VALUE: Sartorius number
+\fieldvalue{238804744141}
+\\[2pt]
+测试程序 &
+% #VALUE_ID: LEX-P0036-V0004
+% #FIELD_VALUE: 测试程序
+\fieldvalue{SFMPES-22S}
+\\[2pt]
+测试型号 &
+% #VALUE_ID: LEX-P0036-V0005
+% #FIELD_VALUE: 测试型号
+\fieldvalue{OZ}
+\\[2pt]
+测试区域 &
+% #VALUE_ID: LEX-P0036-V0006
+% #FIELD_VALUE: 测试区域
+\fieldvalue{Shiv?}
+\\[2pt]
+过滤器类型 &
+% #VALUE_ID: LEX-P0036-V0007
+% #FIELD_VALUE: 过滤器类型
+\fieldvalue{S?vinghou}
+\\[2pt]
+产品型号 &
+% #VALUE_ID: LEX-P0036-V0008
+% #FIELD_VALUE: 产品型号
+\fieldvalue{A?}
+\\[2pt]
+产品编号 &
+% #VALUE_ID: LEX-P0036-V0009
+% #FIELD_VALUE: 产品编号
+\fieldvalue{A?2700202050300}
+\\[2pt]
+过滤器序列号 &
+% #VALUE_ID: LEX-P0036-V0010
+% #FIELD_VALUE: 过滤器序列号
+\fieldvalue{SFMPES-22S}
+\\[2pt]
+过滤器厂家 &
+% #VALUE_ID: LEX-P0036-V0011
+% #FIELD_VALUE: 过滤器厂家
+\fieldvalue{Shur}
+\\[2pt]
+过滤器等级 &
+% #VALUE_ID: LEX-P0036-V0012
+% #FIELD_VALUE: 过滤器等级
+\fieldvalue{Pall}
+\\[2pt]
+最小压力 &
+% #VALUE_ID: LEX-P0036-V0013
+% #FIELD_VALUE: 最小压力
+\fieldvalue{450 mbar}
+\\[2pt]
+最大压力 &
+% #VALUE_ID: LEX-P0036-V0014
+% #FIELD_VALUE: 最大压力
+\fieldvalue{2000 mbar}
+\\[2pt]
+结果 &
+% #VALUE_ID: LEX-P0036-V0015
+% #FIELD_VALUE: 结果
+\fieldvalue{Pass}
+\\[2pt]
+测试完成时间 &
+% #VALUE_ID: LEX-P0036-V0016
+% #FIELD_VALUE: 测试完成时间
+\fieldvalue{8/Jun/2026 11:43:34}
+\\[2pt]
+注释 &
+% #VALUE_ID: LEX-P0036-V0017
+% #FIELD_VALUE: 注释
+\fieldvalue{8424-?g0919e}
+\\
+\end{tabular}
+
+% #VALUE_ID: LEX-P0036-V0018
+% #HANDWRITTEN: 2026.06.10
+\noindent
+\handwritten{2026.06.10}
+
+\bigskip
+\hrule
+\bigskip
+
+\section*{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0036-V0019
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 11:35:01}
+\\[2pt]
+页号 &
+% #VALUE_ID: LEX-P0036-V0020
+% #FIELD_VALUE: 页号
+\fieldvalue{2 of 2}
+\\
+\end{tabular}
+
+\bigskip
+
+\noindent
+\textbf{测试曲线}
+
+\begin{center}
+\setlength{\fboxsep}{8pt}
+\fbox{\parbox[c][0.30\textheight][c]{0.78\linewidth}{%
+\centering
+% TODO: Reproduce the visible pressure--flow graph, including the plotted curve and axis tick marks.
+大气流量（mbar/min）\\[4pt]
+\hfill 1800\\[-2pt]
+\hfill 1350\\[-2pt]
+\hfill 900\\[-2pt]
+\hfill 450\\[12pt]
+压力（mbar）\\[4pt]
+0 \hspace{1.2cm} 1400 \hspace{1.2cm} 2800 \hspace{1.2cm} 4200
+\hspace{1.2cm} 5600 \hspace{1.2cm} 7000
+}}
+\end{center}
+
+% #VALUE_ID: LEX-P0036-V0021
+% #HANDWRITTEN: 2026.06.10
+\noindent
+\handwritten{2026.06.10}
+
+\bigskip
+
+% #VALUE_ID: LEX-P0036-V0022
+% #HANDWRITTEN: 36/47
+\noindent
+\handwritten{36/47}
+% LEXOID_PAGE_COMPLETED: 36/47
+
+\newpage
+
+\section{Palltronic Flowstar IV 测试结果}
+
+\subsection{测试信息}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0037-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 13:42:38}
+\\
+页码 &
+% #VALUE_ID: LEX-P0037-V0002
+% #FIELD_VALUE: 页码
+\fieldvalue{1 of 2}
+\\
+测试类型 &
+% #VALUE_ID: LEX-P0037-V0003
+% #FIELD_VALUE: 测试类型
+\fieldvalue{FFS0.4GR 2/21 TL}
+\\
+Serial/Cassette number &
+% #VALUE_ID: LEX-P0037-V0004
+% #FIELD_VALUE: Serial/Cassette number
+\fieldvalue{288?24142}
+\\
+测试程序 &
+% #VALUE_ID: LEX-P0037-V0005
+% #FIELD_VALUE: 测试程序
+\fieldvalue{STF?PES2-5225}
+\\
+测试气体 &
+% #VALUE_ID: LEX-P0037-V0006
+% #FIELD_VALUE: 测试气体
+\fieldvalue{Air}
+\\
+测试区域 &
+% #VALUE_ID: LEX-P0037-V0007
+% #FIELD_VALUE: 测试区域
+\fieldvalue{C}
+\\
+测试压力 &
+% #VALUE_ID: LEX-P0037-V0008
+% #FIELD_VALUE: 测试压力
+\fieldvalue{1000 mbar}
+\\
+测试流量 &
+% #VALUE_ID: LEX-P0037-V0009
+% #FIELD_VALUE: 测试流量
+\fieldvalue{14.00 mbar}
+\\
+测量范围 &
+% #VALUE_ID: LEX-P0037-V0010
+% #FIELD_VALUE: 测量范围
+\fieldvalue{7000 mbar}
+\\
+\end{tabular}
+
+\vspace{1em}
+
+\noindent
+测试结果：
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+测试压力范围 &
+% #VALUE_ID: LEX-P0037-V0011
+% #FIELD_VALUE: 测试压力范围
+\fieldvalue{4500 mbar}
+\\
+测量时间 &
+% #VALUE_ID: LEX-P0037-V0012
+% #FIELD_VALUE: 测量时间
+\fieldvalue{8/Jun/2026 13:42:21}
+\\
+\end{tabular}
+
+\vspace{2em}
+
+% #VALUE_ID: LEX-P0037-V0013
+% #HANDWRITTEN: （签名）2026.06.07
+\handwritten{（签名）2026.06.07}
+
+\subsection{测试结果（续）}
+
+% TODO: The page contains a second visible test-result sheet with a plotted graph. Reproduce the graph only to the extent visible in the source image.
+\begin{center}
+\begin{tikzpicture}[x=0.8cm,y=0.8cm]
+\draw[->] (0,0) -- (0,4.3) node[above] {大气流量 (mbar/min)};
+\draw[->] (0,0) -- (7,0);
+\draw (0,0) node[left] {0};
+\draw (0,1.1) node[left] {450};
+\draw (0,2.2) node[left] {900};
+\draw (0,3.3) node[left] {1350};
+\draw (0,4.1) node[left] {1800};
+\draw (0,0) -- (7,0) -- (7,4.1) -- (0,4.1) -- cycle;
+\draw (0,0) node[below] {0};
+\draw (2.1,0) node[below] {12000};
+\draw (3.5,0) node[below] {22000};
+\draw (4.5,0) node[below] {34000};
+\draw (5.7,0) node[below] {56000};
+\draw (7,0) node[below] {60000};
+\draw[thick] plot[smooth] coordinates {
+  (0,0.05) (2.7,0.08) (3.5,0.12) (3.8,0.35)
+  (4.0,1.2) (4.2,2.7) (4.5,3.3) (5.2,3.35)
+};
+\node at (3.6,-0.65) {时间 (msec)};
+\end{tikzpicture}
+\end{center}
+
+\subsection{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0037-V0014
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 13:42:38}
+\\
+页码 &
+% #VALUE_ID: LEX-P0037-V0015
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2}
+\\
+\end{tabular}
+
+\vspace{2em}
+
+% #VALUE_ID: LEX-P0037-V0016
+% #HANDWRITTEN: 刘? 2026.6.10
+\handwritten{刘? 2026.6.10}
+
+\vspace{1em}
+
+% #VALUE_ID: LEX-P0037-V0017
+% #HANDWRITTEN: 346?
+\handwritten{346?}
+% LEXOID_PAGE_COMPLETED: 37/47
+
+\newpage
+
+\section{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0038-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{18/Jun/2026 13:42:03}
+\\
+页码 &
+% #VALUE_ID: LEX-P0038-V0002
+% #FIELD_VALUE: 页码
+\fieldvalue{1 of 2}
+\\
+测试结果编号 &
+% #VALUE_ID: LEX-P0038-V0003
+% #FIELD_VALUE: 测试结果编号
+\fieldvalue{230800274-4143}
+\\
+测试程序 &
+% #VALUE_ID: LEX-P0038-V0004
+% #FIELD_VALUE: 测试程序
+\fieldvalue{SMPES-2525}
+\\
+测试名称 &
+% #VALUE_ID: LEX-P0038-V0005
+% #FIELD_VALUE: 测试名称
+\fieldvalue{SMPES-2525}
+\\
+生产区域 &
+% #VALUE_ID: LEX-P0038-V0006
+% #FIELD_VALUE: 生产区域
+\fieldvalue{C}
+\\
+产品名称 &
+% #VALUE_ID: LEX-P0038-V0007
+% #FIELD_VALUE: 产品名称
+\fieldvalue{Shiyonglou}
+\\
+产品编号 &
+% #VALUE_ID: LEX-P0038-V0008
+% #FIELD_VALUE: 产品编号
+\fieldvalue{2Huslvere}
+\\
+过滤器序列号 &
+% #VALUE_ID: LEX-P0038-V0009
+% #FIELD_VALUE: 过滤器序列号
+\fieldvalue{A37202020260530}
+\\
+过滤器型号 &
+% #VALUE_ID: LEX-P0038-V0010
+% #FIELD_VALUE: 过滤器型号
+\fieldvalue{SMPES-2525}
+\\
+过滤器制造商 &
+% #VALUE_ID: LEX-P0038-V0011
+% #FIELD_VALUE: 过滤器制造商
+\fieldvalue{SMPES-2525}
+\\
+测试参数 &
+% #VALUE_ID: LEX-P0038-V0012
+% #FIELD_VALUE: 测试参数
+\fieldvalue{Sam}
+\\
+测试压力 &
+% #VALUE_ID: LEX-P0038-V0013
+% #FIELD_VALUE: 测试压力
+\fieldvalue{1000}
+\\
+稳定压力 &
+% #VALUE_ID: LEX-P0038-V0014
+% #FIELD_VALUE: 稳定压力
+\fieldvalue{4500 mbar}
+\\
+测试压力上限 &
+% #VALUE_ID: LEX-P0038-V0015
+% #FIELD_VALUE: 测试压力上限
+\fieldvalue{7000 mbar}
+\\
+测试开始时间 &
+% #VALUE_ID: LEX-P0038-V0016
+% #FIELD_VALUE: 测试开始时间
+\fieldvalue{8/Jun/2026 13:51:14}
+\\
+\end{tabular}
+
+\vspace{1em}
+
+\noindent
+注释：
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+1.\ 签名 &
+% #VALUE_ID: LEX-P0038-V0017
+% #FIELD_VALUE: 签名
+% #HANDWRITTEN: [签名]
+\fieldvalue{\handwritten{[签名]}}
+\\
+\end{tabular}
+
+\vspace{1em}
+
+% #TODO #HANDWRITTEN: 2026.06.10; handwritten date is partially unclear
+% #VALUE_ID: LEX-P0038-V0018
+\handwritten{2026.06.10}
+
+\section{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0038-V0019
+% #FIELD_VALUE: 日期
+\fieldvalue{18/Jun/2026 13:42:03}
+\\
+页码 &
+% #VALUE_ID: LEX-P0038-V0020
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2}
+\\
+\end{tabular}
+
+\vspace{1em}
+
+% TODO: The visible page contains a flow-versus-time graph. Recreate the plotted curve and axes if graphical reconstruction is required.
+\begin{center}
+\fbox{\parbox[c][0.28\textheight][c]{0.82\linewidth}{\centering
+\textit{Flow-versus-time graph visible on the source page}\\[0.5em]
+\small 流量（mbar/min） versus 时间（min）
+}}
+\end{center}
+
+\vspace{1em}
+
+% #TODO #HANDWRITTEN: 2026.06.10; handwritten annotation is partially unclear
+% #VALUE_ID: LEX-P0038-V0021
+\handwritten{2026.06.10}
+
+% #VALUE_ID: LEX-P0038-V0022
+% #HANDWRITTEN: 3847
+\handwritten{3847}
+% LEXOID_PAGE_COMPLETED: 38/47
+
+\newpage
+
+\section{Palltronic Flowstart IV 测试结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0039-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 14:00:12}
+\\
+客户 &
+% #VALUE_ID: LEX-P0039-V0002
+% #FIELD_VALUE: 客户
+% TODO: 客户名称部分字符不清晰。
+\fieldvalue{FSS04L / 22?1T}
+\\
+测试号 &
+% #VALUE_ID: LEX-P0039-V0003
+% #FIELD_VALUE: 测试号
+\fieldvalue{28380744-4144}
+\\
+Serial/Resource number &
+% #VALUE_ID: LEX-P0039-V0004
+% #FIELD_VALUE: Serial/Resource number
+\fieldvalue{SFMPES-2225}
+\\
+测试程序 &
+% #VALUE_ID: LEX-P0039-V0005
+% #FIELD_VALUE: 测试程序
+\fieldvalue{QZ}
+\\
+生产区域 &
+% #VALUE_ID: LEX-P0039-V0006
+% #FIELD_VALUE: 生产区域
+\fieldvalue{ShyongYou}
+\\
+过滤器压力 &
+% #VALUE_ID: LEX-P0039-V0007
+% #FIELD_VALUE: 过滤器压力
+\fieldvalue{2.6 bar}
+\\
+产品批号 &
+% #VALUE_ID: LEX-P0039-V0008
+% #FIELD_VALUE: 产品批号
+% TODO: 批号字符不清晰。
+\fieldvalue{A?7?02L020?030}
+\\
+产品名称 &
+% #VALUE_ID: LEX-P0039-V0009
+% #FIELD_VALUE: 产品名称
+\fieldvalue{SFMPES-2225}
+\\
+过滤器材质 &
+% #VALUE_ID: LEX-P0039-V0010
+% #FIELD_VALUE: 过滤器材质
+\fieldvalue{Sil}
+\\
+过滤器数量 &
+% #VALUE_ID: LEX-P0039-V0011
+% #FIELD_VALUE: 过滤器数量
+\fieldvalue{1}
+\\
+测试气体 &
+% #VALUE_ID: LEX-P0039-V0012
+% #FIELD_VALUE: 测试气体
+\fieldvalue{Air}
+\\
+测试流量范围 &
+% #VALUE_ID: LEX-P0039-V0013
+% #FIELD_VALUE: 测试流量范围
+\fieldvalue{1000}
+\\
+测试流量范围 &
+% #VALUE_ID: LEX-P0039-V0014
+% #FIELD_VALUE: 测试流量范围
+\fieldvalue{450 mbar}
+\\
+测试压力范围 &
+% #VALUE_ID: LEX-P0039-V0015
+% #FIELD_VALUE: 测试压力范围
+\fieldvalue{1000 mbar}
+\end{tabular}
+
+\bigskip
+
+\noindent
+测试结果：
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+过滤压力 &
+% #VALUE_ID: LEX-P0039-V0016
+% #FIELD_VALUE: 过滤压力
+\fieldvalue{4650 mbar}
+\\
+流量 &
+% #VALUE_ID: LEX-P0039-V0017
+% #FIELD_VALUE: 流量
+\fieldvalue{0.85 mbar}
+\\
+测试时间 &
+% #VALUE_ID: LEX-P0039-V0018
+% #FIELD_VALUE: 测试时间
+\fieldvalue{8/Jun/2026 14:09:34}
+\\
+签名 &
+% #VALUE_ID: LEX-P0039-V0019
+% #FIELD_VALUE: 签名
+% #TODO #HANDWRITTEN: 签名; 字迹难以辨认。
+\fieldvalue{\handwritten{签名}}
+\end{tabular}
+
+\bigskip
+
+\noindent
+\textbf{Palltronic Flowstart IV 测试结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0039-V0020
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 14:00:12}
+\\
+测试号 &
+% #VALUE_ID: LEX-P0039-V0021
+% #FIELD_VALUE: 测试号
+\fieldvalue{2.6 bar}
+\end{tabular}
+
+\bigskip
+
+\noindent
+\begin{center}
+\begin{tabular}{@{}c@{\hspace{1em}}c@{}}
+\multicolumn{2}{c}{\text{测试曲线}}\\[2pt]
+\text{气体流量（mbar/min）} &
+\text{测试压力（mbar）}\\
+0,\ 450,\ 900,\ 1350,\ 1800 &
+0,\ 1400,\ 2800,\ 4200,\ 5600,\ 7000
+\end{tabular}
+\end{center}
+
+\noindent
+% #VALUE_ID: LEX-P0039-V0022
+% #FIELD_VALUE: 图表旁日期
+% #HANDWRITTEN: 2026.06.10
+\fieldvalue{\handwritten{2026.06.10}}
+
+\noindent
+% #VALUE_ID: LEX-P0039-V0023
+% #FIELD_VALUE: 图表旁签名
+% #TODO #HANDWRITTEN: 签名; 字迹难以辨认。
+\fieldvalue{\handwritten{签名}}
+
+\noindent
+% #VALUE_ID: LEX-P0039-V0024
+% #HANDWRITTEN: 3947
+\handwritten{3947}
+
+% TODO: 页面下方显示测试曲线图；未提供可用图像文件，需补入原图或绘制曲线。
+% LEXOID_PAGE_COMPLETED: 39/47
+
+\newpage
+
+\begin{center}
+\textbf{PALL Palltronic Flowstart IV 测试站结果}
+\end{center}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0040-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 14:20:37}
+\\
+页码 &
+% #VALUE_ID: LEX-P0040-V0002
+% #FIELD_VALUE: 页码
+\fieldvalue{1 of 2}
+\\
+产品 &
+% #VALUE_ID: LEX-P0040-V0003
+% #FIELD_VALUE: 产品
+\fieldvalue{FS50LCR / 2.2/1}
+\\
+测试号 &
+% #VALUE_ID: LEX-P0040-V0004
+% #FIELD_VALUE: 测试号
+\fieldvalue{23880744-4135}
+\\
+功能 &
+% #VALUE_ID: LEX-P0040-V0005
+% #FIELD_VALUE: 功能
+\fieldvalue{泄漏测试}
+\\
+操作员 &
+% #VALUE_ID: LEX-P0040-V0006
+% #FIELD_VALUE: 操作员
+\fieldvalue{Q2}
+\\
+生产区域 &
+% #VALUE_ID: LEX-P0040-V0007
+% #FIELD_VALUE: 生产区域
+\fieldvalue{C}
+\\
+生产线 &
+% #VALUE_ID: LEX-P0040-V0008
+% #FIELD_VALUE: 生产线
+\fieldvalue{Shenyang}
+\\
+产品名称 &
+% #VALUE_ID: LEX-P0040-V0009
+% #FIELD_VALUE: 产品名称
+\fieldvalue{ZhuShave}
+\\
+产品编号 &
+% #VALUE_ID: LEX-P0040-V0010
+% #FIELD_VALUE: 产品编号
+\fieldvalue{A?222?}
+\\
+产品批号 &
+% #VALUE_ID: LEX-P0040-V0011
+% #FIELD_VALUE: 产品批号
+\fieldvalue{SEM?S--230?6500}
+\\
+测试模式 &
+% #VALUE_ID: LEX-P0040-V0012
+% #FIELD_VALUE: 测试模式
+\fieldvalue{Air}
+\\
+测试压力 &
+% #VALUE_ID: LEX-P0040-V0013
+% #FIELD_VALUE: 测试压力
+\fieldvalue{+1500 mbar}
+\\
+最大压力 &
+% #VALUE_ID: LEX-P0040-V0014
+% #FIELD_VALUE: 最大压力
+\fieldvalue{+1000 mbar}
+\\
+测试范围 &
+% #VALUE_ID: LEX-P0040-V0015
+% #FIELD_VALUE: 测试范围
+\fieldvalue{+7000 mbar}
+\\
+结果 &
+% #VALUE_ID: LEX-P0040-V0016
+% #FIELD_VALUE: 结果
+\fieldvalue{测试压力范围内：4650 mbar}
+\\
+测试完成时间 &
+% #VALUE_ID: LEX-P0040-V0017
+% #FIELD_VALUE: 测试完成时间
+\fieldvalue{8/Jun/2026 14:29:29}
+\end{tabular}
+
+\vspace{1em}
+
+结果：测试压力范围内：4650 mbar
+
+% #VALUE_ID: LEX-P0040-V0018
+% #HANDWRITTEN: 测试完成 2026.06.10；前置签名难以辨认
+\handwritten{测试完成 2026.06.10}
+
+\vspace{2em}
+\hrule
+\vspace{1em}
+
+\begin{center}
+\textbf{PALL Palltronic Flowstart IV 测试站结果}
+\end{center}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0040-V0019
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 14:20:37}
+\\
+页码 &
+% #VALUE_ID: LEX-P0040-V0020
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2}
+\end{tabular}
+
+\vspace{1em}
+
+\begin{center}
+% TODO: Reproduce the visible test graph; the source image contains a pressure/flow
+% curve with axes labeled ``大气流量 (mbar/min)'' and ``时间 (s)''.
+\begin{tikzpicture}[x=0.0018\linewidth,y=0.0018\linewidth]
+  \draw[->] (0,0) -- (0,1500)
+    node[above] {\scriptsize 大气流量 (mbar/min)};
+  \draw[->] (0,0) -- (4500,0)
+    node[right] {\scriptsize 时间 (s)};
+  \draw (0,0) .. controls (2600,0) and (3000,0) .. (3150,40)
+        .. controls (3250,110) and (3300,300) .. (3320,500);
+  \node[below] at (800,0) {\scriptsize 1400};
+  \node[below] at (1800,0) {\scriptsize 2800};
+  \node[below] at (2700,0) {\scriptsize 4200};
+  \node[below] at (3600,0) {\scriptsize 5600};
+  \node[below] at (4400,0) {\scriptsize 7000};
+  \node[left] at (0,450) {\scriptsize 450};
+  \node[left] at (0,900) {\scriptsize 900};
+  \node[left] at (0,1350) {\scriptsize 1350};
+  \node[left] at (0,1500) {\scriptsize 1800};
+\end{tikzpicture}
+\end{center}
+
+% #VALUE_ID: LEX-P0040-V0021
+% #HANDWRITTEN: 测试完成 2026.06.10；前置签名难以辨认
+\handwritten{测试完成 2026.06.10}
+
+\vfill
+
+% #VALUE_ID: LEX-P0040-V0022
+% #HANDWRITTEN: 40/??；蓝色手写内容部分难以辨认
+\handwritten{40/??}
+% LEXOID_PAGE_COMPLETED: 40/47
+
+\newpage
+
+\section{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0041-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 14:38:20}
+\\
+版本 &
+% #VALUE_ID: LEX-P0041-V0002
+% #FIELD_VALUE: 版本
+\fieldvalue{1.0.2}
+\\
+序号 &
+% #VALUE_ID: LEX-P0041-V0003
+% #FIELD_VALUE: 序号
+\fieldvalue{FES04SLR/L/22IT}
+\\
+板号 &
+% #VALUE_ID: LEX-P0041-V0004
+% #FIELD_VALUE: 板号
+\fieldvalue{2388274-416}
+\\
+Serial/Asset number &
+% #VALUE_ID: LEX-P0041-V0005
+% #FIELD_VALUE: Serial/Asset number
+\fieldvalue{F?}
+\\
+测试序号 &
+% #VALUE_ID: LEX-P0041-V0006
+% #FIELD_VALUE: 测试序号
+\fieldvalue{SFMPES-2225}
+\\
+流水序号 &
+% #VALUE_ID: LEX-P0041-V0007
+% #FIELD_VALUE: 流水序号
+\fieldvalue{QZ?}
+\\
+生产日期 &
+% #VALUE_ID: LEX-P0041-V0008
+% #FIELD_VALUE: 生产日期
+\fieldvalue{C}
+\\
+工序流程 &
+% #VALUE_ID: LEX-P0041-V0009
+% #FIELD_VALUE: 工序流程
+\fieldvalue{Shiyongzhou}
+\\
+工序编号 &
+% #VALUE_ID: LEX-P0041-V0010
+% #FIELD_VALUE: 工序编号
+\fieldvalue{27?}
+\\
+产品型号 &
+% #VALUE_ID: LEX-P0041-V0011
+% #FIELD_VALUE: 产品型号
+\fieldvalue{A?}
+\\
+产品编号 &
+% #VALUE_ID: LEX-P0041-V0012
+% #FIELD_VALUE: 产品编号
+\fieldvalue{A?}
+\\
+过磁编号序列号 &
+% #VALUE_ID: LEX-P0041-V0013
+% #FIELD_VALUE: 过磁编号序列号
+\fieldvalue{SFMPES-2225}
+\\
+过磁流体 &
+% #VALUE_ID: LEX-P0041-V0014
+% #FIELD_VALUE: 过磁流体
+\fieldvalue{S?}
+\\
+测试参数 A &
+% #VALUE_ID: LEX-P0041-V0015
+% #FIELD_VALUE: 测试参数 A
+\fieldvalue{1000}
+\\
+测试参数 B &
+% #VALUE_ID: LEX-P0041-V0016
+% #FIELD_VALUE: 测试参数 B
+\fieldvalue{500 mbar}
+\\
+测试参数 C &
+% #VALUE_ID: LEX-P0041-V0017
+% #FIELD_VALUE: 测试参数 C
+\fieldvalue{1000 mbar}
+\end{tabular}
+
+\bigskip
+
+\subsection{备注}
+
+\begin{tabular}{@{}p{0.32\linewidth}p{0.58\linewidth}@{}}
+测试点压降 &
+% #VALUE_ID: LEX-P0041-V0018
+% #FIELD_VALUE: 测试点压降
+\fieldvalue{4650 mbar}
+\\
+测试总压力 &
+% #VALUE_ID: LEX-P0041-V0019
+% #FIELD_VALUE: 测试总压力
+\fieldvalue{2.0 bar}
+\\
+测试起止时间 &
+% #VALUE_ID: LEX-P0041-V0020
+% #FIELD_VALUE: 测试起止时间
+\fieldvalue{8/Jun/2026 14:47:42}
+\\
+签名 &
+% #VALUE_ID: LEX-P0041-V0021
+% #FIELD_VALUE: 签名
+% #TODO #HANDWRITTEN: [签名]; 手写签名难以辨认
+\fieldvalue{\handwritten{[签名]}}
+\end{tabular}
+
+\bigskip
+
+% #VALUE_ID: LEX-P0041-V0022
+% #HANDWRITTEN: 约 8/Jun/2026
+\handwritten{约 8/Jun/2026}
+
+\section{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.30\linewidth}p{0.60\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0041-V0023
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 14:38:20}
+\\
+压降 &
+% #VALUE_ID: LEX-P0041-V0024
+% #FIELD_VALUE: 压降
+\fieldvalue{2.0 bar}
+\end{tabular}
+
+\bigskip
+
+\begin{center}
+\begin{tabular}{@{}c@{}}
+\textit{最大流量 (mbar/min)}\\[2pt]
+\begin{picture}(260,145)
+\put(20,15){\line(1,0){220}}
+\put(20,15){\line(0,1){115}}
+\put(20,130){\line(1,0){220}}
+\put(240,15){\line(0,1){115}}
+\put(20,15){\makebox(0,0)[t]{0}}
+\put(55,15){\makebox(0,0)[t]{1300}}
+\put(105,15){\makebox(0,0)[t]{2800}}
+\put(150,15){\makebox(0,0)[t]{4200}}
+\put(195,15){\makebox(0,0)[t]{5600}}
+\put(240,15){\makebox(0,0)[t]{7200}}
+\put(20,130){\makebox(-5,0)[r]{1800}}
+\put(20,95){\makebox(-5,0)[r]{1350}}
+\put(20,60){\makebox(-5,0)[r]{900}}
+\put(20,25){\makebox(-5,0)[r]{450}}
+\put(125,2){\makebox(0,0)[t]{压降 (mbar)}}
+\put(125,140){\makebox(0,0)[b]{最大流量 (mbar/min)}}
+\end{picture}
+\end{tabular}
+\end{center}
+
+% #VALUE_ID: LEX-P0041-V0025
+% #HANDWRITTEN: 约 8/Jun/2026
+\handwritten{约 8/Jun/2026}
+
+% #VALUE_ID: LEX-P0041-V0026
+% #HANDWRITTEN: 4/4
+\handwritten{4/4}
+
+% TODO: The page contains a plotted test curve; only its visible axes and labels are represented above.
+% LEXOID_PAGE_COMPLETED: 41/47
+
+\newpage
+
+\section{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0042-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 15:37:18}
+\\
+页码 &
+% #VALUE_ID: LEX-P0042-V0002
+% #FIELD_VALUE: 页码
+\fieldvalue{1 of 2}
+\\
+设备号 &
+% #VALUE_ID: LEX-P0042-V0003
+% #FIELD_VALUE: 设备号
+\fieldvalue{FFS04?GR / 2/21T}
+\\
+序列号 &
+% #VALUE_ID: LEX-P0042-V0004
+% #FIELD_VALUE: 序列号
+\fieldvalue{238087-44-1419}
+\\
+软件版本号 &
+% #VALUE_ID: LEX-P0042-V0005
+% #FIELD_VALUE: 软件版本号
+\fieldvalue{SFM?E?225}
+\\
+测试编号 &
+% #VALUE_ID: LEX-P0042-V0006
+% #FIELD_VALUE: 测试编号
+\fieldvalue{Q2}
+\\
+测试气体 &
+% #VALUE_ID: LEX-P0042-V0007
+% #FIELD_VALUE: 测试气体
+\fieldvalue{C}
+\\
+测试装置 &
+% #VALUE_ID: LEX-P0042-V0008
+% #FIELD_VALUE: 测试装置
+\fieldvalue{Syringe}
+\\
+测试程序 &
+% #VALUE_ID: LEX-P0042-V0009
+% #FIELD_VALUE: 测试程序
+\fieldvalue{Z?b?st?e}
+\\
+测试压力 &
+% #VALUE_ID: LEX-P0042-V0010
+% #FIELD_VALUE: 测试压力
+\fieldvalue{A327?202605030}
+\\
+测试流量 &
+% #VALUE_ID: LEX-P0042-V0011
+% #FIELD_VALUE: 测试流量
+\fieldvalue{SFM?ES-225}
+\\
+测试状态 &
+% #VALUE_ID: LEX-P0042-V0012
+% #FIELD_VALUE: 测试状态
+\fieldvalue{4}
+\\
+单位 &
+% #VALUE_ID: LEX-P0042-V0013
+% #FIELD_VALUE: 单位
+\fieldvalue{Shut}
+\\
+环境大气压 &
+% #VALUE_ID: LEX-P0042-V0014
+% #FIELD_VALUE: 环境大气压
+\fieldvalue{1.100}
+\\
+测试范围 &
+% #VALUE_ID: LEX-P0042-V0015
+% #FIELD_VALUE: 测试范围
+\fieldvalue{4500 mbar}
+\\
+压力范围 &
+% #VALUE_ID: LEX-P0042-V0016
+% #FIELD_VALUE: 压力范围
+\fieldvalue{-7000 mbar}
+\end{tabular}
+
+\subsection{测试结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+测试条件 &
+% #VALUE_ID: LEX-P0042-V0017
+% #FIELD_VALUE: 测试条件
+\fieldvalue{通过}
+\\
+流量范围 &
+% #VALUE_ID: LEX-P0042-V0018
+% #FIELD_VALUE: 流量范围
+\fieldvalue{4700 mbar}
+\\
+测试日期 &
+% #VALUE_ID: LEX-P0042-V0019
+% #FIELD_VALUE: 测试日期
+\fieldvalue{8/Jun/2026 15:45:50}
+\\
+签字 &
+% #VALUE_ID: LEX-P0042-V0020
+% #FIELD_VALUE: 签字
+% #HANDWRITTEN: [签名，无法辨认]
+\fieldvalue{\handwritten{[签名，无法辨认]}}
+\\
+日期 &
+% #VALUE_ID: LEX-P0042-V0021
+% #FIELD_VALUE: 日期
+% #HANDWRITTEN: 2026.06.08
+\fieldvalue{\handwritten{2026.06.08}}
+\end{tabular}
+
+% TODO: The handwritten annotation between the two printed sections is partially illegible.
+% #VALUE_ID: LEX-P0042-V0022
+% #HANDWRITTEN: 2026.06.10
+\handwritten{2026.06.10}
+
+\section{Palltronic Flowstar IV 测试结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0042-V0023
+% #FIELD_VALUE: 日期
+\fieldvalue{8/Jun/2026 15:37:18}
+\\
+页码 &
+% #VALUE_ID: LEX-P0042-V0024
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2}
+\end{tabular}
+
+\subsection{流量曲线}
+
+% TODO: Reproduce the visible flow-rate graph as a figure; no source filename is available.
+\begin{center}
+\fbox{\parbox[c][0.32\textheight][c]{0.88\linewidth}{\centering
+\textit{流量曲线图（原页面图形占位）}\\[1ex]
+横轴：时间（ms）；纵轴：大气流量（mbar/min）\\
+可见刻度：0、450、900、1350、1800；横轴刻度：0、1400、2800、4200、5600、7000
+}}
+\end{center}
+
+% #VALUE_ID: LEX-P0042-V0025
+% #HANDWRITTEN: 2026.06.10
+\handwritten{2026.06.10}
+
+% #VALUE_ID: LEX-P0042-V0026
+% #HANDWRITTEN: 4247
+\handwritten{4247}
+% LEXOID_PAGE_COMPLETED: 42/47
+
+\newpage
+
+\section*{Paltronic Flowstart IV 流量站结果}
+
+\subsection*{测试记录}
+
+\begin{tabular}{@{}p{0.30\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0043-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{9/Jun/2026 18:39:32}
+\\[2pt]
+序号 &
+% #VALUE_ID: LEX-P0043-V0002
+% #FIELD_VALUE: 序号
+\fieldvalue{FF50ALGR\_(2.2)T}
+\\[2pt]
+站号 &
+% #VALUE_ID: LEX-P0043-V0003
+% #FIELD_VALUE: 站号
+\fieldvalue{23887041457}
+\\[2pt]
+测试程序 &
+% #VALUE_ID: LEX-P0043-V0004
+% #FIELD_VALUE: 测试程序
+\fieldvalue{SFMPS-2525}
+\\[2pt]
+测试名称 &
+% #VALUE_ID: LEX-P0043-V0005
+% #FIELD_VALUE: 测试名称
+\fieldvalue{C}
+\\[2pt]
+生产日期 &
+% #VALUE_ID: LEX-P0043-V0006
+% #FIELD_VALUE: 生产日期
+\fieldvalue{Shiyongri}
+\\[2pt]
+过流系数 &
+% #VALUE_ID: LEX-P0043-V0007
+% #FIELD_VALUE: 过流系数
+\fieldvalue{Z\textsuperscript{?}m/s}
+\\[2pt]
+设备编号 &
+% #VALUE_ID: LEX-P0043-V0008
+% #FIELD_VALUE: 设备编号
+\fieldvalue{A37220120605030}
+\\[2pt]
+产品型号 &
+% #VALUE_ID: LEX-P0043-V0009
+% #FIELD_VALUE: 产品型号
+\fieldvalue{SFMPS-2525}
+\\[2pt]
+测试介质 &
+% #VALUE_ID: LEX-P0043-V0010
+% #FIELD_VALUE: 测试介质
+\fieldvalue{Shui}
+\\[2pt]
+流量单位 &
+% #VALUE_ID: LEX-P0043-V0011
+% #FIELD_VALUE: 流量单位
+\fieldvalue{Air}
+\\[2pt]
+测试次数 &
+% #VALUE_ID: LEX-P0043-V0012
+% #FIELD_VALUE: 测试次数
+\fieldvalue{1.000}
+\\[2pt]
+最大压力 &
+% #VALUE_ID: LEX-P0043-V0013
+% #FIELD_VALUE: 最大压力
+\fieldvalue{1.000~mbar}
+\\[2pt]
+最大流量 &
+% #VALUE_ID: LEX-P0043-V0014
+% #FIELD_VALUE: 最大流量
+\fieldvalue{7000~mbar}
+\end{tabular}
+
+\subsection*{备注}
+
+\begin{tabular}{@{}p{0.30\linewidth}p{0.62\linewidth}@{}}
+备注 &
+% #VALUE_ID: LEX-P0043-V0015
+% #FIELD_VALUE: 备注
+\fieldvalue{B2-4-19001908}
+\\[4pt]
+签名 &
+% #VALUE_ID: LEX-P0043-V0016
+% #FIELD_VALUE: 签名
+% #HANDWRITTEN: 赵? 2026.06.09
+\fieldvalue{\handwritten{赵? 2026.06.09}}
+\end{tabular}
+
+% #VALUE_ID: LEX-P0043-V0017
+% #HANDWRITTEN: 4347
+\handwritten{4347}
+
+\subsection*{流量曲线}
+
+\begin{center}
+\begin{tabular}{@{}p{0.18\linewidth}p{0.70\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0043-V0018
+% #FIELD_VALUE: 日期
+\fieldvalue{9/Jun/2026 18:39:32}
+\\[2pt]
+面积 &
+% #VALUE_ID: LEX-P0043-V0019
+% #FIELD_VALUE: 面积
+\fieldvalue{2.0~m\textsuperscript{2}}
+\end{tabular}
+
+\vspace{1em}
+
+\begin{picture}(300,170)
+\put(20,20){\line(1,0){260}}
+\put(20,20){\line(0,1){145}}
+\put(20,165){\line(1,0){260}}
+\put(280,20){\line(0,1){145}}
+\put(20,20){\makebox(0,0)[tr]{0}}
+\put(70,15){\makebox(0,0)[t]{1400}}
+\put(125,15){\makebox(0,0)[t]{2800}}
+\put(180,15){\makebox(0,0)[t]{4200}}
+\put(235,15){\makebox(0,0)[t]{5600}}
+\put(280,15){\makebox(0,0)[t]{7000}}
+\put(8,20){\makebox(0,0)[r]{0}}
+\put(8,68){\makebox(0,0)[r]{450}}
+\put(8,116){\makebox(0,0)[r]{900}}
+\put(8,165){\makebox(0,0)[r]{1350}}
+\put(8,175){\makebox(0,0)[r]{1800}}
+\put(145,2){\makebox(0,0)[t]{流量（mbar/min）}}
+\put(145,8){\makebox(0,0)[t]{测试时间（min）}}
+\put(150,20){\curve(0,0)(8,1)(15,5)(22,15)(28,35)(34,65)(40,100)(46,128)(52,140)}
+\end{picture}
+\end{center}
+
+% #VALUE_ID: LEX-P0043-V0020
+% #HANDWRITTEN: 赵? 2026.06.10
+\handwritten{赵? 2026.06.10}
+
+% TODO: The handwritten Chinese annotations adjacent to the report and graph are partially illegible.
+% LEXOID_PAGE_COMPLETED: 43/47
+
+\newpage
+
+\section{Paltronic FlowStar IV 测试结果}
+
+\begin{description}
+\item[日期:] 
+% #VALUE_ID: LEX-P0044-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{10/Jun/2026 10:19:03}
+
+\item[序列号/Serial number:] 
+% #VALUE_ID: LEX-P0044-V0002
+% #FIELD_VALUE: 序列号/Serial number
+\fieldvalue{2850844161}
+
+\item[软件/Software:] 
+% #VALUE_ID: LEX-P0044-V0003
+% #FIELD_VALUE: 软件/Software
+\fieldvalue{SFP0?S?}
+
+\item[版本/Version:] 
+% #VALUE_ID: LEX-P0044-V0004
+% #FIELD_VALUE: 版本/Version
+\fieldvalue{2.28}
+
+\item[测试程序/Test program:] 
+% #VALUE_ID: LEX-P0044-V0005
+% #FIELD_VALUE: 测试程序/Test program
+\fieldvalue{SFPMES-225}
+
+\item[测试区域/Test area:] 
+% #VALUE_ID: LEX-P0044-V0006
+% #FIELD_VALUE: 测试区域/Test area
+\fieldvalue{C}
+
+\item[产品编号/Part number:] 
+% #VALUE_ID: LEX-P0044-V0007
+% #FIELD_VALUE: 产品编号/Part number
+\fieldvalue{AZ?2?}
+
+\item[产品名称/Product name:] 
+% #VALUE_ID: LEX-P0044-V0008
+% #FIELD_VALUE: 产品名称/Product name
+\fieldvalue{SFAMES-225}
+
+\item[最大流量/Maximum flow:] 
+% #VALUE_ID: LEX-P0044-V0009
+% #FIELD_VALUE: 最大流量/Maximum flow
+\fieldvalue{5~ml}
+
+\item[测试点 1:] 
+% #VALUE_ID: LEX-P0044-V0010
+% #FIELD_VALUE: 测试点 1
+\fieldvalue{4500~mbar}
+
+\item[测试点 2:] 
+% #VALUE_ID: LEX-P0044-V0011
+% #FIELD_VALUE: 测试点 2
+\fieldvalue{4500~mbar}
+
+\item[最大压力/Maximum pressure:] 
+% #VALUE_ID: LEX-P0044-V0012
+% #FIELD_VALUE: 最大压力/Maximum pressure
+\fieldvalue{7000~mbar}
+
+\item[测试日期/Testing date:] 
+% #VALUE_ID: LEX-P0044-V0013
+% #FIELD_VALUE: 测试日期/Testing date
+\fieldvalue{10/Jun/2026 10:28:26}
+
+\item[实际压力/Actual pressure:] 
+% #VALUE_ID: LEX-P0044-V0014
+% #FIELD_VALUE: 实际压力/Actual pressure
+\fieldvalue{4650~mbar}
+
+\item[签名:] 
+% #VALUE_ID: LEX-P0044-V0015
+% #FIELD_VALUE: 签名
+% #HANDWRITTEN: [illegible signature]
+\fieldvalue{\handwritten{[illegible signature]}}
+
+\item[签名日期:] 
+% #VALUE_ID: LEX-P0044-V0016
+% #FIELD_VALUE: 签名日期
+% #HANDWRITTEN: 2026.06.10
+\fieldvalue{\handwritten{2026.06.10}}
+\end{description}
+
+% TODO: Several bilingual field labels and values are faint or partially obscured in the scan; transcriptions marked with question marks require verification.
+
+\section{测试曲线}
+
+\begin{description}
+\item[日期:] 
+% #VALUE_ID: LEX-P0044-V0017
+% #FIELD_VALUE: 日期
+\fieldvalue{10/Jun/2026 10:19:03}
+\end{description}
+
+\noindent
+\textbf{页码:} 2 of 2
+
+\begin{center}
+\begin{tabular}{|c|}
+\hline
+\begin{minipage}{0.72\linewidth}
+\centering
+\textbf{大气流量（mbar/min）}
+
+\vspace{0.15em}
+\begin{tabular}{c@{\hspace{1em}}c@{\hspace{1em}}c@{\hspace{1em}}c@{\hspace{1em}}c}
+0 & 450 & 900 & 1350 & 1800
+\end{tabular}
+
+\vspace{1em}
+\begin{tabular}{c|c}
+\begin{minipage}{0.03\linewidth}\centering
+\rotatebox{90}{大气流量（mbar/min）}
+\end{minipage}
+&
+\begin{minipage}{0.62\linewidth}
+\vspace{3em}
+\begin{center}
+\begin{picture}(260,95)
+\put(0,0){\line(1,0){260}}
+\put(0,0){\line(0,1){95}}
+\put(260,0){\line(0,1){95}}
+\put(0,95){\line(1,0){260}}
+\put(135,0){\line(0,1){95}}
+\put(0,0){\line(1,0){260}}
+\put(0,-8){\makebox(0,0)[t]{1000}}
+\put(70,-8){\makebox(0,0)[t]{2000}}
+\put(140,-8){\makebox(0,0)[t]{3000}}
+\put(210,-8){\makebox(0,0)[t]{5000}}
+\put(255,-8){\makebox(0,0)[t]{7000}}
+\put(130,-20){\makebox(0,0)[t]{压力（mbar）}}
+\put(135,0){\line(1,0){0}}
+\put(135,0){\curve(0,0)(8,0)(15,3)(23,12)}
+\end{picture}
+\end{center}
+\end{minipage}
+\end{tabular}
+\end{minipage}
+\\
+\hline
+\end{tabular}
+\end{center}
+
+\item[签名:] 
+% #VALUE_ID: LEX-P0044-V0018
+% #FIELD_VALUE: 签名
+% #HANDWRITTEN: [illegible signature]
+\fieldvalue{\handwritten{[illegible signature]}}
+
+\item[签名日期:] 
+% #VALUE_ID: LEX-P0044-V0019
+% #FIELD_VALUE: 签名日期
+% #HANDWRITTEN: 2026.06.10
+\fieldvalue{\handwritten{2026.06.10}}
+
+% #VALUE_ID: LEX-P0044-V0020
+% #HANDWRITTEN: 44/47
+\fieldvalue{\handwritten{44/47}}
+% LEXOID_PAGE_COMPLETED: 44/47
+
+\newpage
+
+\section*{Palltronic Flowstar IV 测试结果}
+
+\subsection*{第 1 页}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0045-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{10/Jun/2026 10:33:18}
+\\
+页码 &
+% #VALUE_ID: LEX-P0045-V0002
+% #FIELD_VALUE: 页码
+\fieldvalue{1 of 2}
+\\
+测试结果编号 &
+% #VALUE_ID: LEX-P0045-V0003
+% #FIELD_VALUE: 测试结果编号
+\fieldvalue{Z580?41?-402}
+\\
+测试点 &
+% #VALUE_ID: LEX-P0045-V0004
+% #FIELD_VALUE: 测试点
+\fieldvalue{通过}
+\\
+测试型号 &
+% #VALUE_ID: LEX-P0045-V0005
+% #FIELD_VALUE: 测试型号
+\fieldvalue{SFMP?S-5225}
+\\
+仪器 &
+% #VALUE_ID: LEX-P0045-V0006
+% #FIELD_VALUE: 仪器
+\fieldvalue{LXW}
+\\
+气体 &
+% #VALUE_ID: LEX-P0045-V0007
+% #FIELD_VALUE: 气体
+\fieldvalue{空气}
+\\
+产品名称 &
+% #VALUE_ID: LEX-P0045-V0008
+% #FIELD_VALUE: 产品名称
+\fieldvalue{2Valve?}
+\\
+产品编号 &
+% #VALUE_ID: LEX-P0045-V0009
+% #FIELD_VALUE: 产品编号
+\fieldvalue{A3?Z?020?0500}
+\\
+软件版本 &
+% #VALUE_ID: LEX-P0045-V0010
+% #FIELD_VALUE: 软件版本
+\fieldvalue{SFMP?S-225}
+\\
+测试压力 &
+% #VALUE_ID: LEX-P0045-V0011
+% #FIELD_VALUE: 测试压力
+\fieldvalue{5\,bar}
+\\
+测试持续时间 &
+% #VALUE_ID: LEX-P0045-V0012
+% #FIELD_VALUE: 测试持续时间
+\fieldvalue{5\,min}
+\\
+流量 &
+% #VALUE_ID: LEX-P0045-V0013
+% #FIELD_VALUE: 流量
+\fieldvalue{4500}
+\\
+最大压力 &
+% #VALUE_ID: LEX-P0045-V0014
+% #FIELD_VALUE: 最大压力
+\fieldvalue{4500\,mbar}
+\\
+结果 &
+% #VALUE_ID: LEX-P0045-V0015
+% #FIELD_VALUE: 结果
+\fieldvalue{通过}
+\\
+实际压力 &
+% #VALUE_ID: LEX-P0045-V0016
+% #FIELD_VALUE: 实际压力
+\fieldvalue{4600\,mbar}
+\\
+测试完成时间 &
+% #VALUE_ID: LEX-P0045-V0017
+% #FIELD_VALUE: 测试完成时间
+\fieldvalue{10/Jun/2026 10:42:40}
+\\
+\end{tabular}
+
+\bigskip
+
+\textbf{注释}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+1. 姓名 &
+% #VALUE_ID: LEX-P0045-V0018
+% #FIELD_VALUE: 1. 姓名
+% #TODO #HANDWRITTEN: B2-A14S-B2-3-309?29e; handwriting partially illegible
+\fieldvalue{\handwritten{B2-A14S-B2-3-309?29e}}
+\\
+\end{tabular}
+
+% #VALUE_ID: LEX-P0045-V0019
+% #HANDWRITTEN: 2026.06.10
+\handwritten{2026.06.10}
+
+\subsection*{第 2 页}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0045-V0020
+% #FIELD_VALUE: 日期
+\fieldvalue{10/Jun/2026 10:33:18}
+\\
+页码 &
+% #VALUE_ID: LEX-P0045-V0021
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2}
+\\
+\end{tabular}
+
+\bigskip
+
+\begin{center}
+\begin{minipage}{0.78\linewidth}
+\centering
+\textbf{气体流量 (mbar/min)}
+
+\begin{tikzpicture}
+\draw[->] (0,0) -- (0,4.2);
+\draw[->] (0,0) -- (7.2,0);
+\node[left] at (0,0) {0};
+\node[left] at (0,1.05) {450};
+\node[left] at (0,2.1) {900};
+\node[left] at (0,3.15) {1350};
+\node[left] at (0,4.2) {1800};
+\node[below] at (0,0) {0};
+\node[below] at (1.44,0) {1400};
+\node[below] at (2.88,0) {2800};
+\node[below] at (4.32,0) {4200};
+\node[below] at (5.76,0) {5600};
+\node[below] at (7.2,0) {7000};
+\node[below] at (3.6,-0.45) {时间 (msec)};
+\draw (0,4.2) -- (7.2,4.2) -- (7.2,0);
+\draw plot[smooth] coordinates {(0,0) (3.8,0) (4.0,0.05) (4.15,0.25) (4.3,0.8) (4.45,1.0)};
+\end{tikzpicture}
+\end{minipage}
+\end{center}
+
+% #VALUE_ID: LEX-P0045-V0022
+% #HANDWRITTEN: 2026.06.10
+\handwritten{2026.06.10}
+
+% #VALUE_ID: LEX-P0045-V0023
+% #HANDWRITTEN: 45?47
+\handwritten{45?47}
+% LEXOID_PAGE_COMPLETED: 45/47
+
+\newpage
+
+\section*{Palltronic Flowstar IV 流量结果}
+
+\begin{tabular}{@{}p{0.34\linewidth}p{0.56\linewidth}@{}}
+日期 Date &
+% #VALUE_ID: LEX-P0046-V0001
+% #FIELD_VALUE: 日期 Date
+\fieldvalue{10/Jun/2026 10:15:16}
+\\
+页码 Page &
+% #VALUE_ID: LEX-P0046-V0002
+% #FIELD_VALUE: 页码 Page
+\fieldvalue{1 of 2}
+\\
+文件号 Result number &
+% #VALUE_ID: LEX-P0046-V0003
+% #FIELD_VALUE: 文件号 Result number
+\fieldvalue{288807A145?272411T}
+\\
+测试结果 Result &
+% #VALUE_ID: LEX-P0046-V0004
+% #FIELD_VALUE: 测试结果 Result
+\fieldvalue{通过}
+\\
+测试类型 Test &
+% #VALUE_ID: LEX-P0046-V0005
+% #FIELD_VALUE: 测试类型 Test
+\fieldvalue{FWFS-225}
+\\
+测试气体 Gas &
+% #VALUE_ID: LEX-P0046-V0006
+% #FIELD_VALUE: 测试气体 Gas
+\fieldvalue{Air}
+\\
+生产区域 Production area &
+% #VALUE_ID: LEX-P0046-V0007
+% #FIELD_VALUE: 生产区域 Production area
+\fieldvalue{Single/Room}
+\\
+产品名称 Product name &
+% #VALUE_ID: LEX-P0046-V0008
+% #FIELD_VALUE: 产品名称 Product name
+\fieldvalue{Z?}
+\\
+产品编号 Product number &
+% #VALUE_ID: LEX-P0046-V0009
+% #FIELD_VALUE: 产品编号 Product number
+\fieldvalue{A?}
+\\
+设备序列号 &
+% #VALUE_ID: LEX-P0046-V0010
+% #FIELD_VALUE: 设备序列号
+\fieldvalue{SFWFS-225}
+\\
+设备型号 &
+% #VALUE_ID: LEX-P0046-V0011
+% #FIELD_VALUE: 设备型号
+\fieldvalue{A?20260530}
+\end{tabular}
+
+\subsection*{结果}
+
+\begin{tabular}{@{}p{0.34\linewidth}p{0.56\linewidth}@{}}
+结果 Result &
+% #VALUE_ID: LEX-P0046-V0012
+% #FIELD_VALUE: 结果 Result
+\fieldvalue{通过}
+\\
+测试压力范围 &
+% #VALUE_ID: LEX-P0046-V0013
+% #FIELD_VALUE: 测试压力范围
+\fieldvalue{4{,}700 mbar}
+\\
+测试设备时间 &
+% #VALUE_ID: LEX-P0046-V0014
+% #FIELD_VALUE: 测试设备时间
+\fieldvalue{10/Jun/2026 10:53:37}
+\end{tabular}
+
+\subsection*{备注 Notes}
+
+\begin{enumerate}
+\item 签名：
+
+% #VALUE_ID: LEX-P0046-V0015
+% #FIELD_VALUE: 签名
+% #TODO #HANDWRITTEN: 手写中文签名; 字迹不清
+\fieldvalue{\handwritten{手写中文签名}}
+
+% #VALUE_ID: LEX-P0046-V0016
+% #FIELD_VALUE: 签名日期
+% #HANDWRITTEN: 2026.06.10
+\fieldvalue{\handwritten{2026.06.10}}
+\end{enumerate}
+
+\bigskip
+\hrule
+\bigskip
+
+\section*{Palltronic Flowstar IV 流量结果}
+
+\begin{tabular}{@{}p{0.34\linewidth}p{0.56\linewidth}@{}}
+日期 Date &
+% #VALUE_ID: LEX-P0046-V0017
+% #FIELD_VALUE: 日期 Date
+\fieldvalue{10/Jun/2026 10:15:16}
+\\
+页码 Page &
+% #VALUE_ID: LEX-P0046-V0018
+% #FIELD_VALUE: 页码 Page
+\fieldvalue{2 of 2}
+\end{tabular}
+
+\subsection*{流量曲线}
+
+\begin{center}
+% TODO: Reproduce the visible flow-rate graph. The graph shows flow rate (mbar/min)
+% on the vertical axis, pressure (mbar) on the horizontal axis, and a sharp curve
+% near approximately 4200--4500 mbar.
+\fbox{\parbox[c][0.28\textheight][c]{0.82\linewidth}{\centering
+流量曲线图\\[1ex]
+纵轴：气体流量 (mbar/min)\\
+横轴：压力 (mbar)\\[1ex]
+可见刻度：0、450、900、1350、1800；\\
+横轴刻度约为 1400、2800、4200、5600、7000
+}}
+\end{center}
+
+% #VALUE_ID: LEX-P0046-V0019
+% #FIELD_VALUE: 签名
+% #TODO #HANDWRITTEN: 手写中文签名; 字迹不清
+\fieldvalue{\handwritten{手写中文签名}}
+
+% #VALUE_ID: LEX-P0046-V0020
+% #FIELD_VALUE: 签名日期
+% #HANDWRITTEN: 2026.06.10
+\fieldvalue{\handwritten{2026.06.10}}
+
+% #VALUE_ID: LEX-P0046-V0021
+% #HANDWRITTEN: 4647
+\handwritten{4647}
+% LEXOID_PAGE_COMPLETED: 46/47
+
+\newpage
+
+\section*{Palltronic FlowStar IV 测试结果}
+
+\begin{tabular}{@{}p{0.28\linewidth}p{0.62\linewidth}@{}}
+日期 &
+% #VALUE_ID: LEX-P0047-V0001
+% #FIELD_VALUE: 日期
+\fieldvalue{10/Jun/2026 11:03:45}
+\\
+项目 &
+% #VALUE_ID: LEX-P0047-V0002
+% #FIELD_VALUE: 项目
+\fieldvalue{1}
+\\
+测试编号 &
+% #VALUE_ID: LEX-P0047-V0003
+% #FIELD_VALUE: 测试编号
+\fieldvalue{FSH4D? / 22?4?1T}
+\\
+测试点 &
+% #VALUE_ID: LEX-P0047-V0004
+% #FIELD_VALUE: 测试点
+\fieldvalue{2}
+\\
+功能号 &
+% #VALUE_ID: LEX-P0047-V0005
+% #FIELD_VALUE: 功能号
+\fieldvalue{2}
+\\
+功能名称 &
+% #VALUE_ID: LEX-P0047-V0006
+% #FIELD_VALUE: 功能名称
+\fieldvalue{FS?FPS-2225}
+\\
+设备编号 &
+% #VALUE_ID: LEX-P0047-V0007
+% #FIELD_VALUE: 设备编号
+\fieldvalue{XXX}
+\\
+测试气体 &
+% #VALUE_ID: LEX-P0047-V0008
+% #FIELD_VALUE: 测试气体
+\fieldvalue{Air}
+\\
+最大流量值 &
+% #VALUE_ID: LEX-P0047-V0009
+% #FIELD_VALUE: 最大流量值
+\fieldvalue{1000 mbar}
+\\
+最大压差值 &
+% #VALUE_ID: LEX-P0047-V0010
+% #FIELD_VALUE: 最大压差值
+\fieldvalue{1500 mbar}
+\\
+最大压力 &
+% #VALUE_ID: LEX-P0047-V0011
+% #FIELD_VALUE: 最大压力
+\fieldvalue{7000 mbar}
+\\
+结果 &
+% #VALUE_ID: LEX-P0047-V0012
+% #FIELD_VALUE: 结果
+\fieldvalue{通过}
+\\
+设定值 &
+% #VALUE_ID: LEX-P0047-V0013
+% #FIELD_VALUE: 设定值
+\fieldvalue{4800 mbar}
+\\
+测试完成时间 &
+% #VALUE_ID: LEX-P0047-V0014
+% #FIELD_VALUE: 测试完成时间
+\fieldvalue{10/Jun/2026 11:43:38}
+\\
+签名 &
+% #VALUE_ID: LEX-P0047-V0015
+% #FIELD_VALUE: 签名
+% #HANDWRITTEN: （签名）
+\fieldvalue{\handwritten{（签名）}}
+\\
+签名日期 &
+% #VALUE_ID: LEX-P0047-V0016
+% #FIELD_VALUE: 签名日期
+% #HANDWRITTEN: 2026.06.10
+\fieldvalue{\handwritten{2026.06.10}}
+\end{tabular}
+
+\vspace{1em}
+
+\section*{Palltronic FlowStar IV 测试结果}
+
+日期：
+% #VALUE_ID: LEX-P0047-V0017
+% #FIELD_VALUE: 日期
+\fieldvalue{10/Jun/2026 11:03:45}
+
+\hfill
+页码：
+% #VALUE_ID: LEX-P0047-V0018
+% #FIELD_VALUE: 页码
+\fieldvalue{2 of 2}
+
+\medskip
+
+\noindent
+\begin{minipage}{\linewidth}
+\centering
+\setlength{\fboxsep}{8pt}
+\fbox{%
+\begin{minipage}{0.78\linewidth}
+\centering
+\textbf{大气压差 (mbar/min)}
+
+\vspace{0.5em}
+\begin{tabular}{c@{\hspace{1em}}c@{\hspace{1em}}c@{\hspace{1em}}c@{\hspace{1em}}c}
+0 & 450 & 900 & 1350 & 1800
+\end{tabular}
+
+\vspace{1em}
+
+\begin{tabular}{p{0.08\linewidth}p{0.82\linewidth}}
+ & \rule{0.82\linewidth}{0.4pt}\\[-0.2em]
+ & \hfill \rule{0.4pt}{5cm}
+\end{tabular}
+
+\vspace{-3em}
+\begin{tabular}{c@{\hspace{2em}}c@{\hspace{2em}}c@{\hspace{2em}}c}
+1400 & 2200 & 2400 & 3000
+\end{tabular}
+
+\smallskip
+时间 (mbar)
+\end{minipage}%
+}
+\end{minipage}
+
+\vspace{1em}
+
+% TODO: The plotted curve is reproduced schematically; exact graphical coordinates are not recoverable from the page image.
+
+右侧手写注释：
+
+% #VALUE_ID: LEX-P0047-V0019
+% #HANDWRITTEN: 故障判定 2026.06.10
+\handwritten{故障判定 2026.06.10}
+
+\vfill
+
+页边手写标记：
+
+% #VALUE_ID: LEX-P0047-V0020
+% #HANDWRITTEN: 47/47
+\handwritten{47/47}
+
+% #VALUE_ID: LEX-P0047-V0021
+% #HANDWRITTEN: 2026.06.10
+\handwritten{2026.06.10}
+
+\end{document}
+% LEXOID_PAGE_COMPLETED: 47/47

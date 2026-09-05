@@ -1,0 +1,38 @@
+{
+  "input": "/data/02-lexoid-tex/small-test.tex",
+  "output": "/data/03-review-pending/small-test.optimized.tex",
+  "log": "/data/logs/optimizer-small-test.log",
+  "input_encoding": "utf-8",
+  "output_encoding": "utf-8",
+  "syntax_warnings": [],
+  "tables": 1,
+  "cells": 6,
+  "rows": 4,
+  "fields": 2,
+  "lines_before": 28,
+  "lines_after": 49,
+  "field_ids": [
+    "LEX-P0001-V0001",
+    "LEX-P0001-V0002"
+  ],
+  "naming": {
+    "tables": 1,
+    "fields": 2,
+    "heuristic": 1
+  },
+  "naming_fallbacks": [
+    "tab_p001_t1"
+  ],
+  "opaque_converted": [
+    9
+  ],
+  "opaque_width_source": {
+    "static": 1
+  },
+  "opaque_detail": [
+    "line 9: tabularx -> tabular [static]  col1=\\dimexpr(\\textwidth - 3cm - 4\\tabcolsep - 3\\arrayrulewidth)/1\\relax"
+  ],
+  "format_risks": [],
+  "opaque_skipped": [],
+  "opaque_remaining": []
+}
