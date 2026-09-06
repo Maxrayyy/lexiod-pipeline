@@ -22,6 +22,7 @@ from typing import Callable, Optional
 
 from .json_extractor import extract_fields, write_json
 from .pipeline_state import PipelineState
+from .model_config import resolve_model
 from .textio import read_text_auto, write_utf8_atomic
 
 
@@ -79,7 +80,7 @@ class Config:
                 "lexoid latex -i {input} -o {output} --model {model} "
                 "--start-page {start_page}",
             ),
-            lexoid_model=os.environ.get("LEXOID_MODEL", "gpt-5.6-luna"),
+            lexoid_model=os.environ.get("LEXOID_MODEL", ""),
             lexoid_timeout_seconds=int(os.environ.get("LEXOID_TIMEOUT_SECONDS", "7200")),
             optimizer_command=os.environ.get("OPTIMIZER_COMMAND", "texopt"),
             optimizer_extra_args=os.environ.get(
@@ -268,7 +269,8 @@ class Pipeline:
         target = partial
         argv = render_command(self.config.lexoid_command, {
             "input": str(source.resolve()), "output": str(target.resolve()),
-            "model": self.config.lexoid_model, "start_page": str(start_page),
+            "model": resolve_model("LEXOID_MODEL", self.config.lexoid_model or None),
+            "start_page": str(start_page),
         })
         item_log = mirrored_log(self.config.log_file.parent, "lexoid", relative)
         self.log.emit("lexoid", "COMMAND", str(source), job_id=job_id,
@@ -468,6 +470,18 @@ def main(argv: Optional[list[str]] = None) -> int:
     parser.add_argument("--status", action="store_true",
                         help="print persisted job status from previous cron runs")
     args = parser.parse_args(argv)
+    if os.environ.get("PDF_SOURCE_ROOT"):
+        from .stages import BatchConfig, run_batch
+        output_root = Path(os.environ.get("PIPELINE_OUTPUT_ROOT", "/data"))
+        if args.status:
+            print(json.dumps(PipelineState(output_root / ".state" / "pipeline.sqlite3").status_snapshot(),
+                             ensure_ascii=False, indent=2))
+            return 0
+        while True:
+            status = run_batch(Path(os.environ["PDF_SOURCE_ROOT"]), output_root, BatchConfig.from_env())
+            if args.once:
+                return status
+            time.sleep(float(os.environ.get("POLL_INTERVAL_SECONDS", "30")))
     config = Config.from_env()
     config.ensure_dirs()
     if args.status:

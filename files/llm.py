@@ -30,13 +30,14 @@ import os
 import re
 import urllib.error
 import urllib.request
+from .model_telemetry import request_json
 from dataclasses import dataclass, field as dc_field, asdict
 from pathlib import Path
 from typing import Dict, List, Optional, Protocol
 
 from .fields import is_hashy, slug, tex_to_plain
+from .model_config import resolve_model
 
-DEFAULT_MODEL = os.environ.get("TEXOPT_MODEL", "claude-sonnet-5")
 ANTHROPIC_API_URL = "https://api.anthropic.com/v1/messages"
 
 
@@ -182,17 +183,17 @@ class LLMBatchNamer:
     optimisation, but the report records which tables fell back.
     """
 
-    def __init__(self, cache_path: Path, model: str = DEFAULT_MODEL,
+    def __init__(self, cache_path: Path, model: Optional[str] = None,
                  api_key: Optional[str] = None, max_retries: int = 2,
                  timeout: int = 60) -> None:
         self.cache_path = Path(cache_path)
-        self.model = model
-        self.is_openai = _is_openai_model(model)
+        self.model = resolve_model("TEXOPT_MODEL", model)
+        self.is_openai = _is_openai_model(self.model)
         if self.is_openai:
             self.api_key = api_key or os.environ.get("OPENAI_API_KEY", "")
         else:
             self.api_key = api_key or os.environ.get("ANTHROPIC_API_KEY", "")
-        self.max_retries = max_retries
+        self.max_retries = min(1, max(0, max_retries))
         self.timeout = timeout
         self.fallback = HeuristicBatchNamer()
         self.cache: Dict[str, dict] = {}
@@ -247,7 +248,7 @@ class LLMBatchNamer:
     def _call_openai(self, req: TableNameRequest) -> Optional[dict]:
         body = json.dumps({
             "model": self.model,
-            "max_completion_tokens": 1000,
+            "max_completion_tokens": 4096,
             "messages": [
                 {"role": "system", "content": SYSTEM},
                 {"role": "user", "content": PROMPT.format(
@@ -261,8 +262,8 @@ class LLMBatchNamer:
                     "content-type": "application/json",
                     "authorization": f"Bearer {self.api_key}",
                 })
-                with urllib.request.urlopen(rq, timeout=self.timeout) as r:
-                    data = json.loads(r.read().decode("utf-8"))
+                data = request_json(rq, self.timeout, stage="naming", model=self.model,
+                                    attempt=attempt + 1, page=req.page, table=req.ordinal)
                 text = data["choices"][0]["message"]["content"]
                 return self._parse(text)
             except (urllib.error.URLError, TimeoutError, ValueError, KeyError):
@@ -287,8 +288,8 @@ class LLMBatchNamer:
                     "x-api-key": self.api_key,
                     "anthropic-version": "2023-06-01",
                 })
-                with urllib.request.urlopen(rq, timeout=self.timeout) as r:
-                    data = json.loads(r.read().decode("utf-8"))
+                data = request_json(rq, self.timeout, stage="naming", model=self.model,
+                                    attempt=attempt + 1, page=req.page, table=req.ordinal)
                 text = "".join(b.get("text", "") for b in data.get("content", [])
                                if b.get("type") == "text")
                 return self._parse(text)

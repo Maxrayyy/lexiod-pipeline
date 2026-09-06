@@ -143,3 +143,16 @@ class PipelineState:
                 "ORDER BY updated_at DESC LIMIT ?", (recent,)
             ).fetchall()]
         return {"counts": counts, "recent_jobs": jobs}
+
+    def completed_metadata(self, stage: str, source_path: str, fingerprint: str):
+        with self._connect() as db:
+            row = db.execute("SELECT metadata_json FROM jobs WHERE stage=? AND source_path=? "
+                             "AND fingerprint=? AND status='completed'",
+                             (stage, source_path, fingerprint)).fetchone()
+        return json.loads(row[0]) if row else None
+
+    def invalidate_completed(self, stage: str, source_path: str, fingerprint: str):
+        with self._connect() as db:
+            db.execute("UPDATE jobs SET status='retry', next_retry_at=0 WHERE stage=? "
+                       "AND source_path=? AND fingerprint=? AND status='completed'",
+                       (stage, source_path, fingerprint))

@@ -7,7 +7,7 @@ project_root="${0:A:h}"
 if [[ -f "$project_root/.env" ]]; then
   # Read only the settings this script needs. Do not source .env: some values
   # contain spaces and are dotenv syntax rather than shell assignments.
-  for dotenv_name in OPENAI_API_KEY OPENAI_BASE_URL TEXOPT_MODEL \
+  for dotenv_name in OPENAI_API_KEY OPENAI_BASE_URL TEXOPT_MODEL TEXOPT_REPAIR_MODEL \
     CODEX_MODEL_PROVIDER CODEX_MODEL CODEX_NETWORK_ACCESS; do
     if [[ -z "${(P)dotenv_name}" ]]; then
       dotenv_value="$(sed -n "s/^${dotenv_name}=//p" "$project_root/.env" | tail -n 1)"
@@ -25,8 +25,8 @@ repair_root="${CODEX_REPAIR_ROOT:-$project_root/codex-repairs}"
 texopt_bin="${TEXOPT_BIN:-/opt/anaconda3/bin/texopt}"
 python_bin="${TEXOPT_PYTHON:-/opt/anaconda3/bin/python}"
 codex_bin="${CODEX_BIN:-/Applications/ChatGPT.app/Contents/Resources/codex}"
-model="${TEXOPT_MODEL:-gpt-5.5}"
-codex_model="${CODEX_MODEL:-gpt-5.5}"
+model="${TEXOPT_MODEL:?Set TEXOPT_MODEL in .env or environment}"
+codex_model="${CODEX_MODEL:?Set CODEX_MODEL in .env or environment}"
 codex_provider_id="${CODEX_MODEL_PROVIDER:-lexiod_openai}"
 openai_base_url="${OPENAI_BASE_URL:-}"
 codex_network_access="${CODEX_NETWORK_ACCESS:-true}"

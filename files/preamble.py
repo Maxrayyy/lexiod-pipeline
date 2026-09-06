@@ -16,6 +16,7 @@ MARK_END = "% <<< lexoid-texopt <<<"
 #     would have; \parindent is 0pt there because of \@parboxrestore.
 #   The empty \hbox is what forces SyncTeX to open a box record on THIS source line.
 BLOCK = r"""
+\RequirePackage{amssymb}
 %% --- sync anchor: zero-size box that gives SyncTeX a per-cell record -------------
 \providecommand{\SA}{\leavevmode\hbox{}\relax}
 
@@ -32,24 +33,27 @@ BLOCK = r"""
   \ifhwf@dest\@ifundefined{hypertarget}{}{\hypertarget{fld:#1}{}}\fi
   #2%
 }
-%% --- editable checkbox: stable ID + boolean state + separate visible label -------
-%% State must be exactly `checked` or `unchecked`; JSON extraction records it as a
-%% boolean.  The box is drawn here, so source documents never need raw square marks.
+%% --- editable checkbox ------------------------------------------------------------
+%% Current Lexoid writes \fieldvalue{\checkboxfield{state}}. Historical optimized
+%% sources used \checkboxfield{ID}{state}{label}; retain both forms during migration.
 \def\cb@checked{checked}
-\providecommand{\checkboxfield}[3]{}%
-\renewcommand{\checkboxfield}[3]{%
-  \hwfield{#1}{%
-    \begingroup
-      \def\cb@state{#2}%
-      \ifx\cb@state\cb@checked
-        \fbox{\makebox[1.1ex][c]{\raisebox{.1ex}{\scriptsize\sffamily x}}}%
-      \else
-        \fbox{\makebox[1.1ex][c]{\strut}}%
-      \fi
-    \endgroup
-    \,#3%
-  }%
-}
+\def\cb@unclear{unclear}
+\newcommand{\cb@draw}[1]{%
+  \begingroup
+    \setlength{\fboxsep}{0.15ex}%
+    \def\cb@state{#1}%
+    \ifx\cb@state\cb@checked
+      \fbox{\rule{0pt}{1.25ex}\makebox[1.25ex][c]{\scriptsize\ensuremath{\checkmark}}}%
+    \else\ifx\cb@state\cb@unclear
+      \fbox{\rule{0pt}{1.25ex}\makebox[1.25ex][c]{\scriptsize\sffamily ?}}%
+    \else
+      \fbox{\rule{0pt}{1.25ex}\makebox[1.25ex][c]{}}%
+    \fi\fi
+  \endgroup}
+\providecommand{\checkboxfield}[1]{}%
+\renewcommand{\checkboxfield}[1]{%
+  \@ifnextchar\bgroup{\cb@legacy{#1}}{\cb@draw{#1}}}
+\newcommand{\cb@legacy}[3]{\hwfield{#1}{\cb@draw{#2}\,#3}}
 \AtEndDocument{\immediate\closeout\hwf@out}
 \makeatother
 """

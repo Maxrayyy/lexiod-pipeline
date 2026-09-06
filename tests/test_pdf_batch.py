@@ -30,7 +30,7 @@ def test_output_path_preserves_structure_in_clean_optimized_directory(tmp_path):
     output_root = tmp_path / "data" / "U1"
 
     assert output_path_for(source, source_root, output_root) == (
-        output_root / "optimized" / "batch" / "A31" / "record.optimized.tex"
+        output_root / "batch" / "A31" / "optimized" / "record.optimized.tex"
     )
 
 
@@ -70,10 +70,10 @@ def test_working_path_keeps_raw_tex_out_of_data_directory(tmp_path):
     )
 
 
-def test_optimizer_command_enables_ai_repair_without_compilation(tmp_path):
+def test_optimizer_command_requires_compilation_and_repairs_only_failures(tmp_path):
     output_root = tmp_path / "data" / "U1"
     raw_output = tmp_path / "work" / "U1" / "batch" / "record.tex"
-    final_output = output_root / "optimized" / "batch" / "record.optimized.tex"
+    final_output = output_root / "batch" / "optimized" / "record.optimized.tex"
 
     command = build_optimizer_command(
         raw_output,
@@ -93,19 +93,17 @@ def test_optimizer_command_enables_ai_repair_without_compilation(tmp_path):
         "--report",
         str(tmp_path / "work" / "U1" / "batch" / "record.report.json"),
         "--log-file",
-        str(output_root / "_logs" / "batch" / "record.texopt.log"),
+        str(output_root / "batch" / "_logs" / "record.texopt.log"),
         "--llm-model",
         "gpt-5.6-luna",
         "--name-cache",
         str(output_root / "_state" / "texopt-names.json"),
-        "--llm-syntax-repair",
         "--syntax-repair-cache",
         str(output_root / "_state" / "texopt-syntax-repairs.json"),
         "--llm-repair-on-failure",
-        "--no-probe",
-        "--allow-opaque",
+        "--compile-check",
     ]
-    assert "--compile-check" not in command
+    assert "--llm-syntax-repair" not in command
 
 
 def test_publish_file_handles_cross_filesystem_sources(tmp_path, monkeypatch):

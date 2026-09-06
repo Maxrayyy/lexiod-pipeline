@@ -646,9 +646,30 @@ def _derive_table_name(lines: List[str], begin_idx: int, ordinal: int,
     return f"tab{ordinal:02d}"
 
 
-def write_registry(records: List[FieldRecord], path: Path) -> None:
+def write_registry(records: List[FieldRecord], path: Path, *, provenance_path=None, tex=None) -> None:
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
+    fields = [asdict(r) for r in records]
+    if provenance_path is not None:
+        from .reconcile import field_segments, _normalized
+        incoming = json.loads(Path(provenance_path).read_text("utf-8"))["fields"]
+        originals = {item["field_id"]: item for item in incoming}
+        if len(originals) != len(incoming):
+            raise ValueError("Duplicate field IDs in source registry")
+        segments = field_segments(tex or "")
+        if set(originals) != set(segments):
+            raise ValueError("Optimized TeX and source registry field IDs differ")
+        structural = {item["field_id"]: item for item in fields}
+        fields = []
+        for fid, original in originals.items():
+            if _normalized(original["value"]) != _normalized(segments[fid]["value"]):
+                raise ValueError(f"Optimized field value changed: {fid}")
+            merged = {**original, **structural.get(fid, {})}
+            for key in ("value", "paddle_text", "model_guess", "confidence", "needs_review", "history"):
+                if key in original:
+                    merged[key] = original[key]
+            merged["tex_line"] = (tex or "")[:segments[fid]["start"]].count("\n") + 1
+            fields.append(merged)
     write_utf8_atomic(path, json.dumps(
-        {"version": 1, "count": len(records), "fields": [asdict(r) for r in records]},
+        {"version": 1, "count": len(fields), "fields": fields},
         ensure_ascii=False, indent=2))

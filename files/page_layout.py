@@ -1,0 +1,167 @@
+"""Preserve source-page boundaries and validate the actual compiled PDF."""
+
+from __future__ import annotations
+
+import math
+from pathlib import Path
+import re
+
+from .syntax_repair import PAGE_COMPLETED, canonicalize_document_terminator, split_lexoid_pages
+
+
+BLOCK_START = "% >>> lexoid physical layout >>>"
+BLOCK_END = "% <<< lexoid physical layout <<<"
+BLOCK = r"""
+% >>> lexoid physical layout >>>
+\usepackage{geometry}
+\makeatletter
+\renewcommand{\maketitle}{%
+  \par\begingroup\centering
+  {\large\bfseries\@title\par}%
+  \ifx\@author\@empty\else{\normalsize\let\and\quad\@author\par}\fi
+  \ifx\@date\@empty\else{\normalsize\@date\par}\fi
+  \@thanks\endgroup\par}
+\newcount\LexoidAbsolutePage
+\AddToHook{shipout/before}{\global\advance\LexoidAbsolutePage by 1}
+\newwrite\LexoidLayoutStream
+\AtBeginDocument{\immediate\openout\LexoidLayoutStream=\jobname.lxp}
+\newcommand{\LexoidPageMark}[2]{%
+  \write\LexoidLayoutStream{#1,#2,\the\LexoidAbsolutePage}}
+\newcommand{\LexoidPageStart}[4]{%
+  \clearpage
+  \newgeometry{layoutwidth=#2,layoutheight=#3,left=12mm,right=12mm,top=12mm,bottom=12mm}%
+  \setlength{\paperwidth}{#2}\setlength{\paperheight}{#3}%
+  \special{papersize=#2,#3}%
+  \begingroup
+  \ifnum#4>0
+    \setlength{\parskip}{0pt}\setlength{\tabcolsep}{2pt}%
+    \renewcommand{\arraystretch}{1.0}%
+    \@ifpackageloaded{titlesec}{%
+      \titlespacing*{\section}{0pt}{3pt}{2pt}%
+      \titlespacing*{\subsection}{0pt}{2pt}{1pt}%
+      \titlespacing*{\subsubsection}{0pt}{2pt}{1pt}}{}%
+  \fi
+  \ifnum#4>1 \fontsize{9pt}{10pt}\selectfont\fi
+  \LexoidPageMark{#1}{start}}
+\newcommand{\LexoidPageEnd}[1]{%
+  \par\LexoidPageMark{#1}{end}\endgroup}
+\makeatother
+% <<< lexoid physical layout <<<
+"""
+
+
+def _remove_generated_layout(source):
+    start = source.find(BLOCK_START)
+    if start >= 0:
+        end = source.find(BLOCK_END, start)
+        if end < 0:
+            raise ValueError("Incomplete physical page layout block")
+        source = source[:start] + source[end + len(BLOCK_END):]
+    return re.sub(r"(?m)^\\LexoidPage(?:Start\{\d+\}\{[\d.]+bp\}\{[\d.]+bp\}\{[012]\}|End\{\d+\})\s*\n", "", source)
+
+
+def prepare_layout(source, evidence, profiles=None):
+    """Use render dimensions after orientation correction; retain all source text."""
+    profiles = profiles or {}
+    source = _remove_generated_layout(source)
+    source, _ = canonicalize_document_terminator(source)
+    markers = [(int(m[1]), int(m[2])) for m in PAGE_COMPLETED.finditer(source)]
+    pages = evidence.get("pages", [])
+    total = len(pages)
+    if (evidence.get("schema") != "recognition/v1" or not total
+            or [p["page"] for p in pages] != list(range(1, total + 1))
+            or markers != [(n, total) for n in range(1, total + 1)]):
+        raise ValueError("Layout evidence and TeX page order must agree")
+    sizes = []
+    for page in pages:
+        render = page["render"]
+        dpi, width, height = (float(render[k]) for k in ("dpi", "width", "height"))
+        if not all(math.isfinite(x) and x > 0 for x in (dpi, width, height)):
+            raise ValueError("Invalid page dimensions")
+        sizes.append((round(width * 72 / dpi, 3), round(height * 72 / dpi, 3)))
+
+    chunks = []
+    for number, _, chunk in split_lexoid_pages(source):
+        if number == 1:
+            preamble, sep, body = chunk.partition(r"\begin{document}")
+            if not sep:
+                raise ValueError("Layout requires a complete document")
+            prefix = preamble.rstrip() + "\n" + BLOCK.strip() + "\n" + sep + "\n"
+        else:
+            prefix, body = "", chunk
+        # Source-page breaks are owned by LexoidPageStart; internal breaks stay
+        # visible to the validator instead of silently hiding a genuine overflow.
+        body = re.sub(r"\A\s*\\(?:newpage|clearpage)\b\s*", "", body)
+        body = body.lstrip("\r\n")
+        marker = PAGE_COMPLETED.search(body)
+        width, height = sizes[number - 1]
+        profile = profiles.get(number, 0)
+        if profile not in (0, 1, 2):
+            raise ValueError("Unknown page layout profile")
+        start = rf"\LexoidPageStart{{{number}}}{{{width:g}bp}}{{{height:g}bp}}{{{profile}}}" + "\n"
+        end = rf"\LexoidPageEnd{{{number}}}" + "\n"
+        chunks.append(prefix + start + body[:marker.start()].rstrip() + "\n" + end + body[marker.start():])
+    report = {"schema": "page-layout/v1", "ok": False, "expected_pages": total,
+              "expected_sizes": sizes, "profiles": {str(p): profiles.get(p, 0) for p in range(1, total + 1)}}
+    return "".join(chunks), report
+
+
+def validate_page_map(expected, records, actual):
+    errors = []
+    if actual != expected:
+        errors.append(f"PDF page count differs: expected {expected}, got {actual}")
+    wanted = [(n, side, n) for n in range(1, expected + 1) for side in ("start", "end")]
+    if records != wanted:
+        errors.append("Source page boundaries do not match output PDF pages")
+    return errors
+
+
+def inspect_layout(pdf_path, report):
+    import pypdfium2 as pdfium
+
+    records = []
+    marker_file = Path(pdf_path).with_suffix(".lxp")
+    if marker_file.exists():
+        for line in marker_file.read_text().splitlines():
+            match = re.fullmatch(r"(\d+),(start|end),(\d+)", line.strip())
+            if match:
+                records.append((int(match[1]), match[2], int(match[3])))
+    document = pdfium.PdfDocument(str(pdf_path))
+    try:
+        actual = len(document)
+        sizes = []
+        outside = []
+        for n in range(actual):
+            page = document[n]
+            width, height = page.get_size()
+            sizes.append((width, height))
+            textpage = page.get_textpage()
+            for i in range(textpage.count_chars()):
+                if not textpage.get_text_range(i, 1).strip():
+                    continue
+                left, bottom, right, top = textpage.get_charbox(i)
+                if left < -1 or bottom < -1 or right > width + 1 or top > height + 1:
+                    outside.append(n + 1)
+                    break
+            textpage.close()
+            page.close()
+    finally:
+        document.close()
+    errors = validate_page_map(report["expected_pages"], records, actual)
+    if len(sizes) == len(report["expected_sizes"]) and any(
+        abs(a - b) > 1 for pair, target in zip(sizes, report["expected_sizes"])
+        for a, b in zip(pair, target)
+    ):
+        errors.append("Output page dimensions differ from source reading orientation")
+    if outside:
+        errors.append(f"Text extends outside PDF page bounds: {outside}")
+    page_map = []
+    for n in range(1, report["expected_pages"] + 1):
+        entry = {"source_page": n}
+        for number, side, target in records:
+            if number == n:
+                entry[side] = target
+        page_map.append(entry)
+    report.update(ok=not errors, actual_pages=actual, actual_sizes=sizes,
+                  page_map=page_map, errors=errors, outside_pages=outside)
+    return not errors

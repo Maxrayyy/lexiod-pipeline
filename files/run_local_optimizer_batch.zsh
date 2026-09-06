@@ -5,7 +5,7 @@
 
 project_root="${0:A:h}"
 if [[ -f "$project_root/.env" ]]; then
-  for dotenv_name in OPENAI_API_KEY OPENAI_BASE_URL TEXOPT_MODEL; do
+  for dotenv_name in OPENAI_API_KEY OPENAI_BASE_URL TEXOPT_MODEL TEXOPT_REPAIR_MODEL; do
     if [[ -z "${(P)dotenv_name}" ]]; then
       dotenv_value="$(sed -n "s/^${dotenv_name}=//p" "$project_root/.env" | tail -n 1)"
       [[ -n "$dotenv_value" ]] && export "$dotenv_name=$dotenv_value"
@@ -18,7 +18,7 @@ source_root="${1:-/Users/lanyu/Desktop/输出目录/02-lexoid-tex}"
 metadata_root="${2:-/Users/lanyu/Desktop/优化tex}"
 reviewed_tex_root="${3:-/Users/lanyu/Desktop/输出目录/04-reviewed-tex}"
 texopt_bin="${TEXOPT_BIN:-/opt/anaconda3/bin/texopt}"
-model="${TEXOPT_MODEL:-gpt-5.5}"
+model="${TEXOPT_MODEL:?Set TEXOPT_MODEL in .env or environment}"
 
 if [[ ! -x "$texopt_bin" ]]; then
   print -u2 "ERROR: texopt executable not found: $texopt_bin"

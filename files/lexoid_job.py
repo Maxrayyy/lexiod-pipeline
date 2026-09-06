@@ -17,6 +17,7 @@ import time
 from dataclasses import dataclass, asdict, field
 from pathlib import Path, PurePosixPath
 from typing import Dict, List, Optional, Tuple
+from .model_config import resolve_model
 
 # --------------------------------------------------------------------------- #
 # job model
@@ -31,7 +32,7 @@ class LexoidJob:
     host_workdir: str          # host dir bind-mounted into the container
     input_name: str            # file name inside host_workdir
     output_name: str
-    model: str = "gpt-5.6-luna"
+    model: str = field(default_factory=lambda: resolve_model("LEXOID_MODEL"))
     start_page: int = 1
     service: str = "lexoid"
     mode: str = "latex"
@@ -113,14 +114,14 @@ def _chunk(parts: List[str]) -> List[str]:
     return out
 
 
-def new_job(host_workdir: str, input_name: str, model: str = "gpt-5.6-luna",
+def new_job(host_workdir: str, input_name: str, model: Optional[str] = None,
             start_page: int = 1, output_name: Optional[str] = None,
             **kw) -> LexoidJob:
     stem = Path(input_name).stem
     jid = f"{SAFE_NAME.sub('_', stem)}-{int(time.time())}"
     return LexoidJob(
         job_id=jid, host_workdir=host_workdir, input_name=input_name,
-        output_name=output_name or f"{stem}.tex", model=model,
+        output_name=output_name or f"{stem}.tex", model=resolve_model("LEXOID_MODEL", model),
         start_page=start_page, **kw)
 
 

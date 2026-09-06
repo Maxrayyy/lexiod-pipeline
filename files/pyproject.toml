@@ -7,7 +7,7 @@ name = "lexoid-texopt-pipeline"
 version = "0.1.0"
 description = "Durable Lexoid LaTeX optimization and reviewed JSON pipeline"
 requires-python = ">=3.10"
-dependencies = []
+dependencies = ["pypdfium2>=4.30,<5", "Pillow>=10,<13", "pylatexenc>=2.10,<3"]
 
 [project.scripts]
 texopt = "texopt.cli:main"

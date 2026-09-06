@@ -45,7 +45,7 @@ from files.json_extractor import (  # noqa: E402
 )
 
 # ── environment defaults ───────────────────────────────────────────────────
-DEFAULT_MODEL = os.environ.get("LEXOID_MODEL", "gpt-5.6-luna")
+DEFAULT_MODEL = os.environ.get("LEXOID_MODEL", "")
 HOST_WORK_DIR = os.path.expanduser(
     os.environ.get("HOST_WORK_DIR", os.environ.get("WORK_DIR", "~/Downloads"))
 )
@@ -543,7 +543,7 @@ def _make_tex_argv(filename: str) -> list[str]:
         argv.append("--no-llm")
     else:
         argv += ["--llm-model",
-                 st.session_state.get("tex_llm_model", "claude-sonnet-5")]
+                 st.session_state.get("tex_llm_model", os.environ.get("TEXOPT_MODEL", ""))]
     if st.session_state.get("tex_allow_opaque"):
         argv.append("--allow-opaque")
     return argv
@@ -844,7 +844,7 @@ with tab_tex:
         tex_allow_opaque = st.checkbox("Allow opaque (--allow-opaque)", key="tex_allow_opaque")
     with col3:
         tex_llm_model = st.text_input(
-            "LLM model", value=os.environ.get("TEXOPT_MODEL", "claude-sonnet-5"),
+            "LLM model", value=os.environ.get("TEXOPT_MODEL", ""),
             key="tex_llm_model",
         )
 

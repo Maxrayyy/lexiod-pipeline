@@ -13,6 +13,8 @@ from unittest import mock
 from .syntax_repair import (LLMSyntaxRepairer, SYSTEM_PROMPT, apply_line_edits,
                             canonicalize_document_terminator, group_lexoid_pages,
                             normalize_control_word_boundaries,
+                            normalize_multicolumn_linebreaks,
+                            normalize_text_mode_math_symbols,
                             page_numbers_for_lines,
                             remove_intermediate_end_documents,
                             repair_invariants_hold, split_lexoid_pages)
@@ -47,6 +49,38 @@ class SequencedRepairer(LLMSyntaxRepairer):
 
 
 class SyntaxRepairTests(unittest.TestCase):
+    def test_multicolumn_paragraph_linebreak_does_not_end_table_row(self) -> None:
+        source = (
+            "\\begin{tabular}{|l|l|l|l|}\n"
+            "label & \\multicolumn{3}{p{8cm}|}{first line\\\\\n"
+            "\\fieldvalue{second line} \\shortstack{A\\\\B}\n"
+            "}\\\\\\hline\n"
+            "\\end{tabular}\n"
+        )
+
+        repaired, count = normalize_multicolumn_linebreaks(source)
+
+        self.assertEqual(count, 1)
+        self.assertIn(r"first line\newline", repaired)
+        self.assertIn(r"\shortstack{A\\B}", repaired)
+        self.assertIn("}\\\\\\hline", repaired)
+        self.assertEqual(normalize_multicolumn_linebreaks(repaired), (repaired, 0))
+
+    def test_standalone_diagonal_symbols_are_safe_in_text_mode(self) -> None:
+        source = (
+            "\\fieldvalue{\\handwritten{\\diagup}} & \\diagdown\\\\\n"
+            "% #HANDWRITTEN: \\diagup\n"
+            "\\ensuremath{\\diagup}\n"
+        )
+
+        repaired, count = normalize_text_mode_math_symbols(source)
+
+        self.assertEqual(count, 2)
+        self.assertIn(r"\handwritten{\ensuremath{\diagup}}", repaired)
+        self.assertIn(r"& \ensuremath{\diagdown}\\", repaired)
+        self.assertIn(r"% #HANDWRITTEN: \diagup", repaired)
+        self.assertEqual(normalize_text_mode_math_symbols(repaired), (repaired, 0))
+
     def test_zero_argument_spacing_commands_are_delimited_before_cjk(self) -> None:
         source = (
             "正文\\quad至\\qquad结束\n"

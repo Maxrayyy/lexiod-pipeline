@@ -24,9 +24,12 @@ from pathlib import Path
 from . import opaque, preamble
 from .fields import DetectorConfig, annotate_fields, write_registry
 from .llm import HeuristicBatchNamer, LLMBatchNamer
+from .model_config import resolve_model
 from .syntax_check import validate_latex
 from .syntax_repair import (LLMSyntaxRepairer, canonicalize_document_terminator,
                             normalize_control_word_boundaries,
+                            normalize_multicolumn_linebreaks,
+                            normalize_text_mode_math_symbols,
                             page_diagnostic_hints,
                             page_numbers_for_lines,
                             repair_invariant_violations)
@@ -172,7 +175,7 @@ def _risks(src: str) -> list:
 
 
 def _compile_latex(tex_path: Path, source_dir: Path, engine: str,
-                   timeout: int, runs: int = 2) -> tuple[bool, str]:
+                   timeout: int, runs: int = 2, *, layout_report=None) -> tuple[bool, str]:
     """Compile the exact exported TeX in an isolated output directory."""
     tex_path = tex_path.resolve()
     source_dir = source_dir.resolve()
@@ -217,6 +220,18 @@ def _compile_latex(tex_path: Path, source_dir: Path, engine: str,
                 if result.returncode != 0:
                     return False, "\n".join(chunks)
             pdf = output_dir / f"{tex_path.stem}.pdf"
+            if layout_report is not None and pdf.exists():
+                import shutil
+                from .page_layout import inspect_layout
+
+                inspect_layout(pdf, layout_report)
+                preview = tex_path.with_suffix(".layout.pdf")
+                shutil.copyfile(pdf, preview)
+                layout_report["preview_pdf"] = str(preview)
+                write_utf8_atomic(tex_path.with_suffix(".layout.json"),
+                                  json.dumps(layout_report, ensure_ascii=False, indent=2))
+                chunks.append("LAYOUT_CHECK: " + json.dumps(layout_report, ensure_ascii=False))
+                return pdf.stat().st_size > 0, "\n".join(chunks)
             return pdf.exists() and pdf.stat().st_size > 0, "\n".join(chunks)
     except (OSError, subprocess.TimeoutExpired) as exc:
         chunks.append(f"compile exception: {type(exc).__name__}: {exc}\n")
@@ -256,6 +271,29 @@ def cmd_optimise(a: argparse.Namespace) -> int:
             "delimited zero-argument control words before CJK text",
             repairs=delimited_controls,
         )
+    src, normalized_math_symbols = normalize_text_mode_math_symbols(src)
+    if normalized_math_symbols:
+        _event(
+            "TEXT_MATH_NORMALIZED",
+            "standalone math symbols made safe in text mode",
+            repairs=normalized_math_symbols,
+        )
+    src, normalized_multicolumn_breaks = normalize_multicolumn_linebreaks(src)
+    if normalized_multicolumn_breaks:
+        _event(
+            "MULTICOLUMN_LINEBREAK_REPAIRED",
+            "kept visual line breaks inside paragraph-style multicolumn cells",
+            repairs=normalized_multicolumn_breaks,
+        )
+    layout_evidence = None
+    layout_report = None
+    if getattr(a, "page_layout_evidence", None):
+        from .page_layout import prepare_layout
+
+        layout_evidence = json.loads(Path(a.page_layout_evidence).read_text("utf-8"))
+        src, layout_report = prepare_layout(src, layout_evidence)
+        _event("LAYOUT_PREPARED", "source reading orientation and page boundaries applied",
+               pages=layout_report["expected_pages"])
     _event("INPUT_READ", "LaTeX input loaded", bytes=len(src.encode("utf-8")),
            lines=src.count("\n") + 1, detected_encoding=decoded.encoding,
            input_bom=decoded.had_bom, output_encoding="utf-8")
@@ -272,18 +310,21 @@ def cmd_optimise(a: argparse.Namespace) -> int:
                policy="continue_into_optimizer")
 
     syntax_repair_stats = None
-    if a.llm_syntax_repair and not a.no_llm:
+    if (a.llm_syntax_repair or (input_errors and a.llm_repair_on_failure)) and not a.no_llm:
+        repair_model = resolve_model("TEXOPT_REPAIR_MODEL", getattr(a, "repair_model", None))
         _event("SYNTAX_REPAIR_START", "LLM syntax repair started",
-               model=a.llm_model,
+               model=repair_model,
                cache=str(Path(a.syntax_repair_cache).resolve()))
         repair_started = time.monotonic()
         repairer = LLMSyntaxRepairer(
-            Path(a.syntax_repair_cache), model=a.llm_model,
+            Path(a.syntax_repair_cache), model=repair_model,
             timeout=a.syntax_repair_timeout,
             batch_pages=a.syntax_repair_batch_pages, event=_event,
         )
         repair_input = src
-        src, repair_stats = repairer.repair_document(src)
+        src, repair_stats = repairer.repair_document(src, target_pages=(
+            page_numbers_for_lines(src, [issue.line for issue in input_errors])
+            if input_errors and not a.llm_syntax_repair else None))
         syntax_repair_stats = vars(repair_stats)
         repaired_issues = validate_latex(src, require_sync_safe=False)
         repaired_errors = [i for i in repaired_issues if i.severity == "error"]
@@ -560,7 +601,7 @@ def cmd_optimise(a: argparse.Namespace) -> int:
                     attempt=retry_number,
                 )
                 repairer = LLMSyntaxRepairer(
-                    Path(a.syntax_repair_cache), model=a.llm_model,
+                    Path(a.syntax_repair_cache), model=getattr(a, "repair_model", None),
                     timeout=a.syntax_repair_timeout,
                     batch_pages=a.syntax_repair_batch_pages, event=_event,
                 )
@@ -754,6 +795,9 @@ def cmd_optimise(a: argparse.Namespace) -> int:
                "explicit cell SyncTeX anchors replaced with spaces",
                count=sync_anchors_removed)
 
+    if layout_evidence is not None:
+        out, layout_report = prepare_layout(out, layout_evidence)
+
     print("[6/7] Writing output…", file=sys.stderr, flush=True)
     write_utf8_atomic(a.output, out)
     _event("OUTPUT_WRITE", "optimized LaTeX written",
@@ -762,16 +806,41 @@ def cmd_optimise(a: argparse.Namespace) -> int:
     print(f"  Output: {a.output} ({len(records)} fields)",
           file=sys.stderr, flush=True)
     compile_result = None
-    if a.compile_check:
+    if a.compile_check or layout_evidence is not None:
         compile_log = (Path(a.compile_log) if a.compile_log else
                        Path(a.output).with_suffix(".compile.log"))
         _event("COMPILE_CHECK_START",
                "two-pass XeLaTeX compatibility check started",
                engine=a.compile_engine, log=str(compile_log.resolve()))
-        compile_ok, compile_text = _compile_latex(
-            Path(a.output), Path(a.input).resolve().parent,
-            a.compile_engine, a.compile_timeout, runs=2,
-        )
+        compile_logs = []
+        profiles = {}
+        for attempt in range(3):
+            kwargs = {"layout_report": layout_report} if layout_report is not None else {}
+            compile_ok, compile_text = _compile_latex(
+                Path(a.output), Path(a.input).resolve().parent,
+                a.compile_engine, a.compile_timeout, runs=2, **kwargs,
+            )
+            compile_logs.append(f"LAYOUT ATTEMPT {attempt + 1}\n{compile_text}")
+            if compile_ok or layout_report is None or not layout_report.get("page_map") or attempt == 2:
+                break
+            # Only compact the first overflowing source page. Later mappings may
+            # be displaced by that page without having any layout defect themselves.
+            bad = next((p["source_page"] for p in layout_report["page_map"]
+                        if p.get("start") != p["source_page"] or p.get("end") != p["source_page"]), None)
+            if bad is None and layout_report.get("outside_pages"):
+                bad = layout_report["outside_pages"][0]
+            if bad is None or profiles.get(bad, 0) >= 2:
+                break
+            profiles[bad] = profiles.get(bad, 0) + 1
+            out, layout_report = prepare_layout(out, layout_evidence, profiles)
+            write_utf8_atomic(a.output, out)
+            _event("LAYOUT_RETRY", "retrying bounded spacing adjustment",
+                   page=bad, profile=profiles[bad], attempt=attempt + 2)
+        compile_text = "\n".join(compile_logs)
+        if layout_report is not None:
+            layout_report["attempts"] = attempt + 1
+            write_utf8_atomic(Path(a.output).with_suffix(".layout.json"),
+                              json.dumps(layout_report, ensure_ascii=False, indent=2))
         write_utf8_atomic(compile_log, compile_text)
         compile_result = {
             "ok": compile_ok, "engine": a.compile_engine, "passes": 2,
@@ -782,11 +851,15 @@ def cmd_optimise(a: argparse.Namespace) -> int:
                "optimized TeX failed the compatibility compile",
                level="INFO" if compile_ok else "ERROR", **compile_result)
         if not compile_ok:
-            print(f"ERROR: optimized TeX did not compile; see {compile_log}",
+            if a.report:
+                write_utf8_atomic(a.report, json.dumps({
+                    "compile_check": compile_result, "layout_check": layout_report,
+                }, ensure_ascii=False, indent=2))
+            print(f"ERROR: optimized TeX failed compilation; see {compile_log}",
                   file=sys.stderr)
             return 6
     if a.registry:
-        write_registry(records, Path(a.registry))
+        write_registry(records, Path(a.registry), provenance_path=getattr(a, "source_registry", None), tex=out)
         _event("REGISTRY_WRITE", "field registry written",
                path=str(Path(a.registry).resolve()), fields=len(records))
         print(f"  Registry: {a.registry}", file=sys.stderr, flush=True)
@@ -797,6 +870,7 @@ def cmd_optimise(a: argparse.Namespace) -> int:
         "input_encoding": decoded.encoding, "output_encoding": "utf-8",
         "syntax_repair": syntax_repair_stats,
         "compile_check": compile_result,
+        "layout_check": layout_report,
         "syntax_warnings": [i.payload() for i in output_issues
                             if i.severity == "warning"],
         "tables": len(stats),
@@ -913,9 +987,31 @@ def cmd_verify(a: argparse.Namespace) -> int:
     return 0 if ok else 1
 
 
+def cmd_reconcile(a) -> int:
+    from .reconcile import FieldReconcileAdapter, reconcile_document
+    report = reconcile_document(Path(a.input), Path(a.source_pdf), Path(a.recognition_evidence),
+        Path(a.output), Path(a.fields), adapter=FieldReconcileAdapter(a.model),
+        concurrency=a.concurrency, retry_dpi=a.retry_dpi)
+    _event("RECONCILE_FINISH", "field reconciliation completed", selected=report.selected,
+           confirmed=report.confirmed, failed=report.failed,
+           needs_review=sum(field["needs_review"] for field in report.fields), errors=report.errors)
+    return 1 if report.selected and report.failed == report.selected else 0
+
+
 def main(argv=None) -> int:
     p = argparse.ArgumentParser(prog="texopt")
     sub = p.add_subparsers(dest="cmd", required=True)
+
+    r = sub.add_parser("reconcile")
+    r.add_argument("input")
+    r.add_argument("--source-pdf", required=True)
+    r.add_argument("--recognition-evidence", required=True)
+    r.add_argument("-o", "--output", required=True)
+    r.add_argument("--fields", required=True)
+    r.add_argument("--model", help="field review model (environment: RECONCILE_MODEL)")
+    r.add_argument("--retry-dpi", type=int, default=480)
+    r.add_argument("--concurrency", type=int, default=2)
+    r.set_defaults(func=cmd_reconcile)
 
     o = sub.add_parser("optimise")
     o.add_argument("input")
@@ -929,6 +1025,9 @@ def main(argv=None) -> int:
                    help="open a native Save As dialog to choose folder and filename")
     o.add_argument("--start-page", type=int, default=1)
     o.add_argument("--registry")
+    o.add_argument("--source-registry", help="reconciled field registry whose provenance must be preserved")
+    o.add_argument("--page-layout-evidence",
+                   help="recognition JSON; preserve page orientation and require actual PDF page mapping")
     o.add_argument("--report")
     o.add_argument("--diff")
     o.add_argument("--log-file",
@@ -939,7 +1038,8 @@ def main(argv=None) -> int:
     o.add_argument("--detect-pattern", action="append")
     o.add_argument("--no-llm", action="store_true",
                    help="skip the model; names become positional (r01c02)")
-    o.add_argument("--llm-model", default=None)
+    o.add_argument("--llm-model", help="semantic naming model (environment: TEXOPT_MODEL)")
+    o.add_argument("--repair-model", help="syntax repair model (environment: TEXOPT_REPAIR_MODEL)")
     o.add_argument("--name-cache", default=".texopt-names.json",
                    help="persistent name cache; keeps field IDs stable across runs")
     o.add_argument("--llm-syntax-repair", action="store_true",
@@ -1023,9 +1123,15 @@ def main(argv=None) -> int:
             a.output = str(export_dir / export_name)
         if not a.log_file:
             a.log_file = str(Path(a.output).with_suffix(".texopt.log"))
-    if getattr(a, "llm_model", None) is None and hasattr(a, "llm_model"):
-        from .llm import DEFAULT_MODEL
-        a.llm_model = DEFAULT_MODEL
+    try:
+        if a.cmd == "optimise" and not a.no_llm:
+            a.llm_model = resolve_model("TEXOPT_MODEL", a.llm_model)
+            if a.llm_syntax_repair or a.llm_repair_on_failure:
+                a.repair_model = resolve_model("TEXOPT_REPAIR_MODEL", a.repair_model)
+        elif a.cmd == "reconcile":
+            a.model = resolve_model("RECONCILE_MODEL", a.model)
+    except ValueError as exc:
+        p.error(str(exc))
     if getattr(a, "cmd", None) == "verify" and not a.log_file:
         a.log_file = str(Path(a.tex).with_suffix(".verify.log"))
     if getattr(a, "cmd", None) in ("optimise", "verify"):

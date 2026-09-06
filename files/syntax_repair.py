@@ -9,12 +9,15 @@ import re
 import time
 import urllib.error
 import urllib.request
+from .model_telemetry import request_json
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable, Optional
 
 from .llm import ANTHROPIC_API_URL, _is_openai_model, openai_api_url
+from .model_config import resolve_model
 from .textio import write_utf8_atomic
+from .tex_tables import CS_RE, _read_balanced, _skip_ws, iter_structural
 
 
 PAGE_COMPLETED = re.compile(
@@ -37,6 +40,9 @@ CJK = re.compile(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]")
 CONTROL_WORD_BEFORE_CJK = re.compile(
     r"\\(quad|qquad|enspace|enskip|hfill|vfill|dotfill|hrulefill)"
     r"(?=[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])"
+)
+TEXT_MODE_MATH_SYMBOL = re.compile(
+    r"(?<!\\ensuremath\{)\\(?P<name>diagup|diagdown)\b"
 )
 
 SYSTEM_PROMPT = """\
@@ -111,6 +117,42 @@ class SyntaxRepairStats:
     deterministic_end_documents_removed: int = 0
 
 
+def normalize_multicolumn_linebreaks(source: str) -> tuple[str, int]:
+    """Keep visual line breaks inside paragraph-style multicolumn cells local."""
+    replacements: list[tuple[int, int]] = []
+    i = 0
+    while i < len(source):
+        if source[i] == "%":
+            newline = source.find("\n", i)
+            i = len(source) if newline < 0 else newline + 1
+            continue
+        if source[i] != "\\":
+            i += 1
+            continue
+        command = CS_RE.match(source, i)
+        if command is None or command.group(0) != r"\multicolumn":
+            i = command.end() if command else i + 1
+            continue
+        first = _read_balanced(source, _skip_ws(source, command.end()), "{", "}")
+        second = (_read_balanced(source, _skip_ws(source, first[1]), "{", "}")
+                  if first else None)
+        third_open = _skip_ws(source, second[1]) if second else len(source)
+        third = (_read_balanced(source, third_open, "{", "}")
+                 if third_open < len(source) else None)
+        if not first or not second or not third:
+            i = command.end()
+            continue
+        if re.search(r"(?:^|[^\\])[pmb]\s*\{", second[0]):
+            for token in iter_structural(third[0], inside_alignment=True):
+                if token.kind == "rowbreak" and token.depth == 0:
+                    replacements.append(
+                        (third_open + 1 + token.start, third_open + 1 + token.end))
+        i = third[1]
+    for start, end in reversed(replacements):
+        source = source[:start] + r"\newline" + source[end:]
+    return source, len(replacements)
+
+
 def normalize_control_word_boundaries(source: str) -> tuple[str, int]:
     """Delimit known zero-argument control words before CJK letters.
 
@@ -145,21 +187,49 @@ def normalize_control_word_boundaries(source: str) -> tuple[str, int]:
     return "".join(out), changed
 
 
+def normalize_text_mode_math_symbols(source: str) -> tuple[str, int]:
+    """Make standalone diagonal cancellation marks valid in text-mode fields."""
+    changed = 0
+    out: list[str] = []
+    for line in source.splitlines(keepends=True):
+        comment_at = len(line)
+        for index, char in enumerate(line):
+            if char != "%":
+                continue
+            backslashes = 0
+            cursor = index - 1
+            while cursor >= 0 and line[cursor] == "\\":
+                backslashes += 1
+                cursor -= 1
+            if backslashes % 2 == 0:
+                comment_at = index
+                break
+
+        def replace(match: re.Match[str]) -> str:
+            nonlocal changed
+            changed += 1
+            return rf"\ensuremath{{\{match.group('name')}}}"
+
+        out.append(TEXT_MODE_MATH_SYMBOL.sub(replace, line[:comment_at])
+                   + line[comment_at:])
+    return "".join(out), changed
+
+
 class LLMSyntaxRepairer:
     """Repair consecutive Lexoid-page batches and cache accepted responses."""
 
-    def __init__(self, cache_path: Path, model: str,
+    def __init__(self, cache_path: Path, model: Optional[str] = None,
                  api_key: Optional[str] = None, timeout: int = 120,
                  max_retries: int = 2, batch_pages: int = 5,
                  event: Optional[Callable[..., None]] = None) -> None:
         self.cache_path = Path(cache_path)
-        self.model = model
-        self.is_openai = _is_openai_model(model)
+        self.model = resolve_model("TEXOPT_REPAIR_MODEL", model)
+        self.is_openai = _is_openai_model(self.model)
         self.api_key = api_key or os.environ.get(
             "OPENAI_API_KEY" if self.is_openai else "ANTHROPIC_API_KEY", ""
         )
         self.timeout = timeout
-        self.max_retries = max_retries
+        self.max_retries = min(1, max(0, max_retries))
         self.batch_pages = max(1, batch_pages)
         self.event = event
         self.last_response_meta: dict[str, object] = {}
@@ -283,6 +353,8 @@ class LLMSyntaxRepairer:
         )
         for attempt in range(self.max_retries + 1):
             try:
+                self._call_scope = {"attempt": attempt + 1, "page_start": page_start,
+                                    "page_end": page_end}
                 if self.is_openai:
                     result = self._call_openai(prompt)
                 else:
@@ -334,8 +406,8 @@ class LLMSyntaxRepairer:
             headers={"content-type": "application/json",
                      "authorization": f"Bearer {self.api_key}"},
         )
-        with urllib.request.urlopen(request, timeout=self.timeout) as response:
-            data = json.loads(response.read().decode("utf-8"))
+        data = request_json(request, self.timeout, stage="syntax_repair", model=self.model,
+                            **getattr(self, "_call_scope", {}))
         choice = data["choices"][0]
         self.last_response_meta = {
             "finish_reason": choice.get("finish_reason"),
@@ -357,8 +429,8 @@ class LLMSyntaxRepairer:
                      "x-api-key": self.api_key,
                      "anthropic-version": "2023-06-01"},
         )
-        with urllib.request.urlopen(request, timeout=self.timeout) as response:
-            data = json.loads(response.read().decode("utf-8"))
+        data = request_json(request, self.timeout, stage="syntax_repair", model=self.model,
+                            **getattr(self, "_call_scope", {}))
         self.last_response_meta = {
             "finish_reason": data.get("stop_reason"),
             "completion_tokens": data.get("usage", {}).get("output_tokens"),

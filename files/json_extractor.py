@@ -47,6 +47,9 @@ _CHECKBOXFIELD = re.compile(
     r"\\checkboxfield\s*\{([^}]*)\}\s*\{(checked|unchecked)\}\s*\{",
     re.I,
 )
+_NESTED_CHECKBOXFIELD = re.compile(
+    r"\\checkboxfield\s*\{(checked|unchecked|unclear)\}", re.I
+)
 
 # Lexoid field ID format
 _LEX_ID = re.compile(r"LEX-P(\d+)-V(\d+)", re.I)
@@ -241,17 +244,23 @@ def extract_fields(
             content, _ = _extract_balanced(stripped, open_pos)
             raw_value = content
 
+            nested_checkbox = _NESTED_CHECKBOXFIELD.search(content)
+            state = nested_checkbox.group(1).lower() if nested_checkbox else None
             ef = ExtractedField(
                 field_id=pending_value_id,
                 label=pending_field_value or "",
-                value=_strip_tex(content),
-                raw_value=raw_value,
+                value=state or _strip_tex(content),
+                raw_value=state or raw_value,
                 page=current_page,
                 total_pages=total_pages,
                 tex_line=line_no,
-                is_handwritten=bool(pending_handwritten),
+                is_handwritten=(bool(pending_handwritten)
+                                or r"\handwritten{" in content),
                 handwritten_value=pending_handwritten or "",
                 todo=pending_todo or "",
+                field_type="checkbox" if state else "text",
+                checked=(state == "checked" if state in ("checked", "unchecked")
+                         else None),
             )
 
             # Check if value contains \hwfield{ID}{val}
