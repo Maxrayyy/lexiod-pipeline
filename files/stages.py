@@ -24,13 +24,15 @@ class BatchConfig:
     vision_model: str = field(default_factory=lambda: resolve_model("LEXOID_MODEL"))
     fallback_model: str | None = field(default_factory=lambda: os.getenv("VISION_FALLBACK_MODEL") or None)
     reconcile_model: str = field(default_factory=lambda: resolve_model("RECONCILE_MODEL"))
-    optimizer_model: str = field(default_factory=lambda: resolve_model("TEXOPT_MODEL"))
+    optimizer_model: str = field(default_factory=lambda: os.getenv("TEXOPT_MODEL", ""))
+    semantic_naming: str = field(default_factory=lambda: os.getenv("TEXOPT_SEMANTIC_NAMING", "deferred"))
+    name_cache: str | None = field(default_factory=lambda: os.getenv("TEXOPT_NAME_CACHE") or None)
     repair_model: str = field(default_factory=lambda: resolve_model("TEXOPT_REPAIR_MODEL"))
     render_dpi: int = 240
     retry_dpi: int = 480
     vision_concurrency: int = 4
     reconcile_concurrency: int = 2
-    optimizer_version: str = "texopt-layout-v5-math-fields"
+    optimizer_version: str = "texopt-layout-v6-local-deferred-naming"
     timeout: int = 7200
     publish_root: str | None = None
 
@@ -39,6 +41,8 @@ class BatchConfig:
             raise ValueError(f"Unsupported OCR mode: {self.ocr}")
         if self.timeout < 1:
             raise ValueError("Stage timeout must be positive")
+        if self.semantic_naming not in {"deferred", "inline"}:
+            raise ValueError("Unsupported semantic naming mode")
 
     @classmethod
     def from_env(cls, *, vision_model=None):
@@ -91,7 +95,7 @@ def build_stage_commands(source, source_root, output_root, config):
             "--output", str(p["raw"]), "--model", config.vision_model, "--ocr", config.ocr,
             "--render-dpi", str(config.render_dpi), "--evidence-output", str(p["evidence"]),
             "--cache-dir", str(cache), "--vision-concurrency", str(config.vision_concurrency),
-            "--auto-orient", "--resume"], (Path(source),), (p["raw"], p["evidence"]), "evidence-latex-v5-connection-retry"),
+            "--auto-orient", "--resume"], (Path(source),), (p["raw"], p["evidence"]), "evidence-latex-v6-local-repair"),
         StageCommand("reconcile", ["texopt", "reconcile", str(p["raw"]),
             "--source-pdf", str(source), "--recognition-evidence", str(p["evidence"]),
             "-o", str(p["reconciled"]), "--fields", str(p["fields"]),
@@ -103,8 +107,9 @@ def build_stage_commands(source, source_root, output_root, config):
             "--registry", str(p["registry"]), "--report", str(p["report"]),
             "--log-file", str(p["log_dir"] / "optimise.log"),
             "--llm-model", config.optimizer_model, "--repair-model", config.repair_model,
+            "--semantic-naming", config.semantic_naming,
             "--page-layout-evidence", str(p["evidence"]),
-            "--name-cache", str(Path(output_root) / ".cache" / "names.json"),
+            "--name-cache", config.name_cache or str(Path(output_root) / ".cache" / "names.sqlite3"),
             "--llm-repair-on-failure", "--syntax-repair-cache",
             str(Path(output_root) / ".cache" / "syntax.json"), "--probe-dir", str(p["log_dir"] / "probe"),
             "--compile-check", "--compile-log", str(p["compile_log"])],

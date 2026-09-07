@@ -26,7 +26,7 @@ from dataclasses import dataclass, field as dc_field, asdict
 from pathlib import Path
 from typing import Callable, Dict, List, Optional, Protocol
 
-from .tex_tables import ALIGN_ENVS, SYNC_ANCHOR, _read_balanced, mask_comments
+from .tex_tables import ALIGN_ENVS, SYNC_ANCHOR, _read_balanced, mask_comments, multicolumn_span
 from .textio import write_utf8_atomic
 
 # --------------------------------------------------------------------------- #
@@ -252,6 +252,10 @@ class FieldRecord:
     fingerprint: str
     title_source: str = ""     # the \section / \textbf the table name came from
     name_source: str = ""      # llm | cache | heuristic
+    label: str = ""
+    row: int | None = None
+    column: int | None = None
+    name_status: str = "pending"
 
 
 # --------------------------------------------------------------------------- #
@@ -358,6 +362,7 @@ def annotate_fields(tex: str,
                     start_page: int = 1,
                     detector: Optional[DetectorConfig] = None,
                     namer=None,
+                    naming_requests=None,
                     ) -> tuple[str, List["FieldRecord"], Dict[str, int]]:
     """
     Wrap detected handwritten cells in \\hwfield{ID}{...}.
@@ -442,17 +447,21 @@ def annotate_fields(tex: str,
             sample_rows=sample_rows,
             fields=[FieldSpec(key=k, row_header=rh, col_header=ch, value=v, label=label)
                     for (_li, _p, v, k, rh, ch, _vid, label) in candidates],
+            structure=[[multicolumn_span(_cell_payload(masked[li]) or "") for li in row]
+                       for row in block.rows],
         )
         naming = namer.name_table(req)
         stats["tables"] += 1
         stats[naming.source] = stats.get(naming.source, 0) + 1
 
+        field_ids = {}
         for (li, payload, value, key, row_hdr, col_hdr, value_id, field_label) in candidates:
             semantic = naming.fields.get(key, key)
             # The VALUE_ID currently present in the repaired source is authoritative
             # downstream. Syntax repair may have made it meaningful; semantic_alias
             # remains a separate, consistently generated lookup name.
             fid = value_id or _unique_legacy_id(page_of[li], used_ids)
+            field_ids[key] = fid
             semantic_alias = f"{fid}-{semantic}"
             if li in multiline_fields and not HWFIELD_RE.search(lines[li]):
                 _, start_column, end_line, end_column = multiline_fields[li]
@@ -471,8 +480,13 @@ def annotate_fields(tex: str,
                 fingerprint=req.fingerprint() + ":" + key,
                 title_source=(req.bold_title or req.caption or req.section or ""),
                 name_source=naming.source,
+                label=tex_to_plain(field_label),
+                row=int(key[1:key.index("c")]), column=int(key[key.index("c") + 1:]),
+                name_status="complete" if naming.source in {"llm", "cache"} else "pending",
             ))
             stats["fields"] += 1
+        if naming_requests is not None:
+            naming_requests.append({"request": asdict(req), "field_ids": field_ids})
 
     return "\n".join(lines), records, stats
 
@@ -690,7 +704,7 @@ def _derive_table_name(lines: List[str], begin_idx: int, ordinal: int,
 def write_registry(records: List[FieldRecord], path: Path, *, provenance_path=None, tex=None) -> None:
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    fields = [asdict(r) for r in records]
+    fields = basic_fields(records, tex) if tex is not None else [asdict(r) for r in records]
     if provenance_path is not None:
         from .reconcile import field_segments, _normalized
         incoming = json.loads(Path(provenance_path).read_text("utf-8"))["fields"]
@@ -706,7 +720,7 @@ def write_registry(records: List[FieldRecord], path: Path, *, provenance_path=No
             if _normalized(original["value"]) != _normalized(segments[fid]["value"]):
                 raise ValueError(f"Optimized field value changed: {fid}")
             merged = {**original, **structural.get(fid, {})}
-            for key in ("value", "paddle_text", "model_guess", "confidence", "needs_review", "history"):
+            for key in ("value", "label", "paddle_text", "model_guess", "confidence", "needs_review", "history"):
                 if key in original:
                     merged[key] = original[key]
             merged["tex_line"] = (tex or "")[:segments[fid]["start"]].count("\n") + 1
@@ -714,3 +728,33 @@ def write_registry(records: List[FieldRecord], path: Path, *, provenance_path=No
     write_utf8_atomic(path, json.dumps(
         {"version": 1, "count": len(fields), "fields": fields},
         ensure_ascii=False, indent=2))
+
+
+def basic_fields(records, tex):
+    """Recover all marked values, including fields outside tables, from the TEX."""
+    from .reconcile import field_segments, _ID
+
+    fields = {r.field_id: asdict(r) for r in records}
+    pages = page_map(tex.split("\n"))
+    result = []
+    markers = list(_ID.finditer(tex))
+    for index, marker in enumerate(markers):
+        fid = marker[1]
+        end = markers[index + 1].start() if index + 1 < len(markers) else len(tex)
+        raw = tex[marker.start():end]
+        line = tex[:marker.start()].count("\n")
+        label = FIELD_VALUE_RE.search(raw)
+        entry = dict(fields.pop(fid, {"field_id": fid, "semantic_alias": "", "semantic": "",
+            "table": "", "row_header": "", "col_header": "", "row": None, "column": None,
+            "name_source": "deferred", "name_status": "pending"}))
+        entry.update(label=label[1].strip() if label else entry.get("label", ""),
+                     page=pages[line], tex_line=line + 1)
+        try:
+            segment = field_segments(raw)[fid]
+            entry.update(value=segment["value"], raw_tex_value=segment["payload"], extraction_status="complete")
+        except (ValueError, KeyError) as exc:
+            entry.update(value=None, extraction_status="invalid", extraction_error=str(exc),
+                         raw_tex_segment=raw, needs_review=True, name_status="pending")
+        result.append(entry)
+    result.extend(fields.values())
+    return sorted(result, key=lambda f: f["tex_line"])

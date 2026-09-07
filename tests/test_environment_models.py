@@ -71,7 +71,8 @@ def test_cli_keeps_naming_and_repair_models_separate(tmp_path, monkeypatch):
     seen = []
     monkeypatch.setattr(cli, "cmd_optimise", lambda args: seen.append((args.llm_model, args.repair_model)) or 0)
     for extra in ([], ["--llm-model", "gpt-explicit-naming", "--repair-model", "gpt-explicit-repair"]):
-        assert cli.main(["optimise", str(tmp_path / "input.tex"), "--llm-syntax-repair", *extra]) == 0
+        assert cli.main(["optimise", str(tmp_path / "input.tex"), "--llm-syntax-repair",
+                         "--semantic-naming", "inline", *extra]) == 0
     assert seen == [("gpt-naming", "gpt-repair"), ("gpt-explicit-naming", "gpt-explicit-repair")]
 
 

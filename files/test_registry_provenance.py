@@ -42,7 +42,12 @@ def test_registry_failure_does_not_block_compiled_tex(tmp_path, monkeypatch, fai
     assert result["registry_check"]["error"]
     degraded = json.loads(registry.read_text())
     assert degraded["status"] == "degraded"
-    assert degraded["fields"] == []
+    assert len(degraded["fields"]) == 1
+    retained = degraded["fields"][0]
+    assert retained["field_id"] == "LEX-P0001-V0001"
+    assert retained["value"] == "Complete text"
+    assert retained["label"] == "Name"
+    assert retained["name_status"] == "pending"
 
 
 def test_registry_keeps_review_history_and_checks_tex_value(tmp_path):

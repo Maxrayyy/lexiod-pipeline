@@ -22,15 +22,12 @@ from datetime import datetime
 from pathlib import Path
 
 from . import opaque, preamble
-from .fields import DetectorConfig, annotate_fields, write_registry
-from .llm import HeuristicBatchNamer, LLMBatchNamer
+from .fields import DetectorConfig, annotate_fields, write_registry, basic_fields
+from .llm import DeferredBatchNamer, LLMBatchNamer
 from .model_config import resolve_model
+from .local_tex import normalize_tex
 from .syntax_check import validate_latex
 from .syntax_repair import (LLMSyntaxRepairer, canonicalize_document_terminator,
-                            normalize_math_blank_lines,
-                            normalize_control_word_boundaries,
-                            normalize_multicolumn_linebreaks,
-                            normalize_text_mode_math_symbols,
                             page_diagnostic_hints,
                             page_numbers_for_lines,
                             repair_invariant_violations)
@@ -265,32 +262,35 @@ def cmd_optimise(a: argparse.Namespace) -> int:
                "removed temporary/intermediate document terminators",
                removed=removed_terminators,
                final_terminators=src.count(r"\end{document}"))
-    src, delimited_controls = normalize_control_word_boundaries(src)
+    src, local_repairs = normalize_tex(src)
+    delimited_controls = local_repairs.get("control_word_boundaries", 0)
     if delimited_controls:
         _event(
             "CONTROL_WORD_BOUNDARY_REPAIRED",
             "delimited zero-argument control words before CJK text",
             repairs=delimited_controls,
         )
-    src, normalized_math_symbols = normalize_text_mode_math_symbols(src)
+    normalized_math_symbols = local_repairs.get("text_math_symbols", 0)
     if normalized_math_symbols:
         _event(
             "TEXT_MATH_NORMALIZED",
             "standalone math symbols made safe in text mode",
             repairs=normalized_math_symbols,
         )
-    src, normalized_multicolumn_breaks = normalize_multicolumn_linebreaks(src)
+    normalized_multicolumn_breaks = local_repairs.get("multicolumn_linebreaks", 0)
     if normalized_multicolumn_breaks:
         _event(
             "MULTICOLUMN_LINEBREAK_REPAIRED",
             "kept visual line breaks inside paragraph-style multicolumn cells",
             repairs=normalized_multicolumn_breaks,
         )
-    src, normalized_math_blanks = normalize_math_blank_lines(src)
+    normalized_math_blanks = local_repairs.get("math_blank_lines", 0)
     if normalized_math_blanks:
         _event("MATH_BLANK_LINES_REPAIRED",
                "blank lines inside math replaced with comment lines",
                repairs=normalized_math_blanks)
+    if local_repairs:
+        _event("LOCAL_TEX_REPAIRED", "shared deterministic TeX repairs applied", rules=local_repairs)
     layout_evidence = None
     layout_report = None
     if getattr(a, "page_layout_evidence", None):
@@ -757,8 +757,8 @@ def cmd_optimise(a: argparse.Namespace) -> int:
     # every tex_line in the registry is off by the size of the macro block and the
     # SyncTeX verification silently checks the wrong lines.
     step1b = preamble.inject(step1) if not a.no_preamble else step1
-    if a.no_llm:
-        namer = HeuristicBatchNamer()
+    if a.no_llm or a.semantic_naming == "deferred":
+        namer = DeferredBatchNamer()
     else:
         namer = LLMBatchNamer(Path(a.name_cache), model=a.llm_model)
         if not namer.api_key:
@@ -768,8 +768,10 @@ def cmd_optimise(a: argparse.Namespace) -> int:
         else:
             print(f"  LLM naming enabled (model: {a.llm_model})",
                   file=sys.stderr, flush=True)
+    naming_requests = []
     out, records, name_stats = annotate_fields(step1b, start_page=a.start_page,
-                                               detector=cfg, namer=namer)
+                                               detector=cfg, namer=namer,
+                                               naming_requests=naming_requests)
     _event("FIELD_SCAN", "field annotation completed", fields=len(records),
            naming=name_stats)
     for record in records:
@@ -876,13 +878,33 @@ def cmd_optimise(a: argparse.Namespace) -> int:
             # Registry enrichment is optional: its failure must not discard the
             # compiled document or leave a previous registry looking current.
             registry_result = {"ok": False, "status": "degraded",
-                               "error_type": type(exc).__name__, "error": str(exc)}
+                              "error_type": type(exc).__name__, "error": str(exc)}
+            try:
+                retained_fields = basic_fields(records, out)
+            except Exception:
+                retained_fields = []
             write_utf8_atomic(Path(a.registry), json.dumps(
-                {"version": 1, "count": 0, "fields": [], **registry_result},
+                {"version": 1, "count": len(retained_fields), "fields": retained_fields, **registry_result},
                 ensure_ascii=False, indent=2))
             _event("REGISTRY_DEGRADED", "field JSON unavailable; preserving TeX output",
                    level="WARNING", path=str(Path(a.registry).resolve()), **registry_result)
         print(f"  Registry: {a.registry}", file=sys.stderr, flush=True)
+
+    from .semantic_naming import write_plan, stamp_registry
+    naming_plan = Path(a.naming_plan) if a.naming_plan else Path(a.output).with_suffix(".naming.json")
+    naming_plan_result = {"status": "pending", "path": str(naming_plan)}
+    try:
+        plan = write_plan(naming_plan, out, records, naming_requests)
+        if a.registry:
+            stamp_registry(a.registry, out, evidence_path=a.page_layout_evidence,
+                           provenance_path=a.source_registry)
+        naming_plan_result["status"] = "ready"
+        _event("NAMING_PLAN_READY", "optional semantic naming can run independently of PDF compilation",
+               path=str(naming_plan), tables=len(plan["requests"]), mode=a.semantic_naming)
+    except Exception as exc:
+        naming_plan_result.update(status="degraded", error_type=type(exc).__name__)
+        _event("NAMING_PLAN_DEGRADED", "preserving TEX/PDF when optional naming metadata is unavailable",
+               level="WARNING", error_type=type(exc).__name__, error=str(exc))
 
     print("[7/7] Generating report…", file=sys.stderr, flush=True)
     report = {
@@ -902,6 +924,9 @@ def cmd_optimise(a: argparse.Namespace) -> int:
         "lines_after": out.count("\n") + 1,
         "field_ids": [r.field_id for r in records],
         "naming": name_stats,
+        "semantic_naming_mode": "deferred" if a.no_llm else a.semantic_naming,
+        "naming_plan": str(naming_plan),
+        "naming_plan_check": naming_plan_result,
         "naming_fallbacks": sorted({r.table for r in records
                                     if r.name_source == "heuristic"}),
         "opaque_converted": conv_report.converted if conv_report else [],
@@ -1019,6 +1044,19 @@ def cmd_reconcile(a) -> int:
     return 1 if report.selected and report.failed == report.selected else 0
 
 
+def cmd_name_fields(a):
+    from .semantic_naming import enrich
+
+    try:
+        result = enrich(a)
+    except (ValueError, OSError, KeyError, TypeError) as exc:
+        _event("NAMING_FAILED", "optional JSON naming failed", level="WARNING",
+               error_type=type(exc).__name__, error=str(exc))
+        return 2
+    _event("NAMING_FINISH", "optional JSON naming finished", **result)
+    return 0
+
+
 def main(argv=None) -> int:
     p = argparse.ArgumentParser(prog="texopt")
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -1061,10 +1099,14 @@ def main(argv=None) -> int:
     o.add_argument("--detect-pattern", action="append")
     o.add_argument("--no-llm", action="store_true",
                    help="skip the model; names become positional (r01c02)")
+    o.add_argument("--semantic-naming", choices=("deferred", "inline"),
+                   default=os.getenv("TEXOPT_SEMANTIC_NAMING", "deferred"),
+                   help="defer optional semantic aliases (default), independently of syntax repair")
+    o.add_argument("--naming-plan", help="optional naming sidecar; default: <output>.naming.json")
     o.add_argument("--llm-model", help="semantic naming model (environment: TEXOPT_MODEL)")
     o.add_argument("--repair-model", help="syntax repair model (environment: TEXOPT_REPAIR_MODEL)")
-    o.add_argument("--name-cache", default=".texopt-names.json",
-                   help="persistent name cache; keeps field IDs stable across runs")
+    o.add_argument("--name-cache", default=os.getenv("TEXOPT_NAME_CACHE", ".texopt-names.sqlite3"),
+                   help="shared SQLite semantic cache; legacy JSON caches remain untouched")
     o.add_argument("--llm-syntax-repair", action="store_true",
                    help="repair LaTeX syntax in Lexoid page batches with the LLM")
     o.add_argument("--llm-repair-on-failure", action="store_true",
@@ -1100,6 +1142,15 @@ def main(argv=None) -> int:
                    help="escape hatch: leave unconvertible tables in place instead of "
                         "failing (their cells will NOT be locatable)")
     o.set_defaults(func=cmd_optimise)
+
+    n = sub.add_parser("name-fields", help="enrich JSON aliases without modifying or compiling TEX")
+    n.add_argument("tex")
+    n.add_argument("--registry", required=True)
+    n.add_argument("-o", "--output", required=True)
+    n.add_argument("--plan", help="default: <tex>.naming.json")
+    n.add_argument("--model", help="semantic naming model (environment: TEXOPT_MODEL)")
+    n.add_argument("--name-cache", default=os.getenv("TEXOPT_NAME_CACHE", ".texopt-names.sqlite3"))
+    n.set_defaults(func=cmd_name_fields)
 
     au = sub.add_parser("audit")
     au.add_argument("input")
@@ -1148,11 +1199,14 @@ def main(argv=None) -> int:
             a.log_file = str(Path(a.output).with_suffix(".texopt.log"))
     try:
         if a.cmd == "optimise" and not a.no_llm:
-            a.llm_model = resolve_model("TEXOPT_MODEL", a.llm_model)
+            if a.semantic_naming == "inline":
+                a.llm_model = resolve_model("TEXOPT_MODEL", a.llm_model)
             if a.llm_syntax_repair or a.llm_repair_on_failure:
                 a.repair_model = resolve_model("TEXOPT_REPAIR_MODEL", a.repair_model)
         elif a.cmd == "reconcile":
             a.model = resolve_model("RECONCILE_MODEL", a.model)
+        elif a.cmd == "name-fields":
+            a.model = resolve_model("TEXOPT_MODEL", a.model)
     except ValueError as exc:
         p.error(str(exc))
     if getattr(a, "cmd", None) == "verify" and not a.log_file:

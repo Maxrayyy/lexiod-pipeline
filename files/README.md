@@ -35,6 +35,50 @@ JSON 保留 `needs_review`、`review_status: deferred` 和 `review_reasons`，�
 docker build -f lexiod-pipeline/Dockerfile.hybrid --target runtime -t lexiod-refactor:local .
 ```
 
+### 可选语义命名与 Kimi K3
+
+默认 `TEXOPT_SEMANTIC_NAMING=deferred`：生成 TEX/PDF 时不调用命名模型，仍保留
+稳定字段 ID、原标签和值、源页码、源码位置及可用的复核历史。基础 JSON 中
+`name_status=pending` 表示尚未补充语义名称；单项提取损坏时保留原始片段和
+`extraction_status=invalid`，不丢弃其他字段，也不阻断 PDF。
+此设置独立于 `--llm-repair-on-failure`，必要的 GPT 语法修复仍然启用。
+
+优化器在输出 TEX 旁写入 `<输出名>.naming.json` 命名计划。后续只补充 JSON：
+
+```sh
+texopt name-fields document.optimized.tex \
+  --registry document.fields.json --output document.enriched.json \
+  --model kimi-k3 --name-cache /data/.cache/semantic-names.sqlite3
+```
+
+混合流水线的工作 TEX、命名计划和字段 JSON 位于 worker 的 `.pipeline/<文件名>/`；
+正式发布的 TEX 是工作 TEX 的原样副本，可通过 `--plan` 显式指定工作目录中的计划。
+命名命令验证 TEX 哈希与计划、JSON 一致，按稳定 ID 更新别名，不改值、不改 TEX，
+也不重新编译。命名失败保留原有数据和待补充状态，成功与缓存命中记为 `complete`。
+`complete` 仅表示名称已生成，不代表业务数据已人工确认。
+
+命名使用独立环境变量，凭据只放本地忽略的 `.env`：
+
+```dotenv
+TEXOPT_MODEL=kimi-k3
+TEXOPT_NAMING_PROVIDER=openai
+TEXOPT_NAMING_BASE_URL=https://your-provider/compatible-mode/v1
+TEXOPT_NAMING_API_KEY=your-naming-key
+TEXOPT_NAME_CACHE=/data/.cache/semantic-names.sqlite3
+```
+
+不改变视觉识别和语法修复的 `OPENAI_*` 配置。显式指定独立命名地址但没有命名密钥时，
+不会向该地址发送视觉服务的密钥。仍可用 `--semantic-naming inline` 在优化时命名。
+所有 worker 共享同一 SQLite 文件以复用表单结构映射，并合并同时发生的相同请求；
+网络请求期间不占用数据库写锁。部署要求本机持久磁盘，不能将 WAL 数据库放到不支持
+SQLite 锁的网络共享目录。旧 JSON 缓存保留，后续使用同名 `.sqlite3`。
+
+缓存排除页码、表序号和被字段宏包裹的填写值，保留标签、单位、结构和上下文，
+无标签字段保留必要的值以消歧。模型、服务地址及提示词版本不同不能共用结果。
+仅延后命名会缩短 PDF 等待；按需调用和结构缓存命中才会降低生命周期总 token。
+请求仍通过 `LEXOID_MODEL_CALL_LOG` 记录服务端 usage、耗时和重试，缓存命中不调用模型。
+Kimi 价格未配置时费用保持未知，不能按 GPT 价格计费；独立补充的调用日志需单独归档。
+
 ### 本地容器监测
 
 `worker_watch.py` 仅使用 Python 标准库和本机 Docker CLI，通过 macOS `launchd`

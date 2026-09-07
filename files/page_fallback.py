@@ -14,6 +14,7 @@ import tempfile
 import time
 
 from .model_telemetry import emit
+from .local_tex import VERSION as LOCAL_TEX_VERSION, normalize_tex
 from .syntax_check import SyntaxIssue, _alignment_colspec, validate_latex
 from .syntax_repair import canonicalize_document_terminator, split_lexoid_pages
 from .tex_tables import (_peel_prefix, iter_structural, mask_comments,
@@ -21,7 +22,7 @@ from .tex_tables import (_peel_prefix, iter_structural, mask_comments,
 from .textio import write_utf8_atomic
 
 
-CHECK_VERSION = "page-quality-v1"
+CHECK_VERSION = "page-quality-v2-" + LOCAL_TEX_VERSION
 
 
 def structural_issues(tex):
@@ -94,7 +95,7 @@ def compile_page(tex, directory):
 
 
 def check_page(chunk, preamble, directory, compiler=compile_page):
-    tex = standalone_page(chunk, preamble)
+    tex, _ = normalize_tex(standalone_page(chunk, preamble))
     key = hashlib.sha256((CHECK_VERSION + tex).encode()).hexdigest()
     directory = Path(directory) / key
     path = directory / "check.json"
@@ -146,7 +147,30 @@ class PageFallback:
         self.recognize = recognize or adapter.recognize
         self.source_hash = hashlib.sha256(self.source.read_bytes()).hexdigest()
         self.preamble = ""
-        self.report = {"checked": 0, "upgraded": [], "unresolved": [], "page_models": {}}
+        self.report = {"checked": 0, "upgraded": [], "unresolved": [], "local_repaired": [],
+                       "page_models": {}}
+
+    def _prepare(self, chunk, number, model):
+        normalized, rules = normalize_tex(chunk)
+        checked, support = normalize_tex(standalone_page(normalized, self.preamble))
+        rules.update(support)
+        if rules:
+            digest = lambda text: hashlib.sha256(text.encode()).hexdigest()
+            key = digest(self.source_hash + str(number) + model + LOCAL_TEX_VERSION + chunk + self.preamble)
+            directory = self.cache / "local" / key
+            write_utf8_atomic(directory / "original.tex", chunk)
+            write_utf8_atomic(directory / "normalized.tex", normalized)
+            write_utf8_atomic(directory / "checked.tex", checked)
+            write_utf8_atomic(directory / "local-repair.json", json.dumps({
+                "page": number, "model": model, "version": LOCAL_TEX_VERSION, "rules": rules,
+                "original_sha256": digest(chunk), "normalized_sha256": digest(normalized),
+                "checked_sha256": digest(checked),
+            }, ensure_ascii=False, indent=2))
+            if number not in self.report["local_repaired"]:
+                self.report["local_repaired"].append(number)
+            emit({"event": "page_local_repair", "stage": "recognize", "page": number,
+                  "model": model, "rules": rules, "audit": str(directory / "local-repair.json")})
+        return normalized
 
     def __call__(self, result, total, gate=None):
         from lexoid.core.model_telemetry import call_context
@@ -156,8 +180,12 @@ class PageFallback:
         number, original = result.page, result.latex
         if number == 1:
             self.preamble = get_preamble(original)
+        normalized = self._prepare(original, number, self.primary)
+        result = replace(result, latex=normalized)
+        if number == 1:
+            self.preamble = get_preamble(normalized)
         started = time.monotonic()
-        issues = check_page(original, self.preamble, self.cache / "checks", self.compiler)
+        issues = check_page(normalized, self.preamble, self.cache / "checks", self.compiler)
         errors = [issue for issue in issues if issue.severity == "error"]
         self.report["checked"] += 1
         self.report["page_models"][str(number)] = self.primary
@@ -209,6 +237,7 @@ class PageFallback:
         if record["status"] == "returned":
             candidate = VisionPageResult(number, record["latex"], tuple(
                 FieldEvidence.from_dict(f) for f in record["fields"]))
+            candidate = replace(candidate, latex=self._prepare(candidate.latex, number, self.model))
             candidate_issues = check_page(candidate.latex, self.preamble, self.cache / "checks", self.compiler)
             if not any(i.severity == "error" for i in candidate_issues):
                 self.report["upgraded"].append(number)
@@ -237,8 +266,9 @@ def upgrade_pages(source, raw, evidence_path, cache_dir, primary_model, fallback
         result = processor(PageRecognitionResult(number, chunk, page, "replay"), total)
         output.append(result.latex)
         evidence.append(result.evidence.to_dict())
-    if processor.report["upgraded"]:
-        write_utf8_atomic(raw, canonicalize_document_terminator("".join(output))[0])
+    # Later pages may introduce packages that belong in the first-page preamble.
+    finalized, _ = normalize_tex(canonicalize_document_terminator("".join(output))[0])
+    write_utf8_atomic(raw, finalized)
     payload.update(pages=evidence, page_models=processor.report["page_models"])
     write_utf8_atomic(evidence_path, json.dumps(payload, ensure_ascii=False, indent=2))
     return processor.report
@@ -269,6 +299,8 @@ def main():
         auto_orient=args.auto_orient, resume=args.resume, max_page_attempts=1,
         page_processor=processor, page_callback=lambda page, total, tex:
             write_latex_page(args.output, page, total, tex))
+    finalized, _ = normalize_tex(args.output.read_text("utf-8"))
+    write_utf8_atomic(args.output, finalized)
     payload = json.loads(args.evidence_output.read_text())
     payload["page_models"] = processor.report["page_models"]
     payload["page_fallback"] = processor.report

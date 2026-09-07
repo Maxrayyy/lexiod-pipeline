@@ -37,6 +37,8 @@ from typing import Dict, List, Optional, Protocol
 
 from .fields import is_hashy, slug, tex_to_plain
 from .model_config import resolve_model
+from .tex_tables import _read_balanced, _skip_ws, mask_comments
+from .naming_cache import NamingCache
 
 ANTHROPIC_API_URL = "https://api.anthropic.com/v1/messages"
 
@@ -62,6 +64,8 @@ class FieldSpec:
     col_header: str
     value: str
     label: str = ""       # Lexoid #FIELD_VALUE; strongest semantic signal
+    kind: str = "value"
+    unit: str = ""
 
 
 @dataclass
@@ -74,6 +78,7 @@ class TableNameRequest:
     headers: List[str] = dc_field(default_factory=list)
     sample_rows: List[List[str]] = dc_field(default_factory=list)
     fields: List[FieldSpec] = dc_field(default_factory=list)
+    structure: List[List[int]] = dc_field(default_factory=list)
 
     def payload(self) -> dict:
         return {
@@ -95,6 +100,50 @@ class TableNameRequest:
         return hashlib.sha256(
             json.dumps(self.payload(), ensure_ascii=False, sort_keys=True).encode()
         ).hexdigest()[:20]
+
+    def semantic_payload(self) -> dict:
+        def context(text):
+            text = mask_comments(text)
+            matches = list(re.finditer(r"\\(?:fieldvalue|handwritten|hwfield)\b", text))
+            edits, covered = [], -1
+            for match in matches:
+                if match.start() < covered:
+                    continue
+                arg = _read_balanced(text, _skip_ws(text, match.end()), "{", "}")
+                if arg is None:
+                    continue
+                if match.group() == r"\hwfield":
+                    arg = _read_balanced(text, _skip_ws(text, arg[1]), "{", "}")
+                    if arg is None:
+                        continue
+                covered = arg[1]
+                edits.append((match.start(), covered))
+            for start, end in reversed(edits):
+                text = text[:start] + "VALUE" + text[end:]
+            return tex_to_plain(text)
+
+        fields = []
+        for f in self.fields:
+            label, row, column = (context(s) for s in (f.label, f.row_header, f.col_header))
+            if row == tex_to_plain(f.value) or row == "VALUE":
+                row = ""
+            value = tex_to_plain(f.value)
+            unit = f.unit
+            if not unit:
+                match = re.fullmatch(r"\s*[+-]?\d+(?:[.,]\d+)?\s*([A-Za-z%°℃μµ]+(?:/[A-Za-z]+)?)\s*", value)
+                unit = match[1] if match else ""
+            fields.append({"key": f.key, "field_label": label, "row_label": row,
+                           "column_label": column, "kind": f.kind, "unit": unit,
+                           "value_context": value if not (label or row or column) else ""})
+        return {"section_heading": context(self.section), "bold_title_above_table": context(self.bold_title),
+                "caption": context(self.caption), "column_headers": [context(h) for h in self.headers],
+                "sample_rows": [[context(c) for c in r] for r in self.sample_rows[:4]],
+                "structure": self.structure, "fields": fields}
+
+    def semantic_fingerprint(self, model, provider):
+        return hashlib.sha256(json.dumps({"schema": "semantic-naming/v2", "model": model,
+            "provider": provider, "prompt": SYSTEM + PROMPT, "request": self.semantic_payload()},
+            ensure_ascii=False, sort_keys=True).encode()).hexdigest()
 
 
 @dataclass
@@ -144,6 +193,14 @@ class HeuristicBatchNamer:
         return TableNaming(table=table, fields=out, source="heuristic")
 
 
+class DeferredBatchNamer:
+    """Stable technical identifiers while optional semantic enrichment is pending."""
+
+    def name_table(self, req):
+        return TableNaming(f"tab_p{req.page:03d}_t{req.ordinal}",
+                           {f.key: f.key for f in req.fields}, "deferred")
+
+
 # --------------------------------------------------------------------------- #
 # LLM
 # --------------------------------------------------------------------------- #
@@ -178,7 +235,7 @@ Rules:
 
 class LLMBatchNamer:
     """
-    Anthropic Messages API, one call per table, cached on disk by request fingerprint.
+    OpenAI-compatible or Anthropic API, cached by semantic structure.
     Falls back to HeuristicBatchNamer on any error -- naming must never block the
     optimisation, but the report records which tables fell back.
     """
@@ -187,40 +244,56 @@ class LLMBatchNamer:
                  api_key: Optional[str] = None, max_retries: int = 2,
                  timeout: int = 60) -> None:
         self.cache_path = Path(cache_path)
+        # Keep legacy JSON files intact; their value-sensitive keys are not reusable.
+        if self.cache_path.suffix == ".json":
+            self.cache_path = self.cache_path.with_suffix(".sqlite3")
         self.model = resolve_model("TEXOPT_MODEL", model)
-        self.is_openai = _is_openai_model(self.model)
+        provider = os.getenv("TEXOPT_NAMING_PROVIDER", "auto").strip().lower()
+        if provider not in {"auto", "openai", "anthropic"}:
+            raise ValueError("TEXOPT_NAMING_PROVIDER must be auto, openai or anthropic")
+        self.is_openai = (provider == "openai" or
+                          (provider == "auto" and (_is_openai_model(self.model) or
+                           self.model.lower().startswith(("kimi", "glm", "zhipu/")))))
         if self.is_openai:
-            self.api_key = api_key or os.environ.get("OPENAI_API_KEY", "")
+            base = os.getenv("TEXOPT_NAMING_BASE_URL", "").strip()
+            self.api_url = f"{base.rstrip('/')}/chat/completions" if base else openai_api_url()
+            # An independent endpoint must never receive the vision provider's key.
+            self.api_key = (api_key or os.getenv("TEXOPT_NAMING_API_KEY") or
+                            ("" if base else os.getenv("OPENAI_API_KEY", "")))
         else:
-            self.api_key = api_key or os.environ.get("ANTHROPIC_API_KEY", "")
+            self.api_url = ANTHROPIC_API_URL
+            self.api_key = api_key or os.getenv("TEXOPT_NAMING_API_KEY") or os.getenv("ANTHROPIC_API_KEY", "")
         self.max_retries = min(1, max(0, max_retries))
         self.timeout = timeout
         self.fallback = HeuristicBatchNamer()
-        self.cache: Dict[str, dict] = {}
         self.stats: Dict[str, int] = {"cache": 0, "llm": 0, "heuristic": 0}
-        if self.cache_path.exists():
-            try:
-                self.cache = json.loads(self.cache_path.read_text("utf-8"))
-            except Exception:
-                self.cache = {}
 
     # ---- public ---------------------------------------------------------- #
     def name_table(self, req: TableNameRequest) -> TableNaming:
-        fp = req.fingerprint()
-        if fp in self.cache:
-            self.stats["cache"] += 1
-            c = self.cache[fp]
-            return self._finish(req, c.get("table", ""), c.get("fields", {}), "cache")
+        fp = req.semantic_fingerprint(self.model, self.api_url)
 
-        raw = self._call(req) if self.api_key else None
-        if raw is None:
+        def valid(raw):
+            if (not isinstance(raw, dict) or not isinstance(raw.get("table"), str)
+                    or not _ok(slug(raw["table"], 30)) or not isinstance(raw.get("fields"), dict)
+                    or set(raw["fields"]) != {f.key for f in req.fields}
+                    or any(not isinstance(v, str) or not _ok(slug(v, 40)) for v in raw["fields"].values())):
+                return False
+            return True
+
+        def compute():
+            raw = self._call(req) if self.api_key else None
+            return raw if valid(raw) else None
+
+        try:
+            raw, source = NamingCache(self.cache_path).get_or_compute(
+                fp, compute, timeout=(self.max_retries + 1) * self.timeout + 20)
+        except Exception:
+            raw, source = None, "cache_error"
+        if not valid(raw):
             self.stats["heuristic"] += 1
             return self.fallback.name_table(req)
-
-        self.stats["llm"] += 1
-        self.cache[fp] = raw
-        self._flush()
-        return self._finish(req, raw.get("table", ""), raw.get("fields", {}), "llm")
+        self.stats[source] += 1
+        return self._finish(req, raw.get("table", ""), raw.get("fields", {}), source)
 
     # ---- internals ------------------------------------------------------- #
     def _finish(self, req: TableNameRequest, table: str, fields: dict,
@@ -248,17 +321,17 @@ class LLMBatchNamer:
     def _call_openai(self, req: TableNameRequest) -> Optional[dict]:
         body = json.dumps({
             "model": self.model,
-            "max_completion_tokens": 4096,
+            ("max_completion_tokens" if _is_openai_model(self.model) else "max_tokens"): 4096,
             "messages": [
                 {"role": "system", "content": SYSTEM},
                 {"role": "user", "content": PROMPT.format(
-                    payload=json.dumps(req.payload(), ensure_ascii=False, indent=2))},
+                    payload=json.dumps(req.semantic_payload(), ensure_ascii=False, separators=(",", ":")))},
             ],
         }).encode("utf-8")
 
         for attempt in range(self.max_retries + 1):
             try:
-                rq = urllib.request.Request(openai_api_url(), data=body, method="POST", headers={
+                rq = urllib.request.Request(self.api_url, data=body, method="POST", headers={
                     "content-type": "application/json",
                     "authorization": f"Bearer {self.api_key}",
                 })
@@ -278,7 +351,7 @@ class LLMBatchNamer:
             "temperature": 0,
             "system": SYSTEM,
             "messages": [{"role": "user", "content": PROMPT.format(
-                payload=json.dumps(req.payload(), ensure_ascii=False, indent=2))}],
+                payload=json.dumps(req.semantic_payload(), ensure_ascii=False, separators=(",", ":")))}],
         }).encode("utf-8")
 
         for attempt in range(self.max_retries + 1):
@@ -312,9 +385,3 @@ class LLMBatchNamer:
             except json.JSONDecodeError:
                 return None
         return obj if isinstance(obj, dict) and isinstance(obj.get("fields"), dict) else None
-
-    def _flush(self) -> None:
-        self.cache_path.parent.mkdir(parents=True, exist_ok=True)
-        tmp = self.cache_path.with_suffix(".tmp")
-        tmp.write_text(json.dumps(self.cache, ensure_ascii=False, indent=2), "utf-8")
-        os.replace(tmp, self.cache_path)
