@@ -73,6 +73,57 @@ def test_extra_break_is_reported_but_does_not_fail_compilation(tmp_path):
     assert report["errors"]
 
 
+def test_landscape_overflow_keeps_size_until_next_source_page(tmp_path):
+    from .page_layout import prepare_layout
+
+    if not shutil.which("xelatex"):
+        pytest.skip("XeLaTeX is required")
+    src = SOURCE.replace("First page body.",
+        r"First page body.\newpage\noindent\makebox[\linewidth][r]{RIGHT EDGE}")
+    source, report = prepare_layout(src, evidence())
+    target = tmp_path / "landscape-spill.tex"
+    target.write_text(source)
+    ok, log = cli._compile_latex(target, tmp_path, "xelatex", 60, layout_report=report)
+    assert ok, log
+    assert report["actual_sizes"] == pytest.approx([(842, 595), (842, 595), (595, 842)], abs=1)
+    assert report["outside_pages"] == []
+
+
+@pytest.mark.parametrize("header", ["", r"\section*{Process log}\noindent Exported: 2026-09-07\par\vspace{20pt}"])
+def test_tall_two_column_log_has_no_blank_or_clipped_page(tmp_path, header):
+    import pypdfium2 as pdfium
+    from .page_layout import prepare_layout
+
+    if not shutil.which("xelatex"):
+        pytest.skip("XeLaTeX is required")
+    rows = "\n".join(rf"18:{i:02}:00 & Event {i}\\" for i in range(40))
+    column = (r"\begin{minipage}[t]{0.47\linewidth}"
+              r"\begin{tabular}{@{}ll@{}}" + rows +
+              r"\end{tabular}\end{minipage}")
+    body = header + r"\renewcommand{\arraystretch}{1.2}\noindent" + column + r"\hfill" + column + "\n\n\\hfill 5/8\n"
+    src = SOURCE.replace("First page body.", body).replace(
+        "Company header\\par\n\\title{Record {A}}\n\\date{}\n\\maketitle\n", "")
+    source, report = prepare_layout(src, evidence())
+    target = tmp_path / "two-column-log.tex"
+    target.write_text(source)
+    ok, log = cli._compile_latex(target, tmp_path, "xelatex", 60, layout_report=report)
+    assert ok, log
+    assert report["actual_pages"] == 2
+    assert report["outside_pages"] == []
+    doc = pdfium.PdfDocument(str(target.with_suffix(".layout.pdf")))
+    try:
+        page = doc[0]
+        textpage = page.get_textpage()
+        text = textpage.get_text_bounded()
+        for i in range(40):
+            assert text.count(f"18:{i:02}:00") == 2
+        assert "5/8" in text
+        textpage.close()
+        page.close()
+    finally:
+        doc.close()
+
+
 @pytest.mark.parametrize("author", ["Alice", r"Alice \and Bob"])
 def test_layout_preserves_explicit_preamble_title_authors_and_date(tmp_path, author):
     import pypdfium2 as pdfium
@@ -106,6 +157,25 @@ def test_same_total_with_wrong_page_assignment_is_rejected():
     errors = validate_page_map(2, [(1, "start", 1), (1, "end", 2),
                                    (2, "start", 2), (2, "end", 2)], 2)
     assert errors
+
+
+def test_dimension_check_covers_spill_pages_when_page_count_differs(tmp_path):
+    import pypdfium2 as pdfium
+    from .page_layout import inspect_layout
+
+    pdf = tmp_path / "wrong-spill.pdf"
+    doc = pdfium.PdfDocument.new()
+    try:
+        for width, height in [(842, 595), (595, 842), (595, 842)]:
+            page = doc.new_page(width, height)
+            page.close()
+        doc.save(str(pdf))
+    finally:
+        doc.close()
+    pdf.with_suffix(".lxp").write_text("1,start,1\n1,end,2\n2,start,3\n2,end,3\n")
+    report = {"expected_pages": 2, "expected_sizes": [(842, 595), (595, 842)]}
+    inspect_layout(pdf, report)
+    assert "Output page dimensions differ from source reading orientation" in report["errors"]
 
 
 def test_layout_preserves_field_bytes_and_is_repeatable():

@@ -14,6 +14,7 @@ BLOCK_END = "% <<< lexoid physical layout <<<"
 BLOCK = r"""
 % >>> lexoid physical layout >>>
 \usepackage{geometry}
+\usepackage{adjustbox,etoolbox}
 \makeatletter
 \renewcommand{\maketitle}{%
   \par\begingroup\centering
@@ -23,6 +24,9 @@ BLOCK = r"""
   \@thanks\endgroup\par}
 \newcount\LexoidAbsolutePage
 \AddToHook{shipout/before}{\global\advance\LexoidAbsolutePage by 1}
+% XeTeX needs the paper special on every physical page, including spill pages.
+\AddToHook{shipout/background}{%
+  \put(0,0){\special{papersize=\the\paperwidth,\the\paperheight}}}
 \newwrite\LexoidLayoutStream
 \AtBeginDocument{\immediate\openout\LexoidLayoutStream=\jobname.lxp}
 \newcommand{\LexoidPageMark}[2]{%
@@ -31,7 +35,6 @@ BLOCK = r"""
   \clearpage
   \newgeometry{layoutwidth=#2,layoutheight=#3,left=12mm,right=12mm,top=12mm,bottom=12mm}%
   \setlength{\paperwidth}{#2}\setlength{\paperheight}{#3}%
-  \special{papersize=#2,#3}%
   \begingroup
   \ifnum#4>0
     \setlength{\parskip}{0pt}\setlength{\tabcolsep}{2pt}%
@@ -45,6 +48,21 @@ BLOCK = r"""
   \LexoidPageMark{#1}{start}}
 \newcommand{\LexoidPageEnd}[1]{%
   \par\LexoidPageMark{#1}{end}\endgroup}
+% Fit outer unbreakable panels after headings, reserving room for a footer.
+\newdimen\LexoidPanelHeight
+\BeforeBeginEnvironment{minipage}{%
+  \begingroup
+  \ifinner
+    \let\LexoidMinipageEnd\relax
+  \else
+    \LexoidPanelHeight=\dimexpr\pagegoal-\pagetotal\relax
+    \ifdim\LexoidPanelHeight>\textheight \LexoidPanelHeight=\textheight\fi
+    \ifdim\LexoidPanelHeight<.5\textheight \LexoidPanelHeight=\textheight\fi
+    \advance\LexoidPanelHeight by -3\baselineskip
+    \def\LexoidMinipageEnd{\csname end\endcsname{adjustbox}}%
+    \csname begin\endcsname{adjustbox}{max totalsize={\linewidth}{\LexoidPanelHeight}}%
+  \fi}
+\AfterEndEnvironment{minipage}{\LexoidMinipageEnd\endgroup}
 \makeatother
 % <<< lexoid physical layout <<<
 """
@@ -148,11 +166,6 @@ def inspect_layout(pdf_path, report):
     finally:
         document.close()
     errors = validate_page_map(report["expected_pages"], records, actual)
-    if len(sizes) == len(report["expected_sizes"]) and any(
-        abs(a - b) > 1 for pair, target in zip(sizes, report["expected_sizes"])
-        for a, b in zip(pair, target)
-    ):
-        errors.append("Output page dimensions differ from source reading orientation")
     if outside:
         errors.append(f"Text extends outside PDF page bounds: {outside}")
     page_map = []
@@ -162,6 +175,21 @@ def inspect_layout(pdf_path, report):
             if number == n:
                 entry[side] = target
         page_map.append(entry)
+    wrong_sizes = set()
+    for entry, expected_size in zip(page_map, report["expected_sizes"]):
+        start, end = entry.get("start", 0), entry.get("end", 0)
+        if not 1 <= start <= end <= actual:
+            continue
+        for target in range(start, end + 1):
+            if any(abs(a - b) > 1 for a, b in zip(sizes[target - 1], expected_size)):
+                wrong_sizes.add(target)
+    if not records and len(sizes) == len(report["expected_sizes"]):
+        wrong_sizes.update(n for n, (pair, target) in enumerate(
+            zip(sizes, report["expected_sizes"]), 1)
+            if any(abs(a - b) > 1 for a, b in zip(pair, target)))
+    if wrong_sizes:
+        errors.append("Output page dimensions differ from source reading orientation")
     report.update(ok=not errors, actual_pages=actual, actual_sizes=sizes,
-                  page_map=page_map, errors=errors, outside_pages=outside)
+                  page_map=page_map, errors=errors, outside_pages=outside,
+                  wrong_size_pages=sorted(wrong_sizes))
     return not errors
