@@ -22,6 +22,7 @@ from .textio import write_utf8_atomic
 class BatchConfig:
     ocr: str = "none"
     vision_model: str = field(default_factory=lambda: resolve_model("LEXOID_MODEL"))
+    fallback_model: str | None = field(default_factory=lambda: os.getenv("VISION_FALLBACK_MODEL") or None)
     reconcile_model: str = field(default_factory=lambda: resolve_model("RECONCILE_MODEL"))
     optimizer_model: str = field(default_factory=lambda: resolve_model("TEXOPT_MODEL"))
     repair_model: str = field(default_factory=lambda: resolve_model("TEXOPT_REPAIR_MODEL"))
@@ -81,8 +82,12 @@ def artifact_paths(source, source_root, output_root, *, publish_root=None):
 def build_stage_commands(source, source_root, output_root, config):
     p = artifact_paths(source, source_root, output_root, publish_root=config.publish_root)
     cache = Path(output_root) / ".cache" / "recognition"
+    recognize = ["lexoid", "latex"]
+    if config.fallback_model and config.fallback_model != config.vision_model:
+        recognize = ["python", "-m", "texopt.page_fallback",
+                     "--fallback-model", config.fallback_model]
     return [
-        StageCommand("recognize", ["lexoid", "latex", "--input", str(source),
+        StageCommand("recognize", [*recognize, "--input", str(source),
             "--output", str(p["raw"]), "--model", config.vision_model, "--ocr", config.ocr,
             "--render-dpi", str(config.render_dpi), "--evidence-output", str(p["evidence"]),
             "--cache-dir", str(cache), "--vision-concurrency", str(config.vision_concurrency),
