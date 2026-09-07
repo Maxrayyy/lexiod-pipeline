@@ -35,6 +35,78 @@ JSON 保留 `needs_review`、`review_status: deferred` 和 `review_reasons`，�
 docker build -f lexiod-pipeline/Dockerfile.hybrid --target runtime -t lexiod-refactor:local .
 ```
 
+### 本地容器监测
+
+`worker_watch.py` 仅使用 Python 标准库和本机 Docker CLI，通过 macOS `launchd`
+定时读取容器状态、流水线状态库和增量日志，不调用模型、不重启识别任务。
+默认只读；对已知发布目录配置错误，可显式给目标设置 `recover_publish_from`。
+仅在容器正常退出、manifest 标记完成，且指定文件与优化工作文件、完成记录的
+SHA-256 三者一致时，将该文件原样归位到 `output_tex`，不覆盖已有目标。
+配置包含 `launchd_label`、`interval_seconds`、`docker`、`output_dir`，以及
+`containers` 数组；每个目标指定 `name`、`work_root`、`stem`、`pages` 和 `output_tex`。
+路径均使用绝对路径，默认间隔为 600 秒。安装后立即探测一次，两个容器都结束后自动卸载定时任务。
+
+```sh
+python3 files/worker_watch.py install --config /绝对路径/config.json
+python3 files/worker_watch.py once --config /绝对路径/config.json
+python3 files/worker_watch.py stop --config /绝对路径/config.json
+```
+
+监测目录中的 `latest.md` 是中文状态摘要，`latest.json` 保存结构化详情，
+`history.jsonl` 保留历次探测。请求失败、重试、流程错误分开计数，普通校验警告不当作请求失败。
+报告还展示协调选中字段数、模型已返回字段数、跳过自动复核数和完成汇总，
+以及优化子步骤、最近活动源页码、表编号、命名已返回表数、各阶段耗时和日志链接。
+返回数量按字段或表去重，不把重试重复计入；缓存命中以阶段结束汇总为准。
+表编号仅表示位置，不作为完成百分比。阶段进度从当前尝试的日志回读，
+升级监测脚本即可补齐进度，原有增量错误计数不受影响，无需重启容器。
+异常退出、内存不足终止、超过 20 分钟无日志更新、成功退出但没有发布 TEX 均会提示。
+系统休眠或 Docker 暂停期间无法保证准点执行；Docker 连接失败会记录为监测异常并在下次重试。
+
+### 每日转换统计
+
+`daily_stats.py` 独立于容器监测，使用标准库只读扫描状态库、编译报告和模型调用日志。
+每 600 秒刷新，当天统计持续更新，跨天后按北京时间在总表后增加新日期，零完成日也保留。
+定时任务安装到 `~/Library/LaunchAgents/`，后续登录继续运行，不随当前 worker 退出而停止。
+
+```sh
+python3 files/daily_stats.py once --config /绝对路径/daily/config.json
+python3 files/daily_stats.py install --config /绝对路径/daily/config.json
+python3 files/daily_stats.py stop --config /绝对路径/daily/config.json
+```
+
+配置指定 `scan_roots`（worker 数据目录）、`source_root`（原始 PDF 根目录）、
+`publish_root`（正式 TEX 根目录）、`output_dir`、`path_map`（容器到本机路径映射）、
+`start_date`、`launchd_label` 和可选 `interval_seconds`。
+`stop` 卸载当前登录会话的调度；永久停用时还需删除对应 LaunchAgent plist。
+
+- 完成条件：优化任务为 completed、编译成功、PDF 存在、正式 TEX 和任务产物哈希一致。
+  JSON 校验、PDF 溢出页数不影响计数。源页数和生成页数来自编译报告，分别列出。
+- 以任务完成时间归入北京时间日期，整份任务已记录的 token 和跨度归入完成日，
+  并非接口调用日账单；明细包含上一级目录（批次号）、PDF 名称和源文件完整路径。
+- 调用以 call_id 去重，包含识别、协调、优化以及重试。未知 usage、缺失日志、
+  中断无结果的请求明确标记。缺少 total_tokens 但有输入输出 usage 时相加得到总量。
+- 任务跨度为最早保留的任务/调用起点至完成，包含中断等待；历史日志丢失可能低估。
+  模型请求耗时独立累计，并行调用时间之和不能当作墙钟耗时。
+- 同一来源和完成时间仅记一次。后续新完成任务单独计数，但以前计入的调用不重复收费。
+  首次回填只能核实当前保留的完成版本，已覆盖旧版本无法完整恢复。
+- `completions.jsonl` 持久保存完成明细，清理容器或 worker 文件不丢失已经统计的记录。
+  `daily.md` 是总表和逐日文件明细；`daily.json` 保存结构化统计及覆盖缺口；
+  `daily.jsonl` 每天一行，供智能体读取。日报为账本的原子更新视图，不重复追加当天记录。
+  只有 TEX 而没有完整完成凭据的历史文件列为未纳入，未知消耗不会伪装成零消耗。
+
+费用使用 `model_prices.json` 中用户提供的 USD/百万 token 价格；配置 `pricing_file`
+可以指定其他价格文件。`long_context_above_tokens` 为单次输入超过该值时采用长档的阈值，
+未配置时同时按短、长档计算费用范围。阈值比较使用包含缓存的输入总量。
+普通输入 = 输入总量 - 缓存输入 - 缓存写入，四类 token 按各自单价计算，避免重复收费。
+OpenAI usage 的输入总量包含缓存；Anthropic 的独立缓存字段先合并为输入总量。
+缺少缓存明细时暂按零缓存估算，并保留标记。无 usage、未知模型、无结果及缓存计数
+不合法的调用标为未计价；日报费用是估算而不是完整账单。
+
+首次升级从原始调用日志按账本 call_id 补回逐模型用量，保存在账本的 `billing_calls` 中。
+以后删除 worker 日志不会丢失已保存的计费依据；重新修改价格或阈值只重算费用，不重新
+累计页数或模型调用。日报包含每日、每份 PDF 以及累计各模型的费用，JSON 保留精确十进制
+金额、价格快照、缓存用量和计价缺口，Markdown 金额显示四位小数。
+
 ## 2. 已确认的 Lexoid 接口
 
 ### 2.1 分页标记

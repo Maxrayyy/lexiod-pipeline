@@ -15,6 +15,25 @@ from .tex_tables import transform_tex
 
 
 class TabularxWidthTests(unittest.TestCase):
+    def test_multirow_uses_its_paragraph_column_width(self) -> None:
+        source = (
+            r"\begin{tabular}{|p{0.20\linewidth}|p{0.14\linewidth}|}"
+            "\n"
+            r"device & \multirow{7}{0.14\linewidth}{"
+            "1.设备应有完好标识；"
+            r"\\2.设备在验证有效期内。}\\"
+            "\n"
+            r"\end{tabular}"
+        )
+
+        transformed = transform_tex(source, anchor=False)
+
+        self.assertIn(
+            r"\multirow{7}{=}{1.设备应有完好标识；\\2.设备在验证有效期内。}",
+            transformed,
+        )
+        self.assertNotIn(r"\multirow{7}{0.14\linewidth}", transformed)
+
     def test_rowbreak_after_percent_continuation_stays_on_its_own_line(self) -> None:
         source = (
             "\\begin{tabular}{ll}\n"

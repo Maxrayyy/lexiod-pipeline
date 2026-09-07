@@ -426,6 +426,28 @@ def parse_colspec(spec: str) -> List[str]:
     return cols
 
 
+def alignment_colspec(head: str, env: str) -> str:
+    """Read the last mandatory environment argument, which owns the colspec."""
+    command = re.search(r"\\begin\s*\{" + re.escape(env) + r"\}", head)
+    if not command:
+        return ""
+    i = command.end()
+    result = ""
+    for argument in ENV_ARGS.get(env, ""):
+        i = _skip_ws(head, i)
+        if argument == "o":
+            if i < len(head) and head[i] == "[":
+                optional = _read_balanced(head, i, "[", "]")
+                if optional:
+                    i = optional[1]
+        elif i < len(head) and head[i] == "{":
+            mandatory = _read_balanced(head, i, "{", "}")
+            if mandatory:
+                result = mandatory[0]
+                i = mandatory[1]
+    return result
+
+
 def multicolumn_span(cell_text: str) -> int:
     """Return the span of a leading \\multicolumn, else 1."""
     s = cell_text.lstrip()
@@ -438,6 +460,42 @@ def multicolumn_span(cell_text: str) -> int:
         return max(1, int(got[0].strip()))
     except ValueError:
         return 1
+
+
+_FRACTIONAL_LINEWIDTH = re.compile(r"(?:0?\.\d+)\s*\\linewidth\Z")
+
+
+def normalize_multirow_width(cell_text: str, column_type: str) -> str:
+    """Let multirow inherit a paragraph column instead of shrinking it twice."""
+    if column_type not in {"p", "m", "b"}:
+        return cell_text
+
+    masked = mask_comments(cell_text)
+    replacements: List[Tuple[int, int]] = []
+    for match in re.finditer(r"\\multirow\b", masked):
+        i = _skip_ws(masked, match.end())
+        if i < len(masked) and masked[i] == "[":
+            optional = _read_balanced(masked, i, "[", "]")
+            if not optional:
+                continue
+            i = _skip_ws(masked, optional[1])
+        rows = _read_balanced(masked, i, "{", "}")
+        if not rows:
+            continue
+        i = _skip_ws(masked, rows[1])
+        if i < len(masked) and masked[i] == "[":
+            optional = _read_balanced(masked, i, "[", "]")
+            if not optional:
+                continue
+            i = _skip_ws(masked, optional[1])
+        width_start = i
+        width = _read_balanced(masked, width_start, "{", "}")
+        if width and _FRACTIONAL_LINEWIDTH.fullmatch(width[0].strip()):
+            replacements.append((width_start + 1, width[1] - 1))
+
+    for start, end in reversed(replacements):
+        cell_text = cell_text[:start] + "=" + cell_text[end:]
+    return cell_text
 
 
 def anchor_cell(stripped: str, allow: bool = True) -> str:
@@ -506,12 +564,13 @@ def _format_body(body: str, indent: str, stats: List[TableStat], env: str,
         col = 0
         for c_i, cell in enumerate(row.cells):
             inner = transform_tex(cell.text, anchor=anchor, stats=stats)
+            ctype = col_types[col] if col < len(col_types) else ""
+            inner = normalize_multirow_width(inner, ctype)
             stripped = inner.strip()
             if stripped == "" and cell.sep == "" and c_i == len(row.cells) - 1:
                 continue
             n_cells += 1
 
-            ctype = col_types[col] if col < len(col_types) else ""
             allow = anchor and bool(stripped) and ctype not in OPAQUE_COLUMN_TYPES
             content = anchor_cell(stripped, allow)
             col += multicolumn_span(stripped)
@@ -568,12 +627,7 @@ def transform_tex(text: str, anchor: bool = True,
         pieces.append(text[last:tok.body_start])
         body = text[tok.body_start:end_tok.start]
         head = text[tok.start:tok.body_start]
-        spec = ""
-        k = head.rfind("{")
-        if k >= 0:
-            got = _read_balanced(head, k, "{", "}")
-            if got:
-                spec = got[0]
+        spec = alignment_colspec(head, tok.name)
         pieces.append(_format_body(body, depth_indent, stats, tok.name, anchor, spec))
         last = end_tok.start
         i = j + 1
