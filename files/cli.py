@@ -858,10 +858,24 @@ def cmd_optimise(a: argparse.Namespace) -> int:
             print(f"ERROR: optimized TeX failed compilation; see {compile_log}",
                   file=sys.stderr)
             return 6
+    registry_result = None
     if a.registry:
-        write_registry(records, Path(a.registry), provenance_path=getattr(a, "source_registry", None), tex=out)
-        _event("REGISTRY_WRITE", "field registry written",
-               path=str(Path(a.registry).resolve()), fields=len(records))
+        try:
+            write_registry(records, Path(a.registry),
+                           provenance_path=getattr(a, "source_registry", None), tex=out)
+            registry_result = {"ok": True, "status": "complete"}
+            _event("REGISTRY_WRITE", "field registry written",
+                   path=str(Path(a.registry).resolve()), fields=len(records))
+        except Exception as exc:
+            # Registry enrichment is optional: its failure must not discard the
+            # compiled document or leave a previous registry looking current.
+            registry_result = {"ok": False, "status": "degraded",
+                               "error_type": type(exc).__name__, "error": str(exc)}
+            write_utf8_atomic(Path(a.registry), json.dumps(
+                {"version": 1, "count": 0, "fields": [], **registry_result},
+                ensure_ascii=False, indent=2))
+            _event("REGISTRY_DEGRADED", "field JSON unavailable; preserving TeX output",
+                   level="WARNING", path=str(Path(a.registry).resolve()), **registry_result)
         print(f"  Registry: {a.registry}", file=sys.stderr, flush=True)
 
     print("[7/7] Generating report…", file=sys.stderr, flush=True)
@@ -870,6 +884,7 @@ def cmd_optimise(a: argparse.Namespace) -> int:
         "input_encoding": decoded.encoding, "output_encoding": "utf-8",
         "syntax_repair": syntax_repair_stats,
         "compile_check": compile_result,
+        "registry_check": registry_result,
         "layout_check": layout_report,
         "syntax_warnings": [i.payload() for i in output_issues
                             if i.severity == "warning"],

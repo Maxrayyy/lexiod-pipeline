@@ -29,7 +29,7 @@ class BatchConfig:
     retry_dpi: int = 480
     vision_concurrency: int = 4
     reconcile_concurrency: int = 2
-    optimizer_version: str = "texopt-layout-v3-tabularnewline"
+    optimizer_version: str = "texopt-layout-v4-multiline-registry"
     timeout: int = 7200
     publish_root: str | None = None
 

@@ -13,7 +13,7 @@ Design constraints honoured here
   * PLUGGABLE DETECTION: how lexoid marks handwritten content is *not* known to this
     module. Configure `DetectorConfig.patterns` to match your actual output.
 
-This pass runs AFTER tex_tables.transform_tex(), so it can rely on "one cell per line".
+This pass runs AFTER tex_tables.transform_tex(); field arguments may span lines.
 """
 
 from __future__ import annotations
@@ -26,7 +26,7 @@ from dataclasses import dataclass, field as dc_field, asdict
 from pathlib import Path
 from typing import Callable, Dict, List, Optional, Protocol
 
-from .tex_tables import ALIGN_ENVS, SYNC_ANCHOR, mask_comments
+from .tex_tables import ALIGN_ENVS, SYNC_ANCHOR, _read_balanced, mask_comments
 from .textio import write_utf8_atomic
 
 # --------------------------------------------------------------------------- #
@@ -402,6 +402,7 @@ def annotate_fields(tex: str,
         # ---- phase 1: collect ------------------------------------------- #
         # (line_idx, payload, value, key, row_hdr, col_hdr, value_id, field_label)
         candidates = []
+        multiline_fields = {}
         sample_rows = []
         for r_i, row in enumerate(block.rows):
             cells = [_cell_payload(masked[li]) or "" for li in row]
@@ -414,6 +415,10 @@ def annotate_fields(tex: str,
                 value = _match_handwritten(cells[c_i], pats, c_i, detector)
                 value_id, field_label = _field_metadata_above(lines, li)
                 fieldvalue = _extract_fieldvalue(cells[c_i])
+                multiline = _multiline_fieldvalue(lines, li, block.end)
+                if multiline is not None:
+                    fieldvalue = multiline[0]
+                    multiline_fields[li] = multiline
                 # Lexoid marks every editable value with \fieldvalue. Handwritten
                 # patterns remain supported for historical files without that macro.
                 if fieldvalue is not None:
@@ -449,7 +454,14 @@ def annotate_fields(tex: str,
             # remains a separate, consistently generated lookup name.
             fid = value_id or _unique_legacy_id(page_of[li], used_ids)
             semantic_alias = f"{fid}-{semantic}"
-            lines[li] = _wrap_cell(lines[li], payload, fid)
+            if li in multiline_fields and not HWFIELD_RE.search(lines[li]):
+                _, start_column, end_line, end_column = multiline_fields[li]
+                lines[end_line] = (lines[end_line][:end_column] + "}"
+                                   + lines[end_line][end_column:])
+                lines[li] = (lines[li][:start_column] + f"\\hwfield{{{fid}}}{{"
+                             + lines[li][start_column:])
+            elif li not in multiline_fields:
+                lines[li] = _wrap_cell(lines[li], payload, fid)
             records.append(FieldRecord(
                 field_id=fid, semantic_alias=semantic_alias, page=page_of[li],
                 table=naming.table, semantic=semantic,
@@ -508,6 +520,21 @@ def _field_metadata_above(lines: List[str], line_idx: int,
                 or END_ALIGN.search(stripped)):
             break
     return value_id, label
+
+
+def _multiline_fieldvalue(lines, start_line, table_end):
+    """Locate a complete field argument without changing physical line offsets."""
+    call = FIELDVALUE_RE.search(lines[start_line])
+    if call is None or _read_balanced(lines[start_line], call.end() - 1, "{", "}"):
+        return None
+    tail = "\n".join(lines[start_line:table_end])
+    argument = _read_balanced(tail, call.end() - 1, "{", "}")
+    if argument is None:
+        return None
+    value, end = argument
+    prefix = tail[:end]
+    return (value, call.start(), start_line + prefix.count("\n"),
+            len(prefix.rsplit("\n", 1)[-1]))
 
 
 def _extract_fieldvalue(payload: str) -> Optional[str]:

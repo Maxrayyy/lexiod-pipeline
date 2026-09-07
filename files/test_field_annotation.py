@@ -7,9 +7,40 @@ import unittest
 from .fields import annotate_fields
 from .llm import HeuristicBatchNamer
 from .syntax_check import validate_latex
+from .reconcile import field_segments
+from .tex_tables import transform_tex
 
 
 class FieldAnnotationTests(unittest.TestCase):
+    def test_multiline_field_keeps_every_paragraph_inside_value(self) -> None:
+        source = (
+            "\\begin{tabular}{|p{2cm}|p{10cm}|}\n"
+            "Label & Details\\\\\\hline\n"
+            "Investigation &\n"
+            "% #VALUE_ID: LEX-P0007-V0005\n"
+            "% #FIELD_VALUE: Investigation\n"
+            "\\fieldvalue{First paragraph.\\par\n"
+            "Second paragraph with \\textbf{nested {content}}.\\par\n"
+            "Final paragraph with \\{escaped braces\\}.}\n"
+            "\\\\\\hline\n"
+            "Result &\n"
+            "% #VALUE_ID: LEX-P0007-V0006\n"
+            "% #FIELD_VALUE: Result\n"
+            "\\fieldvalue{Unchanged}\\\\\n"
+            "\\end{tabular}\n"
+        )
+        annotated, records, _ = annotate_fields(
+            transform_tex(source, anchor=False), namer=HeuristicBatchNamer()
+        )
+        before, after = field_segments(source), field_segments(annotated)
+        self.assertEqual(set(before), set(after))
+        for fid in before:
+            self.assertEqual(before[fid]["payload"], after[fid]["payload"])
+        self.assertIn("Final paragraph", records[0].value)
+        self.assertIn(r"\hwfield{LEX-P0007-V0005}{\fieldvalue{First", annotated)
+        self.assertEqual([], [issue for issue in validate_latex(
+            annotated, require_sync_safe=False) if issue.severity == "error"])
+
     def test_tabularnewline_stays_outside_field_wrapper(self) -> None:
         source = (
             "\\begin{tabular}{|l|l|}\n"
