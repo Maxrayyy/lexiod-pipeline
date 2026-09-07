@@ -90,58 +90,64 @@ def _alignment_colspec(head: str, env: str) -> str:
 def _table_alignment_issues(tex: str, masked: str) -> List[SyntaxIssue]:
     """Validate top-level row spans before a costly width-probe compile."""
     issues: List[SyntaxIssue] = []
-    tokens = list(iter_structural(masked))
-    index = 0
-    while index < len(tokens):
-        begin = tokens[index]
-        if begin.kind != "align_begin":
-            index += 1
-            continue
-        end_index = index + 1
-        while end_index < len(tokens) and tokens[end_index].kind != "align_end":
-            end_index += 1
-        if end_index >= len(tokens):
-            break
-        end = tokens[end_index]
-        if begin.name not in COLUMN_CHECK_ENVS:
-            index = end_index + 1
-            continue
 
-        spec = _alignment_colspec(
-            tex[begin.start:begin.body_start], begin.name
-        )
-        expected = len(parse_colspec(spec))
-        if expected:
-            body = tex[begin.body_start:end.start]
-            cursor = 0
-            for row in split_align_body(body):
-                row_length = sum(len(cell.text) + len(cell.sep)
-                                 for cell in row.cells)
-                cells = list(row.cells)
-                content_offset = 0
-                if cells:
-                    original_first = cells[0].text
-                    _prefix, first = _peel_prefix(original_first)
-                    content_offset = len(original_first) - len(first)
-                    cells[0] = type(cells[0])(first, cells[0].sep)
-                meaningful = [cell for cell in cells if cell.text.strip()]
-                if meaningful:
-                    actual = sum(multicolumn_span(cell.text) for cell in cells)
-                    if actual != expected:
-                        offset = begin.body_start + cursor + content_offset
-                        while offset < len(tex) and tex[offset] in " \t\r\n":
-                            offset += 1
-                        underfull = actual < expected
-                        issues.append(SyntaxIssue(
-                            "warning" if underfull else "error",
-                            ("TABLE_ALIGNMENT_UNDERFULL" if underfull
-                             else "TABLE_ALIGNMENT_MISMATCH"),
-                            _line(tex, offset),
-                            f"{begin.name} row spans {actual} columns; "
-                            f"expected {expected} from its column specification",
-                        ))
-                cursor += row_length
-        index = end_index + 1
+    def scan(segment: str, masked_segment: str, base_offset: int) -> None:
+        tokens = list(iter_structural(masked_segment))
+        index = 0
+        while index < len(tokens):
+            begin = tokens[index]
+            if begin.kind != "align_begin":
+                index += 1
+                continue
+            end_index = index + 1
+            while end_index < len(tokens) and tokens[end_index].kind != "align_end":
+                end_index += 1
+            if end_index >= len(tokens):
+                break
+            end = tokens[end_index]
+            body = segment[begin.body_start:end.start]
+            masked_body = masked_segment[begin.body_start:end.start]
+
+            if begin.name in COLUMN_CHECK_ENVS:
+                spec = _alignment_colspec(
+                    segment[begin.start:begin.body_start], begin.name
+                )
+                expected = len(parse_colspec(spec))
+                if expected:
+                    cursor = 0
+                    for row in split_align_body(body):
+                        row_length = sum(len(cell.text) + len(cell.sep)
+                                         for cell in row.cells)
+                        cells = list(row.cells)
+                        content_offset = 0
+                        if cells:
+                            original_first = cells[0].text
+                            _prefix, first = _peel_prefix(original_first)
+                            content_offset = len(original_first) - len(first)
+                            cells[0] = type(cells[0])(first, cells[0].sep)
+                        meaningful = [cell for cell in cells if cell.text.strip()]
+                        if meaningful:
+                            actual = sum(multicolumn_span(cell.text) for cell in cells)
+                            if actual != expected:
+                                offset = (base_offset + begin.body_start + cursor
+                                          + content_offset)
+                                while offset < len(tex) and tex[offset] in " \t\r\n":
+                                    offset += 1
+                                underfull = actual < expected
+                                issues.append(SyntaxIssue(
+                                    "warning" if underfull else "error",
+                                    ("TABLE_ALIGNMENT_UNDERFULL" if underfull
+                                     else "TABLE_ALIGNMENT_MISMATCH"),
+                                    _line(tex, offset),
+                                    f"{begin.name} row spans {actual} columns; "
+                                    f"expected {expected} from its column specification",
+                                ))
+                        cursor += row_length
+
+            scan(body, masked_body, base_offset + begin.body_start)
+            index = end_index + 1
+
+    scan(tex, masked, 0)
     return issues
 
 

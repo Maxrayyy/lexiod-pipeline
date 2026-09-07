@@ -29,7 +29,7 @@ class BatchConfig:
     retry_dpi: int = 480
     vision_concurrency: int = 4
     reconcile_concurrency: int = 2
-    optimizer_version: str = "texopt-layout-v2"
+    optimizer_version: str = "texopt-layout-v3-tabularnewline"
     timeout: int = 7200
     publish_root: str | None = None
 
@@ -86,7 +86,7 @@ def build_stage_commands(source, source_root, output_root, config):
             "--output", str(p["raw"]), "--model", config.vision_model, "--ocr", config.ocr,
             "--render-dpi", str(config.render_dpi), "--evidence-output", str(p["evidence"]),
             "--cache-dir", str(cache), "--vision-concurrency", str(config.vision_concurrency),
-            "--auto-orient", "--resume"], (Path(source),), (p["raw"], p["evidence"]), "evidence-latex-v4-compact-fields"),
+            "--auto-orient", "--resume"], (Path(source),), (p["raw"], p["evidence"]), "evidence-latex-v5-connection-retry"),
         StageCommand("reconcile", ["texopt", "reconcile", str(p["raw"]),
             "--source-pdf", str(source), "--recognition-evidence", str(p["evidence"]),
             "-o", str(p["reconciled"]), "--fields", str(p["fields"]),

@@ -104,6 +104,21 @@ class SyntaxTests(unittest.TestCase):
         self.assertNotIn("TABLE_ALIGNMENT_MISMATCH",
                          {issue.code for issue in issues})
 
+    def test_invalid_nested_table_is_checked(self) -> None:
+        source = (
+            "\\begin{tabular}{l}\n"
+            "\\begin{tabular}{ll}\n"
+            "a & b\\newline\n"
+            "c & d \\\\\n"
+            "\\end{tabular} \\\\\n"
+            "\\end{tabular}\n"
+        )
+
+        issues = validate_latex(source)
+
+        self.assertIn("TABLE_ALIGNMENT_MISMATCH",
+                      {issue.code for issue in issues})
+
 
 if __name__ == "__main__":
     unittest.main()

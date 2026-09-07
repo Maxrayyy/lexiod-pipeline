@@ -66,6 +66,24 @@ class SyntaxRepairTests(unittest.TestCase):
         self.assertIn("}\\\\\\hline", repaired)
         self.assertEqual(normalize_multicolumn_linebreaks(repaired), (repaired, 0))
 
+    def test_multicolumn_normalization_preserves_nested_table_rows(self) -> None:
+        source = (
+            "\\begin{tabular}{|l|}\n"
+            "\\multicolumn{1}{p{8cm}}{intro\\\\\n"
+            "\\begin{tabular}{ll}\n"
+            "a & b\\\\\n"
+            "c & d\\\\\n"
+            "\\end{tabular}\n"
+            "}\\\\\n"
+            "\\end{tabular}\n"
+        )
+
+        repaired, count = normalize_multicolumn_linebreaks(source)
+
+        self.assertEqual(1, count)
+        self.assertIn("intro\\newline", repaired)
+        self.assertIn("a & b\\\\\nc & d\\\\", repaired)
+
     def test_standalone_diagonal_symbols_are_safe_in_text_mode(self) -> None:
         source = (
             "\\fieldvalue{\\handwritten{\\diagup}} & \\diagdown\\\\\n"

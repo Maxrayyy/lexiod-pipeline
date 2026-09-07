@@ -143,8 +143,21 @@ def normalize_multicolumn_linebreaks(source: str) -> tuple[str, int]:
             i = command.end()
             continue
         if re.search(r"(?:^|[^\\])[pmb]\s*\{", second[0]):
-            for token in iter_structural(third[0], inside_alignment=True):
-                if token.kind == "rowbreak" and token.depth == 0:
+            tokens = list(iter_structural(third[0], inside_alignment=True))
+            nested: list[tuple[int, int]] = []
+            nested_start = None
+            for token in tokens:
+                if token.kind == "align_begin" and nested_start is None:
+                    nested_start = token.start
+                elif token.kind == "align_end" and nested_start is not None:
+                    nested.append((nested_start, token.end))
+                    nested_start = None
+            for token in tokens:
+                inside_nested = any(
+                    start <= token.start < end for start, end in nested
+                )
+                if (token.kind == "rowbreak" and token.depth == 0
+                        and not inside_nested):
                     replacements.append(
                         (third_open + 1 + token.start, third_open + 1 + token.end))
         i = third[1]

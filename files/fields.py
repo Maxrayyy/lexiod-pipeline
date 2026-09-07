@@ -268,7 +268,12 @@ BOLD_RE = re.compile(r"\\(?:textbf|bfseries\s+|textsc|Large|large)\s*\{?([^{}]{1
 BOLD_LINE_RE = re.compile(r"^\s*(?:\\(?:noindent|centering|par|vspace\*?\{[^}]*\}|hfill)\s*)*"
                           r"\\(?:textbf|textsc)\s*\{(.+?)\}\s*(?:\\\\)?\s*$")
 RULE_RE = re.compile(r"\\(?:hline|midrule|toprule|bottomrule|cline|cmidrule)\b")
-CELL_END = re.compile(r"\s*(?:&|\\\\\*?(?:\[[^\]]*\])?)\s*$")
+ROW_END = re.compile(
+    r"(?:\\\\|\\tabularnewline)\*?(?:\[[^\]]*\])?\s*$"
+)
+CELL_END = re.compile(
+    r"\s*(?:&|(?:\\\\|\\tabularnewline)\*?(?:\[[^\]]*\])?)\s*$"
+)
 VALUE_ID_RE = re.compile(r"%\s*#VALUE(?:\\)?_ID:\s*(\S+)", re.I)
 FIELD_VALUE_RE = re.compile(r"%\s*#FIELD(?:\\)?_VALUE:\s*(.*)", re.I)
 FIELDVALUE_RE = re.compile(r"\\fieldvalue\s*\{")
@@ -329,7 +334,7 @@ def _parse_tables(lines: List[str]) -> List[TableBlock]:
         if _cell_payload(line) is None:
             continue
         cur.append(i)
-        if re.search(r"\\\\\*?(?:\[[^\]]*\])?\s*$", line.rstrip()):
+        if ROW_END.search(line.rstrip()):
             rows.append(cur)
             cur = []
     return blocks
