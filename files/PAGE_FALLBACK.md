@@ -4,6 +4,7 @@
 
 ```dotenv
 LEXOID_MODEL=gpt-5.6-sol
+SOL_VISION_REASONING_EFFORT=none
 VISION_FALLBACK_MODEL=gpt-6-astra
 VISION_CONCURRENCY=2
 RENDER_DPI=240
@@ -12,6 +13,12 @@ RENDER_DPI=240
 `BatchConfig` 读取上述环境。配置升级模型且与主模型不同时，识别阶段使用
 `python -m texopt.page_fallback`，否则保持原来的 `lexoid latex` 入口。
 清空 `VISION_FALLBACK_MODEL` 可关闭检查和按页升级。
+
+Sol 视觉识别默认显式发送 `reasoning_effort=none`，可通过
+`SOL_VISION_REASONING_EFFORT` 调整，设为空字符串时恢复服务端默认值。
+该设置不改变 GPT-6 升级识别及后续协调、命名模型的推理参数。
+调用日志和识别证据记录实际请求的推理参数；识别草稿缓存按推理模式区分，
+避免把旧模式结果当作 `none` 的输出。已创建容器需要重新创建才会使用新代码。
 
 ## 执行方式
 
