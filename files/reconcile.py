@@ -21,10 +21,11 @@ from pylatexenc.latex2text import LatexNodes2Text, MacroTextSpec, get_default_la
 
 from .fields import _extract_fieldvalue
 from .llm import openai_api_url
-from .model_telemetry import request_json
+from .model_telemetry import emit, request_json
 from .textio import read_text_auto, write_utf8_atomic
 
 RECONCILE_VERSION = "reconcile-v2-date-parts"
+AUTO_REVIEW_REASONS = frozenset({"critical_format_invalid"})
 _ID = re.compile(r"(?m)^\s*% #VALUE_ID:\s*(\S+)\s*$")
 _FIELD = re.compile(r"\\fieldvalue\s*\{")
 _REVIEW = re.compile(r"(?m)^\s*% #TODO[^\n]*")
@@ -263,15 +264,25 @@ class ReconcileReport:
     confirmed: int
     failed: int
     errors: list[dict]
+    deferred: int = 0
 
 
 def reconcile_document(tex_path, source_pdf, evidence_path, output_path, fields_path,
-                       adapter=None, concurrency=2, retry_dpi=480):
+                       adapter=None, concurrency=2, retry_dpi=480, *, review_content=False):
     if concurrency < 1:
         raise ValueError("Reconciliation concurrency must be positive")
     tex = read_text_auto(tex_path).text
     evidence = json.loads(Path(evidence_path).read_text("utf-8"))
-    candidates = select_exceptional_fields(tex, evidence)
+    flagged = select_exceptional_fields(tex, evidence)
+    candidates, deferred = [], {}
+    for candidate in flagged:
+        if review_content or AUTO_REVIEW_REASONS.intersection(candidate.reasons):
+            candidates.append(candidate)
+        else:
+            deferred[candidate.field_id] = list(candidate.reasons)
+    policy = "all_content" if review_content else "format_only"
+    emit({"event": "reconcile_selection", "stage": "reconcile", "policy": policy,
+          "flagged": len(flagged), "selected": len(candidates), "deferred": len(deferred)})
     segments = field_segments(tex)
     adapter = adapter or FieldReconcileAdapter()
     cache_path = Path(fields_path).with_suffix(".reconcile-cache.json")
@@ -297,6 +308,9 @@ def reconcile_document(tex_path, source_pdf, evidence_path, output_path, fields_
     records = {f["field_id"]: {key: f[key] for key in (
         "field_id", "label", "value", "paddle_text", "model_guess", "confidence", "needs_review", "history")}
         for page in evidence["pages"] for f in page["fields"]}
+    for fid, reasons in deferred.items():
+        records[fid].update(needs_review=True, review_status="deferred",
+                            review_reasons=reasons)
     replacements, confirmed, failed, errors = [], 0, 0, []
     with ThreadPoolExecutor(max_workers=concurrency) as executor:
         for candidate, fingerprint, reply, error in executor.map(resolve, candidates):
@@ -348,7 +362,7 @@ def reconcile_document(tex_path, source_pdf, evidence_path, output_path, fields_
         tex = tex[:start] + replacement + tex[end:]
     updated = field_segments(tex)
     for fid, record in records.items():
-        record["needs_review"] = bool(_REVIEW.search(updated[fid]["segment"]))
+        record["needs_review"] = record["needs_review"] or bool(_REVIEW.search(updated[fid]["segment"]))
         if _normalized(updated[fid]["value"]) != _normalized(record["value"]):
             registry_value = record["value"]
             tex_value = updated[fid]["value"]
@@ -361,10 +375,12 @@ def reconcile_document(tex_path, source_pdf, evidence_path, output_path, fields_
                 "to": tex_value,
                 "reason": "TEX visible value is authoritative after reconciliation",
             })
-    report = ReconcileReport(tex, list(records.values()), len(candidates), confirmed, failed, errors)
+    report = ReconcileReport(tex, list(records.values()), len(candidates), confirmed, failed,
+                             errors, deferred=len(deferred))
     write_utf8_atomic(output_path, tex)
     write_utf8_atomic(fields_path, json.dumps({"version": 1, "count": len(records),
         "fields": report.fields, "reconciliation": {"model": adapter.model,
+        "policy": policy, "flagged": len(flagged), "deferred": report.deferred,
         "selected": report.selected, "confirmed": confirmed, "failed": failed,
         "errors": errors}}, ensure_ascii=False, indent=2))
     write_utf8_atomic(cache_path, json.dumps(cache, ensure_ascii=False, sort_keys=True, indent=2))

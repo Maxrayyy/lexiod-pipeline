@@ -562,6 +562,15 @@ def _extract_fieldvalue(payload: str) -> Optional[str]:
 def _wrap_cell(line: str, payload: str, fid: str) -> str:
     if HWFIELD_RE.search(payload):
         return line
+    call = FIELDVALUE_RE.search(payload)
+    if call:
+        argument = _read_balanced(payload, call.end() - 1, "{", "}")
+        if argument is not None:
+            # Surround only the field, never a partial formula or outer group.
+            end = argument[1]
+            replacement = (payload[:call.start()] + f"\\hwfield{{{fid}}}{{"
+                           + payload[call.start():end] + "}" + payload[end:])
+            return line.replace(payload, replacement, 1)
     body = payload
     lead = ""
     if body.startswith(SYNC_ANCHOR):

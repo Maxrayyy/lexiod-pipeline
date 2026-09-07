@@ -92,7 +92,62 @@ def run(tmp_path, adapter):
     source.write_text(TEX)
     ev.write_text(json.dumps(evidence()))
     return reconcile_document(source, Path("source.pdf"), ev,
-        tmp_path / "out.tex", tmp_path / "fields.json", adapter=adapter)
+        tmp_path / "out.tex", tmp_path / "fields.json", adapter=adapter,
+        review_content=True)
+
+
+@pytest.mark.parametrize("kind", ["printed", "handwritten", "ocr_conflict", "checkbox"])
+def test_content_uncertainty_is_deferred_without_model_calls(tmp_path, kind):
+    from . import cli
+
+    tex = TEX.replace("% #TODO #HANDWRITTEN: Chang; uncertain\n", "")
+    data = evidence()
+    data["pages"][0]["ocr_blocks"] = []
+    field = data["pages"][0]["fields"][0]
+    field["paddle_text"] = ""
+    if kind != "handwritten":
+        tex = tex.replace(r"\handwritten{Chang}", "Chang")
+    else:
+        tex = TEX
+    if kind == "ocr_conflict":
+        data = evidence()
+        data["pages"][0]["fields"][0]["needs_review"] = False
+    if kind == "checkbox":
+        tex = tex.replace(r"\fieldvalue{Chang}", r"\fieldvalue{\checkboxfield{unclear}}")
+        field.update(value="unclear", model_guess="unclear")
+    source, ev = tmp_path / "raw.tex", tmp_path / "raw.json"
+    source.write_text(tex)
+    ev.write_text(json.dumps(data))
+    # A nonexistent PDF verifies that the default CLI never tries to crop/review.
+    assert cli.main(["reconcile", str(source), "--source-pdf", "missing.pdf",
+        "--recognition-evidence", str(ev), "-o", str(tmp_path / "out.tex"),
+        "--fields", str(tmp_path / "fields.json")]) == 0
+    assert (tmp_path / "out.tex").read_text() == tex
+    result = json.loads((tmp_path / "fields.json").read_text())
+    assert result["reconciliation"]["selected"] == 0
+    assert result["reconciliation"]["deferred"] == 1
+    assert result["fields"][0]["needs_review"]
+    assert result["fields"][0]["history"] == []
+    assert result["fields"][0]["value"] == data["pages"][0]["fields"][0]["value"]
+
+
+def test_default_policy_still_reviews_invalid_date(tmp_path):
+    tex, data = date_fixture("2023", "02", "29")
+    source, ev = tmp_path / "raw.tex", tmp_path / "raw.json"
+    source.write_text(tex)
+    ev.write_text(json.dumps(data))
+    calls = []
+
+    class DateAdapter(Adapter):
+        def reconcile(self, source_pdf, candidate, retry_dpi):
+            calls.append(candidate.field_id)
+            return {"value": candidate.field["value"], "confidence": 0.5,
+                    "needs_review": True, "reason": "unresolved date"}
+
+    report = reconcile_document(source, Path("source.pdf"), ev,
+        tmp_path / "out.tex", tmp_path / "fields.json", adapter=DateAdapter())
+    assert len(calls) == report.selected == 3
+    assert report.deferred == 0
 
 
 def test_confirmed_reply_updates_value_marker_and_history(tmp_path):
@@ -121,7 +176,8 @@ def test_equivalent_plain_reply_preserves_existing_tex_formatting(tmp_path):
                     "reason": "crop confirms value"}
 
     report = reconcile_document(source, Path("source.pdf"), ev,
-        tmp_path / "out.tex", tmp_path / "fields.json", adapter=CaretAdapter())
+        tmp_path / "out.tex", tmp_path / "fields.json", adapter=CaretAdapter(),
+        review_content=True)
 
     assert tex_value in report.tex
     visible_value = field_segments(report.tex)["LEX-P0001-V0001"]["value"]
@@ -153,7 +209,7 @@ def test_reconciliation_and_optimizer_preserve_underlined_field(tmp_path):
     ev.write_text(json.dumps(evidence()))
     reconciled = tmp_path / "reconciled.tex"
     result = reconcile_document(source, Path("source.pdf"), ev,
-        reconciled, tmp_path / "fields.json", adapter=Adapter())
+        reconciled, tmp_path / "fields.json", adapter=Adapter(), review_content=True)
     expected = r"\underline{\makebox[2cm][c]{\fieldvalue{\handwritten{Zhang}}}}"
     assert expected in result.tex
     output = tmp_path / "optimized.tex"

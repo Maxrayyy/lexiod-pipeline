@@ -5,6 +5,8 @@ from __future__ import annotations
 
 import re
 
+from .tex_tables import mask_comments
+
 MARK_BEGIN = "% >>> lexoid-texopt (auto-generated, safe to regenerate) >>>"
 MARK_END = "% <<< lexoid-texopt <<<"
 
@@ -61,7 +63,12 @@ BLOCK = r"""
 
 def inject(tex: str) -> str:
     """Insert (or refresh) the macro block just before \\begin{document}."""
-    block = f"{MARK_BEGIN}\n{BLOCK.strip()}\n{MARK_END}\n"
+    support = ""
+    if re.search(r"\\sout\b", mask_comments(tex)):
+        support = ("\\makeatletter\n"
+                   "\\@ifundefined{sout}{\\RequirePackage[normalem]{ulem}}{}\n"
+                   "\\makeatother\n")
+    block = f"{MARK_BEGIN}\n{support}{BLOCK.strip()}\n{MARK_END}\n"
 
     if MARK_BEGIN in tex and MARK_END in tex:
         return re.sub(

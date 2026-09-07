@@ -7,8 +7,10 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from .cli import remove_explicit_sync_anchors
+from .cli import _compile_latex, remove_explicit_sync_anchors
+from .preamble import inject
 from .syntax_check import validate_latex
+from .syntax_repair import normalize_math_blank_lines
 from .textio import read_text_auto, write_utf8_atomic
 
 
@@ -34,6 +36,37 @@ class EncodingTests(unittest.TestCase):
 
 
 class SyntaxTests(unittest.TestCase):
+    def test_strikeout_loads_missing_dependency_without_option_clash(self) -> None:
+        for existing in ("", r"\usepackage{ulem}", r"\newcommand{\sout}[1]{#1}"):
+            with self.subTest(existing=existing), tempfile.TemporaryDirectory() as directory:
+                source = ("\\documentclass{article}\n" + existing + "\n"
+                          "\\begin{document}\n\\sout{1384} 1385\n\\end{document}\n")
+                out = inject(source)
+                self.assertEqual(inject(out), out)
+                path = Path(directory) / "strikeout.tex"
+                path.write_text(out, encoding="utf-8")
+                ok, log = _compile_latex(path, path.parent, "xelatex", 30, runs=2)
+                self.assertTrue(ok, log[-1500:])
+
+    def test_math_blank_lines_preserve_comments_and_line_numbers(self) -> None:
+        source = "$10^{\n% #FIELD_VALUE: exponent\n\n7}$\n\nText\n"
+        fixed, count = normalize_math_blank_lines(source)
+        self.assertEqual(fixed, "$10^{\n% #FIELD_VALUE: exponent\n%\n7}$\n\nText\n")
+        self.assertEqual(count, 1)
+        self.assertEqual(normalize_math_blank_lines(fixed), (fixed, 0))
+
+    def test_math_blank_lines_ignore_literals_and_unclosed_math(self) -> None:
+        source = ("\\$5\n\ntext\n% $ ignored\n\n"
+                  "\\verb|$|\n\n\\begin{verbatim}\n$\n\n$\n\\end{verbatim}\n"
+                  "$unclosed\n\ntext")
+        self.assertEqual(normalize_math_blank_lines(source), (source, 0))
+
+    def test_math_blank_lines_support_display_and_parentheses(self) -> None:
+        for opening, closing in [("$$", "$$"), (r"\[", r"\]"), (r"\(", r"\)")]:
+            source = opening + "x\n\ny" + closing
+            self.assertEqual(normalize_math_blank_lines(source),
+                             (opening + "x\n%\ny" + closing, 1))
+
     def test_explicit_sync_anchors_are_spaces_in_final_output(self) -> None:
         source = "  \\SA{}样品名称 & \\SA{}字段值 \\SA%\n"
         cleaned, count = remove_explicit_sync_anchors(source)

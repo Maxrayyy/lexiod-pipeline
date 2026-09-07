@@ -29,7 +29,7 @@ class BatchConfig:
     retry_dpi: int = 480
     vision_concurrency: int = 4
     reconcile_concurrency: int = 2
-    optimizer_version: str = "texopt-layout-v4-multiline-registry"
+    optimizer_version: str = "texopt-layout-v5-math-fields"
     timeout: int = 7200
     publish_root: str | None = None
 
@@ -92,7 +92,7 @@ def build_stage_commands(source, source_root, output_root, config):
             "-o", str(p["reconciled"]), "--fields", str(p["fields"]),
             "--model", config.reconcile_model, "--retry-dpi", str(config.retry_dpi),
             "--concurrency", str(config.reconcile_concurrency)],
-            (Path(source), p["raw"], p["evidence"]), (p["reconciled"], p["fields"]), "reconcile-v2-date-parts"),
+            (Path(source), p["raw"], p["evidence"]), (p["reconciled"], p["fields"]), "reconcile-v3-format-only"),
         StageCommand("optimise", ["texopt", "optimise", str(p["reconciled"]),
             "-o", str(p["work_optimized"]), "--source-registry", str(p["fields"]),
             "--registry", str(p["registry"]), "--report", str(p["report"]),

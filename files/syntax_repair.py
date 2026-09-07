@@ -17,7 +17,8 @@ from typing import Callable, Optional
 from .llm import ANTHROPIC_API_URL, _is_openai_model, openai_api_url
 from .model_config import resolve_model
 from .textio import write_utf8_atomic
-from .tex_tables import CS_RE, _read_balanced, _skip_ws, iter_structural
+from .syntax_check import _mask_verbatim
+from .tex_tables import CS_RE, _read_balanced, _skip_ws, iter_structural, mask_comments
 
 
 PAGE_COMPLETED = re.compile(
@@ -198,6 +199,34 @@ def normalize_control_word_boundaries(source: str) -> tuple[str, int]:
         out.append(CONTROL_WORD_BEFORE_CJK.sub(replace, line[:comment_at])
                    + line[comment_at:])
     return "".join(out), changed
+
+
+def normalize_math_blank_lines(source: str) -> tuple[str, int]:
+    """Comment out paragraph breaks inside paired math delimiters, retaining lines."""
+    masked = _mask_verbatim(mask_comments(source))
+    closing = {"$": "$", "$$": "$$", r"\(": r"\)", r"\[": r"\]"}
+    expected = None
+    start = 0
+    spans = []
+    # Consume all control sequences so escaped dollars cannot open math mode.
+    for token in re.finditer(r"\\[a-zA-Z@]+|\\[\s\S]|\$\$?", masked):
+        value = token.group()
+        if expected is None and value in closing:
+            start, expected = token.end(), closing[value]
+        elif expected is not None and value == expected:
+            spans.append((start, token.start()))
+            expected = None
+    edits = []
+    span_index = 0
+    for blank in re.finditer(r"(?m)^[ \t]*(?=\r?\n)", source):
+        while span_index < len(spans) and spans[span_index][1] <= blank.start():
+            span_index += 1
+        if (span_index < len(spans)
+                and spans[span_index][0] <= blank.start() < spans[span_index][1]):
+            edits.append(blank.end())
+    for position in reversed(edits):
+        source = source[:position] + "%" + source[position:]
+    return source, len(edits)
 
 
 def normalize_text_mode_math_symbols(source: str) -> tuple[str, int]:

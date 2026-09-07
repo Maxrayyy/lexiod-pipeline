@@ -3,7 +3,12 @@
 from __future__ import annotations
 
 import unittest
+import tempfile
+from pathlib import Path
 
+from .cli import _compile_latex
+from .preamble import inject
+from .syntax_repair import normalize_math_blank_lines
 from .fields import annotate_fields
 from .llm import HeuristicBatchNamer
 from .syntax_check import validate_latex
@@ -12,6 +17,38 @@ from .tex_tables import transform_tex
 
 
 class FieldAnnotationTests(unittest.TestCase):
+    def test_split_scientific_notation_compiles_after_annotation(self) -> None:
+        source = (
+            "\\documentclass{article}\n"
+            "\\newcommand{\\fieldvalue}[1]{#1}\n"
+            "\\newcommand{\\handwritten}[1]{#1}\n"
+            "\\begin{document}\n\\begin{tabular}{p{5cm}}\n"
+            "% #VALUE_ID: LEX-P0001-V0001\n"
+            "% #FIELD_VALUE: coefficient\n"
+            "\\fieldvalue{\\handwritten{1.04}}$\\times10^{\n"
+            "% #VALUE_ID: LEX-P0001-V0002\n"
+            "% #FIELD_VALUE: exponent\n\n"
+            "\\fieldvalue{\\handwritten{7}}}$\\\\\n"
+            "\\end{tabular}\n\\end{document}\n"
+        )
+        normalized, count = normalize_math_blank_lines(source)
+        self.assertEqual(count, 1)
+        transformed = transform_tex(normalized, anchor=False)
+        annotated, records, _ = annotate_fields(
+            transformed, namer=HeuristicBatchNamer()
+        )
+        self.assertIn(
+            r"\hwfield{LEX-P0001-V0001}{\fieldvalue{\handwritten{1.04}}}$\times10^{",
+            annotated,
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "source.tex"
+            for text in (inject(transformed), inject(annotated)):
+                path.write_text(text, encoding="utf-8")
+                ok, log = _compile_latex(path, path.parent, "xelatex", 30, runs=2)
+                self.assertTrue(ok, log[-2500:])
+        self.assertEqual([record.value for record in records], ["1.04", "7"])
+
     def test_multiline_field_keeps_every_paragraph_inside_value(self) -> None:
         source = (
             "\\begin{tabular}{|p{2cm}|p{10cm}|}\n"

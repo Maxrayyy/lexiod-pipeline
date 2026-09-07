@@ -27,6 +27,7 @@ from .llm import HeuristicBatchNamer, LLMBatchNamer
 from .model_config import resolve_model
 from .syntax_check import validate_latex
 from .syntax_repair import (LLMSyntaxRepairer, canonicalize_document_terminator,
+                            normalize_math_blank_lines,
                             normalize_control_word_boundaries,
                             normalize_multicolumn_linebreaks,
                             normalize_text_mode_math_symbols,
@@ -285,6 +286,11 @@ def cmd_optimise(a: argparse.Namespace) -> int:
             "kept visual line breaks inside paragraph-style multicolumn cells",
             repairs=normalized_multicolumn_breaks,
         )
+    src, normalized_math_blanks = normalize_math_blank_lines(src)
+    if normalized_math_blanks:
+        _event("MATH_BLANK_LINES_REPAIRED",
+               "blank lines inside math replaced with comment lines",
+               repairs=normalized_math_blanks)
     layout_evidence = None
     layout_report = None
     if getattr(a, "page_layout_evidence", None):
@@ -1006,9 +1012,9 @@ def cmd_reconcile(a) -> int:
     from .reconcile import FieldReconcileAdapter, reconcile_document
     report = reconcile_document(Path(a.input), Path(a.source_pdf), Path(a.recognition_evidence),
         Path(a.output), Path(a.fields), adapter=FieldReconcileAdapter(a.model),
-        concurrency=a.concurrency, retry_dpi=a.retry_dpi)
+        concurrency=a.concurrency, retry_dpi=a.retry_dpi, review_content=a.review_content)
     _event("RECONCILE_FINISH", "field reconciliation completed", selected=report.selected,
-           confirmed=report.confirmed, failed=report.failed,
+           confirmed=report.confirmed, failed=report.failed, deferred=report.deferred,
            needs_review=sum(field["needs_review"] for field in report.fields), errors=report.errors)
     return 1 if report.selected and report.failed == report.selected else 0
 
@@ -1026,6 +1032,8 @@ def main(argv=None) -> int:
     r.add_argument("--model", help="field review model (environment: RECONCILE_MODEL)")
     r.add_argument("--retry-dpi", type=int, default=480)
     r.add_argument("--concurrency", type=int, default=2)
+    r.add_argument("--review-content", action="store_true",
+                   help="also review uncertain text/OCR/checkbox content; default: format errors only")
     r.set_defaults(func=cmd_reconcile)
 
     o = sub.add_parser("optimise")

@@ -21,6 +21,20 @@ XeLaTeX 编译。任一门禁失败都不会写入完成标记。
 一次最小语法修复，再重新进行结构检查、XeLaTeX 测宽和转换；模型不负责猜测
 列宽。最终编译门禁可单独通过 `--compile-check` 启用。
 
+字段协调 `texopt reconcile` 默认只对日期、批号、数量等格式异常调用模型。
+印刷体或手写文字不确定、OCR 分歧和勾选不清楚均保留首次识别值，交给人工核对；
+JSON 保留 `needs_review`、`review_status: deferred` 和 `review_reasons`，日志报告
+自动复核数 `selected` 与人工核对数 `deferred`。需要全面内容复核时可显式传入
+`--review-content`。此策略不关闭表格结构检查、语法修复或最终 XeLaTeX 编译。
+
+混合流水线的镜像定义保存在本仓库的 `Dockerfile.hybrid`，构建上下文为同时包含
+`Lexoid/` 和 `lexiod-pipeline/` 的父目录。基础镜像为现有的 `lexiod-texopt:u1`；
+删除线所需的 CTAN `ulem.sty` 通过固定 SHA-256 校验值安装。运行镜像构建命令：
+
+```sh
+docker build -f lexiod-pipeline/Dockerfile.hybrid --target runtime -t lexiod-refactor:local .
+```
+
 ## 2. 已确认的 Lexoid 接口
 
 ### 2.1 分页标记
