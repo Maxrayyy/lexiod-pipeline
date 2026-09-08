@@ -304,7 +304,7 @@ def recover_publication(target):
 
 
 def probe_target(target, docker, saved, now, *, inspector=None, stale_seconds=1200):
-    result = {"name": target["name"], "pages": target["pages"], "alerts": [],
+    result = {"name": target["name"], "stem": target["stem"], "pages": target["pages"], "alerts": [],
               "terminal": False, "status": "monitor_error", "issues": []}
     try:
         info = (inspector or inspect_container)(docker, target["name"])
@@ -405,14 +405,15 @@ def render_report(snapshot):
               "publication_recovery_failed": "发布路径归位失败，请检查文件一致性或目录权限",
               "no_recent_progress": "超过20分钟无日志更新", "progress_read_failed": "进度读取失败"}
     lines = [f"# 容器监测\n\n检查时间：{snapshot['checked_at']}\n",
-             "| 容器 | 状态 | 阶段 | 已缓存页 | 新增请求错误 | 新增重试 | 新增流程错误 | TEX已发布 |",
-             "| --- | --- | --- | --- | --- | --- | --- | --- |"]
+             "| 容器 | 当前pdf | 状态 | 阶段 | 已缓存页 | 新增请求错误 | 新增重试 | 新增流程错误 | TEX已发布 |",
+             "| --- | --- | --- | --- | --- | --- | --- | --- | --- |"]
     notes = []
     details = []
     for item in snapshot["containers"]:
         counts = item.get("new_counts", {})
         stage = item.get("stage", "pending")
-        lines.append(f"| {item['name']} | {states.get(item['status'], item['status'])} "
+        pdf_suffix = item.get("stem", "")[-4:] or "-"
+        lines.append(f"| {item['name']} | {pdf_suffix} | {states.get(item['status'], item['status'])} "
                      f"| {stages.get(stage, stage)} | {item.get('cached_pages', 0)}/{item['pages']} "
                      f"| {counts.get('request_errors', 0)} | {counts.get('retries', 0)} "
                      f"| {counts.get('process_errors', 0)} | {'是' if item.get('published') else '否'} |")
