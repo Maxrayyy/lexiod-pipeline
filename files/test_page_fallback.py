@@ -116,6 +116,37 @@ def test_failed_fallback_is_cached_and_original_tex_retained(tmp_path):
     assert calls == [1]
 
 
+@pytest.mark.parametrize("error", [ConnectionError("private response"),
+    type("HTTPFailure", (Exception,), {"status_code": 503})("private response")])
+def test_transport_failure_pauses_upgrade_and_can_resume_after_recovery(tmp_path, error):
+    from lexoid.core.recognition.service import AdaptiveConcurrency
+    from lexoid.core.request_errors import ModelUnavailableError
+    from .page_fallback import PageFallback
+    from lexoid.core.recognition.models import PageRecognitionResult
+
+    source, raw, evidence = sample(tmp_path)
+    calls = []
+
+    def recognize(page, *_):
+        calls.append(1)
+        if len(calls) == 1:
+            raise error
+        return VisionPageResult(3, "fixed\n% LEXOID_PAGE_COMPLETED: 3/3", ())
+
+    kwargs = dict(source=source, cache_dir=tmp_path / "cache", primary_model="gpt-5.6-sol",
+        fallback_model="gpt-6-astra", recognize=recognize, compiler=lambda *_: [],
+        renderer=lambda _, page, dpi, auto: RenderedPage(page, dpi, 100, 200, Image.new("RGB", (100, 200))))
+    result = PageRecognitionResult(3, BROKEN + "% LEXOID_PAGE_COMPLETED: 3/3",
+                                  PageEvidence("recognition/v1", 3, RenderMetadata(240, 100, 200)), "key")
+    gate = AdaptiveConcurrency(2)
+    with pytest.raises(ModelUnavailableError):
+        PageFallback(**kwargs)(result, 3, gate)
+    assert gate.failure is not None
+    output = PageFallback(**kwargs)(result, 3, AdaptiveConcurrency(2))
+    assert output.latex.startswith("fixed")
+    assert len(calls) == 2
+
+
 def test_check_cache_avoids_recompiling_unchanged_pages(tmp_path):
     source, raw, evidence = sample(tmp_path)
     calls = []

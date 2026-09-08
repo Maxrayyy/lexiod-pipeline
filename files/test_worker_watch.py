@@ -51,6 +51,15 @@ def test_successful_exit_without_published_tex_is_reported(tmp_path):
     assert result["alerts"] == []
 
 
+def test_placeholder_publication_is_not_reported_as_success(tmp_path):
+    spec = target(tmp_path)
+    (tmp_path / "sample.tex").write_text("% LEXOID_RECOGNITION_FALLBACK\n\\null")
+    inspector = lambda *_: {"Id": "id", "State": {"Status": "exited", "ExitCode": 0}}
+    result = probe_target(spec, "docker", {}, 1000, inspector=inspector)
+    assert not result["published"]
+    assert "invalid_published_tex" in result["alerts"]
+
+
 def test_docker_unavailable_does_not_mean_tasks_finished(tmp_path):
     def inspector(*_):
         raise subprocess.TimeoutExpired("docker", 15)

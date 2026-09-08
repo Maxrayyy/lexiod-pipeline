@@ -7,6 +7,7 @@ from pathlib import Path
 import re
 
 from .syntax_repair import PAGE_COMPLETED, canonicalize_document_terminator, split_lexoid_pages
+from .tex_tables import _peel_prefix, iter_structural, mask_comments, split_align_body
 
 
 BLOCK_START = "% >>> lexoid physical layout >>>"
@@ -16,6 +17,9 @@ BLOCK = r"""
 \usepackage{geometry}
 \usepackage{adjustbox,etoolbox}
 \makeatletter
+% Route form symbols to the CJK font instead of Latin Modern's missing glyphs.
+\@ifpackageloaded{xeCJK}{%
+  \xeCJKDeclareCharClass{CJK}{"2460 -> "2469, "25CF}}{}
 \renewcommand{\maketitle}{%
   \par\begingroup\centering
   {\large\bfseries\@title\par}%
@@ -48,21 +52,39 @@ BLOCK = r"""
   \LexoidPageMark{#1}{start}}
 \newcommand{\LexoidPageEnd}[1]{%
   \par\LexoidPageMark{#1}{end}\endgroup}
+% Fixed-height boxes must report their full content size before outer fitting.
+\patchcmd{\@iiiparbox}{\setlength\@tempdimb{#2}}{%
+  \setlength\@tempdimb{#2}%
+  \ifdim\@tempdimb<\dimexpr\ht\@tempboxa+\dp\@tempboxa\relax
+    \@tempdimb=\dimexpr\ht\@tempboxa+\dp\@tempboxa\relax
+  \fi}{}{\PackageWarning{lexoid}{Fixed-height box fitting unavailable}}
 % Fit outer unbreakable panels after headings, reserving room for a footer.
 \newdimen\LexoidPanelHeight
-\BeforeBeginEnvironment{minipage}{%
+\newcommand{\LexoidPanelLimit}{%
+  \LexoidPanelHeight=\dimexpr\pagegoal-\pagetotal\relax
+  \ifdim\LexoidPanelHeight>\textheight \LexoidPanelHeight=\textheight\fi
+  \ifdim\LexoidPanelHeight<.5\textheight \LexoidPanelHeight=\textheight\fi
+  \advance\LexoidPanelHeight by -3\baselineskip}
+\newcommand{\LexoidPanelBegin}{%
   \begingroup
   \ifinner
-    \let\LexoidMinipageEnd\relax
+    \let\LexoidPanelEnd\relax
   \else
-    \LexoidPanelHeight=\dimexpr\pagegoal-\pagetotal\relax
-    \ifdim\LexoidPanelHeight>\textheight \LexoidPanelHeight=\textheight\fi
-    \ifdim\LexoidPanelHeight<.5\textheight \LexoidPanelHeight=\textheight\fi
-    \advance\LexoidPanelHeight by -3\baselineskip
-    \def\LexoidMinipageEnd{\csname end\endcsname{adjustbox}}%
-    \csname begin\endcsname{adjustbox}{max totalsize={\linewidth}{\LexoidPanelHeight}}%
+    \LexoidPanelLimit
+    \def\LexoidPanelEnd{\csname end\endcsname{adjustbox}}%
+    \csname begin\endcsname{adjustbox}{max totalsize={\linewidth}{\LexoidPanelHeight},valign=t}%
   \fi}
-\AfterEndEnvironment{minipage}{\LexoidMinipageEnd\endgroup}
+\BeforeBeginEnvironment{minipage}{\LexoidPanelBegin}
+\AfterEndEnvironment{minipage}{\LexoidPanelEnd\endgroup}
+\BeforeBeginEnvironment{tabular}{\LexoidPanelBegin}
+\AfterEndEnvironment{tabular}{\LexoidPanelEnd\endgroup}
+\let\LexoidOriginalRotatebox\rotatebox
+\renewcommand{\rotatebox}[3][]{%
+  \ifinner\LexoidOriginalRotatebox[#1]{#2}{#3}%
+  \else\begingroup\LexoidPanelLimit
+    \adjustbox{max totalsize={\linewidth}{\LexoidPanelHeight}}{%
+      \LexoidOriginalRotatebox[#1]{#2}{#3}}%
+  \endgroup\fi}
 \makeatother
 % <<< lexoid physical layout <<<
 """
@@ -82,6 +104,7 @@ def prepare_layout(source, evidence, profiles=None):
     """Use render dimensions after orientation correction; retain all source text."""
     profiles = profiles or {}
     source = _remove_generated_layout(source)
+    source = _lower_empty_cell_spacers(source)
     source, _ = canonicalize_document_terminator(source)
     markers = [(int(m[1]), int(m[2])) for m in PAGE_COMPLETED.finditer(source)]
     pages = evidence.get("pages", [])
@@ -122,6 +145,39 @@ def prepare_layout(source, evidence, profiles=None):
     report = {"schema": "page-layout/v1", "ok": False, "expected_pages": total,
               "expected_sizes": sizes, "profiles": {str(p): profiles.get(p, 0) for p in range(1, total + 1)}}
     return "".join(chunks), report
+
+
+def _lower_empty_cell_spacers(source):
+    """A blank cell's minimum height extends downward from its first baseline."""
+    edits = []
+    rule = re.compile(r"\s*(\\rule\s*\{\s*0(?:pt|bp|cm|mm|in)\s*\}\s*\{([^{}]+)\})\s*\Z")
+
+    def scan(segment, base=0):
+        tokens = iter(iter_structural(mask_comments(segment)))
+        for begin in tokens:
+            if begin.kind != "align_begin":
+                continue
+            end = next((token for token in tokens if token.kind == "align_end"), None)
+            if end is None:
+                continue
+            offset = base + begin.body_start
+            for row in split_align_body(segment[begin.body_start:end.start]):
+                for cell in row.cells:
+                    scan(cell.text, offset)
+                    _, payload = _peel_prefix(mask_comments(cell.text))
+                    match = rule.fullmatch(payload)
+                    if match:
+                        height = match[2]
+                        replacement = rf"\rule[-\dimexpr{height}-\ht\strutbox\relax]{{0pt}}{{{height}}}"
+                        prefix_size = len(cell.text) - len(payload)
+                        edits.append((offset + prefix_size + match.start(1),
+                                      offset + prefix_size + match.end(1), replacement))
+                    offset += len(cell.text) + len(cell.sep)
+
+    scan(source)
+    for start, end, text in sorted(edits, reverse=True):
+        source = source[:start] + text + source[end:]
+    return source
 
 
 def validate_page_map(expected, records, actual):

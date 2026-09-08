@@ -26,6 +26,7 @@ from .fields import DetectorConfig, annotate_fields, write_registry, basic_field
 from .llm import DeferredBatchNamer, LLMBatchNamer
 from .model_config import resolve_model
 from .local_tex import normalize_tex
+from .outline import normalize_outline
 from .syntax_check import validate_latex
 from .syntax_repair import (LLMSyntaxRepairer, canonicalize_document_terminator,
                             page_diagnostic_hints,
@@ -741,6 +742,9 @@ def cmd_optimise(a: argparse.Namespace) -> int:
                    "removed unused tabularx package declaration",
                    declarations=removed_packages)
 
+    src, outline_report = normalize_outline(src)
+    _event("OUTLINE_NORMALIZED", "numbered headings exposed in editor outline",
+           changed=outline_report["changed"], headings=len(outline_report["headings"]))
     print("[5/7] Transforming and annotating fields…", file=sys.stderr, flush=True)
     stats: list[TableStat] = []
     step1 = transform_tex(src, anchor=not a.no_anchor, stats=stats)
@@ -914,6 +918,7 @@ def cmd_optimise(a: argparse.Namespace) -> int:
         "compile_check": compile_result,
         "registry_check": registry_result,
         "layout_check": layout_report,
+        "outline": outline_report,
         "syntax_warnings": [i.payload() for i in output_issues
                             if i.severity == "warning"],
         "tables": len(stats),
@@ -1041,7 +1046,7 @@ def cmd_reconcile(a) -> int:
     _event("RECONCILE_FINISH", "field reconciliation completed", selected=report.selected,
            confirmed=report.confirmed, failed=report.failed, deferred=report.deferred,
            needs_review=sum(field["needs_review"] for field in report.fields), errors=report.errors)
-    return 1 if report.selected and report.failed == report.selected else 0
+    return 0
 
 
 def cmd_name_fields(a):

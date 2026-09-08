@@ -18,6 +18,25 @@ from .model_config import resolve_model
 from .textio import write_utf8_atomic
 
 
+class ModelServicePaused(RuntimeError):
+    pass
+
+
+def _service_pause_recorded(path, offset):
+    if not path.is_file():
+        return False
+    with path.open("rb") as stream:
+        stream.seek(offset)
+        for line in stream:
+            try:
+                event = json.loads(line)
+                if event.get("event") == "model_service_unavailable":
+                    return True
+            except (ValueError, AttributeError):
+                continue
+    return False
+
+
 @dataclass(frozen=True)
 class BatchConfig:
     ocr: str = "none"
@@ -32,7 +51,7 @@ class BatchConfig:
     retry_dpi: int = 480
     vision_concurrency: int = 4
     reconcile_concurrency: int = 2
-    optimizer_version: str = "texopt-layout-v6-local-deferred-naming"
+    optimizer_version: str = "texopt-layout-v10-outline-siblings"
     timeout: int = 7200
     publish_root: str | None = None
 
@@ -95,13 +114,13 @@ def build_stage_commands(source, source_root, output_root, config):
             "--output", str(p["raw"]), "--model", config.vision_model, "--ocr", config.ocr,
             "--render-dpi", str(config.render_dpi), "--evidence-output", str(p["evidence"]),
             "--cache-dir", str(cache), "--vision-concurrency", str(config.vision_concurrency),
-            "--auto-orient", "--resume"], (Path(source),), (p["raw"], p["evidence"]), "evidence-latex-v6-local-repair"),
+            "--auto-orient", "--resume"], (Path(source),), (p["raw"], p["evidence"]), "evidence-latex-v7-network-pause"),
         StageCommand("reconcile", ["texopt", "reconcile", str(p["raw"]),
             "--source-pdf", str(source), "--recognition-evidence", str(p["evidence"]),
             "-o", str(p["reconciled"]), "--fields", str(p["fields"]),
             "--model", config.reconcile_model, "--retry-dpi", str(config.retry_dpi),
             "--concurrency", str(config.reconcile_concurrency)],
-            (Path(source), p["raw"], p["evidence"]), (p["reconciled"], p["fields"]), "reconcile-v3-format-only"),
+            (Path(source), p["raw"], p["evidence"]), (p["reconciled"], p["fields"]), "reconcile-v4-outage-deferred"),
         StageCommand("optimise", ["texopt", "optimise", str(p["reconciled"]),
             "-o", str(p["work_optimized"]), "--source-registry", str(p["fields"]),
             "--registry", str(p["registry"]), "--report", str(p["report"]),
@@ -137,6 +156,16 @@ def _complete_pages(path, total):
                          Path(path).read_text("utf-8"))
     if markers != [(str(page), str(total)) for page in range(1, total + 1)]:
         raise ValueError(f"Missing, duplicate, or unordered physical pages in {path}")
+    require_recognized_pages(path)
+
+
+def require_recognized_pages(path):
+    from .syntax_repair import split_lexoid_pages
+    text = Path(path).read_text("utf-8")
+    marker = re.compile(r"(?m)^\s*%\s*LEXOID_RECOGNITION_FALLBACK\b")
+    if marker.search(text):
+        pages = [number for number, _, chunk in split_lexoid_pages(text) if marker.search(chunk)]
+        raise ValueError(f"Missing recognition content on pages {pages}: {path}")
 
 
 def _validate(stage, total):
@@ -166,6 +195,7 @@ def _run(stage, log_path, timeout):
 
 
 def _publish(source, destination):
+    require_recognized_pages(source)
     destination.parent.mkdir(parents=True, exist_ok=True)
     temporary = destination.with_name(f".{destination.name}.tmp")
     shutil.copyfile(source, temporary)
@@ -231,6 +261,8 @@ def run_batch(source_root, output_root, config=None, runner=None, page_counter=N
                     try:
                         status = runner(stage, log_path)
                         if status != 0:
+                            if _service_pause_recorded(calls_path, calls_offset):
+                                raise ModelServicePaused(f"Model service unavailable; progress retained; see {log_path}")
                             raise RuntimeError(f"{stage.stage} exited {status}; see {log_path}")
                         _validate(stage, total)
                     except Exception as exc:
@@ -252,7 +284,9 @@ def run_batch(source_root, output_root, config=None, runner=None, page_counter=N
                 entry["status"] = "done"
             except Exception as exc:
                 failures += 1
-                entry.update(status="failed", error=str(exc))
-                print(f"FAILED {entry['source']}: {exc}", flush=True)
+                entry.update(status="paused" if isinstance(exc, ModelServicePaused) else "failed", error=str(exc))
+                print(f"{entry['status'].upper()} {entry['source']}: {exc}", flush=True)
             write_utf8_atomic(output_root / "manifest.json", json.dumps(manifest, ensure_ascii=False, indent=2))
+            if entry["status"] == "paused":
+                break
         return 1 if failures else 0

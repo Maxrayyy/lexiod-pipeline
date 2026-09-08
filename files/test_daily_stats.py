@@ -91,6 +91,21 @@ def test_unpublished_or_hash_mismatch_is_not_complete(tmp_path):
     assert poll(config, NOW)["days"][0]["completed_pdfs"] == 0
 
 
+def test_placeholder_output_is_excluded_from_completed_page_totals(tmp_path):
+    db_path, scratch, published = fixture_job(tmp_path)
+    tex = "% LEXOID_RECOGNITION_FALLBACK\n\\null\n% LEXOID_PAGE_COMPLETED: 1/1\n"
+    work = scratch / "sample.optimized.tex"
+    work.write_text(tex)
+    published.write_text(tex)
+    with sqlite3.connect(db_path) as db:
+        remote = "/data/workers/BATCH1/.pipeline/sample/sample.optimized.tex"
+        db.execute("UPDATE jobs SET metadata_json=?", (json.dumps({
+            "outputs": {remote: hashlib.sha256(work.read_bytes()).hexdigest()}}),))
+    result = poll(config_for(tmp_path), NOW)
+    assert result["days"][0]["completed_pdfs"] == 0
+    assert any("占位" in warning for warning in result["warnings"])
+
+
 def test_running_job_with_pdf_is_not_counted_and_utc_day_is_converted(tmp_path):
     db_path, _, _ = fixture_job(tmp_path, completed="2026-09-06T16:01:00+00:00")
     config = config_for(tmp_path)

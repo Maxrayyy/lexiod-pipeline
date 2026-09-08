@@ -121,6 +121,68 @@ def test_failed_compile_never_publishes_optimized_tex(tmp_path):
     assert not paths["optimized"].exists()
 
 
+@pytest.mark.parametrize("bad_stage", ["recognize", "optimise"])
+def test_placeholder_never_publishes_even_with_successful_compile(tmp_path, bad_stage):
+    source = tmp_path / "input/record.pdf"
+    source.parent.mkdir()
+    source.write_bytes(b"pdf")
+    paths = artifact_paths(source, source.parent, tmp_path / "out")
+    paths["optimized"].parent.mkdir(parents=True)
+    paths["optimized"].write_text("previous good result")
+    called = []
+
+    def runner(stage, log):
+        called.append(stage.stage)
+        for path in stage.outputs:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            if path.suffix == ".tex":
+                body = "% LEXOID_RECOGNITION_FALLBACK\n\\null" if stage.stage == bad_stage else "content"
+                path.write_text(body + "\n% LEXOID_PAGE_COMPLETED: 1/1\n")
+            elif path.name.endswith(".recognition.json"):
+                path.write_text(json.dumps({"schema": "recognition/v1", "pages": [{"page": 1}]}))
+            elif path.name.endswith(".report.json"):
+                path.write_text(json.dumps({"compile_check": {"ok": True, "passes": 2}}))
+            else:
+                path.write_text("{}")
+        return 0
+
+    assert run_batch(source.parent, tmp_path / "out", runner=runner, page_counter=lambda _: 1) == 1
+    assert paths["optimized"].read_text() == "previous good result"
+    if bad_stage == "recognize":
+        assert called == ["recognize"]
+
+
+def test_publish_rejects_placeholder_but_allows_recognized_blank_page(tmp_path):
+    from files.stages import _publish
+    source, target = tmp_path / "source.tex", tmp_path / "public.tex"
+    source.write_text("% LEXOID_RECOGNITION_FALLBACK\n\\null\n% LEXOID_PAGE_COMPLETED: 1/1\n")
+    with pytest.raises(ValueError, match="recognition"):
+        _publish(source, target)
+    source.write_text("\\null\n% LEXOID_PAGE_COMPLETED: 1/1\n")
+    _publish(source, target)
+    assert target.exists()
+
+
+def test_service_outage_pauses_batch_before_the_next_document(tmp_path):
+    source_root = tmp_path / "input"
+    source_root.mkdir()
+    for name in ("a.pdf", "b.pdf"):
+        (source_root / name).write_bytes(b"pdf")
+    visited = []
+
+    def runner(stage, log):
+        visited.append(stage.inputs[0].name)
+        log.parent.mkdir(parents=True, exist_ok=True)
+        log.with_suffix(".calls.jsonl").write_text(json.dumps({
+            "event": "model_service_unavailable", "stage": "recognize", "page": 2}) + "\n")
+        return 1
+
+    assert run_batch(source_root, tmp_path / "out", runner=runner, page_counter=lambda _: 2) == 1
+    assert visited == ["a.pdf"]
+    result = json.loads((tmp_path / "out/manifest.json").read_text())
+    assert result["files"][0]["status"] == "paused"
+
+
 def test_exact_path_queue_distinguishes_same_names_and_empty_means_no_work(tmp_path):
     source_root = tmp_path / "input"
     for relative in ("A31/record.pdf", "A32/record.pdf"):

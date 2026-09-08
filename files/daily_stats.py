@@ -17,10 +17,10 @@ import sys
 from zoneinfo import ZoneInfo
 
 if __package__:
-    from .worker_watch import atomic_write
+    from .worker_watch import atomic_write, has_recognition_placeholder
     from .daily_costs import combine_costs, cost_label, hydrate_billing, price_record
 else:
-    from worker_watch import atomic_write
+    from worker_watch import atomic_write, has_recognition_placeholder
     from daily_costs import combine_costs, cost_label, hydrate_billing, price_record
 
 
@@ -155,6 +155,8 @@ def completion_record(job, jobs, config, accounted, previous_at=None):
     for path in (work_tex, published, pdf):
         if not path.is_file() or path.stat().st_size == 0:
             raise ValueError(f"完成产物缺失：{path}")
+    if has_recognition_placeholder(work_tex) or has_recognition_placeholder(published):
+        raise ValueError("TEX 含识别失败占位页，不计入完成统计")
     with pdf.open("rb") as stream:
         if not stream.read(5) == b"%PDF-":
             raise ValueError("编译 PDF 文件头无效")

@@ -150,6 +150,31 @@ def test_default_policy_still_reviews_invalid_date(tmp_path):
     assert report.deferred == 0
 
 
+def test_reconcile_outage_preserves_tex_and_stops_requests_without_failing_cli(tmp_path, monkeypatch):
+    from urllib.error import URLError
+    from . import cli, reconcile
+    tex, data = date_fixture("2023", "02", "29")
+    source, ev = tmp_path / "raw.tex", tmp_path / "raw.json"
+    source.write_text(tex)
+    ev.write_text(json.dumps(data))
+    calls = []
+
+    class Offline(Adapter):
+        def reconcile(self, *args):
+            calls.append(1)
+            raise URLError("Connection refused")
+
+    monkeypatch.setattr(reconcile, "FieldReconcileAdapter", lambda _: Offline())
+    output, fields = tmp_path / "out.tex", tmp_path / "fields.json"
+    assert cli.main(["reconcile", str(source), "--source-pdf", "source.pdf",
+        "--recognition-evidence", str(ev), "-o", str(output), "--fields", str(fields),
+        "--concurrency", "1"]) == 0
+    assert len(calls) == 1
+    assert {k: v["value"] for k, v in field_segments(output.read_text()).items()} == {
+        k: v["value"] for k, v in field_segments(tex).items()}
+    assert all(f["needs_review"] for f in json.loads(fields.read_text())["fields"])
+
+
 def test_confirmed_reply_updates_value_marker_and_history(tmp_path):
     report = run(tmp_path, Adapter())
     assert r"\fieldvalue{\handwritten{Zhang}}" in report.tex

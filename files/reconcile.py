@@ -18,6 +18,7 @@ import unicodedata
 import urllib.request
 
 from pylatexenc.latex2text import LatexNodes2Text, MacroTextSpec, get_default_latex_context_db
+from lexoid.core.request_errors import is_request_failure
 
 from .fields import _extract_fieldvalue
 from .llm import openai_api_url
@@ -293,6 +294,8 @@ def reconcile_document(tex_path, source_pdf, evidence_path, output_path, fields_
     except (OSError, ValueError):
         cache = {}
 
+    unavailable = threading.Event()
+
     def resolve(candidate):
         fingerprint = hashlib.sha256(json.dumps({"source": evidence["document_sha256"],
             "field": candidate.field, "render": candidate.render, "dpi": retry_dpi,
@@ -300,10 +303,20 @@ def reconcile_document(tex_path, source_pdf, evidence_path, output_path, fields_
         try:
             response = cache.get(fingerprint)
             if response is None:
+                if unavailable.is_set():
+                    return candidate, fingerprint, None, {
+                        "type": "ReviewDeferred", "message": "Model service unavailable; original TEX retained"}
                 response = adapter.reconcile(source_pdf, candidate, retry_dpi)
             return candidate, fingerprint, _validate_reply(response), None
         except Exception as exc:
-            return candidate, fingerprint, None, {"type": type(exc).__name__, "message": str(exc)[:500]}
+            service_failure = is_request_failure(exc)
+            if service_failure:
+                unavailable.set()
+                emit({"event": "reconcile_service_unavailable", "stage": "reconcile",
+                      "field_id": candidate.field_id, "error_type": type(exc).__name__,
+                      "action": "defer_remaining_reviews"})
+            return candidate, fingerprint, None, {"type": type(exc).__name__,
+                "message": "Model service unavailable; original TEX retained" if service_failure else str(exc)[:500]}
 
     records = {f["field_id"]: {key: f[key] for key in (
         "field_id", "label", "value", "paddle_text", "model_guess", "confidence", "needs_review", "history")}
@@ -352,6 +365,7 @@ def reconcile_document(tex_path, source_pdf, evidence_path, output_path, fields_
                 failed += error is not None
                 if error is not None:
                     errors.append({"field_id": fid, **error})
+                    record.update(review_status="deferred", review_error=error["type"])
                 record["needs_review"] = True
                 if not _REVIEW.search(segment):
                     marker = ("#TODO #HANDWRITTEN" if r"\handwritten{" in original["payload"] else "#TODO #REVIEW")

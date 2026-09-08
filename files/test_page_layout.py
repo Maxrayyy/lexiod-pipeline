@@ -151,12 +151,98 @@ def test_layout_preserves_explicit_preamble_title_authors_and_date(tmp_path, aut
         document.close()
 
 
+@pytest.mark.parametrize("kind", ["tall_table", "raised_spacer", "fixed_height", "rotated_panel", "unequal_baselines"])
+def test_unbreakable_content_keeps_every_line_visible(tmp_path, kind):
+    import pypdfium2 as pdfium
+    from .page_layout import prepare_layout
+
+    rows = "\n".join(rf"LINE{i:03d}\\" for i in range(45))
+    if kind == "tall_table":
+        body = r"\noindent\begin{tabular}{|p{0.9\linewidth}|}\hline " + rows + r"\hline\end{tabular}"
+    elif kind == "raised_spacer":
+        body = (r"\noindent\begin{tabular}{|p{0.5\linewidth}|p{0.4\linewidth}|}\hline "
+                r"\rule{0pt}{0.84\textheight} & \begin{minipage}[t]{\linewidth}" + rows +
+                r"\end{minipage}\\\hline\end{tabular}")
+    elif kind == "fixed_height":
+        body = (r"\noindent\begin{minipage}[t]{0.9\linewidth}"
+                r"\fbox{\begin{minipage}[t][40pt][t]{0.9\linewidth}" + rows +
+                r"\end{minipage}}\end{minipage}")
+    elif kind == "unequal_baselines":
+        def panel(start, end):
+            lines = "\n".join(rf"LINE{i:03d}\\" for i in range(start, end))
+            return (r"\fbox{\begin{minipage}[t][40pt][t]{0.9\linewidth}TITLE\par"
+                    r"\begin{tabular}{l}" + lines + r"\end{tabular}\par BOTTOM\end{minipage}}")
+        body = (r"\noindent\begin{minipage}[t]{0.43\linewidth}"
+                r"\begin{tabular}{l}" + rows[:rows.find("LINE025")] +
+                r"\end{tabular}\end{minipage}\hfill"
+                r"\begin{minipage}[t]{0.53\linewidth}" + panel(0, 22) +
+                r"\par\vspace{8pt}" + panel(22, 45) + r"\end{minipage}")
+    else:
+        body = (r"\begin{center}\rotatebox{90}{\begin{minipage}{650pt}" + rows +
+                r"\end{minipage}}\end{center}")
+    source = SOURCE.replace("First page body.", body + r"\par FOOTER")
+    fixed, report = prepare_layout(source, evidence())
+    target = tmp_path / "fitted.tex"
+    target.write_text(fixed)
+    ok, log = cli._compile_latex(target, tmp_path, "xelatex", 60, layout_report=report)
+    assert ok, log
+    assert report["outside_pages"] == [], report
+    assert report["actual_pages"] == 2
+    doc = pdfium.PdfDocument(str(target.with_suffix(".layout.pdf")))
+    try:
+        page = doc[0]
+        textpage = page.get_textpage()
+        text = textpage.get_text_bounded()
+        for i in range(45):
+            assert f"LINE{i:03d}" in text
+        assert "FOOTER" in text
+        textpage.close()
+        page.close()
+    finally:
+        doc.close()
+    assert prepare_layout(fixed, evidence())[0] == fixed
+
+
+def test_circled_numbers_and_bullets_have_visible_glyphs(tmp_path):
+    import pypdfium2 as pdfium
+    from .page_layout import prepare_layout
+
+    symbols = "".join(chr(code) for code in range(0x2460, 0x246A)) + chr(0x25CF)
+    original = SOURCE.replace(r"\documentclass{article}",
+                              r"\documentclass[fontset=fandol]{ctexart}")
+    source, report = prepare_layout(original.replace("First page body.", symbols), evidence())
+    target = tmp_path / "symbols.tex"
+    target.write_text(source)
+    ok, log = cli._compile_latex(target, tmp_path, "xelatex", 60, layout_report=report)
+    assert ok, log
+    assert "Missing character:" not in log
+    doc = pdfium.PdfDocument(str(target.with_suffix(".layout.pdf")))
+    try:
+        page = doc[0]
+        textpage = page.get_textpage()
+        text = textpage.get_text_bounded()
+        assert all(symbol in text for symbol in symbols)
+        textpage.close()
+        page.close()
+    finally:
+        doc.close()
+
+
 def test_same_total_with_wrong_page_assignment_is_rejected():
     from .page_layout import validate_page_map
 
     errors = validate_page_map(2, [(1, "start", 1), (1, "end", 2),
                                    (2, "start", 2), (2, "end", 2)], 2)
     assert errors
+
+
+def test_spacer_repair_preserves_indented_rules_comments_and_braces():
+    from .page_layout import _lower_empty_cell_spacers
+    prefix = "\\begin{tabular}{ll}\n  \\hline\n% blank cell\n   "
+    suffix = " & value\\\\\n\\end{tabular}"
+    original = prefix + r"\rule{0pt}{8mm}" + suffix
+    fixed = _lower_empty_cell_spacers(original)
+    assert fixed == prefix + r"\rule[-\dimexpr8mm-\ht\strutbox\relax]{0pt}{8mm}" + suffix
 
 
 def test_dimension_check_covers_spill_pages_when_page_count_differs(tmp_path):

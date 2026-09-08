@@ -262,7 +262,13 @@ def cached_pages(work_root):
         return 0
     current = max(generations, key=lambda path: path.stat().st_mtime)
     return sum(path.stem.isdigit() and path.with_suffix(".tex").is_file()
+               and not has_recognition_placeholder(path.with_suffix(".tex"))
                for path in current.glob("*.json"))
+
+
+def has_recognition_placeholder(path):
+    return bool(re.search(r"(?m)^\s*%\s*LEXOID_RECOGNITION_FALLBACK\b",
+                          Path(path).read_text("utf-8")))
 
 
 def recover_publication(target):
@@ -288,6 +294,8 @@ def recover_publication(target):
         return False
     if any(hashlib.sha256(path.read_bytes()).hexdigest() != hashes[0] for path in (source, scratch)):
         raise ValueError("Published file does not match completed optimizer output")
+    if has_recognition_placeholder(source):
+        raise ValueError("Missing recognition content; publication recovery refused")
     destination.parent.mkdir(parents=True, exist_ok=True)
     # Hard-link first so an existing destination can never be overwritten.
     os.link(source, destination)
@@ -323,6 +331,14 @@ def probe_target(target, docker, saved, now, *, inspector=None, stale_seconds=12
             result["alerts"].append("publication_recovery_failed")
             result["publication_recovery_error"] = type(exc).__name__
     result["published"] = output.is_file() and output.stat().st_size > 0
+    if result["published"]:
+        try:
+            if has_recognition_placeholder(output):
+                result["published"] = False
+                result["alerts"].append("invalid_published_tex")
+        except (OSError, UnicodeError):
+            result["published"] = False
+            result["alerts"].append("invalid_published_tex")
     if status == "exited" and state.get("ExitCode") == 0 and not result["published"]:
         result["alerts"].append("missing_published_tex")
 
@@ -385,6 +401,7 @@ def render_report(snapshot):
     alerts = {"oom_killed": "内存不足被终止", "container_failed": "容器异常退出",
               "container_missing": "容器不存在", "unhealthy": "健康检查失败",
               "missing_published_tex": "已退出但没有发布 TEX", "docker_unavailable": "无法连接 Docker",
+              "invalid_published_tex": "发布文件包含识别失败占位页或无法读取，不可作为完成结果",
               "publication_recovery_failed": "发布路径归位失败，请检查文件一致性或目录权限",
               "no_recent_progress": "超过20分钟无日志更新", "progress_read_failed": "进度读取失败"}
     lines = [f"# 容器监测\n\n检查时间：{snapshot['checked_at']}\n",

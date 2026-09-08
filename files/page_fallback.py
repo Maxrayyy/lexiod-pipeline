@@ -173,6 +173,7 @@ class PageFallback:
         return normalized
 
     def __call__(self, result, total, gate=None):
+        from lexoid.core.request_errors import ModelUnavailableError, is_request_failure, is_request_failure_name
         from lexoid.core.model_telemetry import call_context
         from lexoid.core.recognition.models import FieldEvidence, VisionPageResult
         from lexoid.core.recognition.vision import RecoverableVisionError, validate_page_checkpoint
@@ -204,7 +205,11 @@ class PageFallback:
         record = None
         if record_path.exists():
             record = json.loads(record_path.read_text())
-        else:
+            if record.get("status") == "failed" and (record.get("retryable_service_error")
+                    or is_request_failure_name(record.get("error_type", ""))):
+                write_utf8_atomic(directory / "previous-request-failure.json", json.dumps(record, indent=2))
+                record = None
+        if record is None:
             write_utf8_atomic(directory / "primary.tex", original)
             record = {"page": number, "total": total, "primary_model": self.primary,
                       "fallback_model": self.model, "reason": [i.payload() for i in errors],
@@ -232,6 +237,15 @@ class PageFallback:
                 write_utf8_atomic(directory / "fallback.tex", candidate.latex)
             except Exception as exc:
                 record.update(status="failed", error_type=type(exc).__name__)
+                if is_request_failure(exc):
+                    record["retryable_service_error"] = True
+                    write_utf8_atomic(record_path, json.dumps(record, ensure_ascii=False, indent=2))
+                    error = exc if isinstance(exc, ModelUnavailableError) else ModelUnavailableError(number, exc)
+                    if gate:
+                        gate.stop(error)
+                    emit({"event": "model_service_unavailable", "stage": "recognize", "page": number,
+                          "error_type": type(exc).__name__, "action": "pause_document"})
+                    raise error from None
             write_utf8_atomic(record_path, json.dumps(record, ensure_ascii=False, indent=2))
 
         if record["status"] == "returned":
