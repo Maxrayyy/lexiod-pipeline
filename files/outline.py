@@ -75,6 +75,15 @@ def normalize_outline(source):
                 level = LEVELS[match[1].count(".")]
                 if node.macroname in LEVELS and (not args[0] or args[0].latex_verbatim() != "*"):
                     continue
+                if node.macroname == "textbf" and re.search(
+                        r"#VALUE_ID:|\\(?:fieldvalue|handwritten|hwfield)\b", title):
+                    boundary = re.search(r"[\uff08(\n%]|\\(?:fieldvalue|handwritten|hwfield|underline|makebox)\b", title)
+                    prefix_title = title_text(title[:boundary.start()]) if boundary else ""
+                    prefix_match = NUMBER.match(prefix_title)
+                    if prefix_match:
+                        original_heading(arg.pos + 1, arg.pos + 1 + boundary.start(),
+                                         prefix_title, prefix_match)
+                    continue
                 if node.macroname == "textbf" and plain != title:
                     original_heading(node.pos, node.pos + node.len, plain, match)
                     continue

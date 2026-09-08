@@ -67,6 +67,16 @@ def test_plain_numbered_heading_with_same_parent_as_styled_siblings():
     assert normalize_outline(fixed)[0] == fixed
 
 
+def test_editable_fields_inside_heading_are_not_duplicated_or_moved():
+    field = "% #VALUE_ID: LEX-P0001-V0001\n\\fieldvalue{13}"
+    source = document("\\noindent\\textbf{2\\quad Operation (Start time\n" + field + ")}")
+    fixed, report = normalize_outline(source)
+    assert fixed.count(field) == 1
+    assert r"\section*{2 Operation}" in fixed
+    assert len(report["headings"]) == 1
+    assert normalize_outline(fixed)[0] == fixed
+
+
 def test_pdf_layout_is_identical_after_outline_normalization(tmp_path):
     import subprocess
     import pypdfium2 as pdfium
@@ -83,6 +93,8 @@ Next line.
 \textbf{4.1.1.1 Equipment}\par
 \noindent 4.1.1.2 Materials
 \textbf{4.1.2} Module\par
+\providecommand{\fieldvalue}[1]{#1}
+\noindent\textbf{5\quad Operation (Start time \underline{\fieldvalue{13}}:\underline{39})}\par
 """)
     fixed, _ = normalize_outline(source)
     rendered = []

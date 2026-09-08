@@ -8,18 +8,44 @@ import time
 import uuid
 
 
+INITIALIZATION_TIMEOUT = 30
+
+
+def is_sqlite_lock_error(exc):
+    if not isinstance(exc, sqlite3.OperationalError):
+        return False
+    code = getattr(exc, "sqlite_errorcode", None)
+    if code is not None:
+        return code & 0xff in (5, 6)  # SQLITE_BUSY / SQLITE_LOCKED, including extended codes.
+    # Python 3.10 does not expose SQLite error codes.
+    return str(exc).lower() in ("database is locked", "database table is locked",
+                                "database schema is locked")
+
+
 class NamingCache:
     def __init__(self, path):
         self.path = Path(path)
         self.path.parent.mkdir(parents=True, exist_ok=True)
-        with self.connect() as db:
-            db.execute("PRAGMA journal_mode=WAL")
-            db.execute("CREATE TABLE IF NOT EXISTS names ("
-                       "key TEXT PRIMARY KEY, owner TEXT, expires REAL, status TEXT, payload TEXT)")
+        deadline = time.monotonic() + INITIALIZATION_TIMEOUT
+        while True:
+            try:
+                # WAL setup can bypass SQLite's busy timeout. Retry on a fresh
+                # connection so competing initializers release their read locks.
+                with self.connect(timeout=0) as db:
+                    if db.execute("PRAGMA journal_mode").fetchone()[0].lower() != "wal":
+                        db.execute("PRAGMA journal_mode=WAL")
+                    db.execute("CREATE TABLE IF NOT EXISTS names ("
+                               "key TEXT PRIMARY KEY, owner TEXT, expires REAL, status TEXT, payload TEXT)")
+                break
+            except sqlite3.OperationalError as exc:
+                remaining = deadline - time.monotonic()
+                if not is_sqlite_lock_error(exc) or remaining <= 0:
+                    raise
+                time.sleep(min(.05, remaining))
 
     @contextmanager
-    def connect(self):
-        db = sqlite3.connect(self.path, timeout=30)
+    def connect(self, *, timeout=30):
+        db = sqlite3.connect(self.path, timeout=timeout)
         try:
             with db:
                 yield db

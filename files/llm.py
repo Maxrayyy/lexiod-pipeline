@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import logging
 import os
 import re
 import urllib.error
@@ -38,7 +39,7 @@ from typing import Dict, List, Optional, Protocol
 from .fields import is_hashy, slug, tex_to_plain
 from .model_config import resolve_model
 from .tex_tables import _read_balanced, _skip_ws, mask_comments
-from .naming_cache import NamingCache
+from .naming_cache import NamingCache, is_sqlite_lock_error
 
 ANTHROPIC_API_URL = "https://api.anthropic.com/v1/messages"
 
@@ -287,7 +288,13 @@ class LLMBatchNamer:
         try:
             raw, source = NamingCache(self.cache_path).get_or_compute(
                 fp, compute, timeout=(self.max_retries + 1) * self.timeout + 20)
-        except Exception:
+        except Exception as exc:
+            logging.getLogger(__name__).warning(
+                "naming_cache_error page=%s table=%s error_type=%s reason=%s "
+                "sqlite_code=%s fallback=heuristic",
+                req.page, req.ordinal, type(exc).__name__,
+                "lock_timeout" if is_sqlite_lock_error(exc) else "cache_unavailable",
+                getattr(exc, "sqlite_errorcode", None))
             raw, source = None, "cache_error"
         if not valid(raw):
             self.stats["heuristic"] += 1

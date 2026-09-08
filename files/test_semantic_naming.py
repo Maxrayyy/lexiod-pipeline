@@ -68,6 +68,28 @@ def test_simultaneous_namers_share_one_request(tmp_path, monkeypatch):
     assert sorted(r.source for r in results) == ["cache", "llm"]
 
 
+@pytest.mark.parametrize("message, reason", [
+    ("database is locked", "lock_timeout"),
+    ("private detail", "cache_unavailable"),
+])
+def test_cache_failure_logs_reason_and_preserves_fallback(tmp_path, monkeypatch, caplog, message, reason):
+    from . import llm
+    import sqlite3
+
+    def unavailable(*args, **kwargs):
+        raise sqlite3.OperationalError(message)
+
+    monkeypatch.setattr(llm, "NamingCache", unavailable)
+    monkeypatch.setattr(LLMBatchNamer, "_call", lambda *_: pytest.fail("Unexpected model request"))
+    namer = LLMBatchNamer(tmp_path / "names.sqlite3", model="gpt-5.6-terra", api_key="test")
+    assert namer.name_table(request()).source == "heuristic"
+    assert "naming_cache_error" in caplog.text
+    assert "OperationalError" in caplog.text
+    assert "page=1" in caplog.text
+    assert f"reason={reason}" in caplog.text
+    assert "private detail" not in caplog.text
+
+
 def test_unlabelled_values_retain_disambiguating_context(tmp_path, monkeypatch):
     calls = []
     monkeypatch.setattr(LLMBatchNamer, "_call", lambda self, req: calls.append(1) or
@@ -174,8 +196,8 @@ def test_kimi_uses_isolated_naming_transport(tmp_path, monkeypatch):
 
 def _cache_process(path, barrier, count, results):
     from .naming_cache import NamingCache
-    cache = NamingCache(path)
     barrier.wait(timeout=10)
+    cache = NamingCache(path)
 
     def compute():
         with count.get_lock():
