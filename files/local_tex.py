@@ -13,7 +13,7 @@ from .tex_tables import (_peel_prefix, alignment_colspec, iter_structural,
                          mask_comments, multicolumn_span, parse_colspec, split_align_body)
 
 
-VERSION = "local-tex-v3-form-row-layout"
+VERSION = "local-tex-v4-picture-support"
 SUPPORT_BEGIN = "% >>> lexoid local support >>>"
 SUPPORT_END = "% <<< lexoid local support <<<"
 
@@ -181,6 +181,7 @@ PACKAGE_USES = {
     "amsmath": r"\\(?:text|overset|underset|dfrac|tfrac)\b|\\begin\{(?:aligned|align\*?|gather\*?)\}",
     "amssymb": r"\\(?:diagup|diagdown|checkmark|square|boxtimes)\b",
     "graphicx": r"\\(?:includegraphics|resizebox|rotatebox|scalebox)\b",
+    "pict2e": r"\\begin\{picture\}",
     "multirow": r"\\multirow\b",
     "booktabs": r"\\(?:toprule|midrule|bottomrule|cmidrule)\b",
     "makecell": r"\\(?:makecell|thead)\b",

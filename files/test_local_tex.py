@@ -88,6 +88,8 @@ def test_rendered_fields_stay_in_their_column_and_heading_is_above_table(tmp_pat
     r"\begin{tabular}{p{4cm}}control\newlineIL-6-0002\end{tabular}",
     r"\fbox{\begin{minipage}{3cm}\centering Original\\\hline Copy\end{minipage}}",
     r"\begin{tikzpicture}\draw (0,0) rectangle (1,1);\end{tikzpicture}",
+    r"\begin{picture}(145,145)\put(36,49){\line(23,-30){23}}\end{picture}",
+    r"\begin{picture}(40,40)\put(0,0){\vector(23,30){23}}\end{picture}",
     r"\begin{tabular}{p{2cm}p{2cm}}a & \raggedleft b\\\hline c & d\\\end{tabular}",
 ])
 def test_known_local_errors_are_repaired_before_any_paid_upgrade(tmp_path, body):
