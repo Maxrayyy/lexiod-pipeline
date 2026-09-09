@@ -623,6 +623,14 @@ def poll(config):
         encoded = json.dumps(snapshot, ensure_ascii=False)
         atomic_write(output / "latest.json", json.dumps(snapshot, ensure_ascii=False, indent=2))
         atomic_write(output / "latest.md", render_report(snapshot))
+        if config.get("batch_status"):
+            if __package__:
+                from .batch_status import render_batch_report
+            else:
+                from batch_status import render_batch_report
+            settings = config["batch_status"]
+            atomic_write(Path(settings["output_file"]), render_batch_report(
+                settings, config["queue_dir"], snapshot["checked_at"]))
         with (output / "history.jsonl").open("a", encoding="utf-8") as stream:
             stream.write(encoded + "\n")
         atomic_write(state_path, json.dumps(saved, ensure_ascii=False, indent=2))
