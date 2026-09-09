@@ -233,3 +233,65 @@ def test_monitor_tracks_page_checks_and_model_upgrades_without_double_counting(t
     report = render_report({"checked_at": "now", "containers": [item], "all_finished": False})
     assert "本地已检查 2/3 页" in report
     assert "GPT-6" in report
+
+
+def test_queue_report_keeps_order_and_uses_completion_records(tmp_path, monkeypatch):
+    from . import worker_watch as watch
+
+    queue_dir = tmp_path / "queues"
+    queue_dir.mkdir()
+    data = {"container": "worker-a", "jobs": [
+        {"source": "/input/first.pdf", "status": "done", "exit_code": 0},
+        {"source": "/input/current.pdf", "status": "running"},
+        {"source": "/input/last.pdf", "status": "pending"}],
+        "active_source": "/input/current.pdf"}
+    path = queue_dir / "arbitrary-queue-name.status.json"
+    path.write_text(json.dumps(data))
+    (queue_dir / "other.status.json").write_text(json.dumps({
+        "container": "worker-b", "jobs": [{"source": "unrelated.pdf", "status": "done"}]}))
+    config = {"docker": "docker", "output_dir": str(tmp_path / "monitor"),
+              "queue_dir": str(queue_dir), "containers": [target(tmp_path)]}
+    monkeypatch.setattr(watch, "inspect_container", lambda *_:
+                        {"Id": "id", "State": {"Status": "running"}})
+    watch.poll(config)
+    report = (tmp_path / "monitor" / "latest.md").read_text()
+    assert "已完成 1/3" in report
+    assert "`first.pdf` | 已完成" in report
+    assert "`current.pdf` | 未完成（处理中）" in report
+    assert "`last.pdf` | 未完成" in report
+    assert report.index("first.pdf") < report.index("current.pdf") < report.index("last.pdf")
+    assert "unrelated.pdf" not in report
+
+    data["jobs"][1].update(status="done", exit_code=0)
+    data["jobs"][2]["status"] = "running"
+    data["active_source"] = "/input/last.pdf"
+    path.write_text(json.dumps(data))
+    watch.poll(config)
+    report = (tmp_path / "monitor" / "latest.md").read_text()
+    assert "已完成 2/3" in report
+    assert "`current.pdf` | 已完成" in report
+    assert "`last.pdf` | 未完成（处理中）" in report
+
+
+def test_paused_queue_and_unreadable_status_are_not_reported_as_complete(tmp_path, monkeypatch):
+    from . import worker_watch as watch
+
+    queue_dir = tmp_path / "queues"
+    queue_dir.mkdir()
+    path = queue_dir / "queue.status.json"
+    path.write_text(json.dumps({"container": "worker-a", "status": "paused", "jobs": [
+        {"source": "/input/failed.pdf", "status": "failed", "exit_code": 1},
+        {"source": "/input/pending.pdf", "status": "pending"}]}))
+    config = {"docker": "docker", "output_dir": str(tmp_path / "monitor"),
+              "queue_dir": str(queue_dir), "containers": [target(tmp_path)]}
+    monkeypatch.setattr(watch, "inspect_container", lambda *_:
+                        {"Id": "id", "State": {"Status": "exited", "ExitCode": 1}})
+    watch.poll(config)
+    report = (tmp_path / "monitor" / "latest.md").read_text()
+    assert "已完成 0/2" in report
+    assert "`failed.pdf` | 未完成（已暂停）" in report
+    assert "`pending.pdf` | 未完成" in report
+    path.write_text("{broken json")
+    watch.poll(config)
+    report = (tmp_path / "monitor" / "latest.md").read_text()
+    assert "队列状态暂不可用" in report

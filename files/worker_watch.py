@@ -314,6 +314,7 @@ def probe_target(target, docker, saved, now, *, inspector=None, stale_seconds=12
     state = info["State"]
     status = state["Status"]
     result.update(status=status, container_id=info.get("Id"), exit_code=state.get("ExitCode"),
+                  started_at=state.get("StartedAt"), finished_at=state.get("FinishedAt"),
                   terminal=status in ("exited", "dead", "missing"))
     if state.get("OOMKilled"):
         result["alerts"].append("oom_killed")
@@ -394,9 +395,130 @@ def atomic_write(path, text):
     os.replace(temporary, path)
 
 
+def _timestamp(value):
+    return datetime.fromisoformat(value.replace("Z", "+00:00")).timestamp()
+
+
+def service_pause_reason(target, result):
+    if (result["status"] != "exited" or result.get("exit_code") != 1
+            or "oom_killed" in result["alerts"]):
+        return None
+    try:
+        started = _timestamp(result["started_at"])
+        finished = _timestamp(result["finished_at"])
+        if started <= 0 or finished < started:
+            return None
+        root = Path(target["work_root"])
+        manifest = json.loads((root / "manifest.json").read_text())
+        entries = [entry for entry in manifest["files"]
+                   if Path(entry["source"]).stem == target["stem"] and entry["status"] == "paused"]
+        if len(entries) != 1:
+            return None
+        stage = entries[0]["stages"][-1]["stage"]
+        if stage not in ("recognize", "reconcile", "optimise"):
+            return None
+        log = root / ".pipeline" / target["stem"] / f"{stage}.process.log"
+        if log.stat().st_mtime < started:
+            return None
+        # Match the final exception of this run, never an earlier recoverable error.
+        lines = log.read_text("utf-8", errors="replace").rstrip().splitlines()
+        match = re.fullmatch(
+            r"lexoid\.core\.request_errors\.ModelUnavailableError: Model service unavailable "
+            r"at page (\d+): (\w+); progress retained, resume after service recovery", lines[-1])
+        if not match:
+            return None
+        page, error = int(match[1]), match[2]
+        status = None
+        for line in reversed(lines):
+            if line == f"{stage} started":
+                break
+            if not line.startswith("[LLM_CALL] "):
+                continue
+            try:
+                event = json.loads(line[len("[LLM_CALL] "):])
+            except ValueError:
+                continue
+            if (isinstance(event, dict) and event.get("event") == "model_service_unavailable"
+                    and event.get("page") == page):
+                status = event.get("http_status")
+                break
+        if status in (401, 403):
+            return None
+        transient = {"APIConnectionError", "APITimeoutError", "ConnectionError", "TimeoutError",
+                     "ConnectError", "ConnectTimeout", "ReadTimeout", "RemoteProtocolError",
+                     "InternalError", "InternalServerError", "RateLimitError"}
+        if error not in transient and not (status in (408, 429) or
+                                          isinstance(status, int) and 500 <= status < 600):
+            return None
+        return {"page": page, "error_type": error, "http_status": status, "stage": stage}
+    except (OSError, ValueError, KeyError, TypeError, IndexError):
+        return None
+
+
+def auto_restart(target, result, saved, policy, docker, now, persist):
+    if not policy.get("enabled"):
+        return
+    reason = service_pause_reason(target, result)
+    if reason is None or not result.get("container_id"):
+        return
+    document = str(Path(target["work_root"]) / target["stem"])
+    record = saved.get("auto_restart", {})
+    if record.get("document") != document:
+        record = {"document": document, "attempts": 0, "last_attempt_at": 0}
+        saved["auto_restart"] = record
+    limit = max(0, int(policy.get("max_attempts", 3)))
+    cooldown = max(1, int(policy.get("cooldown_seconds", 600)))
+    detail = {**reason, "attempts": record["attempts"], "max_attempts": limit}
+    result["auto_restart"] = detail
+    if record["attempts"] >= limit:
+        detail["status"] = "limit_reached"
+        return
+    result["terminal"] = False
+    ready_at = max(_timestamp(result["finished_at"]), record["last_attempt_at"]) + cooldown
+    if now < ready_at:
+        detail.update(status="waiting", retry_after_seconds=max(1, int(ready_at - now)))
+        return
+    record.update(attempts=record["attempts"] + 1, last_attempt_at=now,
+                  last_error_type=reason["error_type"], status="starting")
+    detail.update(attempts=record["attempts"], status="starting")
+    # Reserve the budget before asking Docker, even if the monitor is interrupted.
+    persist()
+    try:
+        subprocess.run([docker, "start", result["container_id"]], check=True,
+                       capture_output=True, text=True, timeout=30)
+        record["status"] = detail["status"] = "started"
+        result["status"] = "restarting"
+    except (OSError, subprocess.SubprocessError) as exc:
+        record["status"] = detail["status"] = "start_failed"
+        detail["restart_error_type"] = type(exc).__name__
+
+
+def queue_progress(directory, name):
+    matches = []
+    for path in sorted(Path(directory).glob("*.status.json")):
+        try:
+            data = json.loads(path.read_text("utf-8"))
+            if data.get("container") == name:
+                matches.append((path, data))
+        except (OSError, ValueError, AttributeError):
+            continue
+    if len(matches) != 1:
+        return {"error": "queue_status_unavailable"}
+    path, data = matches[0]
+    try:
+        jobs = [{"pdf": Path(job["source"]).name, "status": job["status"],
+                 "completed": job["status"] == "done" and job.get("exit_code") == 0}
+                for job in data["jobs"]]
+        return {"path": str(path), "jobs": jobs, "total": len(jobs),
+                "completed": sum(job["completed"] for job in jobs)}
+    except (KeyError, TypeError):
+        return {"error": "queue_status_unavailable"}
+
+
 def render_report(snapshot):
     states = {"running": "运行中", "exited": "已退出", "dead": "异常终止",
-              "missing": "容器不存在", "monitor_error": "探测失败", "paused": "已暂停"}
+              "missing": "容器不存在", "monitor_error": "探测失败", "paused": "已暂停",
+              "restarting": "重启中"}
     stages = {"recognize": "识别", "reconcile": "字段协调", "optimise": "优化编译", "pending": "等待启动"}
     alerts = {"oom_killed": "内存不足被终止", "container_failed": "容器异常退出",
               "container_missing": "容器不存在", "unhealthy": "健康检查失败",
@@ -409,6 +531,7 @@ def render_report(snapshot):
              "| --- | --- | --- | --- | --- | --- | --- | --- | --- |"]
     notes = []
     details = []
+    queues = []
     for item in snapshot["containers"]:
         counts = item.get("new_counts", {})
         stage = item.get("stage", "pending")
@@ -421,9 +544,32 @@ def render_report(snapshot):
             notes.append(f"- {item['name']}：{alerts[alert]}")
         if item.get("publication_recovered"):
             notes.append(f"- {item['name']}：已校验容器原始 TEX 并归位到指定发布目录")
+        restart = item.get("auto_restart")
+        if restart:
+            actions = {"waiting": f"等待自动重启，至少还需 {restart.get('retry_after_seconds', 0)} 秒",
+                       "started": "已请求自动重启，从缓存续跑",
+                       "start_failed": "自动重启命令失败，将在冷却后重试",
+                       "limit_reached": "自动重启达到上限，需人工检查"}
+            notes.append(f"- {item['name']}：{actions.get(restart['status'], restart['status'])}；"
+                         f"当前 PDF 自动重启 {restart['attempts']}/{restart['max_attempts']} 次；"
+                         f"原因 {restart['error_type']}，源第 {restart['page']} 页")
         for issue in item["issues"]:
             detail = issue.get("error_type") or issue.get("code") or issue.get("event", "未知")
             notes.append(f"- {item['name']}：{detail}，页码 {issue.get('page', '未知')}")
+        queue = item.get("queue")
+        if queue is not None:
+            if queue.get("error"):
+                queues.extend([f"\n### {item['name']}\n", "队列状态暂不可用。"])
+            else:
+                queues.append(f"\n### {item['name']}（已完成 {queue['completed']}/{queue['total']}）\n")
+                for job in queue["jobs"]:
+                    status_text = "已完成" if job["completed"] else "未完成"
+                    if not job["completed"]:
+                        if job["status"] == "running":
+                            status_text += "（处理中）" if item["status"] == "running" else "（已暂停）"
+                        elif job["status"] in ("failed", "paused"):
+                            status_text += "（已暂停）"
+                    queues.append(f"- `{job['pdf']}` | {status_text}")
         if item.get("progress"):
             details.append(f"\n### {item['name']} 后续进度\n")
             for phase, progress in item["progress"].items():
@@ -431,13 +577,15 @@ def render_report(snapshot):
                 if progress.get("log"):
                     detail += f"。 [阶段日志](<{progress['log']}>)"
                 details.append(detail)
+    if queues:
+        lines.extend(["\n## PDF 转译列表\n", *queues])
     if details:
         lines.extend(["\n协调计数按字段去重；模型返回不代表字段已确认，缓存命中以阶段结束汇总为准。"
                       "表编号表示文件内位置，各优化步骤耗时不同，不据此估算总百分比。", *details])
     if notes:
         lines.extend(["\n本次新增日志事件及状态提示：\n", *notes])
     if snapshot["all_finished"]:
-        lines.append("\n两个任务均已结束，停止定时监测。")
+        lines.append("\n所有监控容器均已退出，且无待执行的自动重启，停止定时监测。")
     return "\n".join(lines) + "\n"
 
 
@@ -449,8 +597,16 @@ def poll(config):
         state_path = output / "state.json"
         saved = json.loads(state_path.read_text()) if state_path.exists() else {}
         now = time.time()
-        containers = [probe_target(target, config["docker"], saved.setdefault(target["name"], {}), now)
-                      for target in config["containers"]]
+        containers = []
+        for target in config["containers"]:
+            target_state = saved.setdefault(target["name"], {})
+            result = probe_target(target, config["docker"], target_state, now)
+            auto_restart(target, result, target_state, config.get("auto_restart", {}),
+                         config["docker"], now,
+                         lambda: atomic_write(state_path, json.dumps(saved, ensure_ascii=False, indent=2)))
+            if config.get("queue_dir"):
+                result["queue"] = queue_progress(config["queue_dir"], target["name"])
+            containers.append(result)
         snapshot = {"checked_at": datetime.fromtimestamp(now).astimezone().isoformat(timespec="seconds"),
                     "containers": containers, "all_finished": all(item["terminal"] for item in containers)}
         encoded = json.dumps(snapshot, ensure_ascii=False)
