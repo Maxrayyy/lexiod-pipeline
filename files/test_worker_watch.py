@@ -3,9 +3,47 @@ import subprocess
 import plistlib
 import sqlite3
 import hashlib
+import pytest
 from unittest.mock import patch
 
 from .worker_watch import install, probe_target, read_new_lines, summarize_calls, render_report
+
+
+@pytest.mark.parametrize("message", ["error: no such object: worker-a",
+                                    "Error: No such container: worker-a"])
+def test_deleted_container_is_not_a_docker_connection_error(tmp_path, message):
+    with patch("subprocess.run", return_value=subprocess.CompletedProcess(
+            ["docker"], 1, stdout="", stderr=message)):
+        result = probe_target(target(tmp_path), "docker", {}, 1000)
+    assert result["status"] == "missing"
+    assert result["terminal"]
+    assert "docker_unavailable" not in result["alerts"]
+
+
+@pytest.mark.parametrize("status,exit_code,completed,alerts,hidden", [
+    ("exited", 0, True, [], True),
+    ("missing", None, True, ["container_missing"], True),
+    ("running", 0, True, [], False),
+    ("monitor_error", None, True, ["docker_unavailable"], False),
+    ("exited", 1, True, ["container_failed"], False),
+    ("exited", 0, False, [], False),
+    ("missing", None, False, ["container_missing"], False),
+    ("exited", 0, True, ["invalid_published_tex"], False),
+])
+def test_finished_container_keeps_only_pdf_list(status, exit_code, completed, alerts, hidden):
+    item = {"name": "worker-a", "stem": "sample", "pages": 1,
+            "status": status, "exit_code": exit_code, "published": True,
+            "alerts": alerts, "issues": [{"code": "old_warning"}],
+            "progress": {"recognize": {"completed": True}},
+            "queue": {"total": 1, "completed": int(completed), "jobs": [
+                {"pdf": "sample.pdf", "completed": completed,
+                 "status": "done" if completed else "pending"}]}}
+    report = render_report({"checked_at": "now", "containers": [item], "all_finished": False})
+    assert ("| worker-a |" not in report) == hidden
+    assert ("worker-a 后续进度" not in report) == hidden
+    assert ("old_warning" not in report) == hidden
+    assert "`sample.pdf` |" in report
+    assert "## PDF 转译列表\n\n### worker-a" in report
 
 
 def test_log_cursor_ignores_old_lines_and_waits_for_partial_record(tmp_path):

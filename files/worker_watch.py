@@ -81,7 +81,8 @@ def inspect_container(docker, name):
         capture_output=True, text=True, timeout=15,
     )
     if result.returncode:
-        if "No such object" in result.stderr or "No such container" in result.stderr:
+        error = result.stderr.lower()
+        if "no such object" in error or "no such container" in error:
             return {"State": {"Status": "missing"}}
         raise RuntimeError("Docker inspection failed")
     return json.loads(result.stdout)
@@ -533,6 +534,30 @@ def render_report(snapshot):
     details = []
     queues = []
     for item in snapshot["containers"]:
+        queue = item.get("queue")
+        if queue is not None:
+            if queue.get("error"):
+                queues.extend([f"\n### {item['name']}\n", "队列状态暂不可用。"])
+            else:
+                queues.append(f"\n### {item['name']}（已完成 {queue['completed']}/{queue['total']}）\n")
+                for job in queue["jobs"]:
+                    status_text = "已完成" if job["completed"] else "未完成"
+                    if not job["completed"]:
+                        if job["status"] == "running":
+                            status_text += "（处理中）" if item["status"] == "running" else "（已暂停）"
+                        elif job["status"] in ("failed", "paused"):
+                            status_text += "（已暂停）"
+                    queues.append(f"- `{job['pdf']}` | {status_text}")
+        queue_completed = (queue is not None and not queue.get("error")
+                           and queue.get("total", 0) > 0
+                           and queue["completed"] == queue["total"])
+        safely_finished = (
+            item["status"] == "missing" and queue_completed
+            or item["status"] == "exited" and item.get("exit_code") == 0
+            and item.get("published") and (queue is None or queue_completed)
+        )
+        if safely_finished and not (set(item["alerts"]) - {"container_missing"}):
+            continue
         counts = item.get("new_counts", {})
         stage = item.get("stage", "pending")
         pdf_suffix = item.get("stem", "")[-4:] or "-"
@@ -556,20 +581,6 @@ def render_report(snapshot):
         for issue in item["issues"]:
             detail = issue.get("error_type") or issue.get("code") or issue.get("event", "未知")
             notes.append(f"- {item['name']}：{detail}，页码 {issue.get('page', '未知')}")
-        queue = item.get("queue")
-        if queue is not None:
-            if queue.get("error"):
-                queues.extend([f"\n### {item['name']}\n", "队列状态暂不可用。"])
-            else:
-                queues.append(f"\n### {item['name']}（已完成 {queue['completed']}/{queue['total']}）\n")
-                for job in queue["jobs"]:
-                    status_text = "已完成" if job["completed"] else "未完成"
-                    if not job["completed"]:
-                        if job["status"] == "running":
-                            status_text += "（处理中）" if item["status"] == "running" else "（已暂停）"
-                        elif job["status"] in ("failed", "paused"):
-                            status_text += "（已暂停）"
-                    queues.append(f"- `{job['pdf']}` | {status_text}")
         if item.get("progress"):
             details.append(f"\n### {item['name']} 后续进度\n")
             for phase, progress in item["progress"].items():
@@ -578,7 +589,7 @@ def render_report(snapshot):
                     detail += f"。 [阶段日志](<{progress['log']}>)"
                 details.append(detail)
     if queues:
-        lines.extend(["\n## PDF 转译列表\n", *queues])
+        lines.extend(["\n## PDF 转译列表", *queues])
     if details:
         lines.extend(["\n协调计数按字段去重；模型返回不代表字段已确认，缓存命中以阶段结束汇总为准。"
                       "表编号表示文件内位置，各优化步骤耗时不同，不据此估算总百分比。", *details])

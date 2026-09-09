@@ -1,5 +1,8 @@
 # Lexoid LaTeX 可定位优化规格
 
+当前 PDFToTex 部署的方案、Docker 启动、数据位置、队列续跑及监控操作见
+[项目运行指南](https://github.com/Maxrayyy/PDFToTex#readme)。本文件侧重优化器规格与命令，末尾的 cron 目录模式属于独立部署方式。
+
 ## 1. 目标
 
 建立一条可验证的 `lexoid → texopt → XeLaTeX → PDF` 链路，使每个可编辑字段同时具备：
@@ -82,13 +85,15 @@ Kimi 价格未配置时费用保持未知，不能按 GPT 价格计费；独立�
 ### 本地容器监测
 
 `worker_watch.py` 仅使用 Python 标准库和本机 Docker CLI，通过 macOS `launchd`
-定时读取容器状态、流水线状态库和增量日志，不调用模型、不重启识别任务。
-默认只读；对已知发布目录配置错误，可显式给目标设置 `recover_publish_from`。
+定时读取容器状态、流水线状态库和增量日志。默认不调用模型、不重启识别任务；
+显式启用 `auto_restart.enabled` 后，可恢复符合条件的网络暂停容器，恢复后转换会继续调用模型。
+对已知发布目录配置错误，可显式给目标设置 `recover_publish_from`。
 仅在容器正常退出、manifest 标记完成，且指定文件与优化工作文件、完成记录的
 SHA-256 三者一致时，将该文件原样归位到 `output_tex`，不覆盖已有目标。
 配置包含 `launchd_label`、`interval_seconds`、`docker`、`output_dir`，以及
 `containers` 数组；每个目标指定 `name`、`work_root`、`stem`、`pages` 和 `output_tex`。
-路径均使用绝对路径，默认间隔为 600 秒。安装后立即探测一次，两个容器都结束后自动卸载定时任务。
+路径均使用绝对路径，默认间隔为 600 秒，当前部署为 360 秒。安装后立即探测一次，
+所有目标均终止且没有待执行自动重启时自动卸载定时任务；新批次启动后需要重新安装。
 
 ```sh
 python3 files/worker_watch.py install --config /绝对路径/config.json
@@ -98,6 +103,15 @@ python3 files/worker_watch.py stop --config /绝对路径/config.json
 
 监测目录中的 `latest.md` 是中文状态摘要，`latest.json` 保存结构化详情，
 `history.jsonl` 保留历次探测。请求失败、重试、流程错误分开计数，普通校验警告不当作请求失败。
+配置 `queue_dir` 后，PDF 转译列表读取该目录的 `*.status.json`，仅将 `done` 且退出码为 0
+的 PDF 计为完成。整批完成且正常退出的容器，或完成后手动删除的容器，仅保留 PDF 清单，
+隐藏检测行、后续进度和历史提示；异常退出、未完成任务及发布校验异常继续展示。
+完整容器快照仍保留在 `latest.json` 和历史记录中。
+
+当前 `auto_restart` 配置为冷却 360 秒、每份 PDF 最多 3 次，仅恢复退出码 1、manifest
+标记暂停、且本次运行的最后异常明确是临时模型服务故障的容器。认证/权限错误、OOM、
+普通编译失败和已删除容器不会自动重启。计划维护前关闭自动重启或先停止监控调度。
+
 报告还展示协调选中字段数、模型已返回字段数、跳过自动复核数和完成汇总，
 以及优化子步骤、最近活动源页码、表编号、命名已返回表数、各阶段耗时和日志链接。
 返回数量按字段或表去重，不把重试重复计入；缓存命中以阶段结束汇总为准。
