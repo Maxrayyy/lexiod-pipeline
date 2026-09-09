@@ -15,7 +15,7 @@ from .tex_tables import (_peel_prefix, _read_balanced, _skip_ws, alignment_colsp
                          mask_comments, multicolumn_span, parse_colspec, split_align_body)
 
 
-VERSION = "local-tex-v5-ulem-figure-frames"
+VERSION = "local-tex-v6-nested-form-rows"
 SUPPORT_BEGIN = "% >>> lexoid local support >>>"
 SUPPORT_END = "% <<< lexoid local support <<<"
 
@@ -171,9 +171,38 @@ def normalize_split_paragraph_rows(source):
 
     Only repair an unambiguous column budget: across the entire ruled block the
     cells must occupy exactly one complete row, with field-bearing continuations.
-    Explicit row endings, multirows and non-paragraph columns are left alone.
+    A one-row multirow label followed by instructions and a nested result panel
+    also has an unambiguous column budget. Actual multirows stay untouched.
     """
     edits = []
+
+    def nested_instruction_panel(rows, columns, first_cells):
+        if (len(columns) != 3 or len(first_cells) != 2
+                or len(rows[-1][0].cells) != 2
+                or any(len(row.cells) != 1 for row, _ in rows[1:-1])):
+            return False
+        label = mask_comments(first_cells[0]).strip()
+        if not label.startswith(r"\multirow"):
+            return False
+        cursor, args = len(r"\multirow"), []
+        for _ in range(3):
+            got = _read_balanced(label, _skip_ws(label, cursor), "{", "}")
+            if got is None:
+                return False
+            value, cursor = got
+            args.append(value.strip())
+        if args[:2] != ["1", "="] or label[cursor:].strip():
+            return False
+        remaining = first_cells[1:] + [cell.text for row, _ in rows[1:] for cell in row.cells]
+        if any(r"\multirow" in mask_comments(text) for text in remaining):
+            return False
+        panel = mask_comments(rows[-1][0].cells[-1].text).strip()
+        tokens = [token for token in iter_structural(panel)
+                  if token.kind in {"align_begin", "align_end"}]
+        return (len(tokens) == 2 and tokens[0].kind == "align_begin"
+                and tokens[0].name == "tabular" and tokens[0].start == 0
+                and tokens[1].kind == "align_end" and tokens[1].end == len(panel)
+                and r"\fieldvalue" in panel)
 
     def repair_block(rows, columns):
         if len(rows) < 2 or not _peel_prefix(rows[0][0].cells[0].text)[0]:
@@ -185,10 +214,13 @@ def normalize_split_paragraph_rows(source):
         if len(first.cells) < 2 or (first_span >= len(columns)
                                   and not any(multicolumn_span(c) > 1 for c in first_cells)):
             return
-        if not any(len(row.cells) == 1 and r"\fieldvalue" in mask_comments(row.cells[0].text)
-                   for row, _ in rows[1:]):
+        nested_panel = nested_instruction_panel(rows, columns, first_cells)
+        if not nested_panel and not any(
+                len(row.cells) == 1 and r"\fieldvalue" in mask_comments(row.cells[0].text)
+                for row, _ in rows[1:]):
             return
-        if any(r"\multirow" in mask_comments(cell.text) for row, _ in rows for cell in row.cells):
+        if not nested_panel and any(r"\multirow" in mask_comments(cell.text)
+                                    for row, _ in rows for cell in row.cells):
             return
         pending, column = [], 0
         for index, (row, offset) in enumerate(rows):
@@ -200,9 +232,18 @@ def normalize_split_paragraph_rows(source):
                 if cell.sep == "&":
                     column += span
                 elif index < len(rows) - 1:
-                    if cell.sep != r"\\" or span != 1 or columns[column] not in {"p", "m", "b", "X"}:
+                    spacing = (re.fullmatch(r"\\\\\s*\[\s*(\d+(?:\.\d+)?(?:pt|bp|mm|cm|em|ex))\s*\]", cell.sep)
+                               if nested_panel else None)
+                    if ((cell.sep != r"\\" and spacing is None) or span != 1
+                            or columns[column] not in {"p", "m", "b", "X"}):
                         return
-                    pending.append((offset + len(cell.text), offset + len(cell.text) + 2))
+                    replacement = r"\newline{}"
+                    if spacing:
+                        replacement += r"\vspace{" + spacing[1] + "}"
+                    if nested_panel:
+                        replacement += r"\ignorespaces"
+                    pending.append((offset + len(cell.text),
+                                    offset + len(cell.text) + len(cell.sep), replacement))
                 else:
                     column += span
                 offset += len(cell.text) + len(cell.sep)
@@ -234,8 +275,8 @@ def normalize_split_paragraph_rows(source):
             scan(body, base + begin.body_start)
 
     scan(_mask_verbatim(source))
-    for start, end in sorted(edits, reverse=True):
-        source = source[:start] + r"\newline{}" + source[end:]
+    for start, end, replacement in sorted(edits, reverse=True):
+        source = source[:start] + replacement + source[end:]
     return source, len(edits)
 
 

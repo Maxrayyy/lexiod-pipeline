@@ -123,6 +123,67 @@ def test_complete_sparse_and_explicit_rows_are_not_merged(body):
     assert normalize_tex(source)[0] == source
 
 
+NESTED_FORM_ROW = (
+    r"\begin{tabular}{|p{1cm}|p{5cm}|p{4cm}|}\hline "
+    r"\multirow{1}{=}{Review} & \rule{0pt}{4.5cm}Occurred?\\[4pt] "
+    r"Closed?\\[4pt] Impact? & "
+    r"\begin{tabular}{@{}p{1.8cm}|p{1.8cm}@{}}"
+    r"\fieldvalue{YES} & \fieldvalue{CLOSED}\\\hline "
+    r"\fieldvalue{RECORD} & \fieldvalue{SAFE}"
+    r"\end{tabular}\\\hline\end{tabular}"
+)
+
+
+def test_nested_form_instructions_are_rejoined_without_changing_result_rows():
+    from .local_tex import normalize_tex
+    from .syntax_check import validate_latex
+    from .syntax_repair import repair_invariant_violations
+
+    fixed, changes = normalize_tex(NESTED_FORM_ROW)
+    assert changes.get("split_paragraph_rows") == 2
+    assert not [i for i in validate_latex(fixed) if i.code.startswith("TABLE_ALIGNMENT_")]
+    assert repair_invariant_violations(NESTED_FORM_ROW, fixed) == []
+    assert r"\fieldvalue{CLOSED}\\\hline" in fixed
+    assert "[4pt]" not in fixed
+    assert normalize_tex(fixed)[0] == fixed
+
+
+@pytest.mark.parametrize("old,new", [
+    (r"\multirow{1}", r"\multirow{2}"),
+    (r"\multirow{1}{=}{Review}", "Review"),
+    (r"Closed?\\[4pt]", r"Closed?\tabularnewline"),
+    (r"Closed?\\[4pt]", r"Closed?\\[4pt] &"),
+    (r"p{5cm}", "l"),
+])
+def test_ambiguous_nested_form_rows_are_unchanged(old, new):
+    from .local_tex import normalize_split_paragraph_rows
+
+    source = NESTED_FORM_ROW.replace(old, new)
+    assert normalize_split_paragraph_rows(source) == (source, 0)
+
+
+def test_nested_form_results_render_in_result_column(tmp_path):
+    from .local_tex import normalize_tex
+
+    source = (r"\documentclass{article}\usepackage{array,multirow}"
+              r"\newcommand{\fieldvalue}[1]{#1}\begin{document}" + NESTED_FORM_ROW
+              + r"\end{document}")
+    fixed, _ = normalize_tex(source)
+    path = tmp_path / "nested-form.tex"
+    path.write_text(fixed)
+    compiled = subprocess.run(["xelatex", "-interaction=nonstopmode", "-halt-on-error", path.name],
+                              cwd=tmp_path, capture_output=True, text=True, timeout=30)
+    assert compiled.returncode == 0, compiled.stdout[-2000:]
+    bbox = subprocess.run(["pdftotext", "-bbox", str(path.with_suffix(".pdf")), "-"],
+                          check=True, capture_output=True, text=True, timeout=10)
+    words = {node.text: node.attrib for node in ET.fromstring(bbox.stdout).iter()
+             if node.tag.endswith("}word")}
+    instructions = [float(words[word]["xMin"]) for word in ("Occurred?", "Closed?", "Impact?")]
+    assert max(instructions) - min(instructions) < 1
+    assert float(words["YES"]["xMin"]) > instructions[0] + 100
+    assert float(words["RECORD"]["xMin"]) >= float(words["YES"]["xMin"]) - 1
+
+
 def test_heading_ends_before_block_table_but_inline_and_nested_tables_remain():
     from .local_tex import normalize_tex
 
