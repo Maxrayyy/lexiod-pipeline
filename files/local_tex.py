@@ -9,10 +9,11 @@ from pylatexenc.latexwalker import LatexWalker, LatexEnvironmentNode, LatexMacro
 from .syntax_check import _mask_verbatim
 from .syntax_repair import (normalize_control_word_boundaries, normalize_math_blank_lines,
                             normalize_multicolumn_linebreaks, normalize_text_mode_math_symbols)
-from .tex_tables import iter_structural, mask_comments, split_align_body
+from .tex_tables import (_peel_prefix, alignment_colspec, iter_structural,
+                         mask_comments, multicolumn_span, parse_colspec, split_align_body)
 
 
-VERSION = "local-tex-v1"
+VERSION = "local-tex-v3-form-row-layout"
 SUPPORT_BEGIN = "% >>> lexoid local support >>>"
 SUPPORT_END = "% <<< lexoid local support <<<"
 
@@ -82,6 +83,99 @@ def normalize_table_row_endings(source):
     return source, len(edits)
 
 
+def normalize_split_paragraph_rows(source):
+    """Rejoin a ruled form row whose ungrouped cell breaks reset the column.
+
+    Only repair an unambiguous column budget: across the entire ruled block the
+    cells must occupy exactly one complete row, with field-bearing continuations.
+    Explicit row endings, multirows and non-paragraph columns are left alone.
+    """
+    edits = []
+
+    def repair_block(rows, columns):
+        if len(rows) < 2 or not _peel_prefix(rows[0][0].cells[0].text)[0]:
+            return
+        first = rows[0][0]
+        first_cells = [_peel_prefix(first.cells[0].text)[1],
+                       *(cell.text for cell in first.cells[1:])]
+        first_span = sum(multicolumn_span(cell) for cell in first_cells)
+        if len(first.cells) < 2 or (first_span >= len(columns)
+                                  and not any(multicolumn_span(c) > 1 for c in first_cells)):
+            return
+        if not any(len(row.cells) == 1 and r"\fieldvalue" in mask_comments(row.cells[0].text)
+                   for row, _ in rows[1:]):
+            return
+        if any(r"\multirow" in mask_comments(cell.text) for row, _ in rows for cell in row.cells):
+            return
+        pending, column = [], 0
+        for index, (row, offset) in enumerate(rows):
+            for cell_index, cell in enumerate(row.cells):
+                text = _peel_prefix(cell.text)[1] if index == cell_index == 0 else cell.text
+                span = multicolumn_span(text)
+                if column + span > len(columns):
+                    return
+                if cell.sep == "&":
+                    column += span
+                elif index < len(rows) - 1:
+                    if cell.sep != r"\\" or span != 1 or columns[column] not in {"p", "m", "b", "X"}:
+                        return
+                    pending.append((offset + len(cell.text), offset + len(cell.text) + 2))
+                else:
+                    column += span
+                offset += len(cell.text) + len(cell.sep)
+        if column == len(columns):
+            edits.extend(pending)
+
+    def scan(segment, base=0):
+        tokens = iter(iter_structural(segment))
+        for begin in tokens:
+            if begin.kind != "align_begin":
+                continue
+            end = next((token for token in tokens if token.kind == "align_end"), None)
+            if end is None:
+                continue
+            body = segment[begin.body_start:end.start]
+            columns = parse_colspec(alignment_colspec(segment[begin.start:begin.body_start], begin.name))
+            block, offset = [], base + begin.body_start
+            for row in split_align_body(body):
+                prefix, first = _peel_prefix(row.cells[0].text)
+                meaningful = any(mask_comments(text).strip()
+                                 for text in [first, *(cell.text for cell in row.cells[1:])])
+                if prefix or not meaningful:
+                    repair_block(block, columns)
+                    block = []
+                if meaningful:
+                    block.append((row, offset))
+                offset += sum(len(cell.text) + len(cell.sep) for cell in row.cells)
+            repair_block(block, columns)
+            scan(body, base + begin.body_start)
+
+    scan(_mask_verbatim(source))
+    for start, end in sorted(edits, reverse=True):
+        source = source[:start] + r"\newline{}" + source[end:]
+    return source, len(edits)
+
+
+def normalize_table_heading_breaks(source):
+    """End a standalone colon-terminated heading before its block table."""
+    masked = _mask_verbatim(mask_comments(source))
+    edits = []
+    tokens = iter(iter_structural(masked))
+    for begin in tokens:
+        if begin.kind != "align_begin":
+            continue
+        next((token for token in tokens if token.kind == "align_end"), None)
+        prefix = masked[:begin.start]
+        heading = re.search(
+            r"(?m)^[ \t]*(?:\\par[ \t]*)?\\noindent[^\n&]*[:：][ \t}]*\n([ \t]*\\noindent[ \t]*)$",
+            prefix)
+        if heading:
+            edits.append(heading.start(1))
+    for position in reversed(edits):
+        source = source[:position] + r"\par" + source[position:]
+    return source, len(edits)
+
+
 PACKAGE_USES = {
     "array": r"\\(?:arraybackslash|newcolumntype)\b|\\begin\{array\}",
     "amsmath": r"\\(?:text|overset|underset|dfrac|tfrac)\b|\\begin\{(?:aligned|align\*?|gather\*?)\}",
@@ -141,7 +235,9 @@ def normalize_tex(source):
         ("multicolumn_linebreaks", normalize_multicolumn_linebreaks),
         ("math_blank_lines", normalize_math_blank_lines),
         ("panel_rules", normalize_panel_rules),
+        ("split_paragraph_rows", normalize_split_paragraph_rows),
         ("table_row_endings", normalize_table_row_endings),
+        ("table_heading_breaks", normalize_table_heading_breaks),
         ("missing_support", inject_support),
     ):
         source, count = operation(source)

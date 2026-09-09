@@ -163,42 +163,40 @@ def normalize_multicolumn_linebreaks(source: str) -> tuple[str, int]:
                         (third_open + 1 + token.start, third_open + 1 + token.end))
         i = third[1]
     for start, end in reversed(replacements):
-        source = source[:start] + r"\newline" + source[end:]
+        source = source[:start] + r"\newline{}" + source[end:]
     return source, len(replacements)
 
 
 def normalize_control_word_boundaries(source: str) -> tuple[str, int]:
-    """Delimit known zero-argument control words before CJK letters.
+    """Delimit known zero-argument control words glued to visible text.
 
     XeTeX treats CJK letters as part of a control word, so ``\\quad至`` is read as
     one undefined command rather than ``\\quad`` followed by visible text.  Empty
-    grouping terminates the command without changing rendered content.  Comments
-    are intentionally byte-preserved.
+    grouping terminates the command without changing rendered content.  Restrict
+    ASCII newline suffixes to uppercase text, retaining primitives like newlinechar.
+    Explicitly declared macros, comments and verbatim text are preserved.
     """
-    changed = 0
-    out: list[str] = []
-    for line in source.splitlines(keepends=True):
-        comment_at = len(line)
-        for index, char in enumerate(line):
-            if char != "%":
-                continue
-            backslashes = 0
-            cursor = index - 1
-            while cursor >= 0 and line[cursor] == "\\":
-                backslashes += 1
-                cursor -= 1
-            if backslashes % 2 == 0:
-                comment_at = index
-                break
-
-        def replace(match: re.Match[str]) -> str:
-            nonlocal changed
-            changed += 1
-            return match.group(0) + "{}"
-
-        out.append(CONTROL_WORD_BEFORE_CJK.sub(replace, line[:comment_at])
-                   + line[comment_at:])
-    return "".join(out), changed
+    masked = _mask_verbatim(mask_comments(source))
+    letters = r"a-zA-Z@\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff"
+    declared = set(re.findall(
+        r"\\(?:newcommand|renewcommand|providecommand|DeclareRobustCommand)\*?\s*\{?\s*(\\["
+        + letters + r"]+)|\\(?:def|gdef|edef|xdef|let)\s*(\\[" + letters + r"]+)", masked))
+    declared_names = {name for pair in declared for name in pair if name}
+    edits = []
+    for token in re.finditer(r"\\[" + letters + r"]+|\\[\s\S]", masked):
+        command = token.group()
+        if command in declared_names:
+            continue
+        spacing = CONTROL_WORD_BEFORE_CJK.match(command)
+        if spacing:
+            edits.append(token.start() + spacing.end())
+        elif command.startswith(r"\newline"):
+            suffix = command[len(r"\newline"):]
+            if suffix and ("A" <= suffix[0] <= "Z" or CJK.match(suffix)):
+                edits.append(token.start() + len(r"\newline"))
+    for position in reversed(edits):
+        source = source[:position] + "{}" + source[position:]
+    return source, len(edits)
 
 
 def normalize_math_blank_lines(source: str) -> tuple[str, int]:

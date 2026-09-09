@@ -49,6 +49,29 @@ class SequencedRepairer(LLMSyntaxRepairer):
 
 
 class SyntaxRepairTests(unittest.TestCase):
+    def test_newline_is_delimited_from_visible_letters(self) -> None:
+        source = r"阳性对照\newlineIL-6-0002\newline NaN & 阴性\newline对照"
+        repaired, count = normalize_control_word_boundaries(source)
+        self.assertEqual(count, 2)
+        self.assertEqual(repaired, r"阳性对照\newline{}IL-6-0002\newline NaN & 阴性\newline{}对照")
+        self.assertEqual(normalize_control_word_boundaries(repaired), (repaired, 0))
+
+    def test_boundary_repair_preserves_commands_comments_and_verbatim(self) -> None:
+        source = (
+            "\\newcommand{\\newlineCustom}{custom}\n"
+            "\\newlineCustom \\newlinechar=10\n"
+            "% \\newlineIL \\quad至\n"
+            "\\verb|\\newlineIL \\quad至|\n"
+            "\\begin{verbatim}\n\\newlineIL \\quad至\n\\end{verbatim}\n"
+        )
+        self.assertEqual(normalize_control_word_boundaries(source), (source, 0))
+
+    def test_generated_multicolumn_newline_has_command_boundary(self) -> None:
+        source = r"\multicolumn{1}{p{8cm}}{control\\IL-6-0002}"
+        repaired, count = normalize_multicolumn_linebreaks(source)
+        self.assertEqual(count, 1)
+        self.assertIn(r"control\newline{}IL-6-0002", repaired)
+
     def test_multicolumn_paragraph_linebreak_does_not_end_table_row(self) -> None:
         source = (
             "\\begin{tabular}{|l|l|l|l|}\n"
