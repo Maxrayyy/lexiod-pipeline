@@ -8,6 +8,84 @@ from .page_fallback import compile_page, upgrade_pages
 from .test_page_fallback import sample
 
 
+# LaTeX 2026/06/01 text superscript path from latex2e/base/ltfloat.dtx.
+# Exercise its text-mode hskip inside ulem even on older container formats.
+TEXT_SCRIPTS_2026 = r"""
+\makeatletter
+\protected\def\@textsuperscript#1{%
+  \check@mathfonts\leavevmode\begingroup
+  \sbox\z@{\fontsize\sf@size\sf@size#1}%
+  \raise\dimexpr\textsuperscript@offset\relax\box\z@
+  \textsuperscript@space\endgroup}
+\def\textsuperscript@offset{%
+  \ifdim\fontdimen14\textfont\tw@<\dimexpr\dp\z@+0.25\fontdimen5\textfont\tw@\relax
+    \dp\z@+0.25\fontdimen5\textfont\tw@
+  \else\fontdimen14\textfont\tw@\fi}
+\def\textsuperscript@space{\nobreak\hskip\scriptspace\kern\z@}
+\makeatother
+"""
+
+
+def test_ulem_superscript_compiles_with_2026_text_implementation(tmp_path):
+    from .local_tex import normalize_tex
+
+    source = (r"\documentclass{article}\usepackage[normalem]{ulem}"
+        + TEXT_SCRIPTS_2026 + r"\begin{document}\begin{tabular}{p{4cm}l}"
+        + r"\sout{Pierce\textsuperscript{TM} Rapid Gold BCA Protein Assay Kit}"
+        + r" & Next\\\end{tabular}\end{document}")
+    assert compile_page(source, tmp_path / "before")
+    assert "Extra }, or forgotten" in (tmp_path / "before/compile.log").read_text()
+    fixed, changes = normalize_tex(source)
+    assert changes.get("ulem_text_scripts") == 1
+    assert not compile_page(fixed, tmp_path / "after")
+    assert r"\sout{Pierce\mbox{\textsuperscript{TM}} Rapid Gold" in fixed
+    assert normalize_tex(fixed)[0] == fixed
+
+
+def test_ulem_script_repair_preserves_fields_and_ignores_literals_and_boxes():
+    from .local_tex import normalize_tex
+
+    protected = (r"Outside \textsuperscript{TM} \verb|\sout{\textsuperscript{TM}}|"
+        + "\n% \\sout{\\textsuperscript{TM}}\n"
+        + r"\newcommand{\custom}[1]{\sout{\textsuperscript{#1}}}"
+        + r"\sout{\mbox{\textsuperscript{TM}}}")
+    field = "% #VALUE_ID: LEX-P0001-V0001\n% #FIELD_VALUE: Label\n"
+    source = protected + r"\uline{" + field + r"\fieldvalue{X}\textsubscript{2}}"
+    fixed, changes = normalize_tex(source)
+    assert protected in fixed and field in fixed
+    assert r"\fieldvalue{X}\mbox{\textsubscript{2}}" in fixed
+    assert changes.get("ulem_text_scripts") == 1
+
+
+@pytest.mark.parametrize("space", [r"\vspace{3cm}", r"\vspace*{3cm}",
+    r"\rule[-\dimexpr3cm-\ht\strutbox\relax]{0pt}{3cm}"])
+def test_marked_experimental_spaces_become_frames(space):
+    from .local_tex import normalize_tex
+
+    source = "% LEXOID_OMITTED_EXPERIMENTAL_FIGURE\n" + space + r" & Signature\\"
+    fixed, changes = normalize_tex(source)
+    assert changes.get("experimental_figure_frames") == 1
+    assert r"\LexoidExperimentalFigure{\linewidth}{3cm}" in fixed
+    assert fixed.endswith(r" & Signature\\")
+    assert normalize_tex(fixed)[0] == fixed
+    assert normalize_tex(space)[0] == space
+
+
+def test_experimental_frame_handles_trailing_marker_and_preserves_metadata(tmp_path):
+    from .local_tex import normalize_tex
+
+    cell = (r"\vspace{3cm}% LEXOID_OMITTED_EXPERIMENTAL_FIGURE" + "\n"
+        + r"\par Signature \fieldvalue{Alice}")
+    source = (r"\documentclass{article}\begin{document}"
+        + r"\begin{tabular}{|p{4cm}|p{4cm}|}\hline " + cell + " & " + cell
+        + r"\\\hline\end{tabular}\end{document}")
+    fixed, changes = normalize_tex(source)
+    assert changes.get("experimental_figure_frames") == 2
+    assert fixed.count(r"Signature \fieldvalue{Alice}") == 2
+    assert not compile_page(fixed, tmp_path / "frames")
+    assert normalize_tex(fixed)[0] == fixed
+
+
 SPLIT_FORM_ROW = (
     r"\begin{tabular}{|p{1cm}|p{2cm}|p{3cm}|p{3cm}|}\hline" + "\n"
     r"\multicolumn{2}{|p{3cm}|}{Instructions} & Room \fieldvalue{R101}\\" + "\n"

@@ -4,18 +4,101 @@ from __future__ import annotations
 
 import re
 
-from pylatexenc.latexwalker import LatexWalker, LatexEnvironmentNode, LatexMacroNode
+from pylatexenc.latexwalker import (LatexWalker, LatexEnvironmentNode, LatexMacroNode,
+                                   get_default_latex_context_db)
+from pylatexenc.macrospec import MacroSpec
 
 from .syntax_check import _mask_verbatim
 from .syntax_repair import (normalize_control_word_boundaries, normalize_math_blank_lines,
                             normalize_multicolumn_linebreaks, normalize_text_mode_math_symbols)
-from .tex_tables import (_peel_prefix, alignment_colspec, iter_structural,
+from .tex_tables import (_peel_prefix, _read_balanced, _skip_ws, alignment_colspec, iter_structural,
                          mask_comments, multicolumn_span, parse_colspec, split_align_body)
 
 
-VERSION = "local-tex-v4-picture-support"
+VERSION = "local-tex-v5-ulem-figure-frames"
 SUPPORT_BEGIN = "% >>> lexoid local support >>>"
 SUPPORT_END = "% <<< lexoid local support <<<"
+
+
+def normalize_ulem_text_scripts(source):
+    """Keep LaTeX 2026 script spacing out of ulem's word-scanning groups."""
+    underlines = {"sout", "uline", "uuline", "uwave", "xout", "dashuline", "dotuline"}
+    scripts = {"textsuperscript", "textsubscript"}
+    context = get_default_latex_context_db()
+    context.add_context_category("ulem-scripts", macros=[
+        MacroSpec(name, "{") for name in underlines | scripts], prepend=True)
+    edits = []
+
+    def visit(nodes, underlined=False):
+        for node in nodes or []:
+            if isinstance(node, LatexMacroNode):
+                name = node.macroname
+                if name in {"newcommand", "renewcommand", "providecommand", "def",
+                            "mbox", "hbox", "makebox", "fbox"}:
+                    continue
+                if underlined and name in scripts:
+                    edits.append((node.pos, node.pos + node.len))
+                    continue
+                for arg in getattr(node.nodeargd, "argnlist", []) or []:
+                    if arg is not None:
+                        visit(getattr(arg, "nodelist", []), underlined or name in underlines)
+            else:
+                visit(getattr(node, "nodelist", []), underlined)
+
+    nodes, _, _ = LatexWalker(_mask_verbatim(mask_comments(source)), latex_context=context).get_latex_nodes()
+    visit(nodes)
+    for start, end in sorted(edits, reverse=True):
+        source = source[:start] + r"\mbox{" + source[start:end] + "}" + source[end:]
+    return source, len(edits)
+
+
+FIGURE_MACRO = r"""\providecommand{\LexoidExperimentalFigure}[2]{%
+  \begingroup\setlength{\fboxsep}{0pt}%
+  \fbox{\rule{0pt}{\dimexpr#2-2\fboxrule\relax}%
+    \hspace*{\dimexpr#1-2\fboxrule\relax}}%
+  \endgroup}"""
+
+
+def normalize_experimental_figure_frames(source):
+    """Frame only explicitly marked omitted panels, keeping their given height."""
+    visible = _mask_verbatim(source)
+    masked = mask_comments(visible)
+    blanks = []
+    for match in re.finditer(r"\\(vspace\*?|rule)\b\*?", masked):
+        position = _skip_ws(masked, match.end())
+        if position < len(masked) and masked[position] == "[":
+            optional = _read_balanced(masked, position, "[", "]")
+            if not optional:
+                continue
+            position = _skip_ws(masked, optional[1])
+        first = _read_balanced(masked, position, "{", "}")
+        if not first:
+            continue
+        height, end = first
+        if match[1] == "rule":
+            if not re.fullmatch(r"0(?:\.0*)?(?:pt|cm|mm|bp|em|ex)", height.strip()):
+                continue
+            second = _read_balanced(masked, _skip_ws(masked, end), "{", "}")
+            if not second:
+                continue
+            height, end = second
+        if re.fullmatch(r"(?:\d+(?:\.\d*)?|\.\d+)(?:pt|cm|mm|bp|em|ex)", height.strip()):
+            blanks.append((match.start(), end, height.strip(), match[1] == "rule"))
+    edits = {}
+    for marker in re.finditer(r"(?<!\\)%[ \t]*LEXOID_OMITTED_EXPERIMENTAL_FIGURE\b[^\n]*", visible):
+        for start, end, height, rule in blanks:
+            after = start >= marker.end() and not visible[marker.end():start].strip()
+            before = end <= marker.start() and not visible[end:marker.start()].strip() and "\n" not in visible[end:marker.start()]
+            if not (after or before):
+                continue
+            replacement = rf"\LexoidExperimentalFigure{{\linewidth}}{{{height}}}"
+            if not rule:
+                replacement = r"\par\noindent " + replacement + r"\par "
+            edits[start, end] = replacement
+            break
+    for (start, end), replacement in sorted(edits.items(), reverse=True):
+        source = source[:start] + replacement + source[end:]
+    return source, len(edits)
 
 
 def normalize_panel_rules(source):
@@ -191,7 +274,7 @@ PACKAGE_USES = {
     "ragged2e": r"\\(?:RaggedRight|RaggedLeft|Centering|justifying)\b",
     "enumitem": r"\\setlist\b",
     "xcolor": r"\\(?:textcolor|color|definecolor)\b",
-    "ulem": r"\\sout\b",
+    "ulem": r"\\(?:sout|uline|uuline|uwave|xout|dashuline|dotuline)\b",
 }
 
 
@@ -221,6 +304,9 @@ def inject_support(source):
         if not defined and (re.search(r"\\" + macro + r"\b", masked[begin.end():])
                 or rf"\providecommand{{\{macro}}}" in prior_support):
             lines.append(rf"\providecommand{{\{macro}}}[1]{{#1}}")
+    if (r"\LexoidExperimentalFigure" in masked[begin.end():]
+            and not re.search(r"\\(?:newcommand|renewcommand|providecommand)\*?\s*\{?\\LexoidExperimentalFigure\b", preamble)):
+        lines.append(FIGURE_MACRO)
     if lines:
         block = (SUPPORT_BEGIN + "\n\\makeatletter\n" + "\n".join(lines) +
                  "\n\\makeatother\n" + SUPPORT_END + "\n")
@@ -235,6 +321,8 @@ def normalize_tex(source):
         ("text_math_symbols", normalize_text_mode_math_symbols),
         ("multicolumn_linebreaks", normalize_multicolumn_linebreaks),
         ("math_blank_lines", normalize_math_blank_lines),
+        ("ulem_text_scripts", normalize_ulem_text_scripts),
+        ("experimental_figure_frames", normalize_experimental_figure_frames),
         ("panel_rules", normalize_panel_rules),
         ("split_paragraph_rows", normalize_split_paragraph_rows),
         ("table_row_endings", normalize_table_row_endings),
