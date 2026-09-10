@@ -17,6 +17,24 @@ from .tex_tables import transform_tex
 
 
 class FieldAnnotationTests(unittest.TestCase):
+    def test_multicolumn_cell_is_not_wrapped_by_preceding_field(self) -> None:
+        source = (
+            "\\begin{tabular}{|l|l|l|l|}\\hline\n"
+            "Device & Maker & Status & Date\\\\\\hline\n"
+            "% #VALUE_ID: LEX-P0053-V0018\n"
+            "% #FIELD_VALUE: status\n"
+            "Pipette & Eppendorf & \\fieldvalue{\\handwritten{expired}} & "
+            "\\multicolumn{1}{c|}{\\handwritten{/}}\\\\\\hline\n"
+            "\\end{tabular}\n"
+        )
+        annotated, _, _ = annotate_fields(
+            transform_tex(source, anchor=False), namer=HeuristicBatchNamer()
+        )
+        self.assertIn(r"\multicolumn{1}{c|}{\handwritten{/}}", annotated)
+        self.assertNotIn(r"\hwfield{LEX-P0053-V0018}{\multicolumn", annotated)
+        self.assertEqual([], [issue for issue in validate_latex(
+            annotated, require_sync_safe=False) if issue.severity == "error"])
+
     def test_split_scientific_notation_compiles_after_annotation(self) -> None:
         source = (
             "\\documentclass{article}\n"

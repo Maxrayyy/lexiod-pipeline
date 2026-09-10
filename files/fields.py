@@ -420,10 +420,15 @@ def annotate_fields(tex: str,
                 value = _match_handwritten(cells[c_i], pats, c_i, detector)
                 value_id, field_label = _field_metadata_above(lines, li)
                 fieldvalue = _extract_fieldvalue(cells[c_i])
-                multiline = _multiline_fieldvalue(lines, li, block.end)
+                # Inspect only the current cell.  Scanning the whole physical line
+                # can mistake a preceding cell's fieldvalue for this cell and wrap
+                # structural commands such as multicolumn inside hwfield.
+                multiline = (_multiline_fieldvalue(lines, li, block.end)
+                             if (FIELDVALUE_RE.search(cells[c_i])
+                                 and r"\multicolumn" not in cells[c_i]) else None)
                 if multiline is not None:
                     fieldvalue = multiline[0]
-                    multiline_fields[li] = multiline
+                    multiline_fields[(li, c_i)] = multiline
                 # Lexoid marks every editable value with \fieldvalue. Handwritten
                 # patterns remain supported for historical files without that macro.
                 if fieldvalue is not None:
@@ -463,13 +468,13 @@ def annotate_fields(tex: str,
             fid = value_id or _unique_legacy_id(page_of[li], used_ids)
             field_ids[key] = fid
             semantic_alias = f"{fid}-{semantic}"
-            if li in multiline_fields and not HWFIELD_RE.search(lines[li]):
-                _, start_column, end_line, end_column = multiline_fields[li]
+            if (li, c_i) in multiline_fields and not HWFIELD_RE.search(lines[li]):
+                _, start_column, end_line, end_column = multiline_fields[(li, c_i)]
                 lines[end_line] = (lines[end_line][:end_column] + "}"
                                    + lines[end_line][end_column:])
                 lines[li] = (lines[li][:start_column] + f"\\hwfield{{{fid}}}{{"
                              + lines[li][start_column:])
-            elif li not in multiline_fields:
+            elif (li, c_i) not in multiline_fields:
                 lines[li] = _wrap_cell(lines[li], payload, fid)
             records.append(FieldRecord(
                 field_id=fid, semantic_alias=semantic_alias, page=page_of[li],
@@ -576,6 +581,19 @@ def _extract_fieldvalue(payload: str) -> Optional[str]:
 def _wrap_cell(line: str, payload: str, fid: str) -> str:
     if HWFIELD_RE.search(payload):
         return line
+    # A parser cell may share a physical line with a following multicolumn cell.
+    # Never wrap that structural command as part of the handwritten field.
+    if r"\multicolumn" in payload:
+        if not FIELDVALUE_RE.search(payload):
+            return line
+        call = FIELDVALUE_RE.search(payload)
+        argument = _read_balanced(payload, call.end() - 1, "{", "}")
+        if argument is None:
+            return line
+        end = argument[1]
+        replacement = (payload[:call.start()] + f"\\hwfield{{{fid}}}{{"
+                       + payload[call.start():end] + "}" + payload[end:])
+        return line.replace(payload, replacement, 1)
     call = FIELDVALUE_RE.search(payload)
     if call:
         argument = _read_balanced(payload, call.end() - 1, "{", "}")
