@@ -618,8 +618,13 @@ def poll(config):
             if config.get("queue_dir"):
                 result["queue"] = queue_progress(config["queue_dir"], target["name"])
             containers.append(result)
+        pending_queue = any(
+            any(not job.get("completed", job.get("status") == "done")
+                for job in item.get("queue", {}).get("jobs", []))
+            for item in containers)
         snapshot = {"checked_at": datetime.fromtimestamp(now).astimezone().isoformat(timespec="seconds"),
-                    "containers": containers, "all_finished": all(item["terminal"] for item in containers)}
+                    "containers": containers,
+                    "all_finished": all(item["terminal"] for item in containers) and not pending_queue}
         encoded = json.dumps(snapshot, ensure_ascii=False)
         atomic_write(output / "latest.json", json.dumps(snapshot, ensure_ascii=False, indent=2))
         atomic_write(output / "latest.md", render_report(snapshot))
