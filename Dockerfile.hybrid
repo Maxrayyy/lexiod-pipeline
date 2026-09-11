@@ -19,7 +19,6 @@ RUN mktexlsr /usr/local/share/texmf
 # Install both refactored packages; no source is taken from the old containers.
 COPY Lexoid/pyproject.toml Lexoid/README.md /src/Lexoid/
 COPY Lexoid/lexoid /src/Lexoid/lexoid
-COPY Lexoid/scripts /opt/lexiod-tools
 COPY lexiod-pipeline/files /src/texopt
 RUN python -m pip install 'pylatexenc>=2.10,<3' \
     && python -m pip install --no-deps /src/Lexoid /src/texopt \
