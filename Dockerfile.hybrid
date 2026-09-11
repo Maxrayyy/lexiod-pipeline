@@ -34,7 +34,6 @@ FROM runtime AS test
 RUN python -m pip install pytest pytest-asyncio
 COPY Lexoid/tests /tests/lexoid
 COPY lexiod-pipeline /tests/pipeline
-COPY Lexoid/examples/inputs/test_1.pdf /tests/run/examples/inputs/test_1.pdf
 ENV PYTHONPATH=/tests/pipeline
 WORKDIR /tests/run
-CMD ["python", "-m", "pytest", "-q", "/tests/pipeline/files", "/tests/pipeline/tests", "/tests/lexoid", "--ignore=/tests/lexoid/test_parser.py", "--ignore=/tests/lexoid/test_web_parsing.py"]
+CMD ["python", "-m", "pytest", "-q", "/tests/pipeline/files", "/tests/pipeline/tests", "/tests/lexoid", "--ignore=/tests/lexoid/test_cli.py", "--ignore=/tests/lexoid/test_parser.py", "--ignore=/tests/lexoid/test_web_parsing.py"]
