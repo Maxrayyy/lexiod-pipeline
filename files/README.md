@@ -953,12 +953,6 @@ PDF_INPUT_HOST_DIR/客户A/2026/form.pdf
 是生成结果根目录，`OPTIMIZED_TEX_HOST_DIR` 可以另行指定 optimizer
 输出根目录。三者不需要位于同一目录。
 
-本地批处理脚本 `run_local_optimizer_batch.zsh` 默认把最终 `.tex` 输出到
-`/Users/lanyu/Desktop/输出目录/04-reviewed-tex`，并保留输入在
-`02-lexoid-tex` 下的相对目录结构。配套的 `.fields.json`、`.report.json`、
-optimizer 日志和本地状态仍保存在 `/Users/lanyu/Desktop/优化tex` 的对应目录中。
-三个可选位置参数依次为输入根目录、配套文件根目录和 reviewed TeX 根目录。
-
 ### 16.1 初始化
 
 ```bash
