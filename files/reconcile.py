@@ -41,6 +41,22 @@ def escape_tex(value):
     return "".join(_ESCAPES.get(char, char) for char in value)
 
 
+_SCI_NOTATION = re.compile(r"(?<![A-Za-z0-9])([0-9]+(?:[.][0-9]+)?)\^([0-9]+)")
+
+
+def escape_handwritten_tex(value):
+    """Render handwritten text literally, with scientific notation as superscript."""
+    parts = []
+    end = 0
+    for match in _SCI_NOTATION.finditer(value):
+        parts.append(escape_tex(value[end:match.start()]))
+        parts.append(escape_tex(match.group(1)) + r"\textsuperscript{" +
+                     escape_tex(match.group(2)) + "}")
+        end = match.end()
+    parts.append(escape_tex(value[end:]))
+    return "".join(parts)
+
+
 def plain_value(value):
     context = get_default_latex_context_db()
     context.add_context_category("field-symbols", macros=[MacroTextSpec("checkmark", "\u2713")], prepend=True)
@@ -343,8 +359,13 @@ def reconcile_document(tex_path, source_pdf, evidence_path, output_path, fields_
                 reply_value = reply["value"]
                 equivalent = _normalized(original["value"]) == _normalized(reply_value)
                 value = original["value"] if equivalent else reply_value
-                if not equivalent:
-                    payload = escape_tex(value)
+                # Handwritten values originate as literal text.  Escape them even
+                # when reconciliation leaves the value unchanged; otherwise raw
+                # TeX specials such as '^' can break the final compatibility compile.
+                handwritten = original["payload"].strip().startswith(r"\handwritten{")
+                if not equivalent or handwritten:
+                    payload = (escape_handwritten_tex(value) if handwritten
+                               else escape_tex(value))
                     for command in ("handwritten", "checkboxfield"):
                         if original["payload"].strip().startswith("\\" + command + "{"):
                             payload = "\\" + command + "{" + payload + "}"

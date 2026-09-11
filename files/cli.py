@@ -173,6 +173,24 @@ def _risks(src: str) -> list:
             for r in opaque.format_guard(src)]
 
 
+_HANDWRITTEN_VALUE = re.compile(r"\\handwritten\{([^{}]*)\}")
+_HANDWRITTEN_SCI = re.compile(r"(?<![A-Za-z0-9])([0-9]+(?:[.][0-9]+)?)\^([0-9]+)")
+_HANDWRITTEN_ESCAPES = {"&": r"\&", "%": r"\%", "$": r"\$", "#": r"\#",
+                        "_": r"\_", "~": r"\textasciitilde{}", "^": r"\textasciicircum{}"}
+
+
+def sanitize_handwritten_fields(src: str) -> str:
+    def replace(match: re.Match[str]) -> str:
+        value, out, end = match.group(1), [], 0
+        for sci in _HANDWRITTEN_SCI.finditer(value):
+            out.append("".join(_HANDWRITTEN_ESCAPES.get(c, c) for c in value[end:sci.start()]))
+            out.append(sci.group(1) + r"\textsuperscript{" + sci.group(2) + "}")
+            end = sci.end()
+        out.append("".join(_HANDWRITTEN_ESCAPES.get(c, c) for c in value[end:]))
+        return r"\handwritten{" + "".join(out) + "}"
+    return _HANDWRITTEN_VALUE.sub(replace, src)
+
+
 def _compile_latex(tex_path: Path, source_dir: Path, engine: str,
                    timeout: int, runs: int = 2, *, layout_report=None) -> tuple[bool, str]:
     """Compile the exact exported TeX in an isolated output directory."""
@@ -747,6 +765,7 @@ def cmd_optimise(a: argparse.Namespace) -> int:
            changed=outline_report["changed"], headings=len(outline_report["headings"]))
     print("[5/7] Transforming and annotating fields…", file=sys.stderr, flush=True)
     stats: list[TableStat] = []
+    src = sanitize_handwritten_fields(src)
     step1 = transform_tex(src, anchor=not a.no_anchor, stats=stats)
     print(f"  Transformed {len(stats)} table(s), {sum(s.cells for s in stats)} cell(s)",
           file=sys.stderr, flush=True)
