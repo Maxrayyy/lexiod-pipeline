@@ -363,7 +363,13 @@ def reconcile_document(tex_path, source_pdf, evidence_path, output_path, fields_
                 # when reconciliation leaves the value unchanged; otherwise raw
                 # TeX specials such as '^' can break the final compatibility compile.
                 handwritten = original["payload"].strip().startswith(r"\handwritten{")
-                if not equivalent or handwritten:
+                # An equivalent reply must not rewrite an existing TeX expression
+                # such as ``$5\\times10^{7}$``.  Plain handwritten text still
+                # goes through the escaping path so literal ``^`` is rendered
+                # as a superscript.
+                existing_tex = any(token in original["payload"]
+                                   for token in ("$", r"\\times", r"\\textsuperscript"))
+                if not equivalent or (handwritten and not existing_tex):
                     payload = (escape_handwritten_tex(value) if handwritten
                                else escape_tex(value))
                     for command in ("handwritten", "checkboxfield"):
