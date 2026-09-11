@@ -3,7 +3,7 @@ services:
   # Invoked on-demand via:  docker compose run --rm lexoid latex ...
   # Not started by `docker compose up`.
   lexoid:
-    image: ${LEXOID_IMAGE:-lexoid:latest}
+    image: ${LEXOID_IMAGE:-lexoid:local}
     volumes:
       - ${HOST_WORK_DIR:-~/Downloads}:/data
     # No ports, no restart policy — ephemeral worker only.
