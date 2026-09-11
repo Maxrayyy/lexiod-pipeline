@@ -25,12 +25,12 @@ XeLaTeX 编译。任一门禁失败都不会写入完成标记。
 列宽。最终编译门禁可单独通过 `--compile-check` 启用。
 
 字段协调 `texopt reconcile` 默认只对日期、批号、数量等格式异常调用模型。
-印刷体或手写文字不确定、OCR 分歧和勾选不清楚均保留首次识别值，交给人工核对；
+印刷体或手写文字不确定、识别结果存在分歧和勾选不清楚均保留首次识别值，交给人工核对；
 JSON 保留 `needs_review`、`review_status: deferred` 和 `review_reasons`，日志报告
 自动复核数 `selected` 与人工核对数 `deferred`。需要全面内容复核时可显式传入
 `--review-content`。此策略不关闭表格结构检查、语法修复或最终 XeLaTeX 编译。
 
-混合流水线的镜像定义保存在本仓库的 `Dockerfile.hybrid`，构建上下文为同时包含
+流水线镜像定义保存在本仓库的 `Dockerfile.hybrid`，构建上下文为同时包含
 `Lexoid/` 和 `lexiod-pipeline/` 的父目录。基础镜像为现有的 `lexiod-texopt:u1`；
 删除线所需的 CTAN `ulem.sty` 通过固定 SHA-256 校验值安装。运行镜像构建命令：
 
@@ -54,7 +54,7 @@ texopt name-fields document.optimized.tex \
   --model kimi-k3 --name-cache /data/.cache/semantic-names.sqlite3
 ```
 
-混合流水线的工作 TEX、命名计划和字段 JSON 位于 worker 的 `.pipeline/<文件名>/`；
+PDF→TeX 流水线的工作 TEX、命名计划和字段 JSON 位于 worker 的 `.pipeline/<文件名>/`；
 正式发布的 TEX 是工作 TEX 的原样副本，可通过 `--plan` 显式指定工作目录中的计划。
 命名命令验证 TEX 哈希与计划、JSON 一致，按稳定 ID 更新别名，不改值、不改 TEX，
 也不重新编译。命名失败保留原有数据和待补充状态，成功与缓存命中记为 `complete`。
@@ -910,4 +910,3 @@ xelatex -synctex=1 -interaction=nonstopmode optimized.tex
 3. 每个 `\fieldvalue` 正向查询有 PDF box；
 4. 使用 SyncTeX 返回的源码锚点 `x/y` 反向查询回到该 `\fieldvalue` 的源码行；
 5. 与原 PDF 对比页数、`pdftotext -layout` 文本和 `pdftotext -bbox` 几何坐标。
-
